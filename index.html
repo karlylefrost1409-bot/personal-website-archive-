@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umida Xolmirzayeva</title>
+
+<style>
+/* ===== GENERAL ===== */
+:root {
+  --paper: #eee5d5;
+  --paper-light: #f6efe4;
+  --ink: #302820;
+  --muted: #766656;
+  --border: #b7a58e;
+  --accent: #755c4a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #d6c9b5;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.7;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.65;
+  background:
+    radial-gradient(circle, #302820 1.4px, transparent 2px)
+    0 0 / 7px 9px,
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(48,40,32,0.5) 4px,
+      transparent 6px
+    );
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.page {
+  max-width: 1050px;
+  width: 92%;
+  margin: 35px auto;
+  padding: 35px;
+  background:
+    radial-gradient(
+      ellipse at 20% 10%,
+      rgba(255,255,255,0.35),
+      transparent 60%
+    ),
+    var(--paper);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 30px rgba(48,40,32,0.18);
+  position: relative;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+}
+
+.header-ornament {
+  color: var(--muted);
+  letter-spacing: 7px;
+  font-size: 14px;
+}
+
+.site-header h1 {
+  font-size: clamp(30px, 6vw, 48px);
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin: 12px 0 0;
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ===== INDEX NAVIGATION ===== */
+.index-section {
+  margin: 28px 0;
+}
+
+.index-heading {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.index-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.15);
+  transition: 0.3s;
+}
+
+.index-item:hover {
+  background: rgba(255,255,255,0.55);
+  transform: translateY(-2px);
+}
+
+.index-number {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.index-label {
+  font-size: 14px;
+}
+
+/* ===== HOMEPAGE ===== */
+.home-introduction {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 35px;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.portrait-frame {
+  background: #e0d2bd;
+  padding: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 3px 4px 10px rgba(48,40,32,0.15);
+}
+
+.portrait-placeholder {
+  min-height: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px dashed var(--border);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 10px,
+      rgba(100,80,60,0.03) 11px
+    );
+  padding: 20px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.portrait-caption {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.intro-text h2 {
+  font-size: 28px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.intro-text p {
+  font-size: 16px;
+}
+
+.small-ornament {
+  color: var(--muted);
+  letter-spacing: 4px;
+}
+
+/* ===== ENVELOPE ===== */
+.envelope-section {
+  margin: 35px auto;
+  text-align: center;
+}
+
+.envelope {
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid var(--border);
+  background: #e3d4c0;
+  padding: 25px;
+  box-shadow: 2px 4px 12px rgba(48,40,32,0.12);
+}
+
+.envelope-button {
+  border: 1px solid var(--border);
+  background: var(--paper-light);
+  padding: 13px 20px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.envelope-button:hover {
+  background: #d8c5ad;
+}
+
+.letter-content {
+  display: none;
+  text-align: left;
+  margin-top: 25px;
+  padding: 22px;
+  background: var(--paper-light);
+  border: 1px dashed var(--border);
+}
+
+.letter-content.open {
+  display: block;
+  animation: fadeIn 0.6s ease;
+}
+
+/* ===== QUOTATION ===== */
+.quote-card {
+  text-align: center;
+  padding: 25px;
+  margin: 35px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.quote-text {
+  font-style: italic;
+  font-size: 19px;
+}
+
+.quote-author {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.quote-button {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.quote-button:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* ===== SECRET ===== */
+.secret-section {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.secret-button {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  padding: 10px;
+  color: var(--muted);
+}
+
+.secret-content {
+  display: none;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.secret-content.visible {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.clock {
+  position: fixed;
+  bottom: 18px;
+  right: 25px;
+  background: var(--paper-light);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  font-size: 13px;
+  z-index: 11;
+  box-shadow: 2px 3px 8px rgba(48,40,32,0.15);
+}
+
+.top-button {
+  position: fixed;
+  bottom: 18px;
+  left: 25px;
+  border: 1px solid var(--border);
+  background: var(--paper-light);
+  padding: 8px 12px;
+  z-index: 11;
+  font-size: 13px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 700px) {
+  .page {
+    width: 94%;
+    padding: 20px;
+    margin: 15px auto;
+  }
+
+  .index-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-introduction {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .portrait-placeholder {
+    min-height: 280px;
+  }
+
+  .intro-text h2 {
+    font-size: 24px;
+  }
+
+  .clock {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .top-button {
+    bottom: 10px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .index-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="site-header">
+  <div class="header-ornament">❦ · · · ❦</div>
+  <h1>Umida Xolmirzayeva</h1>
+  <p class="subtitle">A personal collection of various things</p>
+  <div class="header-ornament">⌘ · · · ⌘</div>
+</header>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="index-section" aria-label="Main navigation">
+  <div class="index-heading">THE INDEX</div>
+
+  <div class="index-grid">
+
+    <a class="index-item" href="about.html">
+      <span class="index-number">01</span>
+      <span class="index-label">About</span>
+    </a>
+
+    <a class="index-item" href="archives/diary.html">
+      <span class="index-number">02</span>
+      <span class="index-label">Diary</span>
+    </a>
+
+    <a class="index-item" href="archives/literature.html">
+      <span class="index-number">03</span>
+      <span class="index-label">Literature</span>
+    </a>
+
+    <a class="index-item" href="archives/music.html">
+      <span class="index-number">04</span>
+      <span class="index-label">Music</span>
+    </a>
+
+    <a class="index-item" href="archives/visual-arts.html">
+      <span class="index-number">05</span>
+      <span class="index-label">Visual Arts</span>
+    </a>
+
+    <a class="index-item" href="archives/photography.html">
+      <span class="index-number">06</span>
+      <span class="index-label">Photography</span>
+    </a>
+
+    <a class="index-item" href="archives/cinema.html">
+      <span class="index-number">07</span>
+      <span class="index-label">Cinema</span>
+    </a>
+
+    <a class="index-item" href="archives/writing.html">
+      <span class="index-number">08</span>
+      <span class="index-label">Writing</span>
+    </a>
+
+    <a class="index-item" href="archives/languages.html">
+      <span class="index-number">09</span>
+      <span class="index-label">Languages</span>
+    </a>
+
+    <a class="index-item" href="archives/psychology-philosophy.html">
+      <span class="index-number">10</span>
+      <span class="index-label">Psychology & Philosophy</span>
+    </a>
+
+    <a class="index-item" href="archives/history-culture.html">
+      <span class="index-number">11</span>
+      <span class="index-label">History & Culture</span>
+    </a>
+
+    <a class="index-item" href="archives/cabinet.html">
+      <span class="index-number">12</span>
+      <span class="index-label">Cabinet of Curiosities</span>
+    </a>
+
+  </div>
+</nav>
+
+<div class="small-ornament" style="text-align:center;">
+  ✦ ────────── ✦
+</div>
+
+<!-- ===== HOMEPAGE INTRODUCTION ===== -->
+<main>
+
+<section class="home-introduction">
+
+  <div>
+    <div class="portrait-frame">
+      <div class="portrait-placeholder">
+        <span>
+          Portrait photograph<br><br>
+          <small>To be added</small>
+        </span>
+      </div>
+    </div>
+    <div class="portrait-caption">
+      A portrait, eventually.
+    </div>
+  </div>
+
+  <div class="intro-text">
+    <div class="small-ornament">✧ A LITTLE INTRODUCTION ✧</div>
+
+    <h2>Welcome, stranger.</h2>
+
+    <p>
+      A small collection of things I find beautiful,
+      thoughts I don't want to lose, books I've read,
+      music I return to, and fragments of everyday life.
+    </p>
+
+    <p>
+      Consider this a little corner of the internet
+      I made entirely my own.
+    </p>
+
+    <p class="small-ornament">❦</p>
+  </div>
+
+</section>
+
+<!-- ===== ENVELOPE ===== -->
+<section class="envelope-section">
+
+  <div class="envelope">
+
+    <div class="small-ornament">A LETTER LEFT HERE</div>
+
+    <p>
+      There appears to be something inside.
+    </p>
+
+    <button
+      class="envelope-button"
+      id="letterButton"
+      aria-expanded="false"
+      aria-controls="letterContent">
+      Open the letter
+    </button>
+
+    <div class="letter-content" id="letterContent">
+
+      <h3>Dear visitor,</h3>
+
+      <p>
+        This website is a collection of interests, memories,
+        ideas and things I happen to come across and wish
+        to keep. It is not intended to be particularly
+        organized in the grand scheme of things, although
+        I have made an effort to give everything its own place.
+      </p>
+
+      <p>
+        I made it because I wanted somewhere to collect
+        the things that occupy my mind, rather than leave
+        them scattered across notebooks, folders and
+        various corners of the internet.
+      </p>
+
+      <p>
+        Feel free to wander around.
+      </p>
+
+      <p>Yours sincerely,<br>Umida</p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ===== RANDOM QUOTE ===== -->
+<section class="quote-card">
+
+  <div class="small-ornament">A RANDOM THOUGHT</div>
+
+  <blockquote class="quote-text" id="quoteText">
+    "The world is full of interesting things."
+  </blockquote>
+
+  <div class="quote-author" id="quoteAuthor">
+    — A placeholder
+  </div>
+
+  <button class="quote-button" id="quoteButton">
+    Another quotation
+  </button>
+
+</section>
+
+<!-- ===== HIDDEN FACT ===== -->
+<section class="secret-section">
+
+  <button
+    class="secret-button"
+    id="secretButton"
+    aria-expanded="false"
+    aria-controls="secretContent"
+    aria-label="Reveal a hidden fact">
+    ✣
+  </button>
+
+  <div class="secret-content" id="secretContent">
+    A tiny secret, hidden in plain sight.
+  </div>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="small-ornament">❦</div>
+  <p>Collected, arranged and occasionally neglected.</p>
+  <p>© Umida Xolmirzayeva</p>
+</footer>
+
+</div>
+
+<!-- ===== CLOCK ===== -->
+<div class="clock" id="clock" aria-label="Current time">
+  00:00:00
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="top-button" id="topButton">
+  ↑ Top
+</button>
+
+<script>
+/* ===== LETTER ===== */
+const letterButton = document.getElementById("letterButton");
+const letterContent = document.getElementById("letterContent");
+
+letterButton.addEventListener("click", function() {
+  const isOpen = letterContent.classList.toggle("open");
+
+  letterButton.textContent = isOpen
+    ? "Close the letter"
+    : "Open the letter";
+
+  letterButton.setAttribute("aria-expanded", isOpen);
+});
+
+/* ===== QUOTATIONS ===== */
+const quotations = [
+  {
+    text: "The world is full of interesting things.",
+    author: "A placeholder",
+    category: "General"
+  },
+  {
+    text: "A collection of words for a collection of thoughts.",
+    author: "A placeholder",
+    category: "Writing"
+  },
+  {
+    text: "There is always something worth noticing.",
+    author: "A placeholder",
+    category: "Observation"
+  }
+];
+
+const quoteText = document.getElementById("quoteText");
+const quoteAuthor = document.getElementById("quoteAuthor");
+const quoteButton = document.getElementById("quoteButton");
+
+quoteButton.addEventListener("click", function() {
+  const randomIndex = Math.floor(Math.random() * quotations.length);
+  const quote = quotations[randomIndex];
+
+  quoteText.textContent = '"' + quote.text + '"';
+  quoteAuthor.textContent = "— " + quote.author;
+});
+
+/* ===== SECRET ===== */
+const secretButton = document.getElementById("secretButton");
+const secretContent = document.getElementById("secretContent");
+
+secretButton.addEventListener("click", function() {
+  const isVisible = secretContent.classList.toggle("visible");
+  secretButton.setAttribute("aria-expanded", isVisible);
+});
+
+/* ===== CLOCK ===== */
+function updateClock() {
+  const now = new Date();
+
+  const time = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+
+  document.getElementById("clock").textContent = time;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+/* ===== BACK TO TOP ===== */
+document.getElementById("topButton").addEventListener("click", function() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+</script>
+
+</body>
+  </html>
