@@ -4,29 +4,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Umida Xolmirzayeva</title>
+<title>Home</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display&display=swap');
+
 :root {
-  --paper: #eee5d5;
-  --ink: #46392f;
-  --dark: #201b18;
-  --muted: #8a7864;
+  --paper: #eee6d8;
+  --ink: #29221e;
+  --muted: #756759;
+  --lace: url('assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png');
 }
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
-  background: var(--paper);
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at center, #f5eee2 0%, #e9dfcf 100%);
   color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -34,118 +35,97 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(ellipse at 20% 20%, rgba(255,255,255,.23), transparent 55%),
-    radial-gradient(ellipse at 80% 70%, rgba(105,75,50,.07), transparent 60%);
+  opacity: .14;
+  background-image:
+    radial-gradient(#77644f 0.5px, transparent 0.5px);
+  background-size: 4px 4px;
   z-index: 0;
 }
 
-.paper {
-  width: min(1150px, 94%);
-  margin: auto;
-  min-height: 100vh;
+.lace {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-image: var(--lace);
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.lace.top {
+  top: 0;
+}
+
+.lace.bottom {
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+.page {
   position: relative;
-  padding: 45px 25px 80px;
+  min-height: 100vh;
+  padding: 100px 6% 100px;
   z-index: 1;
 }
 
-.lace-top,
-.lace-bottom {
-  width: 100%;
-  height: 24px;
-  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
-  background-repeat: repeat-x;
-  background-size: auto 24px;
-  opacity: .65;
+h1 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(35px, 5vw, 58px);
+  font-weight: 400;
+  letter-spacing: 5px;
+  margin: 0 0 12px;
 }
 
-.lace-top {
-  margin-bottom: 35px;
+.subtitle {
+  text-align: center;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 19px;
+  letter-spacing: 1px;
 }
 
-.lace-bottom {
-  margin-top: 45px;
+.ornament {
+  text-align: center;
+  margin: 25px 0;
+  color: #79664f;
+  letter-spacing: 8px;
+  font-size: 19px;
 }
-
-/* HOME INTRO */
 
 .intro {
+  max-width: 1120px;
+  margin: 65px auto 45px;
   display: grid;
-  grid-template-columns: 190px 300px minmax(250px, 1fr);
+  grid-template-columns: 200px 320px minmax(250px, 1fr);
+  gap: 55px;
   align-items: center;
-  gap: 38px;
-  min-height: 480px;
   position: relative;
 }
 
-.intro-text {
-  max-width: 460px;
-  padding: 10px 0;
-}
-
-.intro-text h1 {
-  font-weight: normal;
-  font-size: clamp(35px, 5vw, 58px);
-  margin: 0 0 18px;
-  line-height: 1.1;
-}
-
-.intro-text p {
-  font-size: 21px;
-  line-height: 1.85;
-  margin: 0;
-}
-
-.portrait {
-  width: 100%;
-  height: 370px;
-  background: #e4d7c3;
-  border: 1px solid rgba(91,67,46,.35);
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 25px;
-  position: relative;
-}
-
-.portrait-placeholder {
-  font-size: 14px;
-  font-style: italic;
-  color: #625342;
-  line-height: 2;
-}
-
-.portrait-placeholder::before,
-.portrait-placeholder::after {
-  content: "✧";
-  display: block;
-  font-style: normal;
-  margin: 10px;
-}
-
-/* THE AUTHOR PORTRAITS */
+/* AUTHOR GALLERY */
 
 .author-wall {
   position: relative;
-  width: 190px;
-  height: 470px;
-  align-self: stretch;
-  overflow: visible;
+  width: 200px;
+  height: 650px;
+  margin: 0 auto;
 }
 
-/* Individual miniature frames */
+/* Every frame is positioned independently */
 
 .mini-frame {
   position: absolute;
-  width: 58px;
-  height: 78px;
+  width: 55px;
+  height: 72px;
   padding: 5px;
-  background: linear-gradient(135deg,#806444,#b49a72,#62482f,#d0b28a);
-  border: 3px ridge #8d7451;
-  box-shadow: 2px 4px 7px rgba(0,0,0,.28);
-  transition: transform .3s ease, z-index .3s ease;
+  background: #e5d6b9;
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    0 0 2px rgba(35, 23, 15, .5);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .mini-frame img {
@@ -153,464 +133,533 @@ body::before {
   height: 100%;
   display: block;
   object-fit: cover;
-  filter: sepia(13%);
+  object-position: center;
 }
 
 .mini-frame:hover {
-  transform: scale(1.18) rotate(0deg) !important;
-  z-index: 20;
+  transform: scale(1.12) rotate(0deg) !important;
+  z-index: 15;
+  box-shadow: 0 8px 20px rgba(35, 23, 15, .3);
 }
 
-.mini-frame::before {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  border: 1px solid rgba(245,222,176,.7);
-  pointer-events: none;
+/* Individual frame styles */
+
+.rococo {
+  border: 4px double #967447;
+  outline: 2px solid #c4a779;
+  outline-offset: 2px;
+  border-radius: 48% 48% 44% 44%;
+  background: linear-gradient(135deg, #d6bd90, #8c693e, #d9c39d);
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 4px #f3dfba;
 }
 
-/* 1. Nietzsche - black baroque */
-
-.frame-nietzsche {
-  left: 25px;
-  top: 8px;
-  transform: rotate(-8deg);
-  border: 5px ridge #292321;
-  background: linear-gradient(135deg,#171413,#57463c,#201817);
-  border-radius: 3px;
+.walnut {
+  border: 5px solid #5d3827;
+  background: #81563b;
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 0 2px #b38a60,
+    inset 0 0 0 4px #42291d;
 }
 
-/* 2. Donna Tartt - bronze Rococo oval */
+.baroque {
+  border: 5px ridge #292522;
+  background: #39332e;
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 0 2px #84705b;
+}
 
-.frame-donna {
-  left: 100px;
-  top: 35px;
-  width: 64px;
-  height: 84px;
-  transform: rotate(7deg);
+.gothic {
+  border: 5px solid #49372d;
+  border-radius: 45% 45% 3px 3px;
+  background: #75533e;
+  clip-path: polygon(0 16%, 50% 0, 100% 16%, 100% 100%, 0 100%);
+  box-shadow: 0 3px 7px rgba(35, 23, 15, .25);
+}
+
+.louis {
+  border: 4px double #c0a779;
+  outline: 2px solid #786044;
+  outline-offset: 2px;
   border-radius: 50%;
-  border: 5px ridge #a78a59;
-  background: linear-gradient(135deg,#d1b37c,#76552e,#c4a16b);
-  padding: 6px;
+  background: linear-gradient(135deg, #dbc8a4, #96764c);
 }
 
-/* 3. Dostoevsky - carved walnut */
-
-.frame-dostoevsky {
-  left: 50px;
-  top: 105px;
-  transform: rotate(5deg);
-  border: 5px ridge #553522;
-  background: linear-gradient(135deg,#765038,#3b2417,#98714b);
+.floral {
+  border: 6px ridge #8b6a4a;
+  background: #c1a782;
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 0 2px #e1c8a1;
 }
 
-/* 4. Kafka - Gothic arch */
-
-.frame-kafka {
-  left: 5px;
-  top: 155px;
-  transform: rotate(-6deg);
-  border: 4px ridge #302622;
-  background: linear-gradient(135deg,#45352c,#181311,#5b4334);
-  border-radius: 30px 30px 2px 2px;
+.silver {
+  border: 5px ridge #a6a19a;
+  background: linear-gradient(135deg, #dedbd4, #99958c, #c6c0b5);
+  box-shadow: 0 3px 7px rgba(35, 23, 15, .25);
 }
 
-/* 5. Camus - Louis XVI oval */
+.gilded {
+  border: 4px solid #ae854c;
+  outline: 3px double #d6b67d;
+  outline-offset: 1px;
+  background: #c8a76e;
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 0 2px #7b592e;
+}
 
-.frame-camus {
-  left: 120px;
+.ivory {
+  border: 5px ridge #c7bba5;
+  background: linear-gradient(135deg, #f0e6d5, #c5b49b);
+  box-shadow: 0 3px 7px rgba(35, 23, 15, .25);
+}
+
+.mahogany {
+  border: 5px solid #512c20;
+  background: linear-gradient(135deg, #774734, #4d2b20);
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 0 2px #ad7a54;
+}
+
+.blackgold {
+  border: 5px double #b3945e;
+  background: #28231f;
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 0 2px #716047;
+}
+
+.roccrect {
+  border: 5px ridge #aa8555;
+  background: #b89a6a;
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 0 2px #e0c69b;
+}
+
+.darkwood {
+  border: 5px solid #35251e;
+  border-radius: 48%;
+  background: #694735;
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 0 2px #98704f;
+}
+
+.ornateblack {
+  border: 5px ridge #272321;
+  background: linear-gradient(135deg, #37312d, #181615);
+  box-shadow:
+    0 3px 7px rgba(35, 23, 15, .25),
+    inset 0 0 0 2px #71645a;
+}
+
+/* FIVE-ZONE GALLERY PLACEMENT */
+
+/* Zone 1: upper */
+.f1 {
+  top: 12px;
+  left: 18px;
+  width: 62px;
+  height: 82px;
+  transform: rotate(-3deg);
+}
+
+.f2 {
+  top: 95px;
+  left: 105px;
+  width: 47px;
+  height: 63px;
+  transform: rotate(2deg);
+}
+
+.f3 {
   top: 165px;
-  transform: rotate(8deg);
-  border-radius: 50%;
-  border: 5px ridge #c0a477;
-  background: linear-gradient(135deg,#d4bd92,#786143,#c5a87a);
+  left: 52px;
+  width: 53px;
+  height: 70px;
 }
 
-/* 6. Clarice - floral carved */
-
-.frame-clarice {
-  left: 30px;
-  top: 235px;
-  transform: rotate(9deg);
-  border: 5px ridge #a58a68;
-  background: linear-gradient(135deg,#c0a17a,#7b5c3e,#d1b18a);
-}
-
-/* 7. Ocean - oxidized silver */
-
-.frame-ocean {
-  left: 90px;
-  top: 275px;
-  transform: rotate(-7deg);
-  border: 5px ridge #87847b;
-  background: linear-gradient(135deg,#b7b4a7,#5d5b54,#c5c1b4);
-}
-
-/* 8. Hanya - gilded miniature */
-
-.frame-hanya {
-  left: 140px;
-  top: 300px;
+/* Zone 2: upper-middle */
+.f4 {
+  top: 230px;
+  left: 132px;
   width: 52px;
   height: 70px;
-  transform: rotate(11deg);
-  border: 4px ridge #c2a46c;
-  background: linear-gradient(135deg,#d7b77d,#86633c,#e0c18b);
+  transform: rotate(3deg);
 }
 
-/* 9. Susan Sontag - distressed ivory */
-
-.frame-sontag {
-  left: 5px;
-  top: 340px;
-  transform: rotate(-9deg);
-  border: 5px ridge #b8aa91;
-  background: linear-gradient(135deg,#e1d6c3,#998872,#d4c5ae);
+.f5 {
+  top: 275px;
+  left: 22px;
+  width: 58px;
+  height: 78px;
 }
 
-/* 10. Hesse - mahogany */
-
-.frame-hesse {
-  left: 70px;
-  top: 380px;
-  transform: rotate(4deg);
-  border: 5px ridge #5b3928;
-  background: linear-gradient(135deg,#8a5538,#442819,#a66d45);
+.f6 {
+  top: 345px;
+  left: 100px;
+  width: 46px;
+  height: 61px;
+  transform: rotate(-2deg);
 }
 
-/* 11. Morrison - black and gold */
-
-.frame-morrison {
-  left: 110px;
-  top: 5px;
-  transform: rotate(-4deg);
-  border: 4px ridge #30251d;
-  background: linear-gradient(135deg,#26201b,#967445,#2b211b);
+/* Zone 3: central gap and mid-section */
+.f7 {
+  top: 420px;
+  left: 35px;
+  width: 50px;
+  height: 67px;
+  transform: rotate(2deg);
 }
 
-/* 12. Wilde - Rococo rectangle */
-
-.frame-wilde {
-  left: 0px;
-  top: 85px;
-  transform: rotate(7deg);
-  border: 5px ridge #aa8959;
-  background: linear-gradient(135deg,#d0b17c,#76512e,#c3a16e);
+.f8 {
+  top: 460px;
+  left: 125px;
+  width: 60px;
+  height: 80px;
+  transform: rotate(-3deg);
 }
 
-/* 13. Simone - dark oval wood */
-
-.frame-simone {
-  left: 95px;
-  top: 210px;
-  transform: rotate(-10deg);
-  border: 5px ridge #604631;
-  background: linear-gradient(135deg,#876447,#39271d,#98704c);
-  border-radius: 50%;
+/* Zone 4: lower-middle */
+.f9 {
+  top: 540px;
+  left: 45px;
+  width: 55px;
+  height: 74px;
 }
 
-/* 14. Sylvia - ornate black */
-
-.frame-silvia {
-  left: 50px;
-  top: 30px;
-  transform: rotate(10deg);
-  border: 5px ridge #24201e;
-  background: linear-gradient(135deg,#51443b,#171413,#655046);
+.f10 {
+  top: 565px;
+  left: 140px;
+  width: 46px;
+  height: 62px;
+  transform: rotate(2deg);
 }
 
-/* Decorative ornament on frames */
-
-.mini-frame::after {
-  content: "❦";
-  position: absolute;
-  font-size: 11px;
-  top: -13px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #a28a62;
-  text-shadow: 0 1px 2px #34251b;
+/* Zone 5: lower gallery */
+.f11 {
+  top: 635px;
+  left: 8px;
+  width: 60px;
+  height: 80px;
+  transform: rotate(-2deg);
 }
 
-/* Small authors along the left margin */
-
-.author-wall .mini-frame {
-  width: 48px;
-  height: 65px;
-}
-
-.author-wall .frame-donna {
+.f12 {
+  top: 700px;
+  left: 100px;
   width: 52px;
-  height: 72px;
+  height: 70px;
 }
 
-.author-wall .frame-hanya {
-  width: 44px;
-  height: 59px;
+.f13 {
+  top: 775px;
+  left: 35px;
+  width: 46px;
+  height: 62px;
+  transform: rotate(3deg);
+}
+
+.f14 {
+  top: 830px;
+  left: 130px;
+  width: 58px;
+  height: 77px;
+}
+
+/* PERSONAL PORTRAIT */
+
+.portrait {
+  min-height: 420px;
+  width: 320px;
+  border: 1px solid #a18a6b;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.2), rgba(0,0,0,.03)),
+    #d8c9b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(44, 31, 21, .12);
+}
+
+.portrait-placeholder {
+  color: #756759;
+  font-style: italic;
+  font-size: 19px;
+}
+
+/* WELCOME TEXT */
+
+.welcome {
+  max-width: 440px;
+  margin: auto;
+  text-align: center;
+}
+
+.welcome h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-size: 31px;
+}
+
+.welcome p {
+  font-size: 21px;
+  line-height: 1.65;
+}
+
+.small-ornament {
+  color: #86704f;
+  margin: 22px 0;
+  font-size: 22px;
 }
 
 /* ENVELOPE */
 
-.envelope-section {
+.envelope-area {
   text-align: center;
-  margin: 60px auto 40px;
+  margin: 45px auto;
 }
 
 .envelope {
   display: inline-block;
-  border: 1px solid #8c7659;
-  padding: 18px 32px;
-  background: rgba(255,255,255,.15);
-  color: var(--ink);
-  font-family: Georgia,serif;
-  font-size: 18px;
   cursor: pointer;
+  background: transparent;
+  border: 1px solid #8b7354;
+  color: #433529;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  padding: 12px 30px;
   transition: .3s;
 }
 
 .envelope:hover {
-  background: rgba(255,255,255,.3);
+  background: rgba(125, 97, 67, .1);
 }
 
 .letter {
-  display: none;
   max-width: 600px;
-  margin: 25px auto;
+  margin: 20px auto;
+  display: none;
   padding: 30px;
-  border: 1px solid #a28a6b;
-  background: rgba(255,255,255,.18);
-  line-height: 1.9;
-  font-size: 17px;
+  background: rgba(226, 213, 192, .65);
+  border: 1px solid #a38b6a;
+  font-size: 20px;
+  line-height: 1.6;
 }
 
-.letter.show {
+.letter.open {
   display: block;
 }
 
 /* QUOTE */
 
-.quote-section {
+.quote-box {
+  max-width: 700px;
+  margin: 50px auto;
   text-align: center;
-  max-width: 720px;
-  margin: 55px auto;
+  padding: 25px;
 }
 
 .quote {
-  font-size: 22px;
+  font-size: 23px;
+  line-height: 1.6;
   font-style: italic;
-  line-height: 1.8;
+}
+
+.quote-author {
+  margin-top: 15px;
+  color: #786754;
+  font-size: 17px;
 }
 
 .quote-button {
-  border: none;
+  margin-top: 22px;
+  padding: 8px 22px;
+  border: 1px solid #8b7354;
   background: transparent;
-  font-family: Georgia, serif;
-  color: var(--muted);
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 15px;
-  margin-top: 18px;
-}
-
-/* NAVIGATION */
-
-.nav-title {
-  text-align: center;
-  font-size: 28px;
-  font-weight: normal;
-  margin: 65px 0 30px;
-}
-
-.nav-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 16px;
-}
-
-.nav-grid a {
-  display: block;
-  text-decoration: none;
-  color: var(--ink);
-  border: 1px solid rgba(100,75,50,.35);
-  padding: 19px 12px;
-  text-align: center;
-  background: rgba(255,255,255,.12);
-  transition: .3s;
+  color: #433529;
+  font-family: inherit;
   font-size: 18px;
-}
-
-.nav-grid a:hover {
-  background: rgba(255,255,255,.35);
-  letter-spacing: .5px;
+  cursor: pointer;
 }
 
 /* HIDDEN DETAIL */
 
-.secret {
+.hidden-detail {
   text-align: center;
-  margin: 45px 0 15px;
-  color: #8c7b69;
-  font-size: 13px;
+  margin: 45px 0;
 }
 
-.secret span {
+.hidden-detail button {
+  background: transparent;
+  border: none;
+  color: #8a7864;
+  font-family: inherit;
   cursor: pointer;
+  font-size: 17px;
 }
 
-.secret-message {
+.secret {
   display: none;
+  margin: 15px auto;
+  max-width: 500px;
   font-style: italic;
-  margin-top: 15px;
+  font-size: 20px;
 }
 
-.secret-message.show {
+.secret.show {
   display: block;
 }
 
-/* FOOTER */
+/* NAVIGATION */
 
-footer {
+.navigation {
+  max-width: 950px;
+  margin: 65px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px 25px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #44352a;
+  font-size: 20px;
+  border-bottom: 1px solid transparent;
+  transition: .3s;
+}
+
+.navigation a:hover {
+  border-bottom: 1px solid #8b7354;
+  color: #826342;
+}
+
+.divider {
   text-align: center;
-  font-size: 14px;
-  color: #8a7864;
-  margin-top: 45px;
-  line-height: 1.8;
+  letter-spacing: 8px;
+  color: #85704f;
+  margin: 45px auto;
 }
 
 /* CLOCK */
 
 .clock {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 110px;
-  height: 110px;
-  z-index: 100;
-  filter: drop-shadow(2px 4px 5px rgba(0,0,0,.25));
+  right: 22px;
+  bottom: 22px;
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  border: 2px solid #6d5945;
+  background: rgba(238, 230, 216, .94);
+  box-shadow:
+    0 4px 12px rgba(40, 28, 20, .15),
+    inset 0 0 0 4px #d3c1a5,
+    inset 0 0 0 5px #6d5945;
+  z-index: 30;
 }
 
-.clock svg {
-  width: 100%;
-  height: 100%;
-}
-
-.clock-face {
-  fill: #e6d8c2;
-  stroke: #544133;
-  stroke-width: 4;
-}
-
-.clock-inner {
-  fill: none;
-  stroke: #927957;
-  stroke-width: 1.2;
-}
-
-.clock-numerals {
-  font-family: Georgia,serif;
-  font-size: 11px;
-  fill: #4c3d30;
-}
-
-.hand {
-  stroke: #403126;
-  stroke-linecap: round;
-}
-
-.hour-hand {
-  stroke-width: 3.2;
-}
-
-.minute-hand {
-  stroke-width: 2.2;
-}
-
-.second-hand {
-  stroke: #9b4637;
-  stroke-width: 1.1;
+.clock .num {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  color: #403327;
+  transform: translate(-50%, -50%);
 }
 
 .clock-center {
-  fill: #403126;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: #403327;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: bottom center;
+  border-radius: 5px;
+}
+
+.hour-hand {
+  width: 3px;
+  height: 23px;
+  background: #44352a;
+}
+
+.minute-hand {
+  width: 2px;
+  height: 32px;
+  background: #44352a;
+}
+
+.second-hand {
+  width: 1px;
+  height: 35px;
+  background: #8b493a;
 }
 
 /* RESPONSIVE */
 
-@media (max-width: 900px) {
-  .paper {
-    padding: 30px 15px 65px;
-  }
-
+@media (max-width: 1050px) {
   .intro {
-    grid-template-columns: 145px 240px minmax(180px,1fr);
-    gap: 20px;
-  }
-
-  .author-wall {
-    width: 145px;
-    height: 440px;
-    transform: scale(.88);
-    transform-origin: center left;
+    grid-template-columns: 170px 280px minmax(220px, 1fr);
+    gap: 30px;
   }
 
   .portrait {
-    height: 330px;
+    width: 280px;
   }
 
-  .intro-text p {
-    font-size: 18px;
+  .author-wall {
+    transform: scale(.9);
+    transform-origin: top center;
   }
 }
 
-@media (max-width: 650px) {
-  .paper {
-    width: 100%;
-    padding: 25px 15px 60px;
-  }
-
+@media (max-width: 800px) {
   .intro {
-    grid-template-columns: 90px minmax(150px,1fr);
-    gap: 18px;
-    align-items: center;
-    min-height: unset;
+    grid-template-columns: 1fr;
+    gap: 35px;
+    margin-top: 45px;
   }
 
   .author-wall {
-    width: 90px;
-    height: 390px;
-    transform: scale(.68);
-    transform-origin: top left;
-    margin-right: -55px;
+    width: 200px;
+    height: 920px;
+    margin: 0 auto;
+    transform: scale(.85);
+    transform-origin: top center;
   }
 
   .portrait {
-    height: 280px;
-    max-width: 250px;
+    width: min(320px, 90%);
+    margin: 0 auto;
   }
 
-  .intro-text {
-    grid-column: 1 / -1;
-    max-width: none;
-    padding: 20px 5px;
+  .welcome {
+    padding: 0 15px;
   }
 
-  .intro-text h1 {
-    font-size: 40px;
-  }
-
-  .intro-text p {
-    font-size: 18px;
-    line-height: 1.8;
-  }
-
-  .nav-grid {
-    grid-template-columns: repeat(2,1fr);
-    gap: 12px;
-  }
-
-  .nav-grid a {
-    font-size: 16px;
-    padding: 15px 8px;
+  .page {
+    padding-left: 4%;
+    padding-right: 4%;
   }
 
   .clock {
@@ -619,89 +668,93 @@ footer {
     right: 12px;
     bottom: 12px;
   }
-}
 
-@media (max-width: 390px) {
-  .intro {
-    grid-template-columns: 75px minmax(130px,1fr);
-    gap: 10px;
+  .hour-hand {
+    height: 19px;
   }
 
-  .author-wall {
-    transform: scale(.58);
-    margin-right: -65px;
+  .minute-hand {
+    height: 25px;
   }
 
-  .portrait {
-    height: 260px;
+  .second-hand {
+    height: 29px;
   }
 }
 </style>
 </head>
 
 <body>
-<div class="paper">
 
-<div class="lace-top"></div>
+<div class="lace top"></div>
+<div class="lace bottom"></div>
+
+<main class="page">
+
+<h1>Your Name</h1>
+
+<div class="subtitle">A little archive of things I love</div>
+
+<div class="ornament">❦ ───────── ❦ ───────── ❦</div>
 
 <section class="intro">
 
-<!-- AUTHOR MINIATURES -->
+<!-- AUTHOR PORTRAITS -->
 <div class="author-wall">
 
-<div class="mini-frame frame-nietzsche">
-<img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
-</div>
-
-<div class="mini-frame frame-donna">
+<div class="mini-frame rococo f1">
 <img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
 </div>
 
-<div class="mini-frame frame-dostoevsky">
+<div class="mini-frame walnut f2">
 <img src="assets/images/1795768877389.jpg" alt="Fyodor Dostoevsky">
 </div>
 
-<div class="mini-frame frame-kafka">
+<div class="mini-frame baroque f3">
+<img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
+</div>
+
+<div class="mini-frame gothic f4">
 <img src="assets/images/kafka.jpg" alt="Franz Kafka">
 </div>
 
-<div class="mini-frame frame-camus">
+<div class="mini-frame louis f5">
 <img src="assets/images/camus.jpg" alt="Albert Camus">
 </div>
 
-<div class="mini-frame frame-clarice">
+<div class="mini-frame floral f6">
 <img src="assets/images/clarice.jpg" alt="Clarice Lispector">
 </div>
 
-<div class="mini-frame frame-ocean">
+<div class="mini-frame silver f7">
 <img src="assets/images/ocean.jpg" alt="Ocean Vuong">
 </div>
 
-<div class="mini-frame frame-hanya">
+<div class="mini-frame gilded f8">
 <img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
 </div>
 
-<div class="mini-frame frame-sontag">
+<div class="mini-frame ivory f9">
 <img src="assets/images/sontag.jpg" alt="Susan Sontag">
 </div>
 
-<div class="mini-frame frame-hesse">
+<div class="mini-frame mahogany f10">
 <img src="assets/images/hesse.jpg" alt="Hermann Hesse">
 </div>
 
-<div class="mini-frame frame-morrison">
+<div class="mini-frame blackgold f11">
 <img src="assets/images/morrison.jpg" alt="Toni Morrison">
 </div>
 
-<div class="mini-frame frame-wilde">
+<div class="mini-frame roccrect f12">
 <img src="assets/images/wilde.jpg" alt="Oscar Wilde">
 </div>
 
-<div class="mini-frame frame-simone">
+<div class="mini-frame darkwood f13">
 <img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
 </div>
 
-<div class="mini-frame frame-silvia">
+<div class="mini-frame ornateblack f14">
 <img src="assets/images/silvia.jpg" alt="Sylvia Plath">
 </div>
 
@@ -710,57 +763,97 @@ footer {
 <!-- YOUR PORTRAIT -->
 <div class="portrait">
 <div class="portrait-placeholder">
-Portrait to be placed here
+Your portrait will be placed here
 </div>
 </div>
 
 <!-- WELCOME -->
-<div class="intro-text">
-<h1>Welcome, curious stranger.</h1>
+<div class="welcome">
+
+<h2>Welcome</h2>
+
+<div class="small-ornament">❧</div>
 
 <p>
-You've somehow wandered into a little corner of the internet
-that belongs to me. This place collects fragments of my thoughts,
-books, music, photographs, art, and all the things I find difficult
-to leave behind.
+This is a small collection of the things that occupy my mind,
+the things I read, listen to, observe, learn and keep.
 </p>
+
+<p>
+A quiet corner for literature, art, music, photography,
+cinema, thoughts and little curiosities.
+</p>
+
+<div class="small-ornament">✧</div>
+
 </div>
 
 </section>
 
-<!-- LETTER -->
-<section class="envelope-section">
+<div class="divider">❦ ───── ✦ ───── ❦</div>
+
+<!-- ENVELOPE -->
+<section class="envelope-area">
+
 <button class="envelope" id="envelopeButton">
-✉ Open the little letter
+✉ Open the letter
 </button>
 
 <div class="letter" id="letter">
+
 <p>
-There isn't really a particular purpose to this place.
-It's simply somewhere to keep things I love, things I notice,
-things I read, and things I might otherwise forget.
+Dear visitor,
 </p>
+
 <p>
-Feel free to wander around.
+You have found a little corner of the internet that belongs
+to the things I find beautiful, strange, interesting and worth
+remembering.
 </p>
+
+<p>
+Feel free to wander.
+</p>
+
 </div>
+
 </section>
 
-<!-- QUOTE -->
-<section class="quote-section">
-<p class="quote" id="quote">
-"One must still have chaos in oneself to be able to give birth to a dancing star."
-</p>
+<!-- QUOTES -->
+<section class="quote-box">
+
+<div class="quote" id="quote">
+"I have always imagined that Paradise will be a kind of library."
+</div>
+
+<div class="quote-author" id="quoteAuthor">
+Jorge Luis Borges
+</div>
 
 <button class="quote-button" id="quoteButton">
-another thought
+Another quotation
 </button>
+
+</section>
+
+<div class="divider">❦ ───── ✦ ───── ❦</div>
+
+<!-- HIDDEN DETAIL -->
+<section class="hidden-detail">
+
+<button id="secretButton">
+Something hidden ✧
+</button>
+
+<div class="secret" id="secret">
+There is no particular reason for everything to be here.
+Sometimes liking something is reason enough.
+</div>
+
 </section>
 
 <!-- NAVIGATION -->
-<h2 class="nav-title">The Archive</h2>
-
-<div class="nav-grid">
+<nav class="navigation">
 
 <a href="about.html">About</a>
 <a href="diary.html">Diary</a>
@@ -775,134 +868,123 @@ another thought
 <a href="history-culture.html">History & Culture</a>
 <a href="curiosities.html">Curiosities</a>
 
-</div>
+</nav>
 
-<!-- SECRET -->
-<div class="secret">
-<span id="secretTrigger">✧</span>
-<div class="secret-message" id="secretMessage">
-You found something that wasn't meant to be found.
-</div>
-</div>
+<div class="divider">❦ ───── ✦ ───── ❦</div>
 
-<footer>
-Made of collected fragments, somewhere between thought and memory.
-</footer>
+</main>
 
-<div class="lace-bottom"></div>
+<!-- CLOCK -->
+<div class="clock" id="clock">
 
-</div>
+<div class="clock-center"></div>
+<div class="hand hour-hand" id="hourHand"></div>
+<div class="hand minute-hand" id="minuteHand"></div>
+<div class="hand second-hand" id="secondHand"></div>
 
-<!-- ANALOG CLOCK -->
-<div class="clock">
-<svg viewBox="0 0 120 120" aria-label="Analog clock">
-
-<circle class="clock-face" cx="60" cy="60" r="55"/>
-<circle class="clock-inner" cx="60" cy="60" r="49"/>
-
-<g class="clock-numerals" text-anchor="middle">
-<text x="60" y="19">XII</text>
-<text x="88" y="29">I</text>
-<text x="101" y="43">II</text>
-<text x="106" y="63">III</text>
-<text x="99" y="82">IV</text>
-<text x="87" y="96">V</text>
-<text x="60" y="103">VI</text>
-<text x="33" y="96">VII</text>
-<text x="20" y="82">VIII</text>
-<text x="14" y="63">IX</text>
-<text x="20" y="43">X</text>
-<text x="33" y="29">XI</text>
-</g>
-
-<g id="hourHand">
-<line class="hand hour-hand" x1="60" y1="60" x2="60" y2="32"/>
-</g>
-
-<g id="minuteHand">
-<line class="hand minute-hand" x1="60" y1="60" x2="60" y2="23"/>
-</g>
-
-<g id="secondHand">
-<line class="hand second-hand" x1="60" y1="68" x2="60" y2="17"/>
-</g>
-
-<circle class="clock-center" cx="60" cy="60" r="3.5"/>
-
-</svg>
 </div>
 
 <script>
 
-/* LETTER */
-const envelopeButton = document.getElementById("envelopeButton");
-const letter = document.getElementById("letter");
+/* ENVELOPE */
 
-envelopeButton.addEventListener("click", function() {
-  letter.classList.toggle("show");
+document.getElementById('envelopeButton').addEventListener('click', function() {
+  document.getElementById('letter').classList.toggle('open');
+});
 
-  if (letter.classList.contains("show")) {
-    envelopeButton.textContent = "✉ Close the little letter";
-  } else {
-    envelopeButton.textContent = "✉ Open the little letter";
-  }
+/* HIDDEN DETAIL */
+
+document.getElementById('secretButton').addEventListener('click', function() {
+  document.getElementById('secret').classList.toggle('show');
 });
 
 /* QUOTES */
+
 const quotes = [
-  '"One must still have chaos in oneself to be able to give birth to a dancing star."',
-  '"The mystery of life isn’t a problem to solve, but a reality to experience."',
-  '"I am rooted, but I flow."',
-  '"And now that you don’t have to be perfect, you can be good."',
-  '"We are all in the gutter, but some of us are looking at the stars."',
-  '"There is no exquisite beauty without some strangeness in the proportion."',
-  '"The world is full of magic things, patiently waiting for our senses to grow sharper."'
+  {
+    text: "I have always imagined that Paradise will be a kind of library.",
+    author: "Jorge Luis Borges"
+  },
+  {
+    text: "We are all in the gutter, but some of us are looking at the stars.",
+    author: "Oscar Wilde"
+  },
+  {
+    text: "The mystery of life isn't a problem to solve, but a reality to experience.",
+    author: "Frank Herbert"
+  },
+  {
+    text: "Nothing is more difficult than to understand what is not understood.",
+    author: "Friedrich Nietzsche"
+  },
+  {
+    text: "I am rooted, but I flow.",
+    author: "Virginia Woolf"
+  },
+  {
+    text: "The world was made to be seen, and everything in it is a gift.",
+    author: "A thought to keep"
+  },
+  {
+    text: "There is no exquisite beauty without some strangeness in the proportion.",
+    author: "Edgar Allan Poe"
+  }
 ];
 
-const quoteElement = document.getElementById("quote");
-const quoteButton = document.getElementById("quoteButton");
+let quoteIndex = 0;
 
-quoteButton.addEventListener("click", function() {
-  let newQuote;
+document.getElementById('quoteButton').addEventListener('click', function() {
+  quoteIndex = (quoteIndex + 1) % quotes.length;
 
-  do {
-    newQuote = quotes[Math.floor(Math.random() * quotes.length)];
-  } while (newQuote === quoteElement.textContent);
-
-  quoteElement.textContent = newQuote;
+  document.getElementById('quote').textContent = quotes[quoteIndex].text;
+  document.getElementById('quoteAuthor').textContent = quotes[quoteIndex].author;
 });
 
-/* SECRET */
-const secretTrigger = document.getElementById("secretTrigger");
-const secretMessage = document.getElementById("secretMessage");
+/* ANALOG CLOCK */
 
-secretTrigger.addEventListener("click", function() {
-  secretMessage.classList.toggle("show");
-});
+const clock = document.getElementById('clock');
 
-/* CLOCK */
+const roman = [
+  "XII", "I", "II", "III", "IV", "V",
+  "VI", "VII", "VIII", "IX", "X", "XI"
+];
+
+for (let i = 0; i < 12; i++) {
+  const number = document.createElement('div');
+  number.className = 'num';
+  number.textContent = roman[i];
+
+  const angle = (i * 30) - 90;
+  const radius = 39;
+
+  const x = 50 + radius * Math.cos(angle * Math.PI / 180);
+  const y = 50 + radius * Math.sin(angle * Math.PI / 180);
+
+  number.style.left = x + '%';
+  number.style.top = y + '%';
+
+  clock.appendChild(number);
+}
+
 function updateClock() {
   const now = new Date();
 
   const seconds = now.getSeconds();
   const minutes = now.getMinutes();
-  const hours = now.getHours();
+  const hours = now.getHours() % 12;
 
-  const secondRotation = seconds * 6;
-  const minuteRotation = minutes * 6 + seconds * 0.1;
-  const hourRotation = (hours % 12) * 30 + minutes * 0.5;
+  const secondAngle = seconds * 6;
+  const minuteAngle = minutes * 6 + seconds * 0.1;
+  const hourAngle = hours * 30 + minutes * 0.5;
 
-  document.getElementById("secondHand").setAttribute(
-    "transform", "rotate(" + secondRotation + " 60 60)"
-  );
+  document.getElementById('secondHand').style.transform =
+    `translateX(-50%) rotate(${secondAngle}deg)`;
 
-  document.getElementById("minuteHand").setAttribute(
-    "transform", "rotate(" + minuteRotation + " 60 60)"
-  );
+  document.getElementById('minuteHand').style.transform =
+    `translateX(-50%) rotate(${minuteAngle}deg)`;
 
-  document.getElementById("hourHand").setAttribute(
-    "transform", "rotate(" + hourRotation + " 60 60)"
-  );
+  document.getElementById('hourHand').style.transform =
+    `translateX(-50%) rotate(${hourAngle}deg)`;
 }
 
 updateClock();
