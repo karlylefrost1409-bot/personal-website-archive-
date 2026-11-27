@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music | Umida Xolmirzayeva</title>
+
+<style>
+:root {
+  --paper: #eee5d5;
+  --ink: #302720;
+  --muted: #76685a;
+  --line: #b6a48d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 22px;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #e9decd, #cfc0a8);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 115px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 115px auto;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before { left: 0; }
+body::after { right: 0; }
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: auto;
+  padding: 55px 65px;
+  background: var(--paper);
+  border: 1px solid #b9a58b;
+  box-shadow: 0 10px 40px rgba(45,30,20,0.18);
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(130,105,78,0.25);
+  pointer-events: none;
+}
+
+header {
+  text-align: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 35px;
+}
+
+.subtitle {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: clamp(32px,5vw,48px);
+  font-weight: normal;
+  margin: 18px 0;
+}
+
+.ornament {
+  color: #806b55;
+  font-size: 22px;
+  letter-spacing: 8px;
+}
+
+.intro {
+  max-width: 650px;
+  text-align: center;
+  margin: 0 auto 45px;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+/* PLAYLIST */
+
+.playlist {
+  position: relative;
+  border: 1px solid var(--line);
+  padding: 30px;
+  background: #dfd1bd;
+  margin-bottom: 50px;
+  box-shadow: 3px 5px 12px rgba(50,35,25,0.08);
+}
+
+.playlist-inner {
+  border: 1px solid rgba(100,75,50,0.35);
+  padding: 25px;
+  text-align: center;
+}
+
+.playlist h2 {
+  font-size: 26px;
+  font-weight: normal;
+}
+
+.playlist p {
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.playlist-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 22px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 13px;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.playlist-link:hover {
+  background: var(--paper);
+}
+
+/* ARTISTS */
+
+.section-title {
+  text-align: center;
+  font-weight: normal;
+  font-size: 25px;
+  margin: 40px 0;
+}
+
+.artist {
+  border: 1px solid var(--line);
+  padding: 25px;
+  margin-bottom: 25px;
+  background: rgba(255,255,255,0.12);
+}
+
+.artist-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 15px;
+}
+
+.artist-header h3 {
+  font-size: 26px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.artist-note {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.albums {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.album {
+  padding: 15px;
+  border: 1px solid rgba(150,125,95,0.55);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.album:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.album-cover {
+  aspect-ratio: 1;
+  background: linear-gradient(145deg,#b8a58b,#88745e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  color: #f1e7d8;
+  border: 1px solid #8e7960;
+  margin-bottom: 15px;
+}
+
+.album-cover span {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.album h4 {
+  font-weight: normal;
+  font-size: 17px;
+  margin: 8px 0;
+}
+
+.album p {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  margin-top: 55px;
+  border-top: 1px solid var(--line);
+  padding-top: 25px;
+}
+
+footer a {
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+footer a:hover {
+  opacity: 0.6;
+}
+
+footer p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 25px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .albums {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  body::before,
+  body::after {
+    width: 50px;
+    background-size: 50px auto;
+    opacity: 0.45;
+  }
+
+  .page {
+    padding: 35px 25px;
+  }
+
+  .playlist {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .albums {
+    grid-template-columns: 1fr;
+  }
+
+  .artist {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+<header>
+  <div class="subtitle">Sounds I return to</div>
+  <h1>Music</h1>
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+</header>
+
+<section class="intro">
+  <p>
+    Artists, albums, songs, and sounds that have found
+    their way into my days. An archive of things listened
+    to repeatedly, sometimes without reason.
+  </p>
+</section>
+
+<!-- PLAYLIST -->
+
+<section class="playlist">
+
+  <div class="playlist-inner">
+
+    <div class="ornament">♫ &nbsp; ❧ &nbsp; ♫</div>
+
+    <h2>A collection of songs</h2>
+
+    <p>
+      A playlist of songs I keep returning to.
+      It may change, grow, or remain the same
+      for longer than expected.
+    </p>
+
+    <a href="#" class="playlist-link"
+       target="_blank" rel="noopener noreferrer">
+      OPEN PLAYLIST
+    </a>
+
+    <div class="ornament">✦</div>
+
+  </div>
+
+</section>
+
+<h2 class="section-title">Artists & albums</h2>
+
+<section class="artist">
+
+  <div class="artist-header">
+    <h3>Artist's name</h3>
+    <span class="artist-note">A favourite</span>
+  </div>
+
+  <div class="albums">
+
+    <article class="album">
+      <div class="album-cover">
+        <span>Album cover</span>
+      </div>
+      <h4>Album title</h4>
+      <p>Release year</p>
+    </article>
+
+    <article class="album">
+      <div class="album-cover">
+        <span>Album cover</span>
+      </div>
+      <h4>Album title</h4>
+      <p>Release year</p>
+    </article>
+
+    <article class="album">
+      <div class="album-cover">
+        <span>Album cover</span>
+      </div>
+      <h4>Album title</h4>
+      <p>Release year</p>
+    </article>
+
+  </div>
+
+</section>
+
+<section class="artist">
+
+  <div class="artist-header">
+    <h3>Artist's name</h3>
+    <span class="artist-note">Another favourite</span>
+  </div>
+
+  <div class="albums">
+
+    <article class="album">
+      <div class="album-cover">
+        <span>Album cover</span>
+      </div>
+      <h4>Album title</h4>
+      <p>Release year</p>
+    </article>
+
+    <article class="album">
+      <div class="album-cover">
+        <span>Album cover</span>
+      </div>
+      <h4>Album title</h4>
+      <p>Release year</p>
+    </article>
+
+    <article class="album">
+      <div class="album-cover">
+        <span>Album cover</span>
+      </div>
+      <h4>Album title</h4>
+      <p>Release year</p>
+    </article>
+
+  </div>
+
+</section>
+
+<section class="artist">
+
+  <div class="artist-header">
+    <h3>Artist's name</h3>
+    <span class="artist-note">Occasional obsession</span>
+  </div>
+
+  <div class="albums">
+
+    <article class="album">
+      <div class="album-cover">
+        <span>Album cover</span>
+      </div>
+      <h4>Album title</h4>
+      <p>Release year</p>
+    </article>
+
+    <article class="album">
+      <div class="album-cover">
+        <span>Album cover</span>
+      </div>
+      <h4>Album title</h4>
+      <p>Release year</p>
+    </article>
+
+    <article class="album">
+      <div class="album-cover">
+        <span>Album cover</span>
+      </div>
+      <h4>Album title</h4>
+      <p>Release year</p>
+    </article>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="ornament">❧</div>
+
+  <a href="index.html">← RETURN TO THE HOMEPAGE</a>
+
+  <p>An archive of sounds.</p>
+
+</footer>
+
+</main>
+
+</body>
+</html>
