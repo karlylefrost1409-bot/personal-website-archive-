@@ -12,6 +12,7 @@
   --dark: #241c19;
   --ink: #44352d;
   --lace: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  --antique-gold: #a98b62;
 }
 
 * {
@@ -80,51 +81,74 @@ header h1 {
   border-top: 1px solid #8b7763;
 }
 
-/* ===== INTRODUCTION LAYOUT ===== */
+/* ===== HOMEPAGE INTRODUCTION ===== */
 
 .intro {
   display: grid;
-  grid-template-columns: 115px 280px minmax(0, 470px);
-  gap: 24px;
+  grid-template-columns: 150px 280px minmax(0, 470px);
+  gap: 28px;
   align-items: center;
   justify-content: center;
   margin: 50px auto;
-  max-width: 1050px;
+  max-width: 1100px;
 }
 
-/* ===== MINIATURE VICTORIAN PORTRAIT WALL ===== */
+/* ===== VICTORIAN AUTHOR PORTRAIT WALL ===== */
 
 .author-wall {
-  width: 115px;
-  height: 175px;
   position: relative;
+  width: 150px;
+  height: 190px;
   justify-self: center;
 }
 
+/* Shared antique frame styling */
+
 .mini-frame {
   position: absolute;
-  margin: 0;
-  padding: 3px;
-  background: linear-gradient(
-    135deg,
-    #80664b,
-    #30231c 35%,
-    #6b5139 65%,
-    #241c19
-  );
-  border: 1px solid #38291f;
+  display: block;
+  padding: 5px;
+  background:
+    linear-gradient(
+      135deg,
+      #806344 0%,
+      #38271d 22%,
+      #211915 48%,
+      #735337 75%,
+      #30221a 100%
+    );
+  border: 3px ridge #806344;
   box-shadow:
-    0 2px 5px rgba(0,0,0,0.3),
-    inset 0 0 0 1px #b39a76;
-  transition: transform 0.25s ease;
+    0 0 0 2px #2a201b,
+    0 0 0 4px #b49a70,
+    3px 5px 9px rgba(0,0,0,0.35);
 }
+
+/* Fine gold inner edging */
 
 .mini-frame::before {
   content: "";
   position: absolute;
-  inset: 2px;
-  border: 1px solid rgba(218,192,151,0.7);
+  inset: 3px;
+  border: 1px solid #c2a575;
   pointer-events: none;
+  z-index: 2;
+}
+
+/* Small Victorian ornament above each frame */
+
+.mini-frame::after {
+  content: "❦";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #a98b62;
+  font-size: 18px;
+  text-shadow:
+    1px 1px 2px #211711,
+    0 0 3px #d1b88d;
+  z-index: 3;
 }
 
 .mini-frame img {
@@ -132,46 +156,66 @@ header h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 1px solid #c3aa85;
-  background: #d8c6ae;
+  border: 1px solid #2b211b;
+  filter: sepia(12%) contrast(0.95);
 }
 
-/* Nietzsche: small upper portrait */
+/* Nietzsche: small carved rectangular frame */
 
 .frame-nietzsche {
-  width: 42px;
-  height: 58px;
-  top: 3px;
-  left: 43px;
+  width: 65px;
+  height: 88px;
+  top: 0;
+  left: 48px;
   transform: rotate(3deg);
+  border-radius: 2px;
 }
 
-/* Donna: slightly larger lower-left portrait */
+/* Donna Tartt: slightly larger oval frame */
 
 .frame-donna {
-  width: 50px;
-  height: 70px;
-  top: 82px;
-  left: 5px;
-  transform: rotate(-5deg);
+  width: 75px;
+  height: 100px;
+  top: 76px;
+  left: 0;
+  padding: 6px;
+  border-radius: 48%;
+  background:
+    linear-gradient(
+      135deg,
+      #94734b,
+      #38271d 25%,
+      #211915 55%,
+      #806344
+    );
+  box-shadow:
+    0 0 0 2px #2a201b,
+    0 0 0 4px #b49a70,
+    3px 5px 9px rgba(0,0,0,0.35);
 }
 
-/* Dostoevsky: small lower-right portrait */
+.frame-donna::before {
+  inset: 4px;
+  border-radius: 48%;
+  border: 1px solid #c2a575;
+}
+
+.frame-donna img {
+  border-radius: 48%;
+}
+
+/* Dostoevsky: matching antique rectangular frame */
 
 .frame-dostoevsky {
-  width: 42px;
-  height: 58px;
-  top: 91px;
-  right: 3px;
+  width: 65px;
+  height: 88px;
+  top: 94px;
+  right: 0;
   transform: rotate(5deg);
+  border-radius: 2px;
 }
 
-.mini-frame:hover {
-  z-index: 5;
-  transform: scale(1.12) rotate(0deg);
-}
-
-/* ===== YOUR PORTRAIT ===== */
+/* ===== PERSONAL PORTRAIT ===== */
 
 .portrait {
   width: 280px;
@@ -198,7 +242,7 @@ header h1 {
   font-weight: normal;
 }
 
-/* ===== ENVELOPE ===== */
+/* ===== ENVELOPE AND LETTER ===== */
 
 .envelope-area {
   text-align: center;
@@ -235,7 +279,7 @@ header h1 {
   display: block;
 }
 
-/* ===== QUOTATIONS ===== */
+/* ===== CHANGING QUOTES ===== */
 
 .quote-box {
   max-width: 700px;
@@ -313,13 +357,15 @@ header h1 {
   transform: translateY(-2px);
 }
 
+/* ===== FOOTER ===== */
+
 footer {
   text-align: center;
   font-style: italic;
   margin-top: 70px;
 }
 
-/* ===== VINTAGE ANALOG CLOCK ===== */
+/* ===== ANALOG CLOCK ===== */
 
 #archive-clock {
   position: fixed !important;
@@ -342,30 +388,20 @@ footer {
   overflow: visible;
 }
 
-/* ===== TABLET ===== */
+/* ===== RESPONSIVE LAYOUT ===== */
 
-@media (max-width: 950px) {
+@media (max-width: 900px) {
   .intro {
-    grid-template-columns: 95px 230px minmax(0, 1fr);
+    grid-template-columns: 130px 250px minmax(0, 1fr);
     gap: 18px;
   }
 
   .portrait {
-    width: 230px;
+    width: 250px;
     min-width: 0;
-    height: 320px;
-  }
-
-  .author-wall {
-    transform: scale(0.9);
-  }
-
-  .intro-text h2 {
-    font-size: 25px;
+    height: 340px;
   }
 }
-
-/* ===== MOBILE ===== */
 
 @media (max-width: 650px) {
   .page {
@@ -375,12 +411,11 @@ footer {
   .intro {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 22px;
   }
 
   .author-wall {
-    transform: scale(0.95);
-    margin-bottom: 0;
+    margin: 0 auto;
   }
 
   .portrait {
@@ -390,10 +425,6 @@ footer {
 
   .intro-text {
     text-align: center;
-  }
-
-  .intro-text h2 {
-    font-size: 26px;
   }
 
   header h1 {
@@ -427,34 +458,31 @@ footer {
 
 <section class="intro">
 
-  <!-- MINIATURE AUTHOR PORTRAITS -->
+  <!-- AUTHOR PORTRAIT WALL -->
 
   <div class="author-wall">
 
-    <figure class="mini-frame frame-nietzsche">
+    <div class="mini-frame frame-nietzsche">
       <img
         src="assets/images/1795768863633.jpg"
-        alt="Friedrich Nietzsche"
-      >
-    </figure>
+        alt="Friedrich Nietzsche">
+    </div>
 
-    <figure class="mini-frame frame-donna">
+    <div class="mini-frame frame-donna">
       <img
         src="assets/images/1795768870490.jpg"
-        alt="Donna Tartt"
-      >
-    </figure>
+        alt="Donna Tartt">
+    </div>
 
-    <figure class="mini-frame frame-dostoevsky">
+    <div class="mini-frame frame-dostoevsky">
       <img
         src="assets/images/1795768867389.jpg"
-        alt="Fyodor Dostoevsky"
-      >
-    </figure>
+        alt="Fyodor Dostoevsky">
+    </div>
 
   </div>
 
-  <!-- YOUR OWN PORTRAIT -->
+  <!-- PERSONAL PORTRAIT -->
 
   <div class="portrait">
     <div>
@@ -464,7 +492,7 @@ footer {
     </div>
   </div>
 
-  <!-- INTRODUCTION -->
+  <!-- WELCOME TEXT -->
 
   <div class="intro-text">
     <h2>Welcome, curious stranger.</h2>
@@ -484,7 +512,7 @@ footer {
 
 </section>
 
-<!-- ===== ENVELOPE ===== -->
+<!-- ENVELOPE -->
 
 <div class="envelope-area">
 
@@ -494,7 +522,9 @@ footer {
 
   <div class="letter" id="letter">
 
-    <p>Dear visitor,</p>
+    <p>
+      Dear visitor,
+    </p>
 
     <p>
       I made this little archive to gather pieces of my life and
@@ -516,7 +546,7 @@ footer {
 
 </div>
 
-<!-- ===== QUOTATIONS ===== -->
+<!-- QUOTE CHANGER -->
 
 <section class="quote-box">
 
@@ -532,7 +562,7 @@ footer {
 
 </section>
 
-<!-- ===== HIDDEN DETAIL ===== -->
+<!-- HIDDEN DETAIL -->
 
 <div class="hidden-detail">
 
@@ -549,10 +579,9 @@ footer {
 
 <hr class="rule">
 
-<!-- ===== NAVIGATION ===== -->
+<!-- PAGE NAVIGATION -->
 
 <nav class="navigation">
-
   <a href="about.html">About</a>
   <a href="diary.html">Diary</a>
   <a href="literature.html">Literature</a>
@@ -565,7 +594,6 @@ footer {
   <a href="psychology-philosophy.html">Psychology & Philosophy</a>
   <a href="history-culture.html">History & Culture</a>
   <a href="curiosities.html">Cabinet of Curiosities</a>
-
 </nav>
 
 <footer>
@@ -581,15 +609,26 @@ footer {
 
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 
+  <!-- Outer frame -->
+
   <circle cx="100" cy="100" r="98" fill="#241c19"/>
   <circle cx="100" cy="100" r="93" fill="#78604a"/>
   <circle cx="100" cy="100" r="88" fill="#241c19"/>
   <circle cx="100" cy="100" r="82" fill="#e8dcc7"/>
 
-  <circle cx="100" cy="100" r="77" fill="none"
-          stroke="#78604a" stroke-width="1.5"/>
-  <circle cx="100" cy="100" r="73" fill="none"
-          stroke="#241c19" stroke-width="0.8"/>
+  <!-- Decorative rings -->
+
+  <circle cx="100" cy="100" r="77"
+          fill="none"
+          stroke="#78604a"
+          stroke-width="1.5"/>
+
+  <circle cx="100" cy="100" r="73"
+          fill="none"
+          stroke="#241c19"
+          stroke-width="0.8"/>
+
+  <!-- Hour markers -->
 
   <g stroke="#241c19" stroke-width="2.2">
     <line x1="100" y1="24" x2="100" y2="34"/>
@@ -606,9 +645,14 @@ footer {
     <line x1="100" y1="24" x2="100" y2="34" transform="rotate(330 100 100)"/>
   </g>
 
-  <g fill="#241c19" font-family="Georgia, serif"
-     font-size="16" text-anchor="middle"
+  <!-- Roman numerals -->
+
+  <g fill="#241c19"
+     font-family="Georgia, serif"
+     font-size="16"
+     text-anchor="middle"
      dominant-baseline="middle">
+
     <text x="100" y="46">XII</text>
     <text x="127" y="53">I</text>
     <text x="147" y="73">II</text>
@@ -621,27 +665,42 @@ footer {
     <text x="45" y="100">IX</text>
     <text x="53" y="73">X</text>
     <text x="73" y="53">XI</text>
+
   </g>
 
-  <line id="clock-hour"
-        x1="100" y1="100" x2="100" y2="63"
-        stroke="#241c19" stroke-width="5"
-        stroke-linecap="round"/>
+  <!-- Clock hands -->
 
-  <line id="clock-minute"
-        x1="100" y1="100" x2="100" y2="43"
-        stroke="#241c19" stroke-width="3.5"
-        stroke-linecap="round"/>
+  <g id="clock-hands">
 
-  <line id="clock-second"
-        x1="100" y1="112" x2="100" y2="38"
-        stroke="#7c3025" stroke-width="1.5"
-        stroke-linecap="round"/>
+    <line id="clock-hour"
+          x1="100" y1="100" x2="100" y2="63"
+          stroke="#241c19"
+          stroke-width="5"
+          stroke-linecap="round"/>
+
+    <line id="clock-minute"
+          x1="100" y1="100" x2="100" y2="43"
+          stroke="#241c19"
+          stroke-width="3.5"
+          stroke-linecap="round"/>
+
+    <line id="clock-second"
+          x1="100" y1="112" x2="100" y2="38"
+          stroke="#7c3025"
+          stroke-width="1.5"
+          stroke-linecap="round"/>
+
+  </g>
+
+  <!-- Center ornament -->
 
   <circle cx="100" cy="100" r="6" fill="#241c19"/>
   <circle cx="100" cy="100" r="2" fill="#c5a783"/>
+
   <circle cx="100" cy="100" r="10"
-          fill="none" stroke="#78604a" stroke-width="0.8"/>
+          fill="none"
+          stroke="#78604a"
+          stroke-width="0.8"/>
 
 </svg>
 
@@ -718,6 +777,7 @@ function updateArchiveClock() {
 
   document.getElementById("clock-hour")
     .setAttribute("transform", "rotate(" + hourAngle + " 100 100)");
+
 }
 
 updateArchiveClock();
