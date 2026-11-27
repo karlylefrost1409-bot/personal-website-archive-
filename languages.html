@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Languages & Linguistics | Umida Xolmirzayeva</title>
+
+<style>
+:root {
+  --paper: #eee5d5;
+  --ink: #29231e;
+  --muted: #756658;
+  --line: #c9b9a3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #d4c5af;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 0.78;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+.page {
+  width: 90%;
+  max-width: 1000px;
+  margin: 45px auto;
+  background: var(--paper);
+  border: 1px solid #b9a68e;
+  padding: 45px 55px;
+  box-shadow: 0 10px 35px rgba(50, 35, 20, 0.18);
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 25px;
+  margin-bottom: 35px;
+}
+
+.small-title {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.introduction {
+  max-width: 700px;
+  text-align: center;
+  margin: 0 auto 40px;
+  font-style: italic;
+}
+
+.ornament {
+  text-align: center;
+  color: #88745e;
+  letter-spacing: 6px;
+  margin: 30px 0;
+}
+
+.section-title {
+  font-weight: normal;
+  font-size: 25px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  margin: 40px 0 25px;
+}
+
+.language-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.language-card {
+  background: #e5d8c6;
+  border: 1px solid #c6b39b;
+  padding: 28px;
+  box-shadow: 3px 5px 12px rgba(40, 30, 20, 0.08);
+  transition: transform 0.25s;
+}
+
+.language-card:hover {
+  transform: translateY(-3px);
+}
+
+.language-card:nth-child(even) {
+  background: #f0e8dc;
+}
+
+.language-name {
+  font-size: 25px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.language-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  margin: 5px 0 18px;
+}
+
+.language-card p {
+  margin-bottom: 0;
+}
+
+.notebook {
+  background: #e9decd;
+  border: 1px solid var(--line);
+  padding: 30px;
+  margin: 35px 0;
+}
+
+.notebook h3 {
+  font-size: 21px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.notebook p {
+  margin-bottom: 0;
+}
+
+.word-entry {
+  padding: 18px 0;
+  border-bottom: 1px dashed #b9a68e;
+}
+
+.word-entry:last-child {
+  border-bottom: none;
+}
+
+.word {
+  font-size: 20px;
+}
+
+.word-description {
+  color: var(--muted);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.script-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.script-card {
+  border: 1px solid var(--line);
+  padding: 25px;
+  background: #e5d8c6;
+}
+
+.script-card h3 {
+  font-weight: normal;
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.script-card p {
+  margin-bottom: 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 5px;
+}
+
+.back-link:hover {
+  opacity: 0.6;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 750px) {
+  .page {
+    padding: 30px 22px;
+    margin: 20px auto;
+  }
+
+  body::before,
+  body::after {
+    width: 35px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .language-grid,
+  .script-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<header>
+  <div class="small-title">Notes on language and expression</div>
+  <h1>Languages & Linguistics</h1>
+  <div class="subtitle">Words, scripts, structures, and meaning.</div>
+</header>
+
+<div class="introduction">
+  A notebook for languages I study, linguistic curiosities,
+  writing systems, expressions, and the peculiar ways language works.
+</div>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section>
+  <h2 class="section-title">Languages</h2>
+
+  <div class="language-grid">
+
+    <article class="language-card">
+      <h3 class="language-name">English</h3>
+      <div class="language-subtitle">Language notebook</div>
+      <p>
+        A place for vocabulary, expressions, grammar observations,
+        academic language, and interesting things I encounter while learning.
+      </p>
+    </article>
+
+    <article class="language-card">
+      <h3 class="language-name">French</h3>
+      <div class="language-subtitle">Language notebook</div>
+      <p>
+        Notes on vocabulary, pronunciation, grammar, expressions,
+        and the gradual process of learning another language.
+      </p>
+    </article>
+
+    <article class="language-card">
+      <h3 class="language-name">Other Languages</h3>
+      <div class="language-subtitle">Curiosity & exploration</div>
+      <p>
+        A space for languages I encounter, study occasionally,
+        or simply find interesting.
+      </p>
+    </article>
+
+    <article class="language-card">
+      <h3 class="language-name">Linguistics</h3>
+      <div class="language-subtitle">The study of language</div>
+      <p>
+        Phonetics, phonology, syntax, semantics, pragmatics,
+        sociolinguistics, and other subjects worth exploring.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section>
+  <h2 class="section-title">Vocabulary & Expressions</h2>
+
+  <div class="notebook">
+    <div class="word-entry">
+      <div class="word">Word or expression</div>
+      <div class="word-description">
+        Meaning, usage, example, or a little note.
+      </div>
+    </div>
+
+    <div class="word-entry">
+      <div class="word">Another expression</div>
+      <div class="word-description">
+        An interesting phrase I encountered somewhere.
+      </div>
+    </div>
+
+    <div class="word-entry">
+      <div class="word">A peculiar word</div>
+      <div class="word-description">
+        A word worth remembering and understanding.
+      </div>
+    </div>
+
+    <div class="word-entry">
+      <div class="word">Something new</div>
+      <div class="word-description">
+        This notebook can grow whenever I discover something.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section>
+  <h2 class="section-title">Writing Systems</h2>
+
+  <div class="script-grid">
+
+    <article class="script-card">
+      <h3>Alphabets & Scripts</h3>
+      <p>
+        Notes about alphabets, writing systems, their histories,
+        structures, and the way symbols represent language.
+      </p>
+    </article>
+
+    <article class="script-card">
+      <h3>Interesting Characters</h3>
+      <p>
+        Unusual letters, symbols, diacritics, unfamiliar characters,
+        and writing conventions I find interesting.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section class="notebook">
+  <h3>Language is never quite the same twice.</h3>
+  <p>
+    The same thought can change its shape across languages.
+    Words carry histories, associations, cultural references,
+    and meanings that cannot always be translated neatly.
+    This is a place to collect some of those differences.
+  </p>
+</section>
+
+<a class="back-link" href="index.html">← Return to the homepage</a>
+
+<footer>
+  AN ARCHIVE OF MY OWN
+  <div style="margin-top:8px;">✧</div>
+</footer>
+
+</div>
+</body>
+</html>
