@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History & Culture</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #302820;
+  background: #c9bba5;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 105px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 0.85;
+  z-index: -1;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+.page {
+  max-width: 1050px;
+  width: 90%;
+  margin: 35px auto;
+  padding: 55px 65px;
+  background:
+    linear-gradient(rgba(246,239,224,0.94), rgba(238,228,210,0.97)),
+    #efe5d3;
+  border: 1px solid #b8a58b;
+  box-shadow: 0 0 25px rgba(40,25,15,0.25);
+  position: relative;
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid #a6957c;
+  padding-bottom: 30px;
+  margin-bottom: 35px;
+}
+
+.top-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  text-decoration: none;
+  color: #685644;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.top-link:hover {
+  color: #1c1713;
+}
+
+h1 {
+  font-size: 46px;
+  font-weight: normal;
+  letter-spacing: 3px;
+  margin: 5px 0;
+}
+
+.subtitle {
+  font-style: italic;
+  color: #766653;
+  font-size: 15px;
+}
+
+.ornament {
+  text-align: center;
+  color: #84715b;
+  margin: 28px 0;
+  letter-spacing: 8px;
+}
+
+.introduction {
+  max-width: 750px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.section-title {
+  font-size: 25px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 45px 0 25px;
+}
+
+.collection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.exhibit {
+  padding: 25px;
+  background: rgba(255,255,255,0.25);
+  border: 1px solid #c4b39a;
+  box-shadow: 2px 3px 8px rgba(45,30,15,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exhibit:hover {
+  transform: translateY(-4px);
+  box-shadow: 3px 8px 14px rgba(45,30,15,0.12);
+}
+
+.exhibit-number {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #8a745a;
+  text-transform: uppercase;
+}
+
+.exhibit h3 {
+  font-weight: normal;
+  font-size: 23px;
+  margin: 8px 0 12px;
+}
+
+.exhibit p {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.exhibit-image {
+  height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  margin: 15px 0;
+  color: #7d6b56;
+  font-style: italic;
+  font-size: 14px;
+  border: 1px solid #b9a78e;
+  background:
+    linear-gradient(rgba(210,194,168,0.2), rgba(210,194,168,0.2)),
+    #ded1ba;
+}
+
+.exhibit-image span {
+  max-width: 230px;
+}
+
+.small-note {
+  font-size: 13px;
+  font-style: italic;
+  color: #786550;
+}
+
+.featured {
+  margin-top: 45px;
+  padding: 30px;
+  border: 1px solid #a99578;
+  background: rgba(196,178,148,0.18);
+}
+
+.featured h2 {
+  font-size: 24px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.featured p {
+  text-align: center;
+}
+
+.archive-note {
+  margin-top: 40px;
+  padding: 25px;
+  border-top: 1px solid #b6a38a;
+  border-bottom: 1px solid #b6a38a;
+  font-style: italic;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  font-size: 13px;
+  color: #766653;
+  margin-top: 45px;
+}
+
+@media (max-width: 700px) {
+  body::before,
+  body::after {
+    width: 35px;
+    opacity: 0.45;
+  }
+
+  .page {
+    width: 94%;
+    padding: 30px 20px;
+    margin: 15px auto;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .collection {
+    grid-template-columns: 1fr;
+  }
+
+  .exhibit-image {
+    height: 180px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header>
+  <a href="index.html" class="top-link">← Return to the homepage</a>
+
+  <h1>History & Culture</h1>
+
+  <p class="subtitle">
+    A collection of places, people, traditions and remnants of the past.
+  </p>
+</header>
+
+<div class="introduction">
+  <p>
+    A little museum of things that caught my attention.
+    Here I collect historical events, cultural traditions,
+    civilizations, architecture, objects and people whose
+    stories deserve to be remembered.
+  </p>
+</div>
+
+<div class="ornament">❦ &nbsp; ✧ &nbsp; ❦</div>
+
+<h2 class="section-title">The Collections</h2>
+
+<div class="collection">
+
+  <article class="exhibit">
+    <span class="exhibit-number">Collection I</span>
+    <h3>Ancient Civilizations</h3>
+
+    <div class="exhibit-image">
+      <span>Ancient ruins, inscriptions, cities and forgotten worlds</span>
+    </div>
+
+    <p>
+      Notes on ancient civilizations, their architecture,
+      everyday lives, beliefs, inventions and the ways they
+      shaped the world that followed.
+    </p>
+
+    <p class="small-note">
+      Mesopotamia · Egypt · Greece · Rome · and others
+    </p>
+  </article>
+
+  <article class="exhibit">
+    <span class="exhibit-number">Collection II</span>
+    <h3>Historical Figures</h3>
+
+    <div class="exhibit-image">
+      <span>Portraits of people who left their mark on history</span>
+    </div>
+
+    <p>
+      A growing collection of writers, thinkers, rulers,
+      artists, scientists and other figures whose lives
+      and ideas shaped different periods.
+    </p>
+
+    <p class="small-note">
+      Biographies · Ideas · Discoveries · Legacies
+    </p>
+  </article>
+
+  <article class="exhibit">
+    <span class="exhibit-number">Collection III</span>
+    <h3>Traditions & Folklore</h3>
+
+    <div class="exhibit-image">
+      <span>Folklore, rituals, customs and cultural memory</span>
+    </div>
+
+    <p>
+      Stories, customs, celebrations, folk beliefs,
+      mythology and traditions passed between generations
+      across different cultures.
+    </p>
+
+    <p class="small-note">
+      Folklore · Rituals · Mythology · Customs
+    </p>
+  </article>
+
+  <article class="exhibit">
+    <span class="exhibit-number">Collection IV</span>
+    <h3>Architecture & Heritage</h3>
+
+    <div class="exhibit-image">
+      <span>Old buildings, monuments, forgotten streets and details</span>
+    </div>
+
+    <p>
+      Architectural styles, historical buildings,
+      monuments, cities and the details that reveal
+      how people lived and built their surroundings.
+    </p>
+
+    <p class="small-note">
+      Architecture · Monuments · Cities · Heritage
+    </p>
+  </article>
+
+  <article class="exhibit">
+    <span class="exhibit-number">Collection V</span>
+    <h3>Maps & Geography</h3>
+
+    <div class="exhibit-image">
+      <span>Old maps, borders, journeys and geographical curiosities</span>
+    </div>
+
+    <p>
+      Historical maps, changing borders, geographical
+      discoveries, migration and the relationship
+      between places and the people who inhabit them.
+    </p>
+
+    <p class="small-note">
+      Maps · Geography · Exploration · Migration
+    </p>
+  </article>
+
+  <article class="exhibit">
+    <span class="exhibit-number">Collection VI</span>
+    <h3>Uzbekistan & Central Asia</h3>
+
+    <div class="exhibit-image">
+      <span>Central Asian history, art, cities and cultural heritage</span>
+    </div>
+
+    <p>
+      The history and cultural heritage of Central Asia,
+      including ancient cities, the Silk Road, art,
+      architecture, historical personalities and traditions.
+    </p>
+
+    <p class="small-note">
+      Silk Road · Central Asia · Uzbek heritage
+    </p>
+  </article>
+
+</div>
+
+<div class="featured">
+  <h2>Notes from the Museum</h2>
+
+  <p>
+    This collection is still being assembled.
+    Each exhibit may eventually contain images,
+    short research notes, references, interesting
+    facts and things I discover while reading.
+  </p>
+</div>
+
+<div class="archive-note">
+  <p>
+    History is not only what has happened, but also
+    what survives, what is remembered and what
+    continues to influence the present.
+  </p>
+</div>
+
+<div class="ornament">❦ &nbsp; ✧ &nbsp; ❦</div>
+
+<footer>
+  <p>Personal Archive · History & Culture</p>
+  <p>Collected slowly, one exhibit at a time.</p>
+</footer>
+
+</div>
+</body>
+</html>
