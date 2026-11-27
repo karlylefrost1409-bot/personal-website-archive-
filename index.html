@@ -361,8 +361,8 @@ header h1{
   justify-content:center;
 }
 .locket-girl{
-  width:68%;
-  height:68%;
+  width:84%;
+  height:84%;
   object-fit:cover;
   border-radius:50%;
   border:3px solid #b69a70;
@@ -382,8 +382,9 @@ header h1{
   display:flex;
   align-items:center;
   justify-content:center;
-  transform-origin:center;
+  transform-origin:top center;
   opacity:0;
+  overflow:hidden;
 }
 .locket-overlay.open .paper-wrapper{
   animation:paperUnfold 3s 1.3s cubic-bezier(.2,.7,.2,1) forwards;
@@ -406,6 +407,10 @@ header h1{
   font-size:clamp(10px,1.4vw,16px);
   line-height:1.7;
   pointer-events:auto;
+  opacity:0;
+}
+.locket-overlay.open .paper-text{
+  animation:textReveal 1.8s 4.45s ease forwards;
 }
 .paper-text .fragment{
   letter-spacing:3px;
@@ -618,10 +623,15 @@ footer{
   to{transform:scale(1);opacity:1}
 }
 @keyframes paperUnfold{
-  0%{transform:scale(.3) rotateX(80deg);opacity:0}
-  25%{transform:scale(.5) rotateX(55deg);opacity:1}
-  55%{transform:scale(.85) rotateX(15deg);opacity:1}
-  100%{transform:scale(1) rotateX(0);opacity:1}
+  0%{transform:scaleY(.12) scaleX(.72);opacity:0}
+  15%{transform:scaleY(.25) scaleX(.82);opacity:1}
+  45%{transform:scaleY(.58) scaleX(.94);opacity:1}
+  75%{transform:scaleY(.88) scaleX(1);opacity:1}
+  100%{transform:scaleY(1) scaleX(1);opacity:1}
+}
+@keyframes textReveal{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 /* MOBILE */
@@ -662,7 +672,7 @@ footer{
   .clock-number{font-size:7px}
   .nav-links a{padding:8px 10px;font-size:11px}
   .locket-interior{inset:17% 10%;gap:2%}
-  .locket-girl{width:70%;height:70%}
+  .locket-girl{width:86%;height:86%}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{
@@ -1041,4 +1051,3 @@ setInterval(updateClock,60000);
 
 </body>
 </html>
-  
