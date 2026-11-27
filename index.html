@@ -80,14 +80,98 @@ header h1 {
   border-top: 1px solid #8b7763;
 }
 
+/* ===== INTRODUCTION LAYOUT ===== */
+
 .intro {
-  display: flex;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: 115px 280px minmax(0, 470px);
+  gap: 24px;
   align-items: center;
   justify-content: center;
   margin: 50px auto;
-  max-width: 850px;
+  max-width: 1050px;
 }
+
+/* ===== MINIATURE VICTORIAN PORTRAIT WALL ===== */
+
+.author-wall {
+  width: 115px;
+  height: 175px;
+  position: relative;
+  justify-self: center;
+}
+
+.mini-frame {
+  position: absolute;
+  margin: 0;
+  padding: 3px;
+  background: linear-gradient(
+    135deg,
+    #80664b,
+    #30231c 35%,
+    #6b5139 65%,
+    #241c19
+  );
+  border: 1px solid #38291f;
+  box-shadow:
+    0 2px 5px rgba(0,0,0,0.3),
+    inset 0 0 0 1px #b39a76;
+  transition: transform 0.25s ease;
+}
+
+.mini-frame::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(218,192,151,0.7);
+  pointer-events: none;
+}
+
+.mini-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid #c3aa85;
+  background: #d8c6ae;
+}
+
+/* Nietzsche: small upper portrait */
+
+.frame-nietzsche {
+  width: 42px;
+  height: 58px;
+  top: 3px;
+  left: 43px;
+  transform: rotate(3deg);
+}
+
+/* Donna: slightly larger lower-left portrait */
+
+.frame-donna {
+  width: 50px;
+  height: 70px;
+  top: 82px;
+  left: 5px;
+  transform: rotate(-5deg);
+}
+
+/* Dostoevsky: small lower-right portrait */
+
+.frame-dostoevsky {
+  width: 42px;
+  height: 58px;
+  top: 91px;
+  right: 3px;
+  transform: rotate(5deg);
+}
+
+.mini-frame:hover {
+  z-index: 5;
+  transform: scale(1.12) rotate(0deg);
+}
+
+/* ===== YOUR PORTRAIT ===== */
 
 .portrait {
   width: 280px;
@@ -112,115 +196,6 @@ header h1 {
 .intro-text h2 {
   font-size: 30px;
   font-weight: normal;
-}
-
-/* ===== ANTIQUE AUTHOR GALLERY ===== */
-
-.author-gallery-section {
-  max-width: 900px;
-  margin: 75px auto 65px;
-  text-align: center;
-}
-
-.gallery-heading {
-  font-size: 25px;
-  font-weight: normal;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-
-.gallery-ornament {
-  color: #78604a;
-  font-size: 21px;
-  letter-spacing: 8px;
-  margin-bottom: 35px;
-}
-
-.author-gallery {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 35px;
-  padding: 10px 15px 25px;
-}
-
-.author-frame {
-  position: relative;
-  width: 225px;
-  padding: 12px;
-  background:
-    linear-gradient(145deg, #574438, #241c19 45%, #65503e);
-  border: 2px solid #6e5946;
-  outline: 1px solid #241c19;
-  outline-offset: 5px;
-  box-shadow:
-    0 8px 18px rgba(0,0,0,0.25),
-    inset 0 0 0 2px #a48a6d,
-    inset 0 0 0 5px #30231e;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.author-frame::before {
-  content: "";
-  position: absolute;
-  inset: 5px;
-  border: 1px solid rgba(207,181,143,0.65);
-  pointer-events: none;
-}
-
-.author-frame img {
-  display: block;
-  width: 100%;
-  height: 270px;
-  object-fit: cover;
-  border: 3px solid #c5ad8b;
-  background: #d9cbb5;
-}
-
-.author-frame figcaption {
-  color: #e8dcc7;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 16px;
-  letter-spacing: 1px;
-  padding: 13px 3px 5px;
-  font-style: italic;
-}
-
-.author-nietzsche {
-  transform: translateY(-18px) rotate(-1.5deg);
-}
-
-.author-tartt {
-  width: 245px;
-  transform: translateY(-2px);
-  z-index: 2;
-}
-
-.author-tartt img {
-  height: 300px;
-}
-
-.author-dostoevsky {
-  transform: translateY(18px) rotate(1.5deg);
-}
-
-.author-frame:hover {
-  box-shadow:
-    0 12px 24px rgba(0,0,0,0.32),
-    inset 0 0 0 2px #b49a76,
-    inset 0 0 0 5px #30231e;
-}
-
-.author-nietzsche:hover {
-  transform: translateY(-23px) rotate(0deg);
-}
-
-.author-tartt:hover {
-  transform: translateY(-7px);
-}
-
-.author-dostoevsky:hover {
-  transform: translateY(13px) rotate(0deg);
 }
 
 /* ===== ENVELOPE ===== */
@@ -367,40 +342,45 @@ footer {
   overflow: visible;
 }
 
-/* ===== MOBILE LAYOUT ===== */
+/* ===== TABLET ===== */
 
-@media (max-width: 750px) {
-  .author-gallery {
-    gap: 22px;
-    flex-wrap: wrap;
+@media (max-width: 950px) {
+  .intro {
+    grid-template-columns: 95px 230px minmax(0, 1fr);
+    gap: 18px;
   }
 
-  .author-frame,
-  .author-tartt {
-    width: 205px;
-    transform: none;
+  .portrait {
+    width: 230px;
+    min-width: 0;
+    height: 320px;
   }
 
-  .author-frame img,
-  .author-tartt img {
-    height: 250px;
+  .author-wall {
+    transform: scale(0.9);
   }
 
-  .author-frame:hover,
-  .author-tartt:hover,
-  .author-nietzsche:hover,
-  .author-dostoevsky:hover {
-    transform: translateY(-3px);
+  .intro-text h2 {
+    font-size: 25px;
   }
 }
 
-@media (max-width: 600px) {
+/* ===== MOBILE ===== */
+
+@media (max-width: 650px) {
   .page {
     padding: 45px 18px 150px;
   }
 
   .intro {
+    display: flex;
     flex-direction: column;
+    gap: 25px;
+  }
+
+  .author-wall {
+    transform: scale(0.95);
+    margin-bottom: 0;
   }
 
   .portrait {
@@ -408,27 +388,16 @@ footer {
     height: 300px;
   }
 
+  .intro-text {
+    text-align: center;
+  }
+
+  .intro-text h2 {
+    font-size: 26px;
+  }
+
   header h1 {
     letter-spacing: 2px;
-  }
-
-  .author-gallery-section {
-    margin-top: 55px;
-  }
-
-  .author-gallery {
-    flex-direction: column;
-    gap: 35px;
-  }
-
-  .author-frame,
-  .author-tartt {
-    width: 225px;
-  }
-
-  .author-frame img,
-  .author-tartt img {
-    height: 275px;
   }
 
   #archive-clock {
@@ -458,6 +427,35 @@ footer {
 
 <section class="intro">
 
+  <!-- MINIATURE AUTHOR PORTRAITS -->
+
+  <div class="author-wall">
+
+    <figure class="mini-frame frame-nietzsche">
+      <img
+        src="assets/images/1795768863633.jpg"
+        alt="Friedrich Nietzsche"
+      >
+    </figure>
+
+    <figure class="mini-frame frame-donna">
+      <img
+        src="assets/images/1795768870490.jpg"
+        alt="Donna Tartt"
+      >
+    </figure>
+
+    <figure class="mini-frame frame-dostoevsky">
+      <img
+        src="assets/images/1795768867389.jpg"
+        alt="Fyodor Dostoevsky"
+      >
+    </figure>
+
+  </div>
+
+  <!-- YOUR OWN PORTRAIT -->
+
   <div class="portrait">
     <div>
       <p>✧</p>
@@ -465,6 +463,8 @@ footer {
       <p>✧</p>
     </div>
   </div>
+
+  <!-- INTRODUCTION -->
 
   <div class="intro-text">
     <h2>Welcome, curious stranger.</h2>
@@ -480,44 +480,6 @@ footer {
       Nothing here is particularly orderly. I suppose that is
       part of the charm.
     </p>
-  </div>
-
-</section>
-
-<!-- ===== FAVOURITE AUTHORS ===== -->
-
-<section class="author-gallery-section">
-
-  <h2 class="gallery-heading">A Few Familiar Minds</h2>
-
-  <div class="gallery-ornament">❦ ✧ ❦</div>
-
-  <div class="author-gallery">
-
-    <figure class="author-frame author-nietzsche">
-      <img
-        src="assets/images/1795768863633.jpg"
-        alt="Portrait of Friedrich Nietzsche"
-      >
-      <figcaption>Friedrich Nietzsche</figcaption>
-    </figure>
-
-    <figure class="author-frame author-tartt">
-      <img
-        src="assets/images/1795768870490.jpg"
-        alt="Portrait of Donna Tartt"
-      >
-      <figcaption>Donna Tartt</figcaption>
-    </figure>
-
-    <figure class="author-frame author-dostoevsky">
-      <img
-        src="assets/images/1795768867389.jpg"
-        alt="Portrait of Fyodor Dostoevsky"
-      >
-      <figcaption>Fyodor Dostoevsky</figcaption>
-    </figure>
-
   </div>
 
 </section>
@@ -619,19 +581,16 @@ footer {
 
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 
-  <!-- Outer frame -->
   <circle cx="100" cy="100" r="98" fill="#241c19"/>
   <circle cx="100" cy="100" r="93" fill="#78604a"/>
   <circle cx="100" cy="100" r="88" fill="#241c19"/>
   <circle cx="100" cy="100" r="82" fill="#e8dcc7"/>
 
-  <!-- Decorative rings -->
   <circle cx="100" cy="100" r="77" fill="none"
           stroke="#78604a" stroke-width="1.5"/>
   <circle cx="100" cy="100" r="73" fill="none"
           stroke="#241c19" stroke-width="0.8"/>
 
-  <!-- Hour markers -->
   <g stroke="#241c19" stroke-width="2.2">
     <line x1="100" y1="24" x2="100" y2="34"/>
     <line x1="100" y1="24" x2="100" y2="34" transform="rotate(30 100 100)"/>
@@ -647,7 +606,6 @@ footer {
     <line x1="100" y1="24" x2="100" y2="34" transform="rotate(330 100 100)"/>
   </g>
 
-  <!-- Roman numerals -->
   <g fill="#241c19" font-family="Georgia, serif"
      font-size="16" text-anchor="middle"
      dominant-baseline="middle">
@@ -665,30 +623,23 @@ footer {
     <text x="73" y="53">XI</text>
   </g>
 
-  <!-- Clock hands -->
-  <g id="clock-hands">
+  <line id="clock-hour"
+        x1="100" y1="100" x2="100" y2="63"
+        stroke="#241c19" stroke-width="5"
+        stroke-linecap="round"/>
 
-    <line id="clock-hour"
-          x1="100" y1="100" x2="100" y2="63"
-          stroke="#241c19" stroke-width="5"
-          stroke-linecap="round"/>
+  <line id="clock-minute"
+        x1="100" y1="100" x2="100" y2="43"
+        stroke="#241c19" stroke-width="3.5"
+        stroke-linecap="round"/>
 
-    <line id="clock-minute"
-          x1="100" y1="100" x2="100" y2="43"
-          stroke="#241c19" stroke-width="3.5"
-          stroke-linecap="round"/>
+  <line id="clock-second"
+        x1="100" y1="112" x2="100" y2="38"
+        stroke="#7c3025" stroke-width="1.5"
+        stroke-linecap="round"/>
 
-    <line id="clock-second"
-          x1="100" y1="112" x2="100" y2="38"
-          stroke="#7c3025" stroke-width="1.5"
-          stroke-linecap="round"/>
-
-  </g>
-
-  <!-- Center ornament -->
   <circle cx="100" cy="100" r="6" fill="#241c19"/>
   <circle cx="100" cy="100" r="2" fill="#c5a783"/>
-
   <circle cx="100" cy="100" r="10"
           fill="none" stroke="#78604a" stroke-width="0.8"/>
 
