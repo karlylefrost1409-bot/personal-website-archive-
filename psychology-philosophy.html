@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psychology & Philosophy | Umida Xolmirzayeva</title>
+
+<style>
+:root {
+  --paper: #eee5d5;
+  --ink: #29231e;
+  --muted: #756658;
+  --line: #c9b9a3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #d4c5af;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 0.78;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+.page {
+  width: 90%;
+  max-width: 1000px;
+  margin: 45px auto;
+  background: var(--paper);
+  border: 1px solid #b9a68e;
+  padding: 45px 55px;
+  box-shadow: 0 10px 35px rgba(50, 35, 20, 0.18);
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 25px;
+  margin-bottom: 35px;
+}
+
+.small-title {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.introduction {
+  max-width: 700px;
+  text-align: center;
+  margin: 0 auto 40px;
+  font-style: italic;
+}
+
+.ornament {
+  text-align: center;
+  color: #88745e;
+  letter-spacing: 6px;
+  margin: 30px 0;
+}
+
+.section-title {
+  font-weight: normal;
+  font-size: 25px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  margin: 40px 0 25px;
+}
+
+.catalogue {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.entry {
+  background: #e5d8c6;
+  border: 1px solid #c6b39b;
+  padding: 28px;
+  box-shadow: 3px 5px 12px rgba(40, 30, 20, 0.08);
+  transition: transform 0.25s;
+}
+
+.entry:hover {
+  transform: translateY(-3px);
+}
+
+.entry:nth-child(even) {
+  background: #f0e8dc;
+}
+
+.entry-label {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+
+.entry h3 {
+  font-weight: normal;
+  font-size: 22px;
+  margin-top: 0;
+}
+
+.entry p {
+  margin-bottom: 0;
+}
+
+.quote-card {
+  background: #dcd0bd;
+  padding: 30px;
+  margin: 35px 0;
+  border-left: 3px solid #98816a;
+}
+
+.quote-card blockquote {
+  margin: 0;
+  font-size: 19px;
+  font-style: italic;
+}
+
+.quote-author {
+  margin-top: 15px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.wide-entry {
+  grid-column: 1 / -1;
+  background: #e9decd;
+  padding: 35px;
+  border: 1px solid var(--line);
+}
+
+.wide-entry p {
+  max-width: 750px;
+  margin: auto;
+}
+
+.book-note {
+  padding: 18px 0;
+  border-bottom: 1px dashed #b9a68e;
+}
+
+.book-note:last-child {
+  border-bottom: none;
+}
+
+.book-title {
+  font-size: 20px;
+}
+
+.book-description {
+  color: var(--muted);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 5px;
+}
+
+.back-link:hover {
+  opacity: 0.6;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 750px) {
+  .page {
+    padding: 30px 22px;
+    margin: 20px auto;
+  }
+
+  body::before,
+  body::after {
+    width: 35px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .catalogue {
+    grid-template-columns: 1fr;
+  }
+
+  .wide-entry {
+    grid-column: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<header>
+  <div class="small-title">Studies of thought and human experience</div>
+  <h1>Psychology & Philosophy</h1>
+  <div class="subtitle">Ideas, thinkers, theories, and questions.</div>
+</header>
+
+<div class="introduction">
+  A catalogue of ideas I encounter in psychology and philosophy,
+  thinkers I find interesting, and questions that remain open.
+</div>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section>
+  <h2 class="section-title">Philosophical Catalogue</h2>
+
+  <div class="catalogue">
+
+    <article class="entry">
+      <div class="entry-label">Thinker No. 01</div>
+      <h3>Philosopher's Name</h3>
+      <p>
+        A place for notes about a philosopher, their ideas,
+        works, arguments, and the questions they explored.
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-label">Concept</div>
+      <h3>A Philosophical Idea</h3>
+      <p>
+        An explanation of a concept, its meaning, its context,
+        and the ways it can be interpreted.
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-label">Thinker No. 02</div>
+      <h3>Another Philosopher</h3>
+      <p>
+        This space can hold observations, reading notes,
+        connections between ideas, and questions.
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-label">Concept</div>
+      <h3>Another Idea</h3>
+      <p>
+        A concept worth exploring further, perhaps one that
+        connects several thinkers or disciplines.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section>
+  <h2 class="section-title">Psychology</h2>
+
+  <div class="catalogue">
+
+    <article class="entry">
+      <div class="entry-label">Theory</div>
+      <h3>A Psychological Theory</h3>
+      <p>
+        Notes about a theory, its main principles,
+        research, applications, and limitations.
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-label">Concept</div>
+      <h3>Human Behaviour</h3>
+      <p>
+        Observations and explanations of human behaviour,
+        cognition, perception, emotions, or social interactions.
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-label">Research</div>
+      <h3>An Interesting Study</h3>
+      <p>
+        A place to record interesting research, its findings,
+        and questions it raises.
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-label">Notes</div>
+      <h3>Something to Understand</h3>
+      <p>
+        Ideas, observations, and psychological concepts
+        that I would like to understand more deeply.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section class="quote-card">
+  <div class="entry-label">Collected Thought</div>
+  <blockquote>
+    A quotation about thought, human nature, existence,
+    perception, or the mind.
+  </blockquote>
+  <div class="quote-author">— Author's name</div>
+</section>
+
+<section>
+  <h2 class="section-title">Books & Reading Notes</h2>
+
+  <div class="wide-entry">
+
+    <div class="book-note">
+      <div class="book-title">Book Title</div>
+      <div class="book-description">
+        Author · Notes, impressions, or ideas worth revisiting.
+      </div>
+    </div>
+
+    <div class="book-note">
+      <div class="book-title">Another Book</div>
+      <div class="book-description">
+        Author · A collection of observations and reading notes.
+      </div>
+    </div>
+
+    <div class="book-note">
+      <div class="book-title">A Book to Explore</div>
+      <div class="book-description">
+        Author · Thoughts, questions, and interesting passages.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section class="wide-entry">
+  <div class="entry-label">Questions Without Conclusions</div>
+  <p>
+    Some questions are more interesting when they remain unanswered.
+    This section is for the ideas I keep returning to, the things
+    I am uncertain about, and the subjects that invite further thought.
+  </p>
+</section>
+
+<a class="back-link" href="index.html">← Return to the homepage</a>
+
+<footer>
+  AN ARCHIVE OF MY OWN
+  <div style="margin-top:8px;">✧</div>
+</footer>
+
+</div>
+</body>
+</html>
