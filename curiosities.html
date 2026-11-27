@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabinet of Curiosities</title>
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --paper: #e9dfcd;
+  --ink: #30271f;
+  --muted: #756554;
+  --line: #b9a991;
+}
+
+body {
+  margin: 0;
+  background: #181513;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.7;
+  padding: 28px 0;
+}
+
+body::before, body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: .82;
+  z-index: -1;
+}
+
+body::before { left: 0; }
+body::after { right: 0; }
+
+.paper {
+  width: min(1000px, 92%);
+  margin: auto;
+  background: var(--paper);
+  padding: 55px 60px;
+  border: 1px solid #a18d74;
+  box-shadow: 0 0 35px rgba(0,0,0,.5);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.top-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  font-weight: normal;
+  font-size: clamp(32px, 5vw, 48px);
+  margin: 12px 0;
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.ornament {
+  text-align: center;
+  color: #796750;
+  margin: 25px 0;
+  letter-spacing: 8px;
+}
+
+.introduction {
+  max-width: 700px;
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+.cabinet {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.drawer {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.17);
+  padding: 26px 24px;
+  transition: transform .25s, background .25s;
+}
+
+.drawer:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,.3);
+}
+
+.drawer-number {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+
+.drawer h2 {
+  font-size: 23px;
+  font-weight: normal;
+  margin: 8px 0;
+}
+
+.drawer-description {
+  font-size: 14px;
+  color: #665747;
+}
+
+.open-button {
+  display: inline-block;
+  margin-top: 15px;
+  background: transparent;
+  border: 1px solid #897761;
+  color: var(--ink);
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.open-button:hover {
+  background: #30271f;
+  color: var(--paper);
+}
+
+.drawer-content {
+  display: none;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.drawer-content.open {
+  display: block;
+  animation: reveal .3s ease;
+}
+
+.drawer-content ul {
+  padding-left: 20px;
+}
+
+.drawer-content li {
+  margin-bottom: 10px;
+}
+
+.drawer-content a {
+  color: #49382b;
+  overflow-wrap: anywhere;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.small-note {
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 35px;
+}
+
+.home-link {
+  display: block;
+  text-align: center;
+  margin-top: 35px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 10px;
+  transition: .2s;
+}
+
+.home-link:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 35px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 700px) {
+  body { padding: 12px 0; }
+
+  body::before, body::after {
+    width: 35px;
+    opacity: .5;
+  }
+
+  .paper {
+    padding: 35px 22px;
+    width: 94%;
+  }
+
+  .cabinet {
+    grid-template-columns: 1fr;
+  }
+
+  h1 { font-size: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="paper">
+
+<header>
+  <div class="top-label">A collection of peculiar things</div>
+  <h1>Cabinet of Curiosities</h1>
+  <div class="subtitle">Things that have no particular place, yet deserve one.</div>
+</header>
+
+<div class="ornament">✦ ───────── ✦</div>
+
+<section class="introduction">
+  <p>
+    A little cabinet for the unusual, the obscure, the beautiful,
+    the forgotten and the things I happen to stumble upon.
+    Some are discoveries, some are curiosities, and some are simply
+    things I don't want to lose.
+  </p>
+</section>
+
+<section class="cabinet">
+
+<div class="drawer">
+  <div class="drawer-number">DRAWER NO. I</div>
+  <h2>Strange Facts</h2>
+  <p class="drawer-description">
+    Small facts about the world that seem almost invented.
+  </p>
+  <button class="open-button" onclick="toggleDrawer('facts')">
+    Open drawer
+  </button>
+  <div class="drawer-content" id="facts">
+    <ul>
+      <li>Cleopatra lived closer in time to the first moon landing than to the construction of the Great Pyramid of Giza.</li>
+      <li>Oxford University existed before the Aztec Empire.</li>
+      <li>A day on Venus is longer than its year.</li>
+      <li>The Eiffel Tower can become slightly taller in hot weather because metal expands.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="drawer">
+  <div class="drawer-number">DRAWER NO. II</div>
+  <h2>Curious Websites</h2>
+  <p class="drawer-description">
+    Little internet places worth wandering into.
+  </p>
+  <button class="open-button" onclick="toggleDrawer('websites')">
+    Open drawer
+  </button>
+  <div class="drawer-content" id="websites">
+    <ul>
+      <li><a href="https://www.atlasobscura.com/" target="_blank" rel="noopener noreferrer">Atlas Obscura</a> — unusual places, traditions and stories from around the world.</li>
+      <li><a href="https://www.window-swap.com/" target="_blank" rel="noopener noreferrer">Window Swap</a> — look through windows in other people's homes around the world.</li>
+      <li><a href="https://radio.garden/" target="_blank" rel="noopener noreferrer">Radio Garden</a> — listen to radio stations from different places.</li>
+      <li><a href="https://neal.fun/" target="_blank" rel="noopener noreferrer">Neal.fun</a> — interactive experiments and curious digital projects.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="drawer">
+  <div class="drawer-number">DRAWER NO. III</div>
+  <h2>Unusual Objects</h2>
+  <p class="drawer-description">
+    Objects, inventions and things with peculiar histories.
+  </p>
+  <button class="open-button" onclick="toggleDrawer('objects')">
+    Open drawer
+  </button>
+  <div class="drawer-content" id="objects">
+    <ul>
+      <li><strong>Automata:</strong> mechanical figures designed to imitate movement, often created centuries ago.</li>
+      <li><strong>Curiosity cabinets:</strong> collections of unusual objects once kept by collectors as miniature museums.</li>
+      <li><strong>Hourglasses:</strong> ancient timekeeping devices that measure time through flowing sand.</li>
+      <li><strong>Palimpsests:</strong> manuscripts where older writing was erased or overwritten, leaving traces behind.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="drawer">
+  <div class="drawer-number">DRAWER NO. IV</div>
+  <h2>Unsolved Mysteries</h2>
+  <p class="drawer-description">
+    Historical mysteries, strange records and unanswered questions.
+  </p>
+  <button class="open-button" onclick="toggleDrawer('mysteries')">
+    Open drawer
+  </button>
+  <div class="drawer-content" id="mysteries">
+    <ul>
+      <li><strong>The Voynich Manuscript:</strong> a historical manuscript written in a script that remains undeciphered.</li>
+      <li><strong>The Antikythera Mechanism:</strong> an ancient Greek device whose complexity continues to fascinate researchers.</li>
+      <li><strong>The Nazca Lines:</strong> enormous geoglyphs created in the desert of southern Peru.</li>
+      <li><strong>Historical lost languages:</strong> languages whose writing systems or meanings are still only partly understood.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="drawer">
+  <div class="drawer-number">DRAWER NO. V</div>
+  <h2>Little Observations</h2>
+  <p class="drawer-description">
+    Thoughts, details and things I notice along the way.
+  </p>
+  <button class="open-button" onclick="toggleDrawer('observations')">
+    Open drawer
+  </button>
+  <div class="drawer-content" id="observations">
+    <ul>
+      <li>A sentence that sounds particularly beautiful.</li>
+      <li>A peculiar detail noticed during an ordinary day.</li>
+      <li>A thought that appeared out of nowhere.</li>
+      <li>A small coincidence worth recording.</li>
+    </ul>
+    <p><em>This drawer is meant to grow with time.</em></p>
+  </div>
+</div>
+
+<div class="drawer">
+  <div class="drawer-number">DRAWER NO. VI</div>
+  <h2>Forgotten & Obscure</h2>
+  <p class="drawer-description">
+    Forgotten words, lesser-known stories and things from the margins.
+  </p>
+  <button class="open-button" onclick="toggleDrawer('forgotten')">
+    Open drawer
+  </button>
+  <div class="drawer-content" id="forgotten">
+    <ul>
+      <li><strong>Apricity:</strong> the warmth of the sun on a cold winter day.</li>
+      <li><strong>Epistolary:</strong> a literary form involving letters or correspondence.</li>
+      <li><strong>Wunderkammer:</strong> German for a cabinet of wonders, a collection of extraordinary objects.</li>
+      <li><strong>Palimpsest:</strong> something that retains traces of an earlier form beneath a newer one.</li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+<div class="ornament">✦ ───────── ✦</div>
+
+<p class="small-note">
+  The collection is incomplete by design.
+  There will always be something else to discover.
+</p>
+
+<a class="home-link" href="index.html">← Return to the homepage</a>
+
+<footer>
+  A PRIVATE COLLECTION OF PUBLIC CURIOSITIES
+</footer>
+
+</main>
+
+<script>
+function toggleDrawer(id) {
+  const selected = document.getElementById(id);
+  const isOpen = selected.classList.contains("open");
+
+  document.querySelectorAll(".drawer-content").forEach(content => {
+    content.classList.remove("open");
+  });
+
+  document.querySelectorAll(".open-button").forEach(button => {
+    button.textContent = "Open drawer";
+  });
+
+  if (!isOpen) {
+    selected.classList.add("open");
+    selected.previousElementSibling.textContent = "Close drawer";
+  }
+}
+</script>
+
+</body>
+</html>
