@@ -114,6 +114,117 @@ header h1 {
   font-weight: normal;
 }
 
+/* ===== ANTIQUE AUTHOR GALLERY ===== */
+
+.author-gallery-section {
+  max-width: 900px;
+  margin: 75px auto 65px;
+  text-align: center;
+}
+
+.gallery-heading {
+  font-size: 25px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.gallery-ornament {
+  color: #78604a;
+  font-size: 21px;
+  letter-spacing: 8px;
+  margin-bottom: 35px;
+}
+
+.author-gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  padding: 10px 15px 25px;
+}
+
+.author-frame {
+  position: relative;
+  width: 225px;
+  padding: 12px;
+  background:
+    linear-gradient(145deg, #574438, #241c19 45%, #65503e);
+  border: 2px solid #6e5946;
+  outline: 1px solid #241c19;
+  outline-offset: 5px;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.25),
+    inset 0 0 0 2px #a48a6d,
+    inset 0 0 0 5px #30231e;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.author-frame::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(207,181,143,0.65);
+  pointer-events: none;
+}
+
+.author-frame img {
+  display: block;
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border: 3px solid #c5ad8b;
+  background: #d9cbb5;
+}
+
+.author-frame figcaption {
+  color: #e8dcc7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 13px 3px 5px;
+  font-style: italic;
+}
+
+.author-nietzsche {
+  transform: translateY(-18px) rotate(-1.5deg);
+}
+
+.author-tartt {
+  width: 245px;
+  transform: translateY(-2px);
+  z-index: 2;
+}
+
+.author-tartt img {
+  height: 300px;
+}
+
+.author-dostoevsky {
+  transform: translateY(18px) rotate(1.5deg);
+}
+
+.author-frame:hover {
+  box-shadow:
+    0 12px 24px rgba(0,0,0,0.32),
+    inset 0 0 0 2px #b49a76,
+    inset 0 0 0 5px #30231e;
+}
+
+.author-nietzsche:hover {
+  transform: translateY(-23px) rotate(0deg);
+}
+
+.author-tartt:hover {
+  transform: translateY(-7px);
+}
+
+.author-dostoevsky:hover {
+  transform: translateY(13px) rotate(0deg);
+}
+
+/* ===== ENVELOPE ===== */
+
 .envelope-area {
   text-align: center;
   margin: 45px 0;
@@ -149,6 +260,8 @@ header h1 {
   display: block;
 }
 
+/* ===== QUOTATIONS ===== */
+
 .quote-box {
   max-width: 700px;
   margin: 45px auto;
@@ -178,6 +291,8 @@ header h1 {
   background: #d8c6ae;
 }
 
+/* ===== HIDDEN DETAIL ===== */
+
 .hidden-detail {
   text-align: center;
   margin: 35px 0;
@@ -198,6 +313,8 @@ header h1 {
 .secret-text.visible {
   display: block;
 }
+
+/* ===== NAVIGATION ===== */
 
 .navigation {
   display: flex;
@@ -227,7 +344,7 @@ footer {
   margin-top: 70px;
 }
 
-/* ===== VISIBLE ANALOG CLOCK ===== */
+/* ===== VINTAGE ANALOG CLOCK ===== */
 
 #archive-clock {
   position: fixed !important;
@@ -250,6 +367,33 @@ footer {
   overflow: visible;
 }
 
+/* ===== MOBILE LAYOUT ===== */
+
+@media (max-width: 750px) {
+  .author-gallery {
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .author-frame,
+  .author-tartt {
+    width: 205px;
+    transform: none;
+  }
+
+  .author-frame img,
+  .author-tartt img {
+    height: 250px;
+  }
+
+  .author-frame:hover,
+  .author-tartt:hover,
+  .author-nietzsche:hover,
+  .author-dostoevsky:hover {
+    transform: translateY(-3px);
+  }
+}
+
 @media (max-width: 600px) {
   .page {
     padding: 45px 18px 150px;
@@ -266,6 +410,25 @@ footer {
 
   header h1 {
     letter-spacing: 2px;
+  }
+
+  .author-gallery-section {
+    margin-top: 55px;
+  }
+
+  .author-gallery {
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  .author-frame,
+  .author-tartt {
+    width: 225px;
+  }
+
+  .author-frame img,
+  .author-tartt img {
+    height: 275px;
   }
 
   #archive-clock {
@@ -321,6 +484,46 @@ footer {
 
 </section>
 
+<!-- ===== FAVOURITE AUTHORS ===== -->
+
+<section class="author-gallery-section">
+
+  <h2 class="gallery-heading">A Few Familiar Minds</h2>
+
+  <div class="gallery-ornament">❦ ✧ ❦</div>
+
+  <div class="author-gallery">
+
+    <figure class="author-frame author-nietzsche">
+      <img
+        src="assets/images/1795768863633.jpg"
+        alt="Portrait of Friedrich Nietzsche"
+      >
+      <figcaption>Friedrich Nietzsche</figcaption>
+    </figure>
+
+    <figure class="author-frame author-tartt">
+      <img
+        src="assets/images/1795768870490.jpg"
+        alt="Portrait of Donna Tartt"
+      >
+      <figcaption>Donna Tartt</figcaption>
+    </figure>
+
+    <figure class="author-frame author-dostoevsky">
+      <img
+        src="assets/images/1795768867389.jpg"
+        alt="Portrait of Fyodor Dostoevsky"
+      >
+      <figcaption>Fyodor Dostoevsky</figcaption>
+    </figure>
+
+  </div>
+
+</section>
+
+<!-- ===== ENVELOPE ===== -->
+
 <div class="envelope-area">
 
   <button class="envelope" id="envelope-button">
@@ -329,9 +532,7 @@ footer {
 
   <div class="letter" id="letter">
 
-    <p>
-      Dear visitor,
-    </p>
+    <p>Dear visitor,</p>
 
     <p>
       I made this little archive to gather pieces of my life and
@@ -353,6 +554,8 @@ footer {
 
 </div>
 
+<!-- ===== QUOTATIONS ===== -->
+
 <section class="quote-box">
 
   <h2 style="font-weight:normal;">A thought from the shelf</h2>
@@ -366,6 +569,8 @@ footer {
   </button>
 
 </section>
+
+<!-- ===== HIDDEN DETAIL ===== -->
 
 <div class="hidden-detail">
 
@@ -381,6 +586,8 @@ footer {
 </div>
 
 <hr class="rule">
+
+<!-- ===== NAVIGATION ===== -->
 
 <nav class="navigation">
 
@@ -444,7 +651,6 @@ footer {
   <g fill="#241c19" font-family="Georgia, serif"
      font-size="16" text-anchor="middle"
      dominant-baseline="middle">
-
     <text x="100" y="46">XII</text>
     <text x="127" y="53">I</text>
     <text x="147" y="73">II</text>
@@ -457,7 +663,6 @@ footer {
     <text x="45" y="100">IX</text>
     <text x="53" y="73">X</text>
     <text x="73" y="53">XI</text>
-
   </g>
 
   <!-- Clock hands -->
@@ -484,7 +689,6 @@ footer {
   <circle cx="100" cy="100" r="6" fill="#241c19"/>
   <circle cx="100" cy="100" r="2" fill="#c5a783"/>
 
-  <!-- Small decorative detail -->
   <circle cx="100" cy="100" r="10"
           fill="none" stroke="#78604a" stroke-width="0.8"/>
 
@@ -494,7 +698,7 @@ footer {
 
 <script>
 
-/* Envelope */
+/* ===== ENVELOPE ===== */
 
 const envelopeButton = document.getElementById("envelope-button");
 const letter = document.getElementById("letter");
@@ -510,7 +714,7 @@ envelopeButton.addEventListener("click", function() {
 });
 
 
-/* Quotes */
+/* ===== QUOTES ===== */
 
 const quotes = [
   '"Somewhere, something incredible is waiting to be known."',
@@ -531,7 +735,7 @@ quoteButton.addEventListener("click", function() {
 });
 
 
-/* Hidden detail */
+/* ===== HIDDEN DETAIL ===== */
 
 const secretSymbol = document.getElementById("secret-symbol");
 const secretText = document.getElementById("secret-text");
@@ -541,7 +745,7 @@ secretSymbol.addEventListener("click", function() {
 });
 
 
-/* Analog clock */
+/* ===== ANALOG CLOCK ===== */
 
 function updateArchiveClock() {
 
@@ -563,7 +767,6 @@ function updateArchiveClock() {
 
   document.getElementById("clock-hour")
     .setAttribute("transform", "rotate(" + hourAngle + " 100 100)");
-
 }
 
 updateArchiveClock();
