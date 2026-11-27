@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Umida Xolmirzayeva</title>
+
+<style>
+:root {
+  --paper: #eee5d5;
+  --paper-light: #f6efe3;
+  --ink: #29231f;
+  --muted: #76695d;
+  --border: #b8a58e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #d3c5b1;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 0.85;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1050px;
+  width: 88%;
+  margin: 35px auto;
+  padding: 55px 65px;
+  background:
+    linear-gradient(rgba(246,239,227,0.94),
+                    rgba(238,229,213,0.96)),
+    var(--paper);
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 30px rgba(40,25,15,0.15);
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+}
+
+header h1 {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 13px;
+  border: 1px solid var(--border);
+  padding: 7px 12px;
+  background: rgba(255,255,255,0.18);
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: #d6c5ae;
+}
+
+nav a.active {
+  background: #c5b29b;
+}
+
+.page-title {
+  text-align: center;
+  margin: 40px 0 30px;
+}
+
+.page-title h2 {
+  font-weight: normal;
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+.page-title p {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.portrait-frame {
+  border: 1px solid var(--border);
+  padding: 12px;
+  background: #e5d8c5;
+  box-shadow: 3px 4px 12px rgba(0,0,0,0.12);
+}
+
+.portrait-placeholder {
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 14px;
+  background: #d8c9b5;
+  border: 1px solid #c0ac94;
+}
+
+.about-text h3 {
+  font-size: 23px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.about-text p {
+  text-align: justify;
+  font-size: 16px;
+}
+
+.details {
+  margin-top: 35px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.details p {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.details strong {
+  font-weight: normal;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.interests {
+  margin-top: 40px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border);
+}
+
+.interests h3 {
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 22px;
+}
+
+.interest-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.interest-list span {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.2);
+  font-size: 14px;
+}
+
+.ornament {
+  text-align: center;
+  color: var(--muted);
+  margin: 35px 0;
+  letter-spacing: 6px;
+}
+
+footer {
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.clock {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: var(--paper-light);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  font-size: 13px;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 750px) {
+  body::before,
+  body::after {
+    width: 35px;
+    opacity: 0.5;
+  }
+
+  .page {
+    width: 94%;
+    margin: 15px auto;
+    padding: 30px 20px;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .portrait-frame {
+    max-width: 280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .portrait-placeholder {
+    min-height: 350px;
+  }
+
+  .about-text p {
+    text-align: left;
+  }
+
+  nav {
+    gap: 8px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header>
+  <h1>Umida Xolmirzayeva</h1>
+  <div class="subtitle">A personal archive</div>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html" class="active">About</a>
+  <a href="diary.html">Diary</a>
+  <a href="literature.html">Literature</a>
+  <a href="music.html">Music</a>
+  <a href="visual-arts.html">Visual Arts</a>
+  <a href="photography.html">Photography</a>
+  <a href="cinema.html">Cinema</a>
+  <a href="writing.html">Writing</a>
+  <a href="languages.html">Languages</a>
+  <a href="psychology-philosophy.html">Psychology & Philosophy</a>
+  <a href="history-culture.html">History & Culture</a>
+  <a href="curiosities.html">Cabinet of Curiosities</a>
+</nav>
+
+<section class="page-title">
+  <h2>About Me</h2>
+  <p>A few words about the person behind these pages.</p>
+</section>
+
+<section class="about-layout">
+
+  <div class="portrait-frame">
+    <div class="portrait-placeholder">
+      My portrait will be placed here.
+    </div>
+  </div>
+
+  <div class="about-text">
+    <h3>A little introduction</h3>
+
+    <p>
+      I'm Umida, a student of English Language Teaching
+      with an interest in literature, art, music, and the
+      many ways people express and interpret the world
+      around them.
+    </p>
+
+    <p>
+      Beyond my academic studies, I enjoy photography,
+      cinema, writing, and exploring subjects ranging
+      from linguistics and psychology to philosophy
+      and history.
+    </p>
+
+    <p>
+      This website serves as a personal collection of
+      these interests, bringing together things I enjoy,
+      ideas I explore, and materials I wish to preserve.
+    </p>
+
+    <div class="details">
+      <p><strong>Name:</strong> Umida Xolmirzayeva</p>
+      <p><strong>University:</strong> Millat Umidi</p>
+      <p><strong>Field of study:</strong> English Language Teaching</p>
+    </div>
+  </div>
+
+</section>
+
+<div class="ornament">✦ &nbsp; ❦ &nbsp; ✦</div>
+
+<section class="interests">
+  <h3>Things I find interesting</h3>
+
+  <div class="interest-list">
+    <span>Literature</span>
+    <span>Music</span>
+    <span>Visual Arts</span>
+    <span>Photography</span>
+    <span>Cinema</span>
+    <span>Writing</span>
+    <span>Languages</span>
+    <span>Linguistics</span>
+    <span>Psychology</span>
+    <span>Philosophy</span>
+    <span>History</span>
+    <span>Culture</span>
+  </div>
+</section>
+
+<div class="ornament">❧ &nbsp; ❧ &nbsp; ❧</div>
+
+<footer>
+  <p>Collected with care, in my own little corner of the internet.</p>
+</footer>
+
+</div>
+
+<div class="clock" id="clock">00:00:00</div>
+
+<script>
+function updateClock() {
+  const now = new Date();
+
+  document.getElementById("clock").textContent =
+    now.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    });
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
