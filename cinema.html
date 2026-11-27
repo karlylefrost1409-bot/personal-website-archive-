@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinema | Umida Xolmirzayeva</title>
+
+<style>
+:root {
+  --paper: #eee5d5;
+  --light: #f6efe4;
+  --ink: #29231e;
+  --muted: #756658;
+  --line: #c9b9a3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #d4c5af;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.7;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 0.78;
+  z-index: -1;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+.page {
+  width: min(1000px, 90%);
+  margin: 45px auto;
+  background: var(--paper);
+  border: 1px solid #b9a68e;
+  padding: 45px 55px;
+  box-shadow: 0 10px 35px rgba(50, 35, 20, 0.18);
+  position: relative;
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 25px;
+  margin-bottom: 35px;
+}
+
+.small-title {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: 43px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin: 10px 0;
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.ornament {
+  color: #88745e;
+  text-align: center;
+  margin: 25px 0;
+  letter-spacing: 6px;
+}
+
+.introduction {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 45px;
+  font-style: italic;
+}
+
+.section-title {
+  font-size: 25px;
+  font-weight: normal;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  margin: 45px 0 25px;
+  letter-spacing: 1px;
+}
+
+.director {
+  margin-bottom: 50px;
+}
+
+.director-name {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.director-note {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.film-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.film {
+  background: #e6dac8;
+  border: 1px solid #c7b49c;
+  padding: 13px;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.film:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(50, 35, 20, 0.15);
+}
+
+.poster {
+  height: 220px;
+  background: #c4b19a;
+  border: 1px solid #b5a28a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  text-align: center;
+  color: #574535;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.poster::after {
+  content: "✦";
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 17px;
+  opacity: 0.5;
+}
+
+.film-title {
+  font-size: 17px;
+  margin-top: 15px;
+}
+
+.film-year {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.film-rating {
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+.film-note {
+  font-size: 13px;
+  font-style: italic;
+  margin-top: 10px;
+  color: #665646;
+}
+
+.collection {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.15);
+  padding: 25px;
+  margin: 35px 0;
+}
+
+.collection p {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 5px;
+  transition: opacity 0.3s;
+}
+
+.back-link:hover {
+  opacity: 0.6;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+@media (max-width: 750px) {
+  .page {
+    padding: 30px 22px;
+    margin: 20px auto;
+  }
+
+  body::before,
+  body::after {
+    width: 35px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .film-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .poster {
+    height: 175px;
+  }
+}
+
+@media (max-width: 450px) {
+  .film-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .film-title {
+    font-size: 15px;
+  }
+
+  .poster {
+    height: 150px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header>
+  <div class="small-title">A personal collection of moving images</div>
+  <h1>Cinema</h1>
+  <div class="subtitle">Films, directors, and stories that linger.</div>
+</header>
+
+<div class="introduction">
+  A little archive of films I have watched, films I wish to see,
+  and the directors whose worlds I keep returning to.
+</div>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section>
+  <h2 class="section-title">Director's Archive</h2>
+
+  <div class="director">
+    <h3 class="director-name">Director's Name</h3>
+    <div class="director-note">A collection of films</div>
+
+    <div class="film-grid">
+
+      <div class="film">
+        <div class="poster">Film poster</div>
+        <div class="film-title">Film Title</div>
+        <div class="film-year">Year</div>
+        <div class="film-rating">☆ ☆ ☆ ☆ ☆</div>
+        <div class="film-note">A little impression or note.</div>
+      </div>
+
+      <div class="film">
+        <div class="poster">Film poster</div>
+        <div class="film-title">Film Title</div>
+        <div class="film-year">Year</div>
+        <div class="film-rating">☆ ☆ ☆ ☆ ☆</div>
+        <div class="film-note">A little impression or note.</div>
+      </div>
+
+      <div class="film">
+        <div class="poster">Film poster</div>
+        <div class="film-title">Film Title</div>
+        <div class="film-year">Year</div>
+        <div class="film-rating">☆ ☆ ☆ ☆ ☆</div>
+        <div class="film-note">A little impression or note.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="director">
+    <h3 class="director-name">Director's Name</h3>
+    <div class="director-note">A collection of films</div>
+
+    <div class="film-grid">
+
+      <div class="film">
+        <div class="poster">Film poster</div>
+        <div class="film-title">Film Title</div>
+        <div class="film-year">Year</div>
+        <div class="film-rating">☆ ☆ ☆ ☆ ☆</div>
+        <div class="film-note">A little impression or note.</div>
+      </div>
+
+      <div class="film">
+        <div class="poster">Film poster</div>
+        <div class="film-title">Film Title</div>
+        <div class="film-year">Year</div>
+        <div class="film-rating">☆ ☆ ☆ ☆ ☆</div>
+        <div class="film-note">A little impression or note.</div>
+      </div>
+
+      <div class="film">
+        <div class="poster">Film poster</div>
+        <div class="film-title">Film Title</div>
+        <div class="film-year">Year</div>
+        <div class="film-rating">☆ ☆ ☆ ☆ ☆</div>
+        <div class="film-note">A little impression or note.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="director">
+    <h3 class="director-name">Director's Name</h3>
+    <div class="director-note">A collection of films</div>
+
+    <div class="film-grid">
+
+      <div class="film">
+        <div class="poster">Film poster</div>
+        <div class="film-title">Film Title</div>
+        <div class="film-year">Year</div>
+        <div class="film-rating">☆ ☆ ☆ ☆ ☆</div>
+        <div class="film-note">A little impression or note.</div>
+      </div>
+
+      <div class="film">
+        <div class="poster">Film poster</div>
+        <div class="film-title">Film Title</div>
+        <div class="film-year">Year</div>
+        <div class="film-rating">☆ ☆ ☆ ☆ ☆</div>
+        <div class="film-note">A little impression or note.</div>
+      </div>
+
+      <div class="film">
+        <div class="poster">Film poster</div>
+        <div class="film-title">Film Title</div>
+        <div class="film-year">Year</div>
+        <div class="film-rating">☆ ☆ ☆ ☆ ☆</div>
+        <div class="film-note">A little impression or note.</div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section class="collection">
+  <h2 class="section-title" style="margin-top:0;">Notes on Cinema</h2>
+  <p>
+    A place for thoughts, observations, favourite scenes, memorable
+    dialogue, and things I find myself thinking about long after a film ends.
+  </p>
+  <p>Nothing here needs to be finished or neatly arranged.</p>
+</section>
+
+<a class="back-link" href="index.html">← Return to the homepage</a>
+
+<footer>
+  <div>AN ARCHIVE OF MY OWN</div>
+  <div style="margin-top:8px;">✧</div>
+</footer>
+
+</div>
+
+</body>
+</html>
