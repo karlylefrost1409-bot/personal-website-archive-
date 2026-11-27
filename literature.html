@@ -4,65 +4,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Literature | Umida Xolmirzayeva</title>
+<title>Umida Xolmirzayeva | Personal Archive</title>
 
 <style>
 :root {
   --paper: #eee5d5;
+  --paper-dark: #dfd0ba;
   --ink: #302720;
   --muted: #76685a;
   --line: #b6a48d;
+  --accent: #806b55;
   --dark: #45372d;
-  --accent: #92775b;
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  padding: 40px 22px;
   min-height: 100vh;
-  background: radial-gradient(ellipse at center, #e9decd, #cfc0a8);
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(ellipse at center, #e9decd 0%, #d9cbb6 65%, #cfc0a8 100%);
+  overflow-x: hidden;
 }
 
-body::before,
-body::after {
-  content: "";
+/* LACE */
+
+.lace {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 115px;
+  left: 0;
+  right: 0;
+  height: 55px;
   background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
-  background-repeat: repeat-y;
-  background-size: 115px auto;
-  opacity: 0.85;
+  background-repeat: repeat-x;
+  background-size: auto 55px;
+  opacity: 0.75;
   pointer-events: none;
-  z-index: 0;
+  z-index: 10;
 }
 
-body::before { left: 0; }
-body::after { right: 0; }
+.lace.top {
+  top: 0;
+}
+
+.lace.bottom {
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+/* MAIN PAGE */
 
 .page {
   position: relative;
-  z-index: 1;
-  max-width: 1150px;
+  width: min(1380px, 96%);
+  min-height: 100vh;
   margin: auto;
-  padding: 55px 65px;
-  background: var(--paper);
-  border: 1px solid #b9a58b;
-  box-shadow: 0 10px 40px rgba(45,30,20,0.18);
+  padding: 65px 45px 55px;
+  background: rgba(238,229,213,0.94);
+  border-left: 1px solid rgba(130,105,78,0.3);
+  border-right: 1px solid rgba(130,105,78,0.3);
+  box-shadow: 0 0 45px rgba(45,30,20,0.12);
 }
 
 .page::before {
   content: "";
   position: absolute;
-  inset: 12px;
+  inset: 15px;
   border: 1px solid rgba(130,105,78,0.25);
   pointer-events: none;
 }
@@ -70,416 +84,811 @@ body::after { right: 0; }
 /* HEADER */
 
 header {
+  position: relative;
+  z-index: 2;
   text-align: center;
-  padding-bottom: 25px;
+  padding: 20px 0 30px;
   border-bottom: 1px solid var(--line);
-  margin-bottom: 35px;
 }
 
-.subtitle {
-  font-size: 12px;
+.header-small {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+header h1 {
+  font-size: clamp(35px, 5vw, 57px);
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin: 17px 0 10px;
+}
+
+.header-subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.ornament {
+  color: var(--accent);
+  font-size: 21px;
+  letter-spacing: 8px;
+  margin-top: 15px;
+}
+
+/* AUTHOR WALL */
+
+.author-wall {
+  position: absolute;
+  top: 260px;
+  left: 28px;
+  width: 190px;
+  height: 920px;
+  z-index: 3;
+}
+
+/* Each portrait is positioned individually */
+
+.author-card {
+  position: absolute;
+  display: block;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.author-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #c8b69e;
+  pointer-events: none;
+}
+
+.author-card:hover {
+  z-index: 5;
+  filter: brightness(1.07);
+}
+
+.author-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+/* FRAME DESIGNS */
+
+.rococo {
+  width: 79px;
+  height: 101px;
+  border: 5px double #8b6947;
+  border-radius: 45% 45% 42% 42%;
+  background: linear-gradient(135deg, #d5b88c, #76583d);
+  box-shadow:
+    0 0 0 3px #c5a477,
+    0 0 0 5px #806344,
+    3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.walnut {
+  width: 75px;
+  height: 96px;
+  border: 7px ridge #76533a;
+  background: linear-gradient(135deg, #a27b55, #493426);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.barокe {
+  width: 77px;
+  height: 101px;
+  border: 6px ridge #302822;
+  background: linear-gradient(135deg, #85715d, #29231e);
+  box-shadow:
+    0 0 0 2px #9a805e,
+    3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.gothic {
+  width: 72px;
+  height: 101px;
+  border: 5px double #554638;
+  border-radius: 48% 48% 3px 3px;
+  background: linear-gradient(135deg, #9a866e, #43372c);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.louis {
+  width: 77px;
+  height: 98px;
+  border: 6px ridge #b39a75;
+  border-radius: 45%;
+  background: linear-gradient(135deg, #d3bd96, #756044);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.floral {
+  width: 73px;
+  height: 96px;
+  border: 6px ridge #9b8060;
+  border-radius: 20px 20px 12px 12px;
+  background: linear-gradient(135deg, #d1b99b, #78614a);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.silver {
+  width: 73px;
+  height: 95px;
+  border: 6px ridge #8e8b80;
+  border-radius: 44%;
+  background: linear-gradient(135deg, #c5bfb0, #69665f);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.gilded {
+  width: 68px;
+  height: 88px;
+  border: 5px double #b18c4e;
+  border-radius: 45%;
+  background: linear-gradient(135deg, #e0c48c, #82633b);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.ivory {
+  width: 75px;
+  height: 98px;
+  border: 6px ridge #c4b59b;
+  background: linear-gradient(135deg, #e4d9c5, #92836c);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.mahogany {
+  width: 71px;
+  height: 94px;
+  border: 7px ridge #674532;
+  background: linear-gradient(135deg, #a27a55, #4a3022);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.blackgold {
+  width: 77px;
+  height: 101px;
+  border: 6px double #b18d55;
+  background: linear-gradient(135deg, #4c4034, #171411);
+  box-shadow: 0 0 0 2px #756047, 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.roccrect {
+  width: 73px;
+  height: 96px;
+  border: 6px ridge #9c805b;
+  background: linear-gradient(135deg, #c7aa7e, #70543b);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.darkwood {
+  width: 70px;
+  height: 92px;
+  border: 7px ridge #4b3527;
+  border-radius: 45%;
+  background: linear-gradient(135deg, #8b674b, #30241c);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+.ornateblack {
+  width: 76px;
+  height: 100px;
+  border: 6px double #29231e;
+  border-radius: 45% 45% 5px 5px;
+  background: linear-gradient(135deg, #77604a, #211b16);
+  box-shadow: 0 0 0 2px #8e7558, 3px 5px 9px rgba(30,20,10,0.25);
+}
+
+/* SCATTERED POSITIONS */
+
+.f1  { top: 5px;   left: 45px; transform: rotate(-3deg); }
+.f2  { top: 90px;  left: 0px;  transform: rotate(2deg); }
+.f3  { top: 180px; left: 83px; transform: rotate(-2deg); }
+.f4  { top: 270px; left: 18px; transform: rotate(3deg); }
+.f5  { top: 355px; left: 95px; transform: rotate(-2deg); }
+.f6  { top: 445px; left: 23px; transform: rotate(1deg); }
+.f7  { top: 535px; left: 85px; transform: rotate(3deg); }
+.f8  { top: 625px; left: 3px;  transform: rotate(-2deg); }
+.f9  { top: 710px; left: 91px; transform: rotate(2deg); }
+.f10 { top: 795px; left: 22px; transform: rotate(-3deg); }
+.f11 { top: 875px; left: 100px; transform: rotate(2deg); }
+.f12 { top: 1000px; left: 8px; transform: rotate(-2deg); }
+.f13 { top: 1090px; left: 87px; transform: rotate(3deg); }
+.f14 { top: 1180px; left: 23px; transform: rotate(-2deg); }
+
+/* HERO AREA */
+
+.hero {
+  position: relative;
+  z-index: 2;
+  max-width: 950px;
+  margin: 55px 25px 45px 215px;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(280px, 1.15fr);
+  align-items: center;
+  gap: 55px;
+}
+
+.main-portrait {
+  padding: 12px;
+  border: 1px solid #a38b6e;
+  outline: 4px double #b7a184;
+  outline-offset: 5px;
+  background: #e4d8c5;
+  box-shadow: 5px 8px 18px rgba(40,25,15,0.16);
+  min-height: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.portrait-placeholder {
+  color: #8c7861;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.9;
+  padding: 20px;
+}
+
+.portrait-placeholder span {
+  display: block;
+  font-size: 38px;
+  margin-bottom: 12px;
+  color: #9b8266;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcome .small-title {
+  font-size: 11px;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--muted);
 }
 
-h1 {
-  font-size: clamp(32px,5vw,48px);
+.welcome h2 {
+  font-size: 34px;
   font-weight: normal;
   margin: 18px 0;
 }
 
-.ornament {
-  color: #806b55;
-  font-size: 22px;
+.welcome .welcome-ornament {
+  color: var(--accent);
+  font-size: 23px;
   letter-spacing: 8px;
+  margin: 18px 0;
 }
 
-.intro {
-  max-width: 700px;
-  text-align: center;
-  margin: 0 auto 55px;
-  font-style: italic;
-  font-size: 16px;
-  line-height: 1.9;
-  color: var(--muted);
-}
-
-/* SECTION HEADINGS */
-
-.section-heading {
-  text-align: center;
-  margin: 65px 0 40px;
-}
-
-.section-heading h2 {
-  font-weight: normal;
-  font-size: 29px;
-  margin-bottom: 15px;
-}
-
-.section-heading p {
+.welcome p {
+  font-size: 15px;
+  line-height: 2;
   color: var(--muted);
   font-style: italic;
-  font-size: 14px;
 }
 
-/* AUTHOR ARCHIVE */
+/* ENVELOPE */
 
-.authors {
-  display: flex;
-  flex-direction: column;
-  gap: 35px;
-}
-
-.author-entry {
-  display: grid;
-  grid-template-columns: 235px 1fr;
-  gap: 38px;
-  padding: 35px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.12);
-  scroll-margin-top: 30px;
+.letter-section {
   position: relative;
-}
-
-.author-entry::before {
-  content: "❧";
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  color: #a18b72;
-  font-size: 19px;
-}
-
-.author-portrait {
+  z-index: 2;
+  max-width: 760px;
+  margin: 55px auto;
   text-align: center;
 }
 
-.portrait-frame {
-  padding: 10px;
-  border: 1px solid #9a8268;
-  background: linear-gradient(145deg, #d5c3a8, #9b8268);
-  box-shadow: 4px 6px 14px rgba(50,35,25,0.16);
-  display: inline-block;
-  width: 100%;
-  max-width: 230px;
+.envelope {
+  width: 90px;
+  height: 62px;
+  margin: 0 auto 18px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #92795e;
+  background: #d6c2a4;
+  box-shadow: 2px 4px 8px rgba(40,25,15,0.12);
+  transition: transform 0.3s;
 }
 
-.portrait-frame img {
-  display: block;
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border: 1px solid rgba(255,255,255,0.4);
+.envelope:hover {
+  transform: translateY(-3px);
 }
 
-.portrait-caption {
-  margin-top: 15px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 44px solid transparent;
+  border-right: 44px solid transparent;
+  border-top: 34px solid #b89e7c;
 }
 
-.author-details h3 {
-  font-size: 29px;
-  font-weight: normal;
-  margin: 5px 0 8px;
+.envelope::after {
+  content: "✦";
+  position: absolute;
+  top: 22px;
+  left: 37px;
+  color: #604c39;
+  font-size: 16px;
 }
 
-.author-dates {
+.letter {
+  display: none;
+  max-width: 600px;
+  margin: 20px auto 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.15);
   color: var(--muted);
   font-style: italic;
-  font-size: 14px;
-  margin-bottom: 18px;
+  font-size: 15px;
+  line-height: 1.9;
 }
 
-.author-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 22px;
+.letter.open {
+  display: block;
+  animation: appear 0.4s ease;
 }
 
-.meta-tag {
-  border: 1px solid var(--line);
-  padding: 6px 10px;
+/* QUOTE */
+
+.quote-box {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 60px auto;
+  padding: 30px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.quote-box .quote-label {
   font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  letter-spacing: 4px;
   color: var(--muted);
+  text-transform: uppercase;
 }
 
-.author-details h4 {
+#quote {
+  min-height: 65px;
+  margin: 20px 0 12px;
   font-size: 17px;
-  font-weight: normal;
-  margin: 24px 0 10px;
+  line-height: 1.9;
+  font-style: italic;
   color: var(--dark);
 }
 
-.author-details p {
-  font-size: 15px;
-  line-height: 1.85;
-  margin: 0;
+#quote-author {
+  font-size: 13px;
+  color: var(--muted);
 }
 
-.works {
-  padding-left: 20px;
-  margin-top: 10px;
-}
-
-.works li {
-  margin-bottom: 8px;
-  line-height: 1.7;
-  font-size: 14px;
-}
-
-.author-divider {
-  text-align: center;
-  color: #9a8268;
-  font-size: 20px;
-  letter-spacing: 6px;
-  padding-top: 10px;
-}
-
-/* BOOK SHELF */
-
-.filters {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 40px;
-}
-
-.filters button {
-  background: transparent;
+.quote-box button {
+  margin-top: 22px;
+  padding: 9px 18px;
   border: 1px solid var(--line);
+  background: transparent;
   color: var(--ink);
   font-family: inherit;
-  font-size: 13px;
-  padding: 10px 18px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.filters button:hover,
-.filters button.active {
-  background: #d8c7b0;
+.quote-box button:hover {
+  background: #dfd0ba;
 }
 
-.books {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 25px;
-}
+/* SECRET DETAIL */
 
-.book {
-  display: grid;
-  grid-template-columns: 135px 1fr;
-  gap: 20px;
-  padding: 20px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.12);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.book:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(50,35,25,0.08);
-}
-
-.cover {
-  width: 135px;
-  min-height: 195px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.secret-section {
+  position: relative;
+  z-index: 2;
   text-align: center;
-  padding: 18px;
-  background: linear-gradient(145deg, #c5b39a, #8e7960);
-  border: 1px solid #8e7960;
-  box-shadow: 3px 5px 10px rgba(50,35,25,0.16);
-  color: #f1e7d8;
+  margin: 55px auto;
+  max-width: 650px;
 }
 
-.cover span {
-  font-size: 17px;
-  line-height: 1.5;
-  letter-spacing: 1px;
-}
-
-.book-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.book-info h3 {
-  font-size: 21px;
-  font-weight: normal;
-  margin: 5px 0 10px;
-}
-
-.book-author {
-  font-style: italic;
+.secret-button {
+  border: 0;
+  background: none;
   color: var(--muted);
-  font-size: 14px;
+  font-family: inherit;
+  font-style: italic;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #b6a48d;
+  text-underline-offset: 5px;
 }
 
-.book-genre {
-  display: inline-block;
-  width: fit-content;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 5px;
-  margin: 12px 0;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.book-impression {
-  font-size: 14px;
+.secret-content {
+  display: none;
+  margin-top: 20px;
+  color: var(--muted);
+  font-style: italic;
   line-height: 1.8;
-  margin-top: 10px;
 }
 
-.book-rating {
-  margin-top: auto;
-  padding-top: 18px;
-  letter-spacing: 3px;
-  color: #806b55;
+.secret-content.visible {
+  display: block;
+  animation: appear 0.4s ease;
 }
 
-/* PASSAGES */
+/* NAVIGATION */
 
-.quote-section {
-  margin-top: 60px;
-  padding: 35px;
-  border: 1px solid var(--line);
+.navigation {
+  position: relative;
+  z-index: 2;
+  margin: 75px auto 45px;
+  max-width: 850px;
   text-align: center;
-  background: rgba(255,255,255,0.12);
 }
 
-.quote-section h2 {
+.navigation h2 {
+  font-size: 25px;
   font-weight: normal;
-  font-size: 24px;
+  margin-bottom: 30px;
 }
 
-.quote-section p {
-  font-style: italic;
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--muted);
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.nav-grid a {
+  display: block;
+  padding: 15px 10px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 13px;
+  letter-spacing: 1px;
+  background: rgba(255,255,255,0.12);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.nav-grid a:hover {
+  background: #dfd0ba;
+  transform: translateY(-2px);
 }
 
 /* FOOTER */
 
 footer {
+  position: relative;
+  z-index: 2;
   text-align: center;
-  margin-top: 55px;
-  border-top: 1px solid var(--line);
+  margin-top: 70px;
   padding-top: 25px;
-}
-
-footer a {
-  color: var(--ink);
-  text-decoration: none;
-  letter-spacing: 2px;
-  font-size: 14px;
-}
-
-footer a:hover {
-  opacity: 0.6;
-}
-
-footer p {
-  font-size: 12px;
+  border-top: 1px solid var(--line);
   color: var(--muted);
-  margin-top: 25px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+footer .ornament {
+  margin-bottom: 15px;
+}
+
+/* ANALOG CLOCK */
+
+.clock {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 112px;
+  height: 112px;
+  border: 3px double #8d765d;
+  border-radius: 50%;
+  background: #eee5d5;
+  box-shadow: 0 3px 12px rgba(40,25,15,0.18);
+  z-index: 20;
+}
+
+.clock::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #b6a48d;
+  border-radius: 50%;
+}
+
+.clock-number {
+  position: absolute;
+  font-size: 11px;
+  color: #5b4938;
+  transform: translate(-50%, -50%);
+}
+
+.n12 { top: 13px; left: 50%; }
+.n1  { top: 21px; left: 73%; }
+.n2  { top: 37px; left: 86%; }
+.n3  { top: 50%; left: 91%; }
+.n4  { top: 73%; left: 84%; }
+.n5  { top: 87%; left: 69%; }
+.n6  { top: 91%; left: 50%; }
+.n7  { top: 87%; left: 30%; }
+.n8  { top: 73%; left: 16%; }
+.n9  { top: 50%; left: 9%; }
+.n10 { top: 29%; left: 17%; }
+.n11 { top: 16%; left: 32%; }
+
+.clock-center {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: #4b3828;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  border-radius: 5px;
+}
+
+.hour-hand {
+  width: 3px;
+  height: 27px;
+  background: #49392c;
+}
+
+.minute-hand {
+  width: 2px;
+  height: 36px;
+  background: #70563e;
+}
+
+.second-hand {
+  width: 1px;
+  height: 40px;
+  background: #9b5540;
+}
+
+/* AUTHOR POPUP */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(35,26,19,0.62);
+  backdrop-filter: blur(3px);
+}
+
+.modal.open {
+  display: flex;
+  animation: appear 0.25s ease;
+}
+
+.modal-card {
+  position: relative;
+  width: min(420px, 100%);
+  padding: 45px 35px 38px;
+  text-align: center;
+  background: #eee5d5;
+  border: 1px solid #a99173;
+  outline: 4px double #b7a184;
+  outline-offset: 5px;
+  box-shadow: 0 12px 45px rgba(0,0,0,0.3);
+}
+
+.modal-card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(130,105,78,0.25);
+  pointer-events: none;
+}
+
+.modal-close {
+  position: absolute;
+  top: 13px;
+  right: 17px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.modal-small {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.modal-card h2 {
+  font-weight: normal;
+  font-size: 28px;
+  margin: 20px 0 10px;
+}
+
+.modal-ornament {
+  color: var(--accent);
+  font-size: 22px;
+  letter-spacing: 7px;
+  margin: 17px 0 24px;
+}
+
+.library-link {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  padding: 12px 22px;
+  border: 1px solid #a38b6e;
+  color: var(--ink);
+  background: #dfd0ba;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: background 0.3s;
+}
+
+.library-link:hover {
+  background: #d1bda1;
+}
+
+/* ANIMATIONS */
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* RESPONSIVE */
 
-@media (max-width: 900px) {
-  .books {
-    grid-template-columns: 1fr;
+@media (max-width: 1050px) {
+  .author-wall {
+    left: 10px;
+    transform: scale(0.85);
+    transform-origin: top left;
   }
 
-  .author-entry {
-    grid-template-columns: 190px 1fr;
-    gap: 25px;
-    padding: 25px;
-  }
-
-  .portrait-frame img {
-    height: 260px;
-  }
-}
-
-@media (max-width: 750px) {
-  body {
-    padding: 20px 12px;
-  }
-
-  body::before,
-  body::after {
-    width: 50px;
-    background-size: 50px auto;
-    opacity: 0.45;
+  .hero {
+    margin-left: 185px;
+    gap: 30px;
   }
 
   .page {
-    padding: 35px 25px;
-  }
-
-  .author-entry {
-    grid-template-columns: 1fr;
-  }
-
-  .author-portrait {
-    margin-bottom: 10px;
-  }
-
-  .portrait-frame {
-    max-width: 250px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 
-@media (max-width: 500px) {
-  .book {
-    grid-template-columns: 105px 1fr;
-    gap: 14px;
-    padding: 14px;
+@media (max-width: 760px) {
+  .page {
+    width: 100%;
+    padding: 45px 22px;
   }
 
-  .cover {
-    width: 105px;
-    min-height: 165px;
+  .author-wall {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin: 25px auto 45px;
+    padding: 15px 10px;
   }
 
-  .cover span {
-    font-size: 14px;
+  .author-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    flex: 0 0 auto;
   }
 
-  .book-info h3 {
-    font-size: 18px;
+  .hero {
+    margin: 35px auto;
+    max-width: 520px;
+    grid-template-columns: 1fr;
+    gap: 35px;
   }
 
-  .author-details h3 {
-    font-size: 25px;
+  .main-portrait {
+    max-width: 290px;
+    width: 100%;
+    margin: auto;
+    min-height: 310px;
   }
 
-  .author-entry {
+  .welcome h2 {
+    font-size: 29px;
+  }
+
+  .nav-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clock {
+    width: 85px;
+    height: 85px;
+    right: 12px;
+    bottom: 12px;
+    transform: scale(0.85);
+    transform-origin: bottom right;
+  }
+}
+
+@media (max-width: 450px) {
+  header h1 {
+    font-size: 34px;
+  }
+
+  .header-small {
+    letter-spacing: 3px;
+  }
+
+  .nav-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .nav-grid a {
+    font-size: 11px;
+    padding: 13px 6px;
+  }
+
+  .quote-box {
+    padding: 22px 12px;
+  }
+
+  .letter {
     padding: 20px;
   }
 
-  .intro {
-    font-size: 14px;
+  .clock {
+    opacity: 0.9;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
     transition: none !important;
   }
 }
@@ -488,791 +897,486 @@ footer p {
 
 <body>
 
+<div class="lace top"></div>
+<div class="lace bottom"></div>
+
 <main class="page">
 
 <header>
-  <div class="subtitle">A personal literary archive</div>
-  <h1>Literature</h1>
+  <div class="header-small">A personal collection of interests</div>
+
+  <h1>Umida Xolmirzayeva</h1>
+
+  <div class="header-subtitle">
+    Literature · Art · Photography · Thought
+  </div>
+
   <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
 </header>
 
-<section class="intro">
-  <p>
-    A growing collection of authors I return to, books I have read,
-    ideas I keep, and sentences worth preserving.
-    A small archive of literature, thought, and everything
-    that lingers after the last page.
-  </p>
-</section>
 
-<!-- AUTHORS -->
-
-<div class="section-heading" id="authors">
-  <div class="ornament">❧</div>
-  <h2>The Authors</h2>
-  <p>Portraits, lives, works, and literary worlds.</p>
-</div>
-
-<section class="authors">
-
-<!-- DONNA TARTT -->
-
-<article class="author-entry" id="donna-tartt">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/1795768870490.jpg"
-           alt="Donna Tartt">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Donna Tartt</h3>
-    <div class="author-dates">1963 – Present</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">American</span>
-      <span class="meta-tag">Literary Fiction</span>
-      <span class="meta-tag">Psychological Fiction</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Donna Tartt is an American novelist known for her carefully
-      constructed narratives, atmospheric settings, and explorations
-      of obsession, friendship, morality, and the consequences of
-      intellectual and emotional isolation. Her novels often combine
-      literary ambition with suspense and psychological depth.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>The Secret History</li>
-      <li>The Little Friend</li>
-      <li>The Goldfinch</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- DOSTOEVSKY -->
-
-<article class="author-entry" id="dostoevsky">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/1795768877389.jpg"
-           alt="Fyodor Dostoevsky">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Fyodor Dostoevsky</h3>
-    <div class="author-dates">1821 – 1881</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">Russian</span>
-      <span class="meta-tag">Realism</span>
-      <span class="meta-tag">Psychological Fiction</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Fyodor Dostoevsky was a Russian novelist whose works explore
-      human consciousness, morality, faith, freedom, guilt, and
-      the tension between reason and emotion. His characters
-      frequently confront difficult philosophical questions
-      through inner conflict, relationships, and extreme moral
-      circumstances.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>Crime and Punishment</li>
-      <li>The Brothers Karamazov</li>
-      <li>The Idiot</li>
-      <li>Notes from Underground</li>
-      <li>The Double</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- NIETZSCHE -->
-
-<article class="author-entry" id="nietzsche">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/1795768863633.jpg"
-           alt="Friedrich Nietzsche">
-    </div>
-    <div class="portrait-caption">The philosopher</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Friedrich Nietzsche</h3>
-    <div class="author-dates">1844 – 1900</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">German</span>
-      <span class="meta-tag">Philosophy</span>
-      <span class="meta-tag">Existential Thought</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Friedrich Nietzsche was a German philosopher whose writings
-      challenged conventional morality, religion, truth, and the
-      foundations of Western thought. His ideas concerning the
-      will to power, the Übermensch, perspectivism, and the
-      revaluation of values remain influential and widely debated.
-      His writing often combines philosophical argument,
-      aphorisms, literary imagery, and provocative criticism.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>Thus Spoke Zarathustra</li>
-      <li>Beyond Good and Evil</li>
-      <li>The Birth of Tragedy</li>
-      <li>On the Genealogy of Morality</li>
-      <li>The Gay Science</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- KAFKA -->
-
-<article class="author-entry" id="kafka">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/kafka.jpg"
-           alt="Franz Kafka">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Franz Kafka</h3>
-    <div class="author-dates">1883 – 1924</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">Bohemian</span>
-      <span class="meta-tag">Modernism</span>
-      <span class="meta-tag">Existential Literature</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Franz Kafka was a writer whose fiction presents unsettling
-      worlds shaped by bureaucracy, alienation, uncertainty,
-      and the difficulty of understanding one's place within
-      society. His work often combines ordinary situations
-      with strange, inexplicable circumstances, creating
-      narratives that resist simple interpretation.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>The Metamorphosis</li>
-      <li>The Trial</li>
-      <li>The Castle</li>
-      <li>In the Penal Colony</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- CAMUS -->
-
-<article class="author-entry" id="camus">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/camus.jpg"
-           alt="Albert Camus">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Albert Camus</h3>
-    <div class="author-dates">1913 – 1960</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">French-Algerian</span>
-      <span class="meta-tag">Existentialism</span>
-      <span class="meta-tag">Absurdism</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Albert Camus was a French-Algerian writer, journalist,
-      and philosopher associated with the philosophy of the
-      absurd. His works examine the human search for meaning
-      in a world that offers no clear answers, as well as
-      questions of justice, solidarity, rebellion, and responsibility.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>The Stranger</li>
-      <li>The Plague</li>
-      <li>The Myth of Sisyphus</li>
-      <li>The Fall</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- CLARICE LISPECTOR -->
-
-<article class="author-entry" id="clarice">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/clarice.jpg"
-           alt="Clarice Lispector">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Clarice Lispector</h3>
-    <div class="author-dates">1920 – 1977</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">Brazilian</span>
-      <span class="meta-tag">Modernism</span>
-      <span class="meta-tag">Experimental Fiction</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Clarice Lispector was a Brazilian writer known for
-      introspective and experimental prose that explores
-      consciousness, identity, existence, and the ordinary
-      moments that reveal unfamiliar aspects of reality.
-      Her writing often turns inward, examining the limits
-      of language and the nature of self-awareness.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>The Hour of the Star</li>
-      <li>Near to the Wild Heart</li>
-      <li>Água Viva</li>
-      <li>The Passion According to G.H.</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- OCEAN VUONG -->
-
-<article class="author-entry" id="ocean-vuong">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/ocean.jpg"
-           alt="Ocean Vuong">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Ocean Vuong</h3>
-    <div class="author-dates">1988 – Present</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">Vietnamese-American</span>
-      <span class="meta-tag">Contemporary Literature</span>
-      <span class="meta-tag">Poetry</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Ocean Vuong is a Vietnamese-American poet and novelist
-      whose writing explores memory, family, identity, language,
-      displacement, and the relationship between tenderness
-      and hardship. His work is known for lyrical language,
-      fragmented narratives, and the close attention he gives
-      to personal and collective memory.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>On Earth We're Briefly Gorgeous</li>
-      <li>Night Sky with Exit Wounds</li>
-      <li>Time Is a Mother</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- HANYA YANAGIHARA -->
-
-<article class="author-entry" id="hanya-yanagihara">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/hanya.jpg"
-           alt="Hanya Yanagihara">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Hanya Yanagihara</h3>
-    <div class="author-dates">1974 – Present</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">American</span>
-      <span class="meta-tag">Contemporary Fiction</span>
-      <span class="meta-tag">Literary Fiction</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Hanya Yanagihara is an American novelist and editor
-      whose fiction examines friendship, memory, identity,
-      ambition, suffering, and the lasting influence of the
-      past. Her novels are known for their expansive narratives
-      and complex relationships between characters.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>A Little Life</li>
-      <li>The People in the Trees</li>
-      <li>To Paradise</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- SUSAN SONTAG -->
-
-<article class="author-entry" id="sontag">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/sontag.jpg"
-           alt="Susan Sontag">
-    </div>
-    <div class="portrait-caption">The essayist</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Susan Sontag</h3>
-    <div class="author-dates">1933 – 2004</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">American</span>
-      <span class="meta-tag">Essays</span>
-      <span class="meta-tag">Criticism</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Susan Sontag was an American essayist, critic, novelist,
-      and intellectual whose writing addressed art, photography,
-      literature, politics, illness, and culture. She questioned
-      established ways of interpreting images and cultural works,
-      and became an influential voice in modern criticism.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>On Photography</li>
-      <li>Against Interpretation</li>
-      <li>Regarding the Pain of Others</li>
-      <li>Illness as Metaphor</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- HERMANN HESSE -->
-
-<article class="author-entry" id="hesse">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/hesse.jpg"
-           alt="Hermann Hesse">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Hermann Hesse</h3>
-    <div class="author-dates">1877 – 1962</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">German-Swiss</span>
-      <span class="meta-tag">Modern Literature</span>
-      <span class="meta-tag">Philosophical Fiction</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Hermann Hesse was a German-Swiss writer whose novels
-      and poetry explore spiritual development, individuality,
-      self-discovery, inner conflict, and the search for
-      harmony between opposing aspects of human experience.
-      His work frequently draws on philosophical and spiritual
-      traditions.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>Siddhartha</li>
-      <li>Steppenwolf</li>
-      <li>Demian</li>
-      <li>The Glass Bead Game</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- TONI MORRISON -->
-
-<article class="author-entry" id="toni-morrison">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/morrison.jpg"
-           alt="Toni Morrison">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Toni Morrison</h3>
-    <div class="author-dates">1931 – 2019</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">American</span>
-      <span class="meta-tag">Literary Fiction</span>
-      <span class="meta-tag">Nobel Laureate</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Toni Morrison was an American novelist, editor, and
-      essayist whose literature explores African-American
-      experience, history, memory, identity, community,
-      and the lasting consequences of racism. Her writing
-      combines richly layered storytelling, symbolism,
-      folklore, and historical narratives.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>Beloved</li>
-      <li>The Bluest Eye</li>
-      <li>Song of Solomon</li>
-      <li>Sula</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- OSCAR WILDE -->
-
-<article class="author-entry" id="wilde">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/wilde.jpg"
-           alt="Oscar Wilde">
-    </div>
-    <div class="portrait-caption">The writer</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Oscar Wilde</h3>
-    <div class="author-dates">1854 – 1900</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">Irish</span>
-      <span class="meta-tag">Aestheticism</span>
-      <span class="meta-tag">Literary Satire</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Oscar Wilde was an Irish writer, poet, and playwright
-      associated with aestheticism. Renowned for his wit,
-      epigrams, and criticism of social conventions, Wilde
-      explored art, beauty, morality, hypocrisy, and the
-      contradictions of Victorian society through drama,
-      fiction, and essays.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>The Picture of Dorian Gray</li>
-      <li>The Importance of Being Earnest</li>
-      <li>De Profundis</li>
-      <li>The Happy Prince and Other Tales</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- SIMONE DE BEAUVOIR -->
-
-<article class="author-entry" id="simone-de-beauvoir">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/simone.jpg"
-           alt="Simone de Beauvoir">
-    </div>
-    <div class="portrait-caption">The philosopher</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Simone de Beauvoir</h3>
-    <div class="author-dates">1908 – 1986</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">French</span>
-      <span class="meta-tag">Existentialism</span>
-      <span class="meta-tag">Feminist Philosophy</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Simone de Beauvoir was a French philosopher, writer,
-      and intellectual whose work examined freedom, ethics,
-      gender, social structures, and the conditions shaping
-      human existence. Her philosophical and literary writing
-      played a significant role in existentialist thought
-      and feminist theory.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>The Second Sex</li>
-      <li>The Ethics of Ambiguity</li>
-      <li>She Came to Stay</li>
-      <li>The Mandarins</li>
-    </ul>
-  </div>
-</article>
-
-<div class="author-divider">✦ ❧ ✦</div>
-
-<!-- SYLVIA PLATH -->
-
-<article class="author-entry" id="sylvia-plath">
-  <div class="author-portrait">
-    <div class="portrait-frame">
-      <img src="assets/images/silvia.jpg"
-           alt="Sylvia Plath">
-    </div>
-    <div class="portrait-caption">The poet</div>
-  </div>
-
-  <div class="author-details">
-    <h3>Sylvia Plath</h3>
-    <div class="author-dates">1932 – 1963</div>
-
-    <div class="author-meta">
-      <span class="meta-tag">American</span>
-      <span class="meta-tag">Poetry</span>
-      <span class="meta-tag">Confessional Writing</span>
-    </div>
-
-    <h4>About</h4>
-    <p>
-      Sylvia Plath was an American poet and novelist
-      whose writing is distinguished by its intense imagery,
-      emotional precision, and exploration of identity,
-      family, social expectations, and the complexities
-      of personal experience. Her poetry is frequently
-      associated with the confessional literary movement.
-    </p>
-
-    <h4>Notable Works</h4>
-    <ul class="works">
-      <li>Ariel</li>
-      <li>The Bell Jar</li>
-      <li>The Colossus and Other Poems</li>
-    </ul>
-  </div>
-</article>
+<!-- AUTHOR PORTRAITS -->
+
+<section class="author-wall" aria-label="Favourite authors">
+
+  <button class="author-card rococo f1"
+    data-author="Donna Tartt"
+    data-link="donna-tartt"
+    aria-label="Open Donna Tartt's library entry">
+    <img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
+  </button>
+
+  <button class="author-card walnut f2"
+    data-author="Fyodor Dostoevsky"
+    data-link="dostoevsky"
+    aria-label="Open Fyodor Dostoevsky's library entry">
+    <img src="assets/images/1795768877389.jpg" alt="Fyodor Dostoevsky">
+  </button>
+
+  <button class="author-card barокe f3"
+    data-author="Friedrich Nietzsche"
+    data-link="nietzsche"
+    aria-label="Open Friedrich Nietzsche's library entry">
+    <img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
+  </button>
+
+  <button class="author-card gothic f4"
+    data-author="Franz Kafka"
+    data-link="kafka"
+    aria-label="Open Franz Kafka's library entry">
+    <img src="assets/images/kafka.jpg" alt="Franz Kafka">
+  </button>
+
+  <button class="author-card louis f5"
+    data-author="Albert Camus"
+    data-link="camus"
+    aria-label="Open Albert Camus's library entry">
+    <img src="assets/images/camus.jpg" alt="Albert Camus">
+  </button>
+
+  <button class="author-card floral f6"
+    data-author="Clarice Lispector"
+    data-link="clarice"
+    aria-label="Open Clarice Lispector's library entry">
+    <img src="assets/images/clarice.jpg" alt="Clarice Lispector">
+  </button>
+
+  <button class="author-card silver f7"
+    data-author="Ocean Vuong"
+    data-link="ocean-vuong"
+    aria-label="Open Ocean Vuong's library entry">
+    <img src="assets/images/ocean.jpg" alt="Ocean Vuong">
+  </button>
+
+  <button class="author-card gilded f8"
+    data-author="Hanya Yanagihara"
+    data-link="hanya-yanagihara"
+    aria-label="Open Hanya Yanagihara's library entry">
+    <img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
+  </button>
+
+  <button class="author-card ivory f9"
+    data-author="Susan Sontag"
+    data-link="sontag"
+    aria-label="Open Susan Sontag's library entry">
+    <img src="assets/images/sontag.jpg" alt="Susan Sontag">
+  </button>
+
+  <button class="author-card mahogany f10"
+    data-author="Hermann Hesse"
+    data-link="hesse"
+    aria-label="Open Hermann Hesse's library entry">
+    <img src="assets/images/hesse.jpg" alt="Hermann Hesse">
+  </button>
+
+  <button class="author-card blackgold f11"
+    data-author="Toni Morrison"
+    data-link="toni-morrison"
+    aria-label="Open Toni Morrison's library entry">
+    <img src="assets/images/morrison.jpg" alt="Toni Morrison">
+  </button>
+
+  <button class="author-card roccrect f12"
+    data-author="Oscar Wilde"
+    data-link="wilde"
+    aria-label="Open Oscar Wilde's library entry">
+    <img src="assets/images/wilde.jpg" alt="Oscar Wilde">
+  </button>
+
+  <button class="author-card darkwood f13"
+    data-author="Simone de Beauvoir"
+    data-link="simone-de-beauvoir"
+    aria-label="Open Simone de Beauvoir's library entry">
+    <img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
+  </button>
+
+  <button class="author-card ornateblack f14"
+    data-author="Sylvia Plath"
+    data-link="sylvia-plath"
+    aria-label="Open Sylvia Plath's library entry">
+    <img src="assets/images/silvia.jpg" alt="Sylvia Plath">
+  </button>
 
 </section>
 
-<!-- BOOKS -->
 
-<div class="section-heading" id="books-section">
-  <div class="ornament">❧</div>
-  <h2>The Books</h2>
-  <p>A catalogue of reading, impressions, and remembered pages.</p>
-</div>
+<!-- MAIN INTRODUCTION -->
 
-<nav class="filters" aria-label="Filter books by genre">
+<section class="hero">
 
-  <button class="active" onclick="filterBooks('all',this)">
-    All
-  </button>
-
-  <button onclick="filterBooks('fiction',this)">
-    Fiction
-  </button>
-
-  <button onclick="filterBooks('classics',this)">
-    Classics
-  </button>
-
-  <button onclick="filterBooks('philosophy',this)">
-    Philosophy
-  </button>
-
-  <button onclick="filterBooks('other',this)">
-    Other
-  </button>
-
-</nav>
-
-<section class="books">
-
-  <article class="book" data-genre="fiction">
-    <div class="cover">
-      <span>Book cover</span>
+  <div class="main-portrait">
+    <div class="portrait-placeholder">
+      <span>❧</span>
+      A portrait will be placed here.
+      <br>
+      A little space reserved for its owner.
+      <br>
+      <br>
+      ✦
     </div>
+  </div>
 
-    <div class="book-info">
-      <h3>Book title</h3>
-      <div class="book-author">Author's name</div>
-      <div class="book-genre">FICTION</div>
+  <div class="welcome">
 
-      <p class="book-impression">
-        A space for personal impressions, thoughts,
-        or a few words about the book.
-      </p>
+    <div class="small-title">Welcome to my archive</div>
 
-      <div class="book-rating">☆ ☆ ☆ ☆ ☆</div>
-    </div>
-  </article>
+    <h2>A World of My Own</h2>
 
-  <article class="book" data-genre="classics">
-    <div class="cover">
-      <span>Book cover</span>
-    </div>
+    <div class="welcome-ornament">❧ ✦ ❧</div>
 
-    <div class="book-info">
-      <h3>Book title</h3>
-      <div class="book-author">Author's name</div>
-      <div class="book-genre">CLASSICS</div>
+    <p>
+      A collection of things I find beautiful, interesting,
+      meaningful, or simply worth keeping.
+      Books and ideas, photographs and paintings,
+      music and fragments of everyday life.
+    </p>
 
-      <p class="book-impression">
-        What you thought of the book,
-        what stayed with you, or what you disliked.
-      </p>
+    <p>
+      Not everything here needs a particular order.
+      Some things are kept because they matter;
+      others, because I would like to remember them.
+    </p>
 
-      <div class="book-rating">☆ ☆ ☆ ☆ ☆</div>
-    </div>
-  </article>
-
-  <article class="book" data-genre="philosophy">
-    <div class="cover">
-      <span>Book cover</span>
-    </div>
-
-    <div class="book-info">
-      <h3>Book title</h3>
-      <div class="book-author">Author's name</div>
-      <div class="book-genre">PHILOSOPHY</div>
-
-      <p class="book-impression">
-        Notes, reflections, and ideas worth revisiting.
-      </p>
-
-      <div class="book-rating">☆ ☆ ☆ ☆ ☆</div>
-    </div>
-  </article>
-
-  <article class="book" data-genre="other">
-    <div class="cover">
-      <span>Book cover</span>
-    </div>
-
-    <div class="book-info">
-      <h3>Book title</h3>
-      <div class="book-author">Author's name</div>
-      <div class="book-genre">OTHER</div>
-
-      <p class="book-impression">
-        A short personal note to accompany this book.
-      </p>
-
-      <div class="book-rating">☆ ☆ ☆ ☆ ☆</div>
-    </div>
-  </article>
+  </div>
 
 </section>
 
-<!-- PASSAGES -->
 
-<section class="quote-section">
+<!-- ENVELOPE -->
+
+<section class="letter-section">
 
   <div class="ornament">❧</div>
 
-  <h2>Favourite Passages</h2>
+  <div class="envelope" id="envelope"
+       role="button" tabindex="0"
+       aria-label="Open the letter"></div>
 
-  <p>
-    Sentences, passages, and quotations collected
-    from books, kept for another reading.
-  </p>
+  <div class="header-small">A little note</div>
 
-  <p>
-    This collection will grow with the library.
-  </p>
+  <div class="letter" id="letter">
+    <p>
+      This is a small corner of the internet that belongs
+      to my interests, thoughts, and discoveries.
+      It is a place to collect what I read, see, hear,
+      learn, and remember.
+    </p>
 
-  <div class="ornament">✦</div>
+    <p>
+      Perhaps it will always remain unfinished.
+      That is part of its purpose.
+    </p>
+
+    <div class="ornament">✦</div>
+  </div>
 
 </section>
+
+
+<!-- QUOTE CHANGER -->
+
+<section class="quote-box">
+
+  <div class="quote-label">A thought to keep</div>
+
+  <div class="ornament">❧</div>
+
+  <p id="quote">
+    “We are all in the gutter, but some of us are looking at the stars.”
+  </p>
+
+  <div id="quote-author">Oscar Wilde</div>
+
+  <button type="button" id="new-quote">
+    Turn another page
+  </button>
+
+</section>
+
+
+<!-- HIDDEN DETAIL -->
+
+<section class="secret-section">
+
+  <button class="secret-button" id="secret-button" type="button">
+    There is something hidden here...
+  </button>
+
+  <div class="secret-content" id="secret-content">
+    Perhaps the best parts of a collection are the things
+    that cannot be properly categorised.
+    <div class="ornament">❧</div>
+  </div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<section class="navigation">
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <h2>Explore the Archive</h2>
+
+  <div class="nav-grid">
+
+    <a href="about.html">About</a>
+    <a href="diary.html">Diary</a>
+    <a href="literature.html">Literature</a>
+    <a href="music.html">Music</a>
+    <a href="visual-arts.html">Visual Arts</a>
+    <a href="photography.html">Photography</a>
+    <a href="cinema.html">Cinema</a>
+    <a href="writing.html">Writing</a>
+    <a href="languages.html">Languages</a>
+    <a href="psychology-philosophy.html">Psychology & Philosophy</a>
+    <a href="history-culture.html">History & Culture</a>
+    <a href="curiosities.html">Curiosities</a>
+
+  </div>
+
+</section>
+
 
 <footer>
 
   <div class="ornament">❧</div>
 
-  <a href="index.html">← RETURN TO THE HOMEPAGE</a>
+  <p>
+    A personal archive, still in the making.
+  </p>
 
-  <p>A library of things that remain.</p>
+  <p>
+    Umida Xolmirzayeva
+  </p>
 
 </footer>
 
 </main>
 
+
+<!-- ANALOG CLOCK -->
+
+<div class="clock" aria-label="Analog clock">
+
+  <span class="clock-number n12">XII</span>
+  <span class="clock-number n1">I</span>
+  <span class="clock-number n2">II</span>
+  <span class="clock-number n3">III</span>
+  <span class="clock-number n4">IV</span>
+  <span class="clock-number n5">V</span>
+  <span class="clock-number n6">VI</span>
+  <span class="clock-number n7">VII</span>
+  <span class="clock-number n8">VIII</span>
+  <span class="clock-number n9">IX</span>
+  <span class="clock-number n10">X</span>
+  <span class="clock-number n11">XI</span>
+
+  <div class="hand hour-hand" id="hour-hand"></div>
+  <div class="hand minute-hand" id="minute-hand"></div>
+  <div class="hand second-hand" id="second-hand"></div>
+  <div class="clock-center"></div>
+
+</div>
+
+
+<!-- AUTHOR POPUP -->
+
+<div class="modal" id="author-modal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="modal-author">
+
+  <div class="modal-card">
+
+    <button class="modal-close" id="modal-close"
+            type="button" aria-label="Close popup">
+      ×
+    </button>
+
+    <div class="modal-small">From the author's gallery</div>
+
+    <h2 id="modal-author">Author's name</h2>
+
+    <div class="modal-ornament">❧ ✦ ❧</div>
+
+    <a href="literature.html" class="library-link"
+       id="library-link">
+      Go to Library →
+    </a>
+
+  </div>
+
+</div>
+
+
 <script>
-function filterBooks(genre, button) {
-  const books = document.querySelectorAll(".book");
 
-  books.forEach(book => {
-    if (genre === "all" || book.dataset.genre === genre) {
-      book.style.display = "grid";
-    } else {
-      book.style.display = "none";
-    }
-  });
+/* AUTHOR POPUP */
 
-  document.querySelectorAll(".filters button").forEach(btn => {
-    btn.classList.remove("active");
-  });
+const authorCards = document.querySelectorAll(".author-card");
+const modal = document.getElementById("author-modal");
+const modalAuthor = document.getElementById("modal-author");
+const modalClose = document.getElementById("modal-close");
+const libraryLink = document.getElementById("library-link");
 
-  button.classList.add("active");
+function openAuthorPopup(card) {
+  const author = card.dataset.author;
+  const destination = card.dataset.link;
+
+  modalAuthor.textContent = author;
+  libraryLink.href = "literature.html#" + destination;
+
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+
+  modalClose.focus();
 }
+
+function closeAuthorPopup() {
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+authorCards.forEach(card => {
+  card.addEventListener("click", () => {
+    openAuthorPopup(card);
+  });
+});
+
+modalClose.addEventListener("click", closeAuthorPopup);
+
+modal.addEventListener("click", event => {
+  if (event.target === modal) {
+    closeAuthorPopup();
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && modal.classList.contains("open")) {
+    closeAuthorPopup();
+  }
+});
+
+
+/* ENVELOPE */
+
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+
+function toggleLetter() {
+  letter.classList.toggle("open");
+}
+
+envelope.addEventListener("click", toggleLetter);
+
+envelope.addEventListener("keydown", event => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    toggleLetter();
+  }
+});
+
+
+/* QUOTES */
+
+const quotes = [
+  {
+    text: "We are all in the gutter, but some of us are looking at the stars.",
+    author: "Oscar Wilde"
+  },
+  {
+    text: "It is only with the heart that one can see rightly; what is essential is invisible to the eye.",
+    author: "Antoine de Saint-Exupéry"
+  },
+  {
+    text: "The mystery of human existence lies not in just staying alive, but in finding something to live for.",
+    author: "Fyodor Dostoevsky"
+  },
+  {
+    text: "And, when you want something, all the universe conspires in helping you to achieve it.",
+    author: "Paulo Coelho"
+  },
+  {
+    text: "One must still have chaos in oneself to be able to give birth to a dancing star.",
+    author: "Friedrich Nietzsche"
+  },
+  {
+    text: "Nothing is ever really lost to us as long as we remember it.",
+    author: "L. M. Montgomery"
+  },
+  {
+    text: "I am rooted, but I flow.",
+    author: "Virginia Woolf"
+  }
+];
+
+let currentQuote = 0;
+
+document.getElementById("new-quote").addEventListener("click", () => {
+  currentQuote = (currentQuote + 1) % quotes.length;
+
+  document.getElementById("quote").textContent =
+    "“" + quotes[currentQuote].text + "”";
+
+  document.getElementById("quote-author").textContent =
+    quotes[currentQuote].author;
+});
+
+
+/* HIDDEN DETAIL */
+
+document.getElementById("secret-button").addEventListener("click", () => {
+  document.getElementById("secret-content").classList.toggle("visible");
+});
+
+
+/* ANALOG CLOCK */
+
+function updateClock() {
+  const now = new Date();
+
+  const hours = now.getHours() % 12;
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+
+  const hourAngle = (hours + minutes / 60) * 30;
+  const minuteAngle = (minutes + seconds / 60) * 6;
+  const secondAngle = seconds * 6;
+
+  document.getElementById("hour-hand").style.transform =
+    "translateX(-50%) rotate(" + hourAngle + "deg)";
+
+  document.getElementById("minute-hand").style.transform =
+    "translateX(-50%) rotate(" + minuteAngle + "deg)";
+
+  document.getElementById("second-hand").style.transform =
+    "translateX(-50%) rotate(" + secondAngle + "deg)";
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
 </script>
 
 </body>
