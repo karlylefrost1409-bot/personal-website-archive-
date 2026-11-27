@@ -7,17 +7,13 @@
 <title>Umida Xolmirzayeva</title>
 
 <style>
-:root {
-  --paper: #eee5d5;
-  --paper-light: #f7f0e5;
-  --ink: #29231f;
-  --muted: #776b5e;
-  --line: #b9a995;
-  --shadow: rgba(40, 30, 20, .18);
-}
+* { box-sizing: border-box; }
 
-* {
-  box-sizing: border-box;
+:root {
+  --paper: #e9dfcd;
+  --ink: #30271f;
+  --muted: #766554;
+  --line: #b9a991;
 }
 
 html {
@@ -26,17 +22,12 @@ html {
 
 body {
   margin: 0;
+  padding: 35px 0;
+  background: #181513;
   color: var(--ink);
-  background:
-    radial-gradient(ellipse at 20% 20%, rgba(255,255,255,.42), transparent 55%),
-    radial-gradient(ellipse at 80% 75%, rgba(130,100,70,.09), transparent 50%),
-    var(--paper);
   font-family: Georgia, "Times New Roman", serif;
-  min-height: 100vh;
-  overflow-x: hidden;
+  line-height: 1.7;
 }
-
-/* SIDE LACE */
 
 body::before,
 body::after {
@@ -44,646 +35,769 @@ body::after {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: clamp(35px, 7vw, 88px);
-  z-index: 5;
-  pointer-events: none;
+  width: 100px;
   background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
   background-repeat: repeat-y;
-  background-position: center top;
-  background-size: 100% 420px;
-  opacity: .88;
+  background-size: 100% auto;
+  opacity: .85;
+  z-index: -1;
 }
 
-body::before {
-  left: 0;
+body::before { left: 0; }
+body::after { right: 0; }
+
+.paper {
+  width: min(1050px, 92%);
+  margin: auto;
+  padding: 50px 55px;
+  background: var(--paper);
+  border: 1px solid #a18d74;
+  box-shadow: 0 0 35px rgba(0,0,0,.5);
 }
-
-body::after {
-  right: 0;
-  transform: scaleX(-1);
-}
-
-/* MAIN PAPER */
-
-.page {
-  position: relative;
-  width: min(100% - 150px, 1050px);
-  min-height: 100vh;
-  margin: 35px auto;
-  padding: 38px 45px 55px;
-  background: rgba(248, 242, 231, .72);
-  border: 1px solid rgba(130, 108, 83, .35);
-  box-shadow: 0 8px 35px var(--shadow);
-}
-
-/* LACE CORNERS */
-
-.lace-corner {
-  position: absolute;
-  width: 115px;
-  height: 115px;
-  pointer-events: none;
-  z-index: 2;
-  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
-  background-repeat: no-repeat;
-  background-size: 190px auto;
-  opacity: .72;
-}
-
-.lace-corner.top-left {
-  top: 0;
-  left: 0;
-  background-position: left top;
-}
-
-.lace-corner.top-right {
-  top: 0;
-  right: 0;
-  transform: scaleX(-1);
-  background-position: left top;
-}
-
-.lace-corner.bottom-left {
-  bottom: 0;
-  left: 0;
-  transform: scaleY(-1);
-  background-position: left top;
-}
-
-.lace-corner.bottom-right {
-  bottom: 0;
-  right: 0;
-  transform: scale(-1);
-  background-position: left top;
-}
-
-/* HEADER */
 
 header {
   text-align: center;
-  padding: 24px 10px 18px;
-  position: relative;
+  margin-bottom: 40px;
 }
 
-.ornament {
-  color: #78664f;
-  letter-spacing: 7px;
-  font-size: 17px;
-  margin: 8px 0 17px;
+.top-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 h1 {
-  font-size: clamp(30px, 5vw, 48px);
+  font-size: clamp(36px, 6vw, 58px);
   font-weight: normal;
-  letter-spacing: 2px;
-  margin: 10px 0;
+  line-height: 1.2;
+  margin: 12px 0;
 }
 
 .subtitle {
-  color: var(--muted);
   font-style: italic;
-  font-size: 15px;
+  color: var(--muted);
 }
 
-/* NAVIGATION */
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 9px 18px;
-  padding: 22px 5px;
-  margin: 15px 0 35px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+.ornament {
+  text-align: center;
+  margin: 28px 0;
+  color: #796750;
+  letter-spacing: 7px;
 }
 
-nav a {
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 13px;
-  transition: color .25s;
-}
-
-nav a:hover {
-  color: #96734e;
-  text-decoration: underline;
-}
-
-/* INTRO */
-
-.intro {
+.hero {
   display: grid;
-  grid-template-columns: minmax(180px, .8fr) 1.2fr;
+  grid-template-columns: 0.9fr 1.1fr;
   gap: 35px;
   align-items: center;
-  margin: 35px 0 25px;
 }
 
-.portrait {
-  min-height: 330px;
-  background: #e3d8c8;
-  border: 1px solid #c5b49f;
-  padding: 10px;
-  box-shadow: 3px 5px 13px var(--shadow);
+.portrait-frame {
+  border: 1px solid var(--line);
+  padding: 12px;
+  background: #d9cbb5;
+  box-shadow: 4px 5px 12px rgba(0,0,0,.16);
+  transform: rotate(-1deg);
+}
+
+.portrait-placeholder {
+  min-height: 390px;
+  background:
+    linear-gradient(rgba(60,45,30,.1), rgba(60,45,30,.1)),
+    #b9a68c;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--muted);
-  font-size: 13px;
+  padding: 25px;
+  color: #4c3d2e;
+  border: 1px solid #9d876c;
   font-style: italic;
 }
 
-.portrait img {
-  width: 100%;
-  height: 100%;
-  min-height: 308px;
-  object-fit: cover;
+.intro {
+  padding: 10px 0;
 }
 
-.intro-text h2 {
-  font-size: 28px;
+.intro h2 {
+  font-size: 29px;
   font-weight: normal;
-  margin: 0 0 17px;
+  margin-top: 0;
 }
 
-.intro-text p {
-  font-size: 15px;
-  line-height: 1.9;
+.intro p {
+  font-size: 16px;
 }
 
-/* DIVIDERS */
-
-.divider {
+.envelope-area {
   text-align: center;
-  color: #8a765d;
-  letter-spacing: 6px;
-  margin: 35px 0;
+  margin: 38px 0;
 }
 
-/* LETTER */
-
-.letter-area {
-  text-align: center;
-  margin: 30px auto;
-}
-
-.letter-button {
-  background: transparent;
-  border: 1px solid #a9967e;
-  padding: 13px 24px;
-  color: var(--ink);
-  font-family: Georgia, serif;
-  font-size: 14px;
+.envelope {
+  display: inline-block;
+  position: relative;
   cursor: pointer;
-  transition: background .3s;
+  border: 1px solid #7e6b53;
+  background: #d6c4a9;
+  padding: 20px 35px;
+  font-family: inherit;
+  color: var(--ink);
+  transition: .3s;
+  box-shadow: 2px 3px 8px rgba(0,0,0,.12);
 }
 
-.letter-button:hover {
-  background: #e7dccb;
+.envelope:hover {
+  background: #cbb79a;
+  transform: translateY(-3px);
+}
+
+.envelope-symbol {
+  font-size: 28px;
+  display: block;
+}
+
+.envelope-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .letter {
   display: none;
-  max-width: 650px;
-  margin: 25px auto;
-  padding: 25px 30px;
-  background: rgba(255,255,255,.28);
-  border: 1px solid #c9b9a4;
+  max-width: 700px;
+  margin: 25px auto 0;
+  padding: 30px;
   text-align: left;
-  line-height: 1.9;
+  background: #dfd1bb;
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 20px rgba(90,60,30,.07);
 }
 
-.letter.show {
+.letter.open {
   display: block;
-  animation: appear .6s ease;
+  animation: reveal .4s ease;
 }
 
-/* QUOTATIONS */
-
-.quote-section {
-  text-align: center;
-  margin: 45px auto;
-  max-width: 650px;
-}
-
-.quote-section h2 {
+.section-title {
+  font-size: 27px;
   font-weight: normal;
-  font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .quote-card {
-  padding: 25px;
-  margin: 20px 0;
-  background: rgba(255,255,255,.25);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  max-width: 700px;
+  margin: 35px auto;
+  border: 1px solid var(--line);
+  padding: 30px;
+  background: rgba(255,255,255,.14);
+  text-align: center;
 }
 
-.quote-mark {
-  font-size: 40px;
-  color: #99836a;
-  line-height: 1;
-}
-
-#quote {
+.quote-text {
   font-size: 19px;
   font-style: italic;
-  line-height: 1.7;
 }
 
-#quote-author {
-  color: var(--muted);
+.quote-author {
   font-size: 13px;
+  color: var(--muted);
   margin-top: 15px;
 }
 
 .quote-button {
-  background: transparent;
-  border: 1px solid #aa9984;
+  margin-top: 20px;
   padding: 10px 18px;
-  font-family: Georgia, serif;
-  cursor: pointer;
-  color: var(--ink);
-}
-
-/* HIDDEN DETAIL */
-
-.hidden-area {
-  text-align: center;
-  margin: 45px 0 25px;
-}
-
-.hidden-button {
-  border: none;
   background: transparent;
-  color: #88745b;
-  font-size: 22px;
+  border: 1px solid #897761;
+  color: var(--ink);
+  font-family: inherit;
   cursor: pointer;
+  transition: .2s;
+}
+
+.quote-button:hover {
+  background: #30271f;
+  color: var(--paper);
+}
+
+.navigation {
+  margin: 40px 0;
+}
+
+.navigation h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: normal;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.nav-link {
+  text-decoration: none;
+  text-align: center;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.12);
+  padding: 14px 10px;
+  transition: .25s;
+}
+
+.nav-link:hover {
+  background: #30271f;
+  color: var(--paper);
+  transform: translateY(-2px);
+}
+
+.hidden-section {
+  text-align: center;
+  margin: 35px 0;
+}
+
+.hidden-symbol {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 20px;
+  color: #766554;
   padding: 10px;
+  transition: .2s;
+}
+
+.hidden-symbol:hover {
+  color: #30271f;
+  transform: scale(1.2);
 }
 
 .hidden-message {
   display: none;
-  max-width: 450px;
-  margin: 10px auto;
-  color: var(--muted);
-  font-size: 14px;
+  margin: 15px auto;
+  max-width: 600px;
   font-style: italic;
-  line-height: 1.8;
+  padding: 20px;
+  border: 1px dashed var(--line);
+  background: rgba(255,255,255,.1);
 }
 
-.hidden-message.show {
+.hidden-message.open {
   display: block;
-  animation: appear .5s ease;
+  animation: reveal .3s ease;
 }
 
-/* FOOTER */
+.home-note {
+  text-align: center;
+  font-style: italic;
+  color: var(--muted);
+  margin: 30px 0;
+}
 
 footer {
   text-align: center;
-  border-top: 1px solid var(--line);
-  margin-top: 45px;
-  padding-top: 25px;
+  margin-top: 40px;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 2;
-}
-
-/* CLOCK */
-
-.clock {
-  position: fixed;
-  right: 18px;
-  bottom: 17px;
-  z-index: 8;
-  padding: 8px 12px;
-  background: rgba(247,240,229,.92);
-  border: 1px solid #b8a68f;
-  color: #44392f;
   font-size: 12px;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 8px var(--shadow);
+  letter-spacing: 2px;
 }
 
-/* BACK TO TOP */
-
-.top-button {
-  position: fixed;
-  left: 18px;
-  bottom: 17px;
-  z-index: 8;
-  background: rgba(247,240,229,.92);
-  border: 1px solid #b8a68f;
+.back-top {
+  display: block;
+  text-align: center;
+  text-decoration: none;
   color: var(--ink);
-  padding: 8px 12px;
-  cursor: pointer;
+  border: 1px solid var(--line);
+  padding: 10px;
+  margin-top: 30px;
+  transition: .2s;
 }
 
-/* ANIMATION */
-
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(7px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.back-top:hover {
+  background: var(--ink);
+  color: var(--paper);
 }
 
-/* MOBILE */
+/* GOTHIC ANALOG CLOCK */
 
-@media (max-width: 700px) {
+.gothic-clock {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 125px;
+  height: 125px;
+  z-index: 100;
+  padding: 8px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #38271f, #100d0b, #49372a);
+  border: 2px solid #80694e;
+  box-shadow:
+    0 5px 18px rgba(0,0,0,.5),
+    inset 0 0 0 2px #17110e,
+    inset 0 0 0 4px #92785c;
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #efe5d3 0%, #d9c9af 80%, #b9a58a 100%);
+  border: 1px solid #71604a;
+  box-shadow: inset 0 0 9px rgba(0,0,0,.25);
+}
+
+.clock-face::before {
+  content: "✦";
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #66513d;
+  font-size: 9px;
+}
+
+.clock-face::after {
+  content: "✧";
+  position: absolute;
+  bottom: 24%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #66513d;
+  font-size: 9px;
+}
+
+.numeral {
+  position: absolute;
+  font-family: "Times New Roman", serif;
+  color: #292018;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.n12 { top: 8%; left: 50%; transform: translateX(-50%); }
+.n1 { top: 17%; right: 23%; }
+.n2 { top: 31%; right: 11%; }
+.n3 { top: 50%; right: 8%; transform: translateY(-50%); }
+.n4 { bottom: 31%; right: 11%; }
+.n5 { bottom: 17%; right: 23%; }
+.n6 { bottom: 8%; left: 50%; transform: translateX(-50%); }
+.n7 { bottom: 17%; left: 23%; }
+.n8 { bottom: 31%; left: 11%; }
+.n9 { top: 50%; left: 8%; transform: translateY(-50%); }
+.n10 { top: 31%; left: 11%; }
+.n11 { top: 17%; left: 23%; }
+
+.clock-hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 4px;
+}
+
+.hour-hand {
+  width: 4px;
+  height: 25px;
+  background: #30231b;
+  z-index: 3;
+}
+
+.minute-hand {
+  width: 2.5px;
+  height: 34px;
+  background: #493626;
+  z-index: 4;
+}
+
+.second-hand {
+  width: 1px;
+  height: 39px;
+  background: #8b392b;
+  z-index: 5;
+}
+
+.clock-center {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #39271b;
+  border: 1px solid #9c8060;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+}
+
+.gothic-clock::after {
+  content: "✧";
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #c4a98a;
+  font-size: 14px;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 750px) {
+  .paper {
+    padding: 35px 22px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-placeholder {
+    min-height: 300px;
+  }
+
+  .nav-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   body::before,
   body::after {
-    width: 27px;
-    opacity: .7;
+    width: 35px;
+    opacity: .5;
   }
 
-  .page {
-    width: calc(100% - 58px);
-    margin: 15px auto;
-    padding: 25px 17px 40px;
+  .gothic-clock {
+    width: 90px;
+    height: 90px;
+    bottom: 12px;
+    right: 12px;
   }
 
-  .lace-corner {
-    width: 65px;
-    height: 65px;
-    background-size: 120px auto;
-  }
+  .hour-hand { height: 19px; }
+  .minute-hand { height: 25px; }
+  .second-hand { height: 29px; }
 
-  nav {
-    gap: 12px;
-    padding: 18px 4px;
-  }
+  .numeral { font-size: 9px; }
+}
 
-  nav a {
-    font-size: 12px;
-  }
-
-  .intro {
+@media (max-width: 420px) {
+  .nav-grid {
     grid-template-columns: 1fr;
-    gap: 22px;
   }
 
-  .portrait {
-    width: min(100%, 300px);
-    min-height: 300px;
-    margin: auto;
-  }
-
-  .portrait img {
-    min-height: 278px;
-  }
-
-  .intro-text {
-    text-align: center;
-  }
-
-  .intro-text h2 {
-    font-size: 25px;
-  }
-
-  .clock {
-    right: 8px;
-    bottom: 8px;
-    font-size: 10px;
-  }
-
-  .top-button {
-    left: 8px;
-    bottom: 8px;
-  }
+  h1 { font-size: 36px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *, *::before, *::after {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 </style>
 </head>
 
-<body>
+<body id="top">
 
-<div class="page" id="top">
+<main class="paper">
 
-  <div class="lace-corner top-left"></div>
-  <div class="lace-corner top-right"></div>
-  <div class="lace-corner bottom-left"></div>
-  <div class="lace-corner bottom-right"></div>
+<header>
+  <div class="top-label">A personal archive</div>
+  <h1>Umida Xolmirzayeva</h1>
+  <div class="subtitle">A small corner of the internet</div>
+</header>
 
-  <header>
-    <div class="ornament">❦ · · · ❦</div>
-    <h1>Umida Xolmirzayeva</h1>
-    <p class="subtitle">A personal collection of various things</p>
-    <div class="ornament">✧ · · · ✧</div>
-  </header>
+<div class="ornament">✦ ───────── ✦</div>
 
-  <nav aria-label="Main navigation">
-    <a href="about.html">About</a>
-    <a href="diary.html">Diary</a>
-    <a href="literature.html">Literature</a>
-    <a href="music.html">Music</a>
-    <a href="visual-arts.html">Visual Arts</a>
-    <a href="photography.html">Photography</a>
-    <a href="cinema.html">Cinema</a>
-    <a href="writing.html">Writing</a>
-    <a href="languages.html">Languages</a>
-    <a href="psychology-philosophy.html">Psychology & Philosophy</a>
-    <a href="history-culture.html">History & Culture</a>
-    <a href="curiosities.html">Cabinet of Curiosities</a>
-  </nav>
+<section class="hero">
 
-  <main>
-
-    <section class="intro">
-      <div class="portrait">
-        <!-- Add your portrait image here later -->
-        Portrait photograph<br>
-        To be added
+  <div class="portrait-frame">
+    <div class="portrait-placeholder">
+      <div>
+        <p>Portrait</p>
+        <p>A photograph will find its place here.</p>
       </div>
+    </div>
+  </div>
 
-      <div class="intro-text">
-        <h2>Welcome, stranger.</h2>
-        <p>
-          A small collection of things I find beautiful, thoughts I don't
-          want to lose, books I've read, music I return to, and fragments
-          of everyday life.
-        </p>
-        <p>
-          Consider this a little corner of the internet I made entirely my own.
-        </p>
-      </div>
-    </section>
+  <div class="intro">
+    <h2>Welcome, stranger.</h2>
 
-    <div class="divider">❦ · · · ❦</div>
+    <p>
+      A small collection of things I find beautiful, thoughts I don't
+      want to lose, books I've read, music I return to, and fragments
+      of everyday life. Consider this a little corner of the internet
+      I made entirely my own.
+    </p>
 
-    <section class="letter-area">
-      <button class="letter-button" id="letterButton" aria-expanded="false">
-        ✉ Open the letter
-      </button>
+    <p>
+      Feel free to wander. There is no particular order to things here.
+    </p>
+  </div>
 
-      <div class="letter" id="letter">
-        <p>If you've found your way here, welcome.</p>
+</section>
 
-        <p>
-          I'm Umida, a student with an interest in literature, art, music,
-          and the many ways people express and interpret the world around them.
-        </p>
+<section class="envelope-area">
 
-        <p>
-          Beyond my academic studies, I enjoy photography, cinema, writing,
-          and exploring subjects ranging from linguistics and psychology
-          to philosophy and history.
-        </p>
+  <button class="envelope" id="envelope-button" type="button"
+  aria-expanded="false" aria-controls="letter">
 
-        <p>
-          This website is a personal collection of these interests,
-          bringing together things I enjoy, ideas I explore, and materials
-          I wish to preserve.
-        </p>
+    <span class="envelope-symbol">✉</span>
+    <span class="envelope-label">A letter inside</span>
 
-        <p style="text-align:right;">Umida</p>
-      </div>
-    </section>
+  </button>
 
-    <div class="divider">✧ · · · ✧</div>
+  <div class="letter" id="letter">
 
-    <section class="quote-section">
-      <h2>A thought to keep</h2>
+    <h2 class="section-title">A little introduction</h2>
 
-      <div class="quote-card">
-        <div class="quote-mark">“</div>
-        <p id="quote">
-          Some things are too interesting to be forgotten.
-        </p>
-        <div id="quote-author">Collected thoughts</div>
-      </div>
+    <p>
+      I'm Umida, a student of English Language Teaching with an interest
+      in literature, art, music, and the many ways people express and
+      interpret the world around them.
+    </p>
 
-      <button class="quote-button" id="newQuote">
-        Another thought
-      </button>
-    </section>
+    <p>
+      Beyond my academic studies, I enjoy photography, cinema,
+      writing, and exploring subjects ranging from linguistics
+      and psychology to philosophy and history.
+    </p>
 
-    <section class="hidden-area">
-      <button class="hidden-button" id="secretButton"
-              aria-label="Reveal a hidden detail"
-              aria-expanded="false">
-        ✣
-      </button>
+    <p>
+      This website serves as a personal collection of these interests,
+      bringing together things I enjoy, ideas I explore, and materials
+      I wish to preserve.
+    </p>
 
-      <p class="hidden-message" id="secretMessage">
-        You found a little detail hidden away. Some things are more
-        enjoyable when discovered by accident.
-      </p>
-    </section>
+    <p>
+      It is less of a finished project and more of a growing archive.
+      Some things may change, some may remain unfinished, and
+      others may appear unexpectedly.
+    </p>
 
-  </main>
+  </div>
 
-  <footer>
-    <div class="ornament">❦</div>
-    Collected, arranged and occasionally neglected.
-    <br>
-    © Umida Xolmirzayeva
-  </footer>
+</section>
 
+<div class="ornament">✦ ───────── ✦</div>
+
+<section class="quote-card">
+
+  <h2 class="section-title">A thought to keep</h2>
+
+  <div class="quote-text" id="quote-text">
+    "There is always something worth noticing."
+  </div>
+
+  <div class="quote-author" id="quote-author">
+    An anonymous thought
+  </div>
+
+  <button class="quote-button" id="quote-button" type="button">
+    Turn another page
+  </button>
+
+</section>
+
+<section class="navigation">
+
+  <h2>Browse the archive</h2>
+
+  <div class="ornament">❧</div>
+
+  <div class="nav-grid">
+
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-link" href="diary.html">Diary</a>
+    <a class="nav-link" href="literature.html">Literature</a>
+    <a class="nav-link" href="music.html">Music</a>
+    <a class="nav-link" href="visual-arts.html">Visual Arts</a>
+    <a class="nav-link" href="photography.html">Photography</a>
+    <a class="nav-link" href="cinema.html">Cinema</a>
+    <a class="nav-link" href="writing.html">Writing</a>
+    <a class="nav-link" href="languages.html">Languages & Linguistics</a>
+    <a class="nav-link" href="psychology-philosophy.html">Psychology & Philosophy</a>
+    <a class="nav-link" href="history-culture.html">History & Culture</a>
+    <a class="nav-link" href="curiosities.html">Cabinet of Curiosities</a>
+
+  </div>
+
+</section>
+
+<div class="ornament">✦ ───────── ✦</div>
+
+<section class="hidden-section">
+
+  <div class="hidden-symbol" id="hidden-symbol"
+  role="button" tabindex="0" aria-expanded="false"
+  aria-controls="hidden-message" aria-label="Reveal a hidden detail">
+    ❦
+  </div>
+
+  <div class="hidden-message" id="hidden-message">
+    <p>
+      You found something that wasn't particularly hidden.
+      Still, finding it counts.
+    </p>
+  </div>
+
+</section>
+
+<p class="home-note">
+  Made slowly, collected imperfectly, and kept for no particular reason.
+</p>
+
+<a href="#top" class="back-top">↑ Return to the top</a>
+
+<footer>
+  A PERSONAL COLLECTION · EST. 2026
+</footer>
+
+</main>
+
+<!-- GOTHIC ANALOG CLOCK -->
+
+<div class="gothic-clock" id="gothic-clock" aria-label="Live analog clock">
+  <div class="clock-face">
+
+    <div class="clock-hand hour-hand" id="hour-hand"></div>
+    <div class="clock-hand minute-hand" id="minute-hand"></div>
+    <div class="clock-hand second-hand" id="second-hand"></div>
+
+    <span class="numeral n12">XII</span>
+    <span class="numeral n1">I</span>
+    <span class="numeral n2">II</span>
+    <span class="numeral n3">III</span>
+    <span class="numeral n4">IV</span>
+    <span class="numeral n5">V</span>
+    <span class="numeral n6">VI</span>
+    <span class="numeral n7">VII</span>
+    <span class="numeral n8">VIII</span>
+    <span class="numeral n9">IX</span>
+    <span class="numeral n10">X</span>
+    <span class="numeral n11">XI</span>
+
+    <div class="clock-center"></div>
+
+  </div>
 </div>
-
-<div class="clock" id="clock" aria-label="Current time">00:00:00</div>
-
-<button class="top-button" id="topButton" aria-label="Back to top">
-  ↑
-</button>
 
 <script>
 
-/* LETTER */
+/* ENVELOPE */
 
-const letterButton = document.getElementById("letterButton");
+const envelopeButton = document.getElementById("envelope-button");
 const letter = document.getElementById("letter");
 
-letterButton.addEventListener("click", function () {
-  const isOpen = letter.classList.toggle("show");
-  letterButton.setAttribute("aria-expanded", isOpen);
-  letterButton.textContent = isOpen ? "✉ Close the letter" : "✉ Open the letter";
+envelopeButton.addEventListener("click", function() {
+  const isOpen = letter.classList.toggle("open");
+
+  envelopeButton.setAttribute("aria-expanded", isOpen);
+  envelopeButton.querySelector(".envelope-label").textContent =
+    isOpen ? "A letter opened" : "A letter inside";
 });
 
-/* RANDOM QUOTATIONS */
 
-const quotations = [
+/* QUOTATIONS */
+
+const quotes = [
   {
-    text: "Some things are too interesting to be forgotten.",
-    author: "Collected thoughts"
+    text: "There is always something worth noticing.",
+    author: "An anonymous thought"
   },
   {
-    text: "There is always something more to discover.",
-    author: "Collected thoughts"
+    text: "The world is full of things that have yet to be noticed.",
+    author: "An anonymous thought"
   },
   {
-    text: "A room without books is like a body without a soul.",
-    author: "Cicero"
+    text: "A curious mind rarely runs out of things to explore.",
+    author: "An anonymous thought"
   },
   {
-    text: "The world is full of obvious things which nobody by any chance ever observes.",
-    author: "Arthur Conan Doyle"
+    text: "Some things are better kept than explained.",
+    author: "An anonymous thought"
   },
   {
-    text: "I have measured out my life with coffee spoons.",
-    author: "T. S. Eliot"
+    text: "The ordinary is often stranger than it appears.",
+    author: "An anonymous thought"
   }
 ];
 
-document.getElementById("newQuote").addEventListener("click", function () {
-  const randomIndex = Math.floor(Math.random() * quotations.length);
-  const selected = quotations[randomIndex];
+const quoteText = document.getElementById("quote-text");
+const quoteAuthor = document.getElementById("quote-author");
+const quoteButton = document.getElementById("quote-button");
 
-  document.getElementById("quote").textContent = selected.text;
-  document.getElementById("quote-author").textContent = selected.author;
+let lastQuote = -1;
+
+quoteButton.addEventListener("click", function() {
+
+  let index;
+
+  do {
+    index = Math.floor(Math.random() * quotes.length);
+  } while (index === lastQuote && quotes.length > 1);
+
+  lastQuote = index;
+
+  quoteText.textContent = '"' + quotes[index].text + '"';
+  quoteAuthor.textContent = quotes[index].author;
+
 });
+
 
 /* HIDDEN DETAIL */
 
-const secretButton = document.getElementById("secretButton");
-const secretMessage = document.getElementById("secretMessage");
+const hiddenSymbol = document.getElementById("hidden-symbol");
+const hiddenMessage = document.getElementById("hidden-message");
 
-secretButton.addEventListener("click", function () {
-  const isOpen = secretMessage.classList.toggle("show");
-  secretButton.setAttribute("aria-expanded", isOpen);
-});
-
-/* CLOCK */
-
-function updateClock() {
-  const now = new Date();
-
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-  const seconds = String(now.getSeconds()).padStart(2, "0");
-
-  document.getElementById("clock").textContent =
-    hours + ":" + minutes + ":" + seconds;
+function toggleHiddenDetail() {
+  const isOpen = hiddenMessage.classList.toggle("open");
+  hiddenSymbol.setAttribute("aria-expanded", isOpen);
 }
 
-updateClock();
-setInterval(updateClock, 1000);
+hiddenSymbol.addEventListener("click", toggleHiddenDetail);
 
-/* BACK TO TOP */
-
-document.getElementById("topButton").addEventListener("click", function () {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+hiddenSymbol.addEventListener("keydown", function(event) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    toggleHiddenDetail();
+  }
 });
+
+
+/* GOTHIC CLOCK */
+
+function updateGothicClock() {
+
+  const now = new Date();
+
+  const seconds = now.getSeconds();
+  const minutes = now.getMinutes();
+  const hours = now.getHours();
+
+  const secondAngle = seconds * 6;
+  const minuteAngle = minutes * 6 + seconds * 0.1;
+  const hourAngle = (hours % 12) * 30 + minutes * 0.5;
+
+  document.getElementById("second-hand").style.transform =
+    "translateX(-50%) rotate(" + secondAngle + "deg)";
+
+  document.getElementById("minute-hand").style.transform =
+    "translateX(-50%) rotate(" + minuteAngle + "deg)";
+
+  document.getElementById("hour-hand").style.transform =
+    "translateX(-50%) rotate(" + hourAngle + "deg)";
+}
+
+updateGothicClock();
+setInterval(updateGothicClock, 1000);
 
 </script>
 
