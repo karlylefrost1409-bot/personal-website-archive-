@@ -13,10 +13,12 @@
   --muted: #76685a;
   --line: #b6a48d;
   --dark: #45372d;
+  --accent: #92775b;
 }
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -49,7 +51,7 @@ body::after { right: 0; }
 .page {
   position: relative;
   z-index: 1;
-  max-width: 1100px;
+  max-width: 1150px;
   margin: auto;
   padding: 55px 65px;
   background: var(--paper);
@@ -94,23 +96,154 @@ h1 {
 }
 
 .intro {
-  max-width: 650px;
+  max-width: 700px;
   text-align: center;
-  margin: 0 auto 45px;
+  margin: 0 auto 55px;
   font-style: italic;
   font-size: 16px;
   line-height: 1.9;
   color: var(--muted);
 }
 
-/* SHELF */
+/* SECTION HEADINGS */
 
-.shelf-heading {
+.section-heading {
   text-align: center;
-  font-size: 23px;
-  font-weight: normal;
-  margin: 35px 0;
+  margin: 65px 0 40px;
 }
+
+.section-heading h2 {
+  font-weight: normal;
+  font-size: 29px;
+  margin-bottom: 15px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* AUTHOR ARCHIVE */
+
+.authors {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.author-entry {
+  display: grid;
+  grid-template-columns: 235px 1fr;
+  gap: 38px;
+  padding: 35px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.12);
+  scroll-margin-top: 30px;
+  position: relative;
+}
+
+.author-entry::before {
+  content: "❧";
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  color: #a18b72;
+  font-size: 19px;
+}
+
+.author-portrait {
+  text-align: center;
+}
+
+.portrait-frame {
+  padding: 10px;
+  border: 1px solid #9a8268;
+  background: linear-gradient(145deg, #d5c3a8, #9b8268);
+  box-shadow: 4px 6px 14px rgba(50,35,25,0.16);
+  display: inline-block;
+  width: 100%;
+  max-width: 230px;
+}
+
+.portrait-frame img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.portrait-caption {
+  margin-top: 15px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.author-details h3 {
+  font-size: 29px;
+  font-weight: normal;
+  margin: 5px 0 8px;
+}
+
+.author-dates {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.author-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.meta-tag {
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.author-details h4 {
+  font-size: 17px;
+  font-weight: normal;
+  margin: 24px 0 10px;
+  color: var(--dark);
+}
+
+.author-details p {
+  font-size: 15px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+.works {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.works li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.author-divider {
+  text-align: center;
+  color: #9a8268;
+  font-size: 20px;
+  letter-spacing: 6px;
+  padding-top: 10px;
+}
+
+/* BOOK SHELF */
 
 .filters {
   display: flex;
@@ -136,8 +269,6 @@ h1 {
   background: #d8c7b0;
 }
 
-/* BOOK CARDS */
-
 .books {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -146,7 +277,7 @@ h1 {
 
 .book {
   display: grid;
-  grid-template-columns: 145px 1fr;
+  grid-template-columns: 135px 1fr;
   gap: 20px;
   padding: 20px;
   border: 1px solid var(--line);
@@ -160,15 +291,14 @@ h1 {
 }
 
 .cover {
-  width: 145px;
-  min-height: 210px;
+  width: 135px;
+  min-height: 195px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 18px;
-  background:
-    linear-gradient(145deg, #c5b39a, #8e7960);
+  background: linear-gradient(145deg, #c5b39a, #8e7960);
   border: 1px solid #8e7960;
   box-shadow: 3px 5px 10px rgba(50,35,25,0.16);
   color: #f1e7d8;
@@ -191,13 +321,13 @@ h1 {
   margin: 5px 0 10px;
 }
 
-.author {
+.book-author {
   font-style: italic;
   color: var(--muted);
   font-size: 14px;
 }
 
-.genre {
+.book-genre {
   display: inline-block;
   width: fit-content;
   border-bottom: 1px solid var(--line);
@@ -207,24 +337,24 @@ h1 {
   letter-spacing: 1px;
 }
 
-.impression {
+.book-impression {
   font-size: 14px;
   line-height: 1.8;
   margin-top: 10px;
 }
 
-.rating {
+.book-rating {
   margin-top: auto;
   padding-top: 18px;
   letter-spacing: 3px;
   color: #806b55;
 }
 
-/* QUOTE */
+/* PASSAGES */
 
 .quote-section {
-  margin-top: 55px;
-  padding: 30px;
+  margin-top: 60px;
+  padding: 35px;
   border: 1px solid var(--line);
   text-align: center;
   background: rgba(255,255,255,0.12);
@@ -232,7 +362,7 @@ h1 {
 
 .quote-section h2 {
   font-weight: normal;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .quote-section p {
@@ -270,9 +400,19 @@ footer p {
 
 /* RESPONSIVE */
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .books {
     grid-template-columns: 1fr;
+  }
+
+  .author-entry {
+    grid-template-columns: 190px 1fr;
+    gap: 25px;
+    padding: 25px;
+  }
+
+  .portrait-frame img {
+    height: 260px;
   }
 }
 
@@ -291,18 +431,30 @@ footer p {
   .page {
     padding: 35px 25px;
   }
+
+  .author-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .author-portrait {
+    margin-bottom: 10px;
+  }
+
+  .portrait-frame {
+    max-width: 250px;
+  }
 }
 
 @media (max-width: 500px) {
   .book {
-    grid-template-columns: 115px 1fr;
-    gap: 15px;
+    grid-template-columns: 105px 1fr;
+    gap: 14px;
     padding: 14px;
   }
 
   .cover {
-    width: 115px;
-    min-height: 175px;
+    width: 105px;
+    min-height: 165px;
   }
 
   .cover span {
@@ -311,6 +463,18 @@ footer p {
 
   .book-info h3 {
     font-size: 18px;
+  }
+
+  .author-details h3 {
+    font-size: 25px;
+  }
+
+  .author-entry {
+    padding: 20px;
+  }
+
+  .intro {
+    font-size: 14px;
   }
 }
 
@@ -327,20 +491,634 @@ footer p {
 <main class="page">
 
 <header>
-  <div class="subtitle">A catalogue of books</div>
+  <div class="subtitle">A personal literary archive</div>
   <h1>Literature</h1>
   <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
 </header>
 
 <section class="intro">
   <p>
-    A growing collection of books I've read, authors I return
-    to, impressions I keep, and sentences worth preserving.
-    Arranged imperfectly, as most personal libraries are.
+    A growing collection of authors I return to, books I have read,
+    ideas I keep, and sentences worth preserving.
+    A small archive of literature, thought, and everything
+    that lingers after the last page.
   </p>
 </section>
 
-<h2 class="shelf-heading">The shelves</h2>
+<!-- AUTHORS -->
+
+<div class="section-heading" id="authors">
+  <div class="ornament">❧</div>
+  <h2>The Authors</h2>
+  <p>Portraits, lives, works, and literary worlds.</p>
+</div>
+
+<section class="authors">
+
+<!-- DONNA TARTT -->
+
+<article class="author-entry" id="donna-tartt">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/1795768870490.jpg"
+           alt="Donna Tartt">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Donna Tartt</h3>
+    <div class="author-dates">1963 – Present</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">American</span>
+      <span class="meta-tag">Literary Fiction</span>
+      <span class="meta-tag">Psychological Fiction</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Donna Tartt is an American novelist known for her carefully
+      constructed narratives, atmospheric settings, and explorations
+      of obsession, friendship, morality, and the consequences of
+      intellectual and emotional isolation. Her novels often combine
+      literary ambition with suspense and psychological depth.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>The Secret History</li>
+      <li>The Little Friend</li>
+      <li>The Goldfinch</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- DOSTOEVSKY -->
+
+<article class="author-entry" id="dostoevsky">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/1795768877389.jpg"
+           alt="Fyodor Dostoevsky">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Fyodor Dostoevsky</h3>
+    <div class="author-dates">1821 – 1881</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">Russian</span>
+      <span class="meta-tag">Realism</span>
+      <span class="meta-tag">Psychological Fiction</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Fyodor Dostoevsky was a Russian novelist whose works explore
+      human consciousness, morality, faith, freedom, guilt, and
+      the tension between reason and emotion. His characters
+      frequently confront difficult philosophical questions
+      through inner conflict, relationships, and extreme moral
+      circumstances.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>Crime and Punishment</li>
+      <li>The Brothers Karamazov</li>
+      <li>The Idiot</li>
+      <li>Notes from Underground</li>
+      <li>The Double</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- NIETZSCHE -->
+
+<article class="author-entry" id="nietzsche">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/1795768863633.jpg"
+           alt="Friedrich Nietzsche">
+    </div>
+    <div class="portrait-caption">The philosopher</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Friedrich Nietzsche</h3>
+    <div class="author-dates">1844 – 1900</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">German</span>
+      <span class="meta-tag">Philosophy</span>
+      <span class="meta-tag">Existential Thought</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Friedrich Nietzsche was a German philosopher whose writings
+      challenged conventional morality, religion, truth, and the
+      foundations of Western thought. His ideas concerning the
+      will to power, the Übermensch, perspectivism, and the
+      revaluation of values remain influential and widely debated.
+      His writing often combines philosophical argument,
+      aphorisms, literary imagery, and provocative criticism.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>Thus Spoke Zarathustra</li>
+      <li>Beyond Good and Evil</li>
+      <li>The Birth of Tragedy</li>
+      <li>On the Genealogy of Morality</li>
+      <li>The Gay Science</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- KAFKA -->
+
+<article class="author-entry" id="kafka">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/kafka.jpg"
+           alt="Franz Kafka">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Franz Kafka</h3>
+    <div class="author-dates">1883 – 1924</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">Bohemian</span>
+      <span class="meta-tag">Modernism</span>
+      <span class="meta-tag">Existential Literature</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Franz Kafka was a writer whose fiction presents unsettling
+      worlds shaped by bureaucracy, alienation, uncertainty,
+      and the difficulty of understanding one's place within
+      society. His work often combines ordinary situations
+      with strange, inexplicable circumstances, creating
+      narratives that resist simple interpretation.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>The Metamorphosis</li>
+      <li>The Trial</li>
+      <li>The Castle</li>
+      <li>In the Penal Colony</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- CAMUS -->
+
+<article class="author-entry" id="camus">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/camus.jpg"
+           alt="Albert Camus">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Albert Camus</h3>
+    <div class="author-dates">1913 – 1960</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">French-Algerian</span>
+      <span class="meta-tag">Existentialism</span>
+      <span class="meta-tag">Absurdism</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Albert Camus was a French-Algerian writer, journalist,
+      and philosopher associated with the philosophy of the
+      absurd. His works examine the human search for meaning
+      in a world that offers no clear answers, as well as
+      questions of justice, solidarity, rebellion, and responsibility.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>The Stranger</li>
+      <li>The Plague</li>
+      <li>The Myth of Sisyphus</li>
+      <li>The Fall</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- CLARICE LISPECTOR -->
+
+<article class="author-entry" id="clarice">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/clarice.jpg"
+           alt="Clarice Lispector">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Clarice Lispector</h3>
+    <div class="author-dates">1920 – 1977</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">Brazilian</span>
+      <span class="meta-tag">Modernism</span>
+      <span class="meta-tag">Experimental Fiction</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Clarice Lispector was a Brazilian writer known for
+      introspective and experimental prose that explores
+      consciousness, identity, existence, and the ordinary
+      moments that reveal unfamiliar aspects of reality.
+      Her writing often turns inward, examining the limits
+      of language and the nature of self-awareness.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>The Hour of the Star</li>
+      <li>Near to the Wild Heart</li>
+      <li>Água Viva</li>
+      <li>The Passion According to G.H.</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- OCEAN VUONG -->
+
+<article class="author-entry" id="ocean-vuong">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/ocean.jpg"
+           alt="Ocean Vuong">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Ocean Vuong</h3>
+    <div class="author-dates">1988 – Present</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">Vietnamese-American</span>
+      <span class="meta-tag">Contemporary Literature</span>
+      <span class="meta-tag">Poetry</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Ocean Vuong is a Vietnamese-American poet and novelist
+      whose writing explores memory, family, identity, language,
+      displacement, and the relationship between tenderness
+      and hardship. His work is known for lyrical language,
+      fragmented narratives, and the close attention he gives
+      to personal and collective memory.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>On Earth We're Briefly Gorgeous</li>
+      <li>Night Sky with Exit Wounds</li>
+      <li>Time Is a Mother</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- HANYA YANAGIHARA -->
+
+<article class="author-entry" id="hanya-yanagihara">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/hanya.jpg"
+           alt="Hanya Yanagihara">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Hanya Yanagihara</h3>
+    <div class="author-dates">1974 – Present</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">American</span>
+      <span class="meta-tag">Contemporary Fiction</span>
+      <span class="meta-tag">Literary Fiction</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Hanya Yanagihara is an American novelist and editor
+      whose fiction examines friendship, memory, identity,
+      ambition, suffering, and the lasting influence of the
+      past. Her novels are known for their expansive narratives
+      and complex relationships between characters.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>A Little Life</li>
+      <li>The People in the Trees</li>
+      <li>To Paradise</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- SUSAN SONTAG -->
+
+<article class="author-entry" id="sontag">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/sontag.jpg"
+           alt="Susan Sontag">
+    </div>
+    <div class="portrait-caption">The essayist</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Susan Sontag</h3>
+    <div class="author-dates">1933 – 2004</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">American</span>
+      <span class="meta-tag">Essays</span>
+      <span class="meta-tag">Criticism</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Susan Sontag was an American essayist, critic, novelist,
+      and intellectual whose writing addressed art, photography,
+      literature, politics, illness, and culture. She questioned
+      established ways of interpreting images and cultural works,
+      and became an influential voice in modern criticism.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>On Photography</li>
+      <li>Against Interpretation</li>
+      <li>Regarding the Pain of Others</li>
+      <li>Illness as Metaphor</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- HERMANN HESSE -->
+
+<article class="author-entry" id="hesse">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/hesse.jpg"
+           alt="Hermann Hesse">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Hermann Hesse</h3>
+    <div class="author-dates">1877 – 1962</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">German-Swiss</span>
+      <span class="meta-tag">Modern Literature</span>
+      <span class="meta-tag">Philosophical Fiction</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Hermann Hesse was a German-Swiss writer whose novels
+      and poetry explore spiritual development, individuality,
+      self-discovery, inner conflict, and the search for
+      harmony between opposing aspects of human experience.
+      His work frequently draws on philosophical and spiritual
+      traditions.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>Siddhartha</li>
+      <li>Steppenwolf</li>
+      <li>Demian</li>
+      <li>The Glass Bead Game</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- TONI MORRISON -->
+
+<article class="author-entry" id="toni-morrison">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/morrison.jpg"
+           alt="Toni Morrison">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Toni Morrison</h3>
+    <div class="author-dates">1931 – 2019</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">American</span>
+      <span class="meta-tag">Literary Fiction</span>
+      <span class="meta-tag">Nobel Laureate</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Toni Morrison was an American novelist, editor, and
+      essayist whose literature explores African-American
+      experience, history, memory, identity, community,
+      and the lasting consequences of racism. Her writing
+      combines richly layered storytelling, symbolism,
+      folklore, and historical narratives.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>Beloved</li>
+      <li>The Bluest Eye</li>
+      <li>Song of Solomon</li>
+      <li>Sula</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- OSCAR WILDE -->
+
+<article class="author-entry" id="wilde">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/wilde.jpg"
+           alt="Oscar Wilde">
+    </div>
+    <div class="portrait-caption">The writer</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Oscar Wilde</h3>
+    <div class="author-dates">1854 – 1900</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">Irish</span>
+      <span class="meta-tag">Aestheticism</span>
+      <span class="meta-tag">Literary Satire</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Oscar Wilde was an Irish writer, poet, and playwright
+      associated with aestheticism. Renowned for his wit,
+      epigrams, and criticism of social conventions, Wilde
+      explored art, beauty, morality, hypocrisy, and the
+      contradictions of Victorian society through drama,
+      fiction, and essays.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>The Picture of Dorian Gray</li>
+      <li>The Importance of Being Earnest</li>
+      <li>De Profundis</li>
+      <li>The Happy Prince and Other Tales</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- SIMONE DE BEAUVOIR -->
+
+<article class="author-entry" id="simone-de-beauvoir">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/simone.jpg"
+           alt="Simone de Beauvoir">
+    </div>
+    <div class="portrait-caption">The philosopher</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Simone de Beauvoir</h3>
+    <div class="author-dates">1908 – 1986</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">French</span>
+      <span class="meta-tag">Existentialism</span>
+      <span class="meta-tag">Feminist Philosophy</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Simone de Beauvoir was a French philosopher, writer,
+      and intellectual whose work examined freedom, ethics,
+      gender, social structures, and the conditions shaping
+      human existence. Her philosophical and literary writing
+      played a significant role in existentialist thought
+      and feminist theory.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>The Second Sex</li>
+      <li>The Ethics of Ambiguity</li>
+      <li>She Came to Stay</li>
+      <li>The Mandarins</li>
+    </ul>
+  </div>
+</article>
+
+<div class="author-divider">✦ ❧ ✦</div>
+
+<!-- SYLVIA PLATH -->
+
+<article class="author-entry" id="sylvia-plath">
+  <div class="author-portrait">
+    <div class="portrait-frame">
+      <img src="assets/images/silvia.jpg"
+           alt="Sylvia Plath">
+    </div>
+    <div class="portrait-caption">The poet</div>
+  </div>
+
+  <div class="author-details">
+    <h3>Sylvia Plath</h3>
+    <div class="author-dates">1932 – 1963</div>
+
+    <div class="author-meta">
+      <span class="meta-tag">American</span>
+      <span class="meta-tag">Poetry</span>
+      <span class="meta-tag">Confessional Writing</span>
+    </div>
+
+    <h4>About</h4>
+    <p>
+      Sylvia Plath was an American poet and novelist
+      whose writing is distinguished by its intense imagery,
+      emotional precision, and exploration of identity,
+      family, social expectations, and the complexities
+      of personal experience. Her poetry is frequently
+      associated with the confessional literary movement.
+    </p>
+
+    <h4>Notable Works</h4>
+    <ul class="works">
+      <li>Ariel</li>
+      <li>The Bell Jar</li>
+      <li>The Colossus and Other Poems</li>
+    </ul>
+  </div>
+</article>
+
+</section>
+
+<!-- BOOKS -->
+
+<div class="section-heading" id="books-section">
+  <div class="ornament">❧</div>
+  <h2>The Books</h2>
+  <p>A catalogue of reading, impressions, and remembered pages.</p>
+</div>
 
 <nav class="filters" aria-label="Filter books by genre">
 
@@ -366,119 +1144,95 @@ footer p {
 
 </nav>
 
-<section class="books" id="books">
+<section class="books">
 
   <article class="book" data-genre="fiction">
-
     <div class="cover">
-      <span>Your next book</span>
+      <span>Book cover</span>
     </div>
 
     <div class="book-info">
-
       <h3>Book title</h3>
+      <div class="book-author">Author's name</div>
+      <div class="book-genre">FICTION</div>
 
-      <div class="author">Author's name</div>
-
-      <div class="genre">FICTION</div>
-
-      <p class="impression">
-        A space for your personal impression,
-        thoughts, or a few words about the book.
+      <p class="book-impression">
+        A space for personal impressions, thoughts,
+        or a few words about the book.
       </p>
 
-      <div class="rating">☆ ☆ ☆ ☆ ☆</div>
-
+      <div class="book-rating">☆ ☆ ☆ ☆ ☆</div>
     </div>
-
   </article>
 
   <article class="book" data-genre="classics">
-
     <div class="cover">
-      <span>Your next book</span>
+      <span>Book cover</span>
     </div>
 
     <div class="book-info">
-
       <h3>Book title</h3>
+      <div class="book-author">Author's name</div>
+      <div class="book-genre">CLASSICS</div>
 
-      <div class="author">Author's name</div>
-
-      <div class="genre">CLASSICS</div>
-
-      <p class="impression">
+      <p class="book-impression">
         What you thought of the book,
         what stayed with you, or what you disliked.
       </p>
 
-      <div class="rating">☆ ☆ ☆ ☆ ☆</div>
-
+      <div class="book-rating">☆ ☆ ☆ ☆ ☆</div>
     </div>
-
   </article>
 
   <article class="book" data-genre="philosophy">
-
     <div class="cover">
-      <span>Your next book</span>
+      <span>Book cover</span>
     </div>
 
     <div class="book-info">
-
       <h3>Book title</h3>
+      <div class="book-author">Author's name</div>
+      <div class="book-genre">PHILOSOPHY</div>
 
-      <div class="author">Author's name</div>
-
-      <div class="genre">PHILOSOPHY</div>
-
-      <p class="impression">
-        Notes, reflections, and ideas
-        worth revisiting.
+      <p class="book-impression">
+        Notes, reflections, and ideas worth revisiting.
       </p>
 
-      <div class="rating">☆ ☆ ☆ ☆ ☆</div>
-
+      <div class="book-rating">☆ ☆ ☆ ☆ ☆</div>
     </div>
-
   </article>
 
   <article class="book" data-genre="other">
-
     <div class="cover">
-      <span>Your next book</span>
+      <span>Book cover</span>
     </div>
 
     <div class="book-info">
-
       <h3>Book title</h3>
+      <div class="book-author">Author's name</div>
+      <div class="book-genre">OTHER</div>
 
-      <div class="author">Author's name</div>
-
-      <div class="genre">OTHER</div>
-
-      <p class="impression">
-        A short personal note to accompany
-        this book in your collection.
+      <p class="book-impression">
+        A short personal note to accompany this book.
       </p>
 
-      <div class="rating">☆ ☆ ☆ ☆ ☆</div>
-
+      <div class="book-rating">☆ ☆ ☆ ☆ ☆</div>
     </div>
-
   </article>
 
 </section>
+
+<!-- PASSAGES -->
 
 <section class="quote-section">
 
   <div class="ornament">❧</div>
 
-  <h2>Favourite passages</h2>
+  <h2>Favourite Passages</h2>
 
   <p>
-    A separate space for sentences,
-    passages, and quotations collected from books.
+    Sentences, passages, and quotations collected
+    from books, kept for another reading.
   </p>
 
   <p>
