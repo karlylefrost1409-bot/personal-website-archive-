@@ -9,11 +9,11 @@
 <style>
 :root {
   --paper: #eee5d5;
-  --light: #f7f1e7;
-  --ink: #302820;
-  --muted: #766656;
-  --border: #b7a58e;
-  --accent: #755c4a;
+  --paper-light: #f7f0e5;
+  --ink: #29231f;
+  --muted: #776b5e;
+  --line: #b9a995;
+  --shadow: rgba(40, 30, 20, .18);
 }
 
 * {
@@ -26,16 +26,17 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
   color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.7;
   background:
-    radial-gradient(ellipse at 20% 15%, #eee4d3, transparent 55%),
-    #d6c7b2;
+    radial-gradient(ellipse at 20% 20%, rgba(255,255,255,.42), transparent 55%),
+    radial-gradient(ellipse at 80% 75%, rgba(130,100,70,.09), transparent 50%),
+    var(--paper);
+  font-family: Georgia, "Times New Roman", serif;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* LACE ON BOTH SIDES */
+/* ===== VERTICAL LACE PANELS ===== */
 
 body::before,
 body::after {
@@ -43,14 +44,14 @@ body::after {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: clamp(38px, 8vw, 100px);
-  z-index: 10;
+  width: clamp(35px, 7vw, 88px);
+  z-index: 5;
   pointer-events: none;
   background-image: url("assets/decorations/lace-side.png");
   background-repeat: repeat-y;
   background-position: center top;
   background-size: 100% 420px;
-  opacity: .9;
+  opacity: .88;
 }
 
 body::before {
@@ -62,372 +63,410 @@ body::after {
   transform: scaleX(-1);
 }
 
-/* MAIN PAPER */
+/* ===== PAGE ===== */
 
 .page {
   position: relative;
-  width: 88%;
-  max-width: 1050px;
+  width: min(100% - 150px, 1050px);
   min-height: 100vh;
-  margin: auto;
-  padding: 35px 50px;
-  background:
-    radial-gradient(ellipse at top left, rgba(255,255,255,.5), transparent 55%),
-    linear-gradient(130deg, #f5eddf, #eee5d5, #e9decc);
-  box-shadow: 0 0 30px rgba(48,40,32,.2);
-  z-index: 1;
+  margin: 35px auto;
+  padding: 38px 45px 55px;
+  background: rgba(248, 242, 231, .72);
+  border: 1px solid rgba(130, 108, 83, .35);
+  box-shadow: 0 8px 35px var(--shadow);
 }
 
-.page::before {
-  content: "";
+/* ===== CORNER LACE ===== */
+
+.lace-corner {
   position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(130,105,78,.25);
+  width: 115px;
+  height: 115px;
   pointer-events: none;
+  z-index: 2;
+  background-image: url("assets/decorations/lace-side.png");
+  background-repeat: no-repeat;
+  background-size: 190px auto;
+  opacity: .72;
 }
 
-/* HEADER */
+.lace-corner.top-left {
+  top: 0;
+  left: 0;
+  background-position: left top;
+}
+
+.lace-corner.top-right {
+  top: 0;
+  right: 0;
+  transform: scaleX(-1);
+  background-position: left top;
+}
+
+.lace-corner.bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: scaleY(-1);
+  background-position: left top;
+}
+
+.lace-corner.bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: scale(-1);
+  background-position: left top;
+}
+
+/* ===== HEADER ===== */
 
 header {
   text-align: center;
-  padding: 22px 0 28px;
+  padding: 24px 10px 18px;
+  position: relative;
 }
 
 .ornament {
-  color: var(--accent);
-  letter-spacing: 8px;
-  font-size: 19px;
+  color: #78664f;
+  letter-spacing: 7px;
+  font-size: 17px;
+  margin: 8px 0 17px;
 }
 
-header h1 {
-  font-size: clamp(28px, 5vw, 46px);
+h1 {
+  font-size: clamp(30px, 5vw, 48px);
   font-weight: normal;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   margin: 10px 0;
 }
 
 .subtitle {
-  font-size: 13px;
   color: var(--muted);
   font-style: italic;
-  letter-spacing: 2px;
+  font-size: 15px;
 }
 
-/* NAVIGATION */
+/* ===== NAVIGATION ===== */
 
 nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 7px;
-  padding: 17px 0;
+  gap: 9px 18px;
+  padding: 22px 5px;
   margin: 15px 0 35px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 nav a {
   color: var(--ink);
   text-decoration: none;
-  font-size: 12px;
-  padding: 6px 10px;
-  border: 1px solid transparent;
-  transition: .25s;
-}
-
-nav a:hover,
-nav a:focus-visible {
-  border-color: var(--border);
-  background: rgba(255,255,255,.35);
-}
-
-/* INTRODUCTION */
-
-.introduction {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  align-items: center;
-  gap: 40px;
-  margin: 35px 0;
-}
-
-.portrait-frame {
-  background: var(--light);
-  padding: 10px;
-  border: 1px solid var(--border);
-  box-shadow: 3px 5px 12px rgba(48,40,32,.15);
-  transform: rotate(-1deg);
-}
-
-.portrait-placeholder {
-  min-height: 310px;
-  background: #ded1bf;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: var(--muted);
-  font-style: italic;
   font-size: 13px;
-  padding: 20px;
+  transition: color .25s;
 }
 
-.portrait-caption {
+nav a:hover {
+  color: #96734e;
+  text-decoration: underline;
+}
+
+/* ===== INTRODUCTION ===== */
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(180px, .8fr) 1.2fr;
+  gap: 35px;
+  align-items: center;
+  margin: 35px 0 25px;
+}
+
+.portrait {
+  min-height: 330px;
+  background: #e3d8c8;
+  border: 1px solid #c5b49f;
+  padding: 10px;
+  box-shadow: 3px 5px 13px var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  font-size: 11px;
   color: var(--muted);
-  margin: 8px 0 0;
+  font-size: 13px;
+  font-style: italic;
 }
 
-.introduction h2 {
+.portrait img {
+  width: 100%;
+  height: 100%;
+  min-height: 308px;
+  object-fit: cover;
+}
+
+.intro-text h2 {
+  font-size: 28px;
   font-weight: normal;
-  font-size: 27px;
-  margin: 0 0 15px;
+  margin: 0 0 17px;
 }
 
-.introduction p {
+.intro-text p {
   font-size: 15px;
   line-height: 1.9;
 }
 
+/* ===== DIVIDERS ===== */
+
 .divider {
   text-align: center;
-  color: var(--accent);
-  letter-spacing: 8px;
-  margin: 25px 0;
+  color: #8a765d;
+  letter-spacing: 6px;
+  margin: 35px 0;
 }
 
-/* ENVELOPE */
+/* ===== LETTER ===== */
 
-.letter-section {
+.letter-area {
   text-align: center;
-  max-width: 680px;
-  margin: 40px auto;
+  margin: 30px auto;
 }
 
-.envelope-button {
-  padding: 15px 26px;
-  border: 1px solid var(--border);
-  background: #e4d6c3;
+.letter-button {
+  background: transparent;
+  border: 1px solid #a9967e;
+  padding: 13px 24px;
   color: var(--ink);
   font-family: Georgia, serif;
-  font-size: 15px;
+  font-size: 14px;
   cursor: pointer;
-  transition: .25s;
+  transition: background .3s;
 }
 
-.envelope-button:hover {
-  background: #d9c8b1;
+.letter-button:hover {
+  background: #e7dccb;
 }
 
 .letter {
   display: none;
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 25px 30px;
+  background: rgba(255,255,255,.28);
+  border: 1px solid #c9b9a4;
   text-align: left;
-  margin-top: 20px;
-  padding: 26px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.25);
-}
-
-.letter.open {
-  display: block;
-  animation: appear .4s ease;
-}
-
-.letter p {
-  font-size: 14px;
   line-height: 1.9;
+  animation: appear .6s ease;
 }
 
-.signature {
-  text-align: right;
-  font-style: italic;
+.letter.show {
+  display: block;
 }
 
-/* QUOTATIONS */
+/* ===== QUOTATION ===== */
 
 .quote-section {
-  max-width: 680px;
-  margin: 45px auto;
   text-align: center;
+  margin: 45px auto;
+  max-width: 650px;
 }
 
 .quote-section h2 {
-  font-size: 22px;
   font-weight: normal;
+  font-size: 24px;
 }
 
 .quote-card {
   padding: 25px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.22);
+  margin: 20px 0;
+  background: rgba(255,255,255,.25);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .quote-mark {
-  color: var(--accent);
-  font-size: 35px;
+  font-size: 40px;
+  color: #99836a;
+  line-height: 1;
 }
 
-#quoteText {
-  font-size: 17px;
+#quote {
+  font-size: 19px;
   font-style: italic;
+  line-height: 1.7;
 }
 
-#quoteAuthor,
-#quoteCategory {
+#quote-author {
   color: var(--muted);
-  font-size: 12px;
-}
-
-#quoteCategory {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 10px;
+  font-size: 13px;
+  margin-top: 15px;
 }
 
 .quote-button {
-  padding: 8px 17px;
-  border: 1px solid var(--border);
   background: transparent;
-  color: var(--ink);
+  border: 1px solid #aa9984;
+  padding: 10px 18px;
   font-family: Georgia, serif;
   cursor: pointer;
+  color: var(--ink);
 }
 
-/* HIDDEN DETAIL */
+/* ===== HIDDEN DETAIL ===== */
 
-.hidden-section {
+.hidden-area {
   text-align: center;
-  margin: 45px 0;
+  margin: 45px 0 25px;
 }
 
-.secret-button {
-  background: none;
+.hidden-button {
   border: none;
-  color: var(--accent);
-  font-size: 24px;
+  background: transparent;
+  color: #88745b;
+  font-size: 22px;
   cursor: pointer;
+  padding: 10px;
 }
 
-.secret-message {
+.hidden-message {
   display: none;
+  max-width: 450px;
+  margin: 10px auto;
   color: var(--muted);
+  font-size: 14px;
   font-style: italic;
-  font-size: 13px;
+  line-height: 1.8;
 }
 
-.secret-message.visible {
+.hidden-message.show {
   display: block;
+  animation: appear .5s ease;
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 
 footer {
   text-align: center;
-  border-top: 1px solid var(--border);
-  padding: 25px 0;
+  border-top: 1px solid var(--line);
   margin-top: 45px;
+  padding-top: 25px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 2;
 }
 
-/* CLOCK AND TOP BUTTON */
+/* ===== CLOCK ===== */
 
 .clock {
   position: fixed;
-  right: 15px;
-  bottom: 15px;
-  z-index: 12;
+  right: 18px;
+  bottom: 17px;
+  z-index: 8;
   padding: 8px 12px;
-  background: var(--paper);
-  border: 1px solid var(--border);
+  background: rgba(247,240,229,.92);
+  border: 1px solid #b8a68f;
+  color: #44392f;
   font-size: 12px;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px var(--shadow);
 }
+
+/* ===== BACK TO TOP ===== */
 
 .top-button {
   position: fixed;
-  left: 15px;
-  bottom: 15px;
-  z-index: 12;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  background: var(--paper);
+  left: 18px;
+  bottom: 17px;
+  z-index: 8;
+  background: rgba(247,240,229,.92);
+  border: 1px solid #b8a68f;
   color: var(--ink);
+  padding: 8px 12px;
   cursor: pointer;
 }
 
-/* MOBILE */
+/* ===== ANIMATION ===== */
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== MOBILE ===== */
 
 @media (max-width: 700px) {
   body::before,
   body::after {
-    width: 30px;
-    opacity: .8;
+    width: 27px;
+    opacity: .7;
   }
 
   .page {
-    width: 90%;
-    padding: 25px 22px;
+    width: calc(100% - 58px);
+    margin: 15px auto;
+    padding: 25px 17px 40px;
   }
 
-  .page::before {
-    inset: 7px;
-  }
-
-  .introduction {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .portrait-frame {
-    width: 85%;
-    max-width: 280px;
-    margin: auto;
-  }
-
-  .introduction > div:last-child {
-    text-align: center;
+  .lace-corner {
+    width: 65px;
+    height: 65px;
+    background-size: 120px auto;
   }
 
   nav {
-    gap: 4px;
+    gap: 12px;
+    padding: 18px 4px;
   }
 
   nav a {
-    font-size: 11px;
-    padding: 5px 7px;
+    font-size: 12px;
   }
 
-  .letter {
-    padding: 18px;
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .portrait {
+    width: min(100%, 300px);
+    min-height: 300px;
+    margin: auto;
+  }
+
+  .portrait img {
+    min-height: 278px;
+  }
+
+  .intro-text {
+    text-align: center;
+  }
+
+  .intro-text h2 {
+    font-size: 25px;
   }
 
   .clock {
-    right: 7px;
-    bottom: 7px;
+    right: 8px;
+    bottom: 8px;
+    font-size: 10px;
   }
 
   .top-button {
-    left: 7px;
-    bottom: 7px;
+    left: 8px;
+    bottom: 8px;
   }
 }
 
-@media (max-width: 400px) {
-  body::before,
-  body::after {
-    width: 22px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .page {
-    width: 92%;
-    padding: 20px 16px;
-  }
-
-  header h1 {
-    letter-spacing: 1px;
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
   }
 }
 </style>
@@ -435,195 +474,192 @@ footer {
 
 <body>
 
-<div class="page">
+<div class="page" id="top">
 
-<header>
-  <div class="ornament">❦ · · · ❦</div>
-  <h1>Umida Xolmirzayeva</h1>
-  <p class="subtitle">A personal collection of various things</p>
-  <div class="ornament">✧ · · · ✧</div>
-</header>
+  <div class="lace-corner top-left"></div>
+  <div class="lace-corner top-right"></div>
+  <div class="lace-corner bottom-left"></div>
+  <div class="lace-corner bottom-right"></div>
 
-<nav aria-label="Main navigation">
-  <a href="about.html">About</a>
-  <a href="archives/diary.html">Diary</a>
-  <a href="archives/literature.html">Literature</a>
-  <a href="archives/music.html">Music</a>
-  <a href="archives/visual-arts.html">Visual Arts</a>
-  <a href="archives/photography.html">Photography</a>
-  <a href="archives/cinema.html">Cinema</a>
-  <a href="archives/writing.html">Writing</a>
-  <a href="archives/languages.html">Languages</a>
-  <a href="archives/psychology-philosophy.html">Psychology & Philosophy</a>
-  <a href="archives/history-culture.html">History & Culture</a>
-  <a href="archives/cabinet.html">Cabinet of Curiosities</a>
-</nav>
+  <header>
+    <div class="ornament">❦ · · · ❦</div>
+    <h1>Umida Xolmirzayeva</h1>
+    <p class="subtitle">A personal collection of various things</p>
+    <div class="ornament">✧ · · · ✧</div>
+  </header>
 
-<main>
+  <nav aria-label="Main navigation">
+    <a href="about.html">About</a>
+    <a href="diary.html">Diary</a>
+    <a href="literature.html">Literature</a>
+    <a href="music.html">Music</a>
+    <a href="visual-arts.html">Visual Arts</a>
+    <a href="photography.html">Photography</a>
+    <a href="cinema.html">Cinema</a>
+    <a href="writing.html">Writing</a>
+    <a href="languages.html">Languages</a>
+    <a href="psychology-philosophy.html">Psychology & Philosophy</a>
+    <a href="history-culture.html">History & Culture</a>
+    <a href="curiosities.html">Cabinet of Curiosities</a>
+  </nav>
 
-<section class="introduction">
+  <main>
 
-  <div>
-    <div class="portrait-frame">
-      <div class="portrait-placeholder">
-        Portrait photograph<br>To be added
+    <section class="intro">
+      <div class="portrait">
+        <!-- Add your portrait image here later -->
+        Portrait photograph<br>
+        To be added
       </div>
-      <p class="portrait-caption">A portrait, eventually.</p>
-    </div>
-  </div>
 
-  <div>
-    <h2>Welcome, stranger.</h2>
-    <p>
-      A small collection of things I find beautiful,
-      thoughts I don't want to lose, books I've read,
-      music I return to, and fragments of everyday life.
-    </p>
-    <p>
-      Consider this a little corner of the internet
-      I made entirely my own.
-    </p>
+      <div class="intro-text">
+        <h2>Welcome, stranger.</h2>
+        <p>
+          A small collection of things I find beautiful, thoughts I don't
+          want to lose, books I've read, music I return to, and fragments
+          of everyday life.
+        </p>
+        <p>
+          Consider this a little corner of the internet I made entirely my own.
+        </p>
+      </div>
+    </section>
+
     <div class="divider">❦ · · · ❦</div>
-  </div>
 
-</section>
+    <section class="letter-area">
+      <button class="letter-button" id="letterButton" aria-expanded="false">
+        ✉ Open the letter
+      </button>
 
-<section class="letter-section">
+      <div class="letter" id="letter">
+        <p>If you've found your way here, welcome.</p>
 
-  <button class="envelope-button" id="letterButton"
-  aria-expanded="false" aria-controls="letter">
-    ✉ Open the letter
-  </button>
+        <p>
+          I'm Umida, a student with an interest in literature, art, music,
+          and the many ways people express and interpret the world around them.
+        </p>
 
-  <div class="letter" id="letter">
-    <p>If you've found your way here, welcome.</p>
-    <p>
-      I'm Umida, a student with an interest in literature,
-      art, music, and the many ways people express and
-      interpret the world around them.
-    </p>
-    <p>
-      Beyond my academic studies, I enjoy photography,
-      cinema, writing, and exploring subjects ranging
-      from linguistics and psychology to philosophy
-      and history.
-    </p>
-    <p>
-      This website is a personal collection of these
-      interests, bringing together things I enjoy,
-      ideas I explore, and materials I wish to preserve.
-    </p>
-    <p class="signature">Umida</p>
-  </div>
+        <p>
+          Beyond my academic studies, I enjoy photography, cinema, writing,
+          and exploring subjects ranging from linguistics and psychology
+          to philosophy and history.
+        </p>
 
-</section>
+        <p>
+          This website is a personal collection of these interests,
+          bringing together things I enjoy, ideas I explore, and materials
+          I wish to preserve.
+        </p>
 
-<div class="divider">✧ · · · ✧</div>
+        <p style="text-align:right;">Umida</p>
+      </div>
+    </section>
 
-<section class="quote-section">
-  <h2>A thought to keep</h2>
+    <div class="divider">✧ · · · ✧</div>
 
-  <div class="quote-card">
-    <div class="quote-mark">“</div>
-    <p id="quoteText">
-      Some things are too interesting to be forgotten.
-    </p>
-    <p id="quoteAuthor">Collected thoughts</p>
-    <p id="quoteCategory">Reflection</p>
-    <button class="quote-button" id="quoteButton">
-      Another thought
-    </button>
-  </div>
-</section>
+    <section class="quote-section">
+      <h2>A thought to keep</h2>
 
-<section class="hidden-section">
-  <button class="secret-button" id="secretButton"
-  aria-label="Reveal a little secret" aria-expanded="false">
-    ✣
-  </button>
+      <div class="quote-card">
+        <div class="quote-mark">“</div>
+        <p id="quote">
+          Some things are too interesting to be forgotten.
+        </p>
+        <div id="quote-author">Collected thoughts</div>
+      </div>
 
-  <p class="secret-message" id="secretMessage">
-    You found a little detail hidden away.
-    Some things are more enjoyable when discovered by accident.
-  </p>
-</section>
+      <button class="quote-button" id="newQuote">
+        Another thought
+      </button>
+    </section>
 
-</main>
+    <section class="hidden-area">
+      <button class="hidden-button" id="secretButton"
+              aria-label="Reveal a hidden detail"
+              aria-expanded="false">
+        ✣
+      </button>
 
-<footer>
-  <div class="ornament">❦</div>
-  <p>Collected, arranged and occasionally neglected.</p>
-  <p>© Umida Xolmirzayeva</p>
-</footer>
+      <p class="hidden-message" id="secretMessage">
+        You found a little detail hidden away. Some things are more
+        enjoyable when discovered by accident.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="ornament">❦</div>
+    Collected, arranged and occasionally neglected.
+    <br>
+    © Umida Xolmirzayeva
+  </footer>
 
 </div>
 
-<div class="clock" id="clock">00:00:00</div>
+<div class="clock" id="clock" aria-label="Current time">00:00:00</div>
 
-<button class="top-button" id="topButton"
-aria-label="Back to top">↑</button>
+<button class="top-button" id="topButton" aria-label="Back to top">
+  ↑
+</button>
 
 <script>
-
-/* LETTER */
+/* ===== LETTER ===== */
 
 const letterButton = document.getElementById("letterButton");
 const letter = document.getElementById("letter");
 
-letterButton.addEventListener("click", function() {
-  const open = letter.classList.toggle("open");
-  letterButton.setAttribute("aria-expanded", open);
-  letterButton.textContent = open
-    ? "✉ Close the letter"
-    : "✉ Open the letter";
+letterButton.addEventListener("click", function () {
+  const isOpen = letter.classList.toggle("show");
+  letterButton.setAttribute("aria-expanded", isOpen);
+  letterButton.textContent = isOpen ? "✉ Close the letter" : "✉ Open the letter";
 });
 
-/* QUOTATIONS */
+/* ===== RANDOM QUOTATIONS ===== */
 
 const quotations = [
   {
     text: "Some things are too interesting to be forgotten.",
-    author: "Collected thoughts",
-    category: "Reflection"
+    author: "Collected thoughts"
   },
   {
-    text: "There is something wonderful about noticing the little things.",
-    author: "Collected thoughts",
-    category: "Everyday life"
+    text: "There is always something more to discover.",
+    author: "Collected thoughts"
   },
   {
-    text: "A book is a place one can return to.",
-    author: "Collected thoughts",
-    category: "Literature"
+    text: "A room without books is like a body without a soul.",
+    author: "Cicero"
   },
   {
-    text: "The world is full of things worth looking at twice.",
-    author: "Collected thoughts",
-    category: "Observation"
+    text: "The world is full of obvious things which nobody by any chance ever observes.",
+    author: "Arthur Conan Doyle"
+  },
+  {
+    text: "I have measured out my life with coffee spoons.",
+    author: "T. S. Eliot"
   }
 ];
 
-document.getElementById("quoteButton").addEventListener("click", function() {
-  const quote = quotations[
-    Math.floor(Math.random() * quotations.length)
-  ];
+document.getElementById("newQuote").addEventListener("click", function () {
+  const randomIndex = Math.floor(Math.random() * quotations.length);
+  const selected = quotations[randomIndex];
 
-  document.getElementById("quoteText").textContent = quote.text;
-  document.getElementById("quoteAuthor").textContent = quote.author;
-  document.getElementById("quoteCategory").textContent = quote.category;
+  document.getElementById("quote").textContent = selected.text;
+  document.getElementById("quote-author").textContent = selected.author;
 });
 
-/* HIDDEN DETAIL */
+/* ===== HIDDEN DETAIL ===== */
 
 const secretButton = document.getElementById("secretButton");
 const secretMessage = document.getElementById("secretMessage");
 
-secretButton.addEventListener("click", function() {
-  const visible = secretMessage.classList.toggle("visible");
-  secretButton.setAttribute("aria-expanded", visible);
+secretButton.addEventListener("click", function () {
+  const isOpen = secretMessage.classList.toggle("show");
+  secretButton.setAttribute("aria-expanded", isOpen);
 });
 
-/* CLOCK */
+/* ===== VINTAGE CLOCK ===== */
 
 function updateClock() {
   const now = new Date();
@@ -639,12 +675,14 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-/* BACK TO TOP */
+/* ===== BACK TO TOP ===== */
 
-document.getElementById("topButton").addEventListener("click", function() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+document.getElementById("topButton").addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });
-
 </script>
 
 </body>
