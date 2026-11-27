@@ -5,786 +5,569 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Umida's Archive</title>
-
 <style>
 :root {
-  --paper: #eee5d5;
-  --dark: #241c19;
-  --ink: #44352d;
-  --lace: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
-  --antique-gold: #a98b62;
+  --paper:#eee5d5;
+  --ink:#44352d;
+  --lace:url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;
+  background-image:linear-gradient(rgba(238,229,213,.94),rgba(238,229,213,.94)),var(--lace);
+  background-size:cover;background-attachment:fixed;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+  border:14px solid transparent;border-image:var(--lace) 30 stretch;opacity:.55;
+}
+a{color:var(--ink)}
+.page{max-width:1100px;margin:auto;padding:65px 30px 100px}
+header{text-align:center;margin-bottom:35px}
+header h1{font-size:clamp(35px,6vw,65px);font-weight:normal;letter-spacing:5px;margin:10px 0}
+.subtitle{font-style:italic;letter-spacing:2px;font-size:15px}
+.rule{width:70%;margin:30px auto;border:0;border-top:1px solid #8b7763}
+
+/* INTRO */
+
+.intro{
+  display:grid;
+  grid-template-columns:260px 280px minmax(0,470px);
+  gap:28px;align-items:center;justify-content:center;
+  margin:50px auto;max-width:1100px;
 }
 
-* {
-  box-sizing: border-box;
+/* AUTHOR WALL */
+
+.author-wall{
+  position:relative;width:260px;height:310px;justify-self:center;
 }
 
-html {
-  scroll-behavior: smooth;
+/* FRAME BASE */
+
+.mini-frame{
+  position:absolute;display:block;padding:5px;
+  background:linear-gradient(135deg,#806344,#38271d 25%,#211915 55%,#735337 80%,#30221a);
+  border:4px ridge #806344;
+  box-shadow:0 0 0 2px #2a201b,0 0 0 4px #b49a70,3px 5px 9px rgba(0,0,0,.35);
+}
+.mini-frame::before{
+  content:"";position:absolute;inset:4px;border:1px solid #c2a575;
+  pointer-events:none;z-index:2;
+}
+.mini-frame img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  border:1px solid #2b211b;filter:sepia(12%) contrast(.95);
+}
+.mini-frame::after{
+  content:"❦";position:absolute;top:-12px;left:50%;
+  transform:translateX(-50%);color:#a98b62;font-size:13px;
+  text-shadow:1px 1px 2px #211711;z-index:3;
 }
 
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
-  background-image:
-    linear-gradient(rgba(238,229,213,0.94), rgba(238,229,213,0.94)),
-    var(--lace);
-  background-size: cover;
-  background-attachment: fixed;
+/* 1 NIETZSCHE: DARK BAROQUE */
+
+.frame-nietzsche{
+  width:60px;height:82px;top:5px;left:88px;
+  border:5px ridge #29211c;
+  background:linear-gradient(135deg,#4b4035,#171411,#61503a);
+  transform:rotate(3deg);
+}
+.frame-nietzsche::before{border:2px double #88704e;inset:3px}
+
+/* 2 DONNA: ROCOCO OVAL */
+
+.frame-donna{
+  width:72px;height:96px;top:103px;left:5px;
+  padding:6px;border-radius:48%;
+  background:linear-gradient(135deg,#b08a53,#67442a,#2b2018,#a28354);
+  border:5px ridge #a28354;
+  box-shadow:0 0 0 2px #33241b,0 0 0 4px #bda078,3px 5px 9px rgba(0,0,0,.35);
+}
+.frame-donna::before{inset:4px;border-radius:48%;border:2px solid #c2a575}
+.frame-donna img{border-radius:48%}
+
+/* 3 DOSTOEVSKY: WALNUT */
+
+.frame-dostoevsky{
+  width:61px;height:82px;top:120px;right:3px;
+  border:5px ridge #543521;
+  background:linear-gradient(135deg,#805437,#3c2418,#241813);
+  transform:rotate(5deg);
+}
+.frame-dostoevsky::before{border:1px solid #a8875b;inset:4px}
+
+/* 4 KAFKA: GOTHIC ARCH */
+
+.frame-kafka{
+  width:57px;height:78px;top:3px;left:7px;
+  border:4px ridge #49392d;
+  border-radius:28px 28px 3px 3px;
+  background:linear-gradient(135deg,#66513d,#211915);
+  transform:rotate(-6deg);
+}
+.frame-kafka::before{border-radius:25px 25px 0 0}
+
+/* 5 CAMUS: LOUIS XVI */
+
+.frame-camus{
+  width:58px;height:78px;top:8px;right:6px;
+  border:5px ridge #b09a72;
+  background:linear-gradient(135deg,#bba178,#6d5436,#30251b);
+  transform:rotate(6deg);
+}
+.frame-camus::before{border:2px solid #d0b88a;inset:4px}
+
+/* 6 CLARICE: FLORAL */
+
+.frame-clarice{
+  width:60px;height:81px;top:58px;left:32px;
+  border:5px ridge #7b6245;
+  background:linear-gradient(135deg,#977651,#3e2b1c);
+  transform:rotate(-5deg);
+}
+.frame-clarice::after{content:"❀";font-size:12px;color:#c2a575}
+
+/* 7 OCEAN: OXIDIZED SILVER */
+
+.frame-ocean{
+  width:57px;height:77px;top:59px;right:30px;
+  border:5px ridge #77766e;
+  background:linear-gradient(135deg,#a4a39b,#4d4c47,#292826);
+  transform:rotate(5deg);
+}
+.frame-ocean::before{border:1px solid #b9b8b0}
+
+/* 8 HANYA: MINIATURE GOLD */
+
+.frame-hanya{
+  width:54px;height:73px;top:184px;left:34px;
+  border:4px ridge #a98b62;
+  background:linear-gradient(135deg,#aa8753,#4b3420,#241914);
+  transform:rotate(-6deg);
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  border: 14px solid transparent;
-  border-image: var(--lace) 30 stretch;
-  opacity: 0.55;
+/* 9 SONTAG: DISTRESSED IVORY */
+
+.frame-sontag{
+  width:57px;height:77px;top:188px;right:31px;
+  border:5px ridge #b4a48b;
+  background:linear-gradient(135deg,#ddd0b8,#9c8668,#62513e);
+  transform:rotate(6deg);
+}
+.frame-sontag::before{border:1px solid #e2d2b3}
+
+/* 10 HESSE: MAHOGANY */
+
+.frame-hesse{
+  width:54px;height:73px;top:220px;left:4px;
+  border:5px ridge #74472d;
+  background:linear-gradient(135deg,#985c3b,#422519,#261914);
+  transform:rotate(-4deg);
 }
 
-a {
-  color: var(--ink);
+/* 11 MORRISON: BLACK AND GOLD */
+
+.frame-morrison{
+  width:56px;height:76px;top:232px;right:4px;
+  border:4px ridge #29221c;
+  background:linear-gradient(135deg,#392c23,#15120f);
+  transform:rotate(5deg);
+}
+.frame-morrison::before{border:2px solid #a88a59}
+
+/* 12 WILDE: ROCOCO RECTANGLE */
+
+.frame-wilde{
+  width:54px;height:74px;top:142px;left:83px;
+  border:6px ridge #927148;
+  background:linear-gradient(135deg,#b18a53,#61422b,#211915);
+  transform:rotate(-4deg);
 }
 
-.page {
-  max-width: 1100px;
-  margin: auto;
-  padding: 65px 30px 100px;
+/* 13 SIMONE: OVAL WOOD */
+
+.frame-simone{
+  width:54px;height:73px;top:142px;left:143px;
+  border-radius:48%;
+  border:5px ridge #66432c;
+  background:linear-gradient(135deg,#875c3c,#38251a);
+  transform:rotate(5deg);
 }
+.frame-simone::before{border-radius:48%}
+.frame-simone img{border-radius:48%}
 
-header {
-  text-align: center;
-  margin-bottom: 35px;
+/* 14 SYLVIA: ORNATE BLACK */
+
+.frame-silvia{
+  width:56px;height:76px;top:238px;left:100px;
+  border:5px ridge #211c18;
+  background:linear-gradient(135deg,#4a4036,#1c1714,#65503a);
+  transform:rotate(-3deg);
 }
+.frame-silvia::before{border:2px double #a58a65}
 
-header h1 {
-  font-size: clamp(35px, 6vw, 65px);
-  font-weight: normal;
-  letter-spacing: 5px;
-  margin: 10px 0;
+/* PERSONAL PORTRAIT */
+
+.portrait{
+  width:280px;min-width:230px;height:370px;
+  border:1px solid #8b7763;padding:12px;
+  background:#e5d8c4;display:flex;
+  align-items:center;justify-content:center;text-align:center;
+  font-style:italic;box-shadow:5px 5px 12px rgba(0,0,0,.13);
 }
+.intro-text{max-width:470px;line-height:1.9}
+.intro-text h2{font-size:30px;font-weight:normal}
 
-.subtitle {
-  font-style: italic;
-  letter-spacing: 2px;
-  font-size: 15px;
+/* ENVELOPE */
+
+.envelope-area{text-align:center;margin:45px 0}
+.envelope{
+  display:inline-block;border:1px solid #6d5847;background:#d8c6ae;
+  padding:20px 35px;cursor:pointer;font-family:Georgia,serif;
+  font-size:19px;transition:.3s;
 }
-
-.rule {
-  width: 70%;
-  margin: 30px auto;
-  border: 0;
-  border-top: 1px solid #8b7763;
+.envelope:hover{background:#c8b49b;transform:translateY(-3px)}
+.letter{
+  display:none;max-width:700px;margin:25px auto;padding:30px;
+  border:1px solid #9b8268;background:rgba(255,255,255,.2);line-height:1.9;
 }
+.letter.open{display:block}
 
-/* ===== HOMEPAGE INTRODUCTION ===== */
+/* QUOTES */
 
-.intro {
-  display: grid;
-  grid-template-columns: 150px 280px minmax(0, 470px);
-  gap: 28px;
-  align-items: center;
-  justify-content: center;
-  margin: 50px auto;
-  max-width: 1100px;
+.quote-box{
+  max-width:700px;margin:45px auto;text-align:center;
+  border-top:1px solid #9b8268;border-bottom:1px solid #9b8268;padding:30px;
 }
-
-/* ===== VICTORIAN AUTHOR PORTRAIT WALL ===== */
-
-.author-wall {
-  position: relative;
-  width: 150px;
-  height: 190px;
-  justify-self: center;
+.quote{font-style:italic;line-height:1.8;min-height:60px}
+.quote-button{
+  background:transparent;color:var(--ink);border:1px solid #8b7763;
+  padding:10px 18px;font-family:Georgia,serif;cursor:pointer;margin-top:15px;
 }
+.quote-button:hover{background:#d8c6ae}
 
-/* Shared antique frame styling */
+/* SECRET */
 
-.mini-frame {
-  position: absolute;
-  display: block;
-  padding: 5px;
-  background:
-    linear-gradient(
-      135deg,
-      #806344 0%,
-      #38271d 22%,
-      #211915 48%,
-      #735337 75%,
-      #30221a 100%
-    );
-  border: 3px ridge #806344;
-  box-shadow:
-    0 0 0 2px #2a201b,
-    0 0 0 4px #b49a70,
-    3px 5px 9px rgba(0,0,0,0.35);
+.hidden-detail{text-align:center;margin:35px 0}
+.secret-symbol{cursor:pointer;font-size:25px;user-select:none}
+.secret-text{display:none;margin-top:15px;font-style:italic}
+.secret-text.visible{display:block}
+
+/* NAVIGATION */
+
+.navigation{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:12px;margin:50px auto;
 }
-
-/* Fine gold inner edging */
-
-.mini-frame::before {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: 1px solid #c2a575;
-  pointer-events: none;
-  z-index: 2;
+.navigation a{
+  display:inline-block;text-decoration:none;border:1px solid #8b7763;
+  background:rgba(255,255,255,.13);padding:13px 20px;transition:.2s;
 }
+.navigation a:hover{background:#d5c3ab;transform:translateY(-2px)}
 
-/* Small Victorian ornament above each frame */
+/* FOOTER */
 
-.mini-frame::after {
-  content: "❦";
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #a98b62;
-  font-size: 18px;
-  text-shadow:
-    1px 1px 2px #211711,
-    0 0 3px #d1b88d;
-  z-index: 3;
+footer{text-align:center;font-style:italic;margin-top:70px}
+
+/* CLOCK */
+
+#archive-clock{
+  position:fixed!important;bottom:24px!important;right:24px!important;
+  width:145px!important;height:145px!important;z-index:999999!important;
+  display:block!important;visibility:visible!important;opacity:1!important;
+  pointer-events:none;filter:drop-shadow(3px 5px 6px rgba(0,0,0,.3));
 }
+#archive-clock svg{width:100%;height:100%;display:block;overflow:visible}
 
-.mini-frame img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 1px solid #2b211b;
-  filter: sepia(12%) contrast(0.95);
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+  .intro{grid-template-columns:260px 280px minmax(0,1fr);gap:18px}
 }
-
-/* Nietzsche: small carved rectangular frame */
-
-.frame-nietzsche {
-  width: 65px;
-  height: 88px;
-  top: 0;
-  left: 48px;
-  transform: rotate(3deg);
-  border-radius: 2px;
+@media(max-width:900px){
+  .intro{grid-template-columns:260px 250px}
+  .intro-text{grid-column:1/-1;text-align:center;margin:auto}
+  .portrait{width:250px;min-width:0;height:340px}
 }
-
-/* Donna Tartt: slightly larger oval frame */
-
-.frame-donna {
-  width: 75px;
-  height: 100px;
-  top: 76px;
-  left: 0;
-  padding: 6px;
-  border-radius: 48%;
-  background:
-    linear-gradient(
-      135deg,
-      #94734b,
-      #38271d 25%,
-      #211915 55%,
-      #806344
-    );
-  box-shadow:
-    0 0 0 2px #2a201b,
-    0 0 0 4px #b49a70,
-    3px 5px 9px rgba(0,0,0,0.35);
-}
-
-.frame-donna::before {
-  inset: 4px;
-  border-radius: 48%;
-  border: 1px solid #c2a575;
-}
-
-.frame-donna img {
-  border-radius: 48%;
-}
-
-/* Dostoevsky: matching antique rectangular frame */
-
-.frame-dostoevsky {
-  width: 65px;
-  height: 88px;
-  top: 94px;
-  right: 0;
-  transform: rotate(5deg);
-  border-radius: 2px;
-}
-
-/* ===== PERSONAL PORTRAIT ===== */
-
-.portrait {
-  width: 280px;
-  min-width: 230px;
-  height: 370px;
-  border: 1px solid #8b7763;
-  padding: 12px;
-  background: #e5d8c4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-style: italic;
-  box-shadow: 5px 5px 12px rgba(0,0,0,0.13);
-}
-
-.intro-text {
-  max-width: 470px;
-  line-height: 1.9;
-}
-
-.intro-text h2 {
-  font-size: 30px;
-  font-weight: normal;
-}
-
-/* ===== ENVELOPE AND LETTER ===== */
-
-.envelope-area {
-  text-align: center;
-  margin: 45px 0;
-}
-
-.envelope {
-  display: inline-block;
-  border: 1px solid #6d5847;
-  background: #d8c6ae;
-  padding: 20px 35px;
-  cursor: pointer;
-  font-family: Georgia, serif;
-  font-size: 19px;
-  transition: 0.3s;
-}
-
-.envelope:hover {
-  background: #c8b49b;
-  transform: translateY(-3px);
-}
-
-.letter {
-  display: none;
-  max-width: 700px;
-  margin: 25px auto;
-  padding: 30px;
-  border: 1px solid #9b8268;
-  background: rgba(255,255,255,0.2);
-  line-height: 1.9;
-}
-
-.letter.open {
-  display: block;
-}
-
-/* ===== CHANGING QUOTES ===== */
-
-.quote-box {
-  max-width: 700px;
-  margin: 45px auto;
-  text-align: center;
-  border-top: 1px solid #9b8268;
-  border-bottom: 1px solid #9b8268;
-  padding: 30px;
-}
-
-.quote {
-  font-style: italic;
-  line-height: 1.8;
-  min-height: 60px;
-}
-
-.quote-button {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid #8b7763;
-  padding: 10px 18px;
-  font-family: Georgia, serif;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-.quote-button:hover {
-  background: #d8c6ae;
-}
-
-/* ===== HIDDEN DETAIL ===== */
-
-.hidden-detail {
-  text-align: center;
-  margin: 35px 0;
-}
-
-.secret-symbol {
-  cursor: pointer;
-  font-size: 25px;
-  user-select: none;
-}
-
-.secret-text {
-  display: none;
-  margin-top: 15px;
-  font-style: italic;
-}
-
-.secret-text.visible {
-  display: block;
-}
-
-/* ===== NAVIGATION ===== */
-
-.navigation {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin: 50px auto;
-}
-
-.navigation a {
-  display: inline-block;
-  text-decoration: none;
-  border: 1px solid #8b7763;
-  background: rgba(255,255,255,0.13);
-  padding: 13px 20px;
-  transition: 0.2s;
-}
-
-.navigation a:hover {
-  background: #d5c3ab;
-  transform: translateY(-2px);
-}
-
-/* ===== FOOTER ===== */
-
-footer {
-  text-align: center;
-  font-style: italic;
-  margin-top: 70px;
-}
-
-/* ===== ANALOG CLOCK ===== */
-
-#archive-clock {
-  position: fixed !important;
-  bottom: 24px !important;
-  right: 24px !important;
-  width: 145px !important;
-  height: 145px !important;
-  z-index: 999999 !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  pointer-events: none;
-  filter: drop-shadow(3px 5px 6px rgba(0,0,0,0.3));
-}
-
-#archive-clock svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  overflow: visible;
-}
-
-/* ===== RESPONSIVE LAYOUT ===== */
-
-@media (max-width: 900px) {
-  .intro {
-    grid-template-columns: 130px 250px minmax(0, 1fr);
-    gap: 18px;
-  }
-
-  .portrait {
-    width: 250px;
-    min-width: 0;
-    height: 340px;
-  }
-}
-
-@media (max-width: 650px) {
-  .page {
-    padding: 45px 18px 150px;
-  }
-
-  .intro {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  }
-
-  .author-wall {
-    margin: 0 auto;
-  }
-
-  .portrait {
-    width: 230px;
-    height: 300px;
-  }
-
-  .intro-text {
-    text-align: center;
-  }
-
-  header h1 {
-    letter-spacing: 2px;
-  }
-
-  #archive-clock {
-    width: 105px !important;
-    height: 105px !important;
-    bottom: 12px !important;
-    right: 12px !important;
-  }
-
-  body::before {
-    border-width: 7px;
-  }
+@media(max-width:650px){
+  .page{padding:45px 18px 150px}
+  .intro{display:flex;flex-direction:column;gap:25px}
+  .author-wall{margin:0 auto}
+  .portrait{width:230px;height:300px}
+  .intro-text{text-align:center}
+  header h1{letter-spacing:2px}
+  #archive-clock{width:105px!important;height:105px!important;bottom:12px!important;right:12px!important}
+  body::before{border-width:7px}
 }
 </style>
 </head>
-
 <body>
 
 <div class="page" id="top">
 
 <header>
-  <h1>Umida</h1>
-  <div class="subtitle">A little archive of things I love</div>
+<h1>Umida</h1>
+<div class="subtitle">A little archive of things I love</div>
 </header>
 
 <hr class="rule">
 
 <section class="intro">
 
-  <!-- AUTHOR PORTRAIT WALL -->
+<div class="author-wall">
 
-  <div class="author-wall">
+<div class="mini-frame frame-nietzsche">
+<img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
+</div>
 
-    <div class="mini-frame frame-nietzsche">
-      <img
-        src="assets/images/1795768863633.jpg"
-        alt="Friedrich Nietzsche">
-    </div>
+<div class="mini-frame frame-donna">
+<img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
+</div>
 
-    <div class="mini-frame frame-donna">
-      <img
-        src="assets/images/1795768870490.jpg"
-        alt="Donna Tartt">
-    </div>
+<div class="mini-frame frame-dostoevsky">
+<img src="assets/images/1795768877389.jpg" alt="Fyodor Dostoevsky">
+</div>
 
-    <div class="mini-frame frame-dostoevsky">
-      <img
-        src="assets/images/1795768867389.jpg"
-        alt="Fyodor Dostoevsky">
-    </div>
+<div class="mini-frame frame-kafka">
+<img src="assets/images/kafka.jpg" alt="Franz Kafka">
+</div>
 
-  </div>
+<div class="mini-frame frame-camus">
+<img src="assets/images/camus.jpg" alt="Albert Camus">
+</div>
 
-  <!-- PERSONAL PORTRAIT -->
+<div class="mini-frame frame-clarice">
+<img src="assets/images/clarice.jpg" alt="Clarice Lispector">
+</div>
 
-  <div class="portrait">
-    <div>
-      <p>✧</p>
-      <p>Portrait to be placed here</p>
-      <p>✧</p>
-    </div>
-  </div>
+<div class="mini-frame frame-ocean">
+<img src="assets/images/ocean.jpg" alt="Ocean Vuong">
+</div>
 
-  <!-- WELCOME TEXT -->
+<div class="mini-frame frame-hanya">
+<img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
+</div>
 
-  <div class="intro-text">
-    <h2>Welcome, curious stranger.</h2>
+<div class="mini-frame frame-sontag">
+<img src="assets/images/sontag.jpg" alt="Susan Sontag">
+</div>
 
-    <p>
-      You've somehow wandered into a little corner of the internet
-      that belongs to me. This place collects fragments of my
-      thoughts, books, music, photographs, art, and all the things
-      I find difficult to leave behind.
-    </p>
+<div class="mini-frame frame-hesse">
+<img src="assets/images/hesse.jpg" alt="Hermann Hesse">
+</div>
 
-    <p>
-      Nothing here is particularly orderly. I suppose that is
-      part of the charm.
-    </p>
-  </div>
+<div class="mini-frame frame-morrison">
+<img src="assets/images/morrison.jpg" alt="Toni Morrison">
+</div>
 
-</section>
+<div class="mini-frame frame-wilde">
+<img src="assets/images/wilde.jpg" alt="Oscar Wilde">
+</div>
 
-<!-- ENVELOPE -->
+<div class="mini-frame frame-simone">
+<img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
+</div>
 
-<div class="envelope-area">
-
-  <button class="envelope" id="envelope-button">
-    ✉ Open the letter
-  </button>
-
-  <div class="letter" id="letter">
-
-    <p>
-      Dear visitor,
-    </p>
-
-    <p>
-      I made this little archive to gather pieces of my life and
-      interests in one place. Books I read, music I listen to,
-      paintings I admire, films that stay with me, ideas that
-      occupy my mind, and things I discover by accident.
-    </p>
-
-    <p>
-      Feel free to wander through the pages.
-    </p>
-
-    <p>
-      With regards,<br>
-      The keeper of this archive.
-    </p>
-
-  </div>
+<div class="mini-frame frame-silvia">
+<img src="assets/images/silvia.jpg" alt="Sylvia Plath">
+</div>
 
 </div>
 
-<!-- QUOTE CHANGER -->
+<div class="portrait">
+<div>
+<p>✧</p>
+<p>Portrait to be placed here</p>
+<p>✧</p>
+</div>
+</div>
 
-<section class="quote-box">
-
-  <h2 style="font-weight:normal;">A thought from the shelf</h2>
-
-  <p class="quote" id="quote">
-    "Somewhere, something incredible is waiting to be known."
-  </p>
-
-  <button class="quote-button" id="quote-button">
-    Another thought
-  </button>
+<div class="intro-text">
+<h2>Welcome, curious stranger.</h2>
+<p>
+You've somehow wandered into a little corner of the internet
+that belongs to me. This place collects fragments of my
+thoughts, books, music, photographs, art, and all the things
+I find difficult to leave behind.
+</p>
+<p>
+Nothing here is particularly orderly. I suppose that is
+part of the charm.
+</p>
+</div>
 
 </section>
 
-<!-- HIDDEN DETAIL -->
+<div class="envelope-area">
+<button class="envelope" id="envelope-button">✉ Open the letter</button>
+<div class="letter" id="letter">
+<p>Dear visitor,</p>
+<p>
+I made this little archive to gather pieces of my life and
+interests in one place. Books I read, music I listen to,
+paintings I admire, films that stay with me, ideas that
+occupy my mind, and things I discover by accident.
+</p>
+<p>Feel free to wander through the pages.</p>
+<p>With regards,<br>The keeper of this archive.</p>
+</div>
+</div>
+
+<section class="quote-box">
+<h2 style="font-weight:normal;">A thought from the shelf</h2>
+<p class="quote" id="quote">
+"Somewhere, something incredible is waiting to be known."
+</p>
+<button class="quote-button" id="quote-button">Another thought</button>
+</section>
 
 <div class="hidden-detail">
-
-  <span class="secret-symbol" id="secret-symbol" title="Click me">
-    ❧
-  </span>
-
-  <p class="secret-text" id="secret-text">
-    You found a small secret. There are always more things
-    hidden than there appear to be.
-  </p>
-
+<span class="secret-symbol" id="secret-symbol" title="Click me">❧</span>
+<p class="secret-text" id="secret-text">
+You found a small secret. There are always more things
+hidden than there appear to be.
+</p>
 </div>
 
 <hr class="rule">
 
-<!-- PAGE NAVIGATION -->
-
 <nav class="navigation">
-  <a href="about.html">About</a>
-  <a href="diary.html">Diary</a>
-  <a href="literature.html">Literature</a>
-  <a href="music.html">Music</a>
-  <a href="visual-arts.html">Visual Arts</a>
-  <a href="photography.html">Photography</a>
-  <a href="cinema.html">Cinema</a>
-  <a href="writing.html">Writing</a>
-  <a href="languages.html">Languages & Linguistics</a>
-  <a href="psychology-philosophy.html">Psychology & Philosophy</a>
-  <a href="history-culture.html">History & Culture</a>
-  <a href="curiosities.html">Cabinet of Curiosities</a>
+<a href="about.html">About</a>
+<a href="diary.html">Diary</a>
+<a href="literature.html">Literature</a>
+<a href="music.html">Music</a>
+<a href="visual-arts.html">Visual Arts</a>
+<a href="photography.html">Photography</a>
+<a href="cinema.html">Cinema</a>
+<a href="writing.html">Writing</a>
+<a href="languages.html">Languages & Linguistics</a>
+<a href="psychology-philosophy.html">Psychology & Philosophy</a>
+<a href="history-culture.html">History & Culture</a>
+<a href="curiosities.html">Cabinet of Curiosities</a>
 </nav>
 
 <footer>
-  <p>Filed away somewhere between memory and imagination.</p>
-  <a href="#top">Return to the beginning ↑</a>
+<p>Filed away somewhere between memory and imagination.</p>
+<a href="#top">Return to the beginning ↑</a>
 </footer>
 
 </div>
 
-<!-- ===== CLOCK ===== -->
+<!-- CLOCK -->
 
 <div id="archive-clock" aria-label="Analog clock">
-
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 
-  <!-- Outer frame -->
+<circle cx="100" cy="100" r="98" fill="#241c19"/>
+<circle cx="100" cy="100" r="93" fill="#78604a"/>
+<circle cx="100" cy="100" r="88" fill="#241c19"/>
+<circle cx="100" cy="100" r="82" fill="#e8dcc7"/>
 
-  <circle cx="100" cy="100" r="98" fill="#241c19"/>
-  <circle cx="100" cy="100" r="93" fill="#78604a"/>
-  <circle cx="100" cy="100" r="88" fill="#241c19"/>
-  <circle cx="100" cy="100" r="82" fill="#e8dcc7"/>
+<circle cx="100" cy="100" r="77" fill="none" stroke="#78604a" stroke-width="1.5"/>
+<circle cx="100" cy="100" r="73" fill="none" stroke="#241c19" stroke-width=".8"/>
 
-  <!-- Decorative rings -->
+<g stroke="#241c19" stroke-width="2.2">
+<line x1="100" y1="24" x2="100" y2="34"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(30 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(60 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(90 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(120 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(150 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(180 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(210 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(240 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(270 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(300 100 100)"/>
+<line x1="100" y1="24" x2="100" y2="34" transform="rotate(330 100 100)"/>
+</g>
 
-  <circle cx="100" cy="100" r="77"
-          fill="none"
-          stroke="#78604a"
-          stroke-width="1.5"/>
+<g fill="#241c19" font-family="Georgia,serif" font-size="16" text-anchor="middle" dominant-baseline="middle">
+<text x="100" y="46">XII</text>
+<text x="127" y="53">I</text>
+<text x="147" y="73">II</text>
+<text x="155" y="100">III</text>
+<text x="147" y="127">IV</text>
+<text x="127" y="147">V</text>
+<text x="100" y="155">VI</text>
+<text x="73" y="147">VII</text>
+<text x="53" y="127">VIII</text>
+<text x="45" y="100">IX</text>
+<text x="53" y="73">X</text>
+<text x="73" y="53">XI</text>
+</g>
 
-  <circle cx="100" cy="100" r="73"
-          fill="none"
-          stroke="#241c19"
-          stroke-width="0.8"/>
+<line id="clock-hour" x1="100" y1="100" x2="100" y2="63" stroke="#241c19" stroke-width="5" stroke-linecap="round"/>
+<line id="clock-minute" x1="100" y1="100" x2="100" y2="43" stroke="#241c19" stroke-width="3.5" stroke-linecap="round"/>
+<line id="clock-second" x1="100" y1="112" x2="100" y2="38" stroke="#7c3025" stroke-width="1.5" stroke-linecap="round"/>
 
-  <!-- Hour markers -->
-
-  <g stroke="#241c19" stroke-width="2.2">
-    <line x1="100" y1="24" x2="100" y2="34"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(30 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(60 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(90 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(120 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(150 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(180 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(210 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(240 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(270 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(300 100 100)"/>
-    <line x1="100" y1="24" x2="100" y2="34" transform="rotate(330 100 100)"/>
-  </g>
-
-  <!-- Roman numerals -->
-
-  <g fill="#241c19"
-     font-family="Georgia, serif"
-     font-size="16"
-     text-anchor="middle"
-     dominant-baseline="middle">
-
-    <text x="100" y="46">XII</text>
-    <text x="127" y="53">I</text>
-    <text x="147" y="73">II</text>
-    <text x="155" y="100">III</text>
-    <text x="147" y="127">IV</text>
-    <text x="127" y="147">V</text>
-    <text x="100" y="155">VI</text>
-    <text x="73" y="147">VII</text>
-    <text x="53" y="127">VIII</text>
-    <text x="45" y="100">IX</text>
-    <text x="53" y="73">X</text>
-    <text x="73" y="53">XI</text>
-
-  </g>
-
-  <!-- Clock hands -->
-
-  <g id="clock-hands">
-
-    <line id="clock-hour"
-          x1="100" y1="100" x2="100" y2="63"
-          stroke="#241c19"
-          stroke-width="5"
-          stroke-linecap="round"/>
-
-    <line id="clock-minute"
-          x1="100" y1="100" x2="100" y2="43"
-          stroke="#241c19"
-          stroke-width="3.5"
-          stroke-linecap="round"/>
-
-    <line id="clock-second"
-          x1="100" y1="112" x2="100" y2="38"
-          stroke="#7c3025"
-          stroke-width="1.5"
-          stroke-linecap="round"/>
-
-  </g>
-
-  <!-- Center ornament -->
-
-  <circle cx="100" cy="100" r="6" fill="#241c19"/>
-  <circle cx="100" cy="100" r="2" fill="#c5a783"/>
-
-  <circle cx="100" cy="100" r="10"
-          fill="none"
-          stroke="#78604a"
-          stroke-width="0.8"/>
+<circle cx="100" cy="100" r="6" fill="#241c19"/>
+<circle cx="100" cy="100" r="2" fill="#c5a783"/>
+<circle cx="100" cy="100" r="10" fill="none" stroke="#78604a" stroke-width=".8"/>
 
 </svg>
-
 </div>
 
 <script>
 
-/* ===== ENVELOPE ===== */
+/* ENVELOPE */
+const envelopeButton=document.getElementById("envelope-button");
+const letter=document.getElementById("letter");
 
-const envelopeButton = document.getElementById("envelope-button");
-const letter = document.getElementById("letter");
-
-envelopeButton.addEventListener("click", function() {
+envelopeButton.addEventListener("click",function(){
   letter.classList.toggle("open");
-
-  if (letter.classList.contains("open")) {
-    envelopeButton.textContent = "✉ Close the letter";
-  } else {
-    envelopeButton.textContent = "✉ Open the letter";
-  }
+  envelopeButton.textContent=letter.classList.contains("open")
+    ?"✉ Close the letter":"✉ Open the letter";
 });
 
-
-/* ===== QUOTES ===== */
-
-const quotes = [
-  '"Somewhere, something incredible is waiting to be known."',
-  '"The world is full of obvious things which nobody by any chance ever observes."',
-  '"I am not strange. I am just not normal."',
-  '"We are all in the gutter, but some of us are looking at the stars."',
-  '"There is no exquisite beauty without some strangeness in the proportion."',
-  '"One must still have chaos in oneself to be able to give birth to a dancing star."',
-  '"The mystery of life isn’t a problem to solve, but a reality to experience."'
+/* QUOTES */
+const quotes=[
+'"Somewhere, something incredible is waiting to be known."',
+'"The world is full of obvious things which nobody by any chance ever observes."',
+'"I am not strange. I am just not normal."',
+'"We are all in the gutter, but some of us are looking at the stars."',
+'"There is no exquisite beauty without some strangeness in the proportion."',
+'"One must still have chaos in oneself to be able to give birth to a dancing star."',
+'"The mystery of life isn’t a problem to solve, but a reality to experience."'
 ];
 
-const quoteElement = document.getElementById("quote");
-const quoteButton = document.getElementById("quote-button");
+const quoteElement=document.getElementById("quote");
+const quoteButton=document.getElementById("quote-button");
 
-quoteButton.addEventListener("click", function() {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  quoteElement.textContent = quotes[randomIndex];
+quoteButton.addEventListener("click",function(){
+  quoteElement.textContent=quotes[Math.floor(Math.random()*quotes.length)];
 });
 
+/* SECRET */
+const secretSymbol=document.getElementById("secret-symbol");
+const secretText=document.getElementById("secret-text");
 
-/* ===== HIDDEN DETAIL ===== */
-
-const secretSymbol = document.getElementById("secret-symbol");
-const secretText = document.getElementById("secret-text");
-
-secretSymbol.addEventListener("click", function() {
+secretSymbol.addEventListener("click",function(){
   secretText.classList.toggle("visible");
 });
 
-
-/* ===== ANALOG CLOCK ===== */
-
-function updateArchiveClock() {
-
-  const now = new Date();
-
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes();
-  const hours = now.getHours();
-
-  const secondAngle = seconds * 6;
-  const minuteAngle = minutes * 6 + seconds * 0.1;
-  const hourAngle = (hours % 12) * 30 + minutes * 0.5;
+/* CLOCK */
+function updateArchiveClock(){
+  const now=new Date();
+  const seconds=now.getSeconds();
+  const minutes=now.getMinutes();
+  const hours=now.getHours();
 
   document.getElementById("clock-second")
-    .setAttribute("transform", "rotate(" + secondAngle + " 100 100)");
+    .setAttribute("transform","rotate("+seconds*6+" 100 100)");
 
   document.getElementById("clock-minute")
-    .setAttribute("transform", "rotate(" + minuteAngle + " 100 100)");
+    .setAttribute("transform","rotate("+ (minutes*6+seconds*.1) +" 100 100)");
 
   document.getElementById("clock-hour")
-    .setAttribute("transform", "rotate(" + hourAngle + " 100 100)");
-
+    .setAttribute("transform","rotate("+ ((hours%12)*30+minutes*.5) +" 100 100)");
 }
 
 updateArchiveClock();
-
-setInterval(updateArchiveClock, 1000);
+setInterval(updateArchiveClock,1000);
 
 </script>
-
 </body>
 </html>
