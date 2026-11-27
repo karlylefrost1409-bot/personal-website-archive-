@@ -7,880 +7,642 @@
 <title>Umida Xolmirzayeva | Personal Archive</title>
 
 <style>
-:root {
-  --paper: #eee5d5;
-  --paper-light: #f5eddf;
-  --ink: #302720;
-  --muted: #786653;
-  --line: #b6a48d;
-  --gold: #9a7952;
-  --dark: #211b17;
+:root{
+  --paper:#eee5d5;
+  --paper2:#e6d8c2;
+  --ink:#302720;
+  --muted:#796653;
+  --line:#b6a48d;
+  --gold:#987b58;
 }
 
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#d4c3ab;
+  color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;
+  overflow-x:hidden;
 }
+button,a{font-family:inherit}
+button{cursor:pointer}
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: #d6c5ad;
-  color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
-  overflow-x: hidden;
-}
-
-button, a {
-  font-family: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-.page {
-  width: min(1120px, 94%);
-  margin: 0 auto;
-  min-height: 100vh;
-  background: var(--paper);
-  position: relative;
-  border-left: 1px solid #c6b39a;
-  border-right: 1px solid #c6b39a;
-  padding: 65px 38px 80px;
-  box-shadow: 0 0 35px rgba(45, 30, 18, .12);
+.page{
+  width:min(1120px,94%);
+  margin:auto;
+  min-height:100vh;
+  background:var(--paper);
+  border-left:1px solid #c6b39a;
+  border-right:1px solid #c6b39a;
+  padding:65px 38px 80px;
+  position:relative;
+  box-shadow:0 0 35px rgba(45,30,18,.12);
 }
 
 /* LACE */
-
-.lace {
-  position: fixed;
-  z-index: 5;
-  pointer-events: none;
-  width: 52px;
-  top: 0;
-  bottom: 0;
-  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
-  background-repeat: repeat-y;
-  background-size: 52px auto;
-  background-position: center;
-  opacity: .68;
+.lace{
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:34px;
+  pointer-events:none;
+  z-index:20;
+  opacity:.65;
+  background-image:url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat:repeat-y;
+  background-size:34px auto;
+  background-position:center top;
 }
-
-.lace-left {
-  left: 0;
-}
-
-.lace-right {
-  right: 0;
-  transform: scaleX(-1);
-}
+.lace-left{left:0}
+.lace-right{right:0;transform:scaleX(-1)}
 
 /* HEADER */
-
-header {
-  text-align: center;
-  padding: 5px 15px 28px;
-  border-bottom: 1px solid var(--line);
+header{
+  text-align:center;
+  padding:5px 15px 28px;
+  border-bottom:1px solid var(--line);
+}
+.header-small{
+  font-size:10px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+header h1{
+  margin:0;
+  font-size:clamp(34px,5vw,58px);
+  font-weight:normal;
+  letter-spacing:2px;
+}
+.subtitle{
+  font-size:13px;
+  color:var(--muted);
+  font-style:italic;
+  margin-top:12px;
+  letter-spacing:1px;
+}
+.ornament{
+  color:var(--gold);
+  margin-top:18px;
+  font-size:18px;
+  letter-spacing:12px;
 }
 
-.header-small {
-  font-size: 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
+/* MAIN INTRO */
+.intro{
+  display:grid;
+  grid-template-columns:minmax(280px,1fr) minmax(280px,1fr);
+  gap:42px;
+  align-items:center;
+  padding:40px 25px 35px 100px;
+}
+.main-portrait{
+  width:min(100%,340px);
+  aspect-ratio:3/4;
+  margin:auto;
+  padding:6px;
+  background:#e3d5c0;
+  border:1px solid var(--gold);
+  box-shadow:0 3px 10px rgba(44,30,18,.14);
+}
+.main-portrait-inner{
+  height:100%;
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  color:#927c61;
+  font-style:italic;
+  font-size:13px;
+  background:#e5d8c5;
+}
+.intro-text{text-align:center;padding:15px}
+.intro-label{
+  font-size:10px;
+  letter-spacing:4px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.intro-text h2{
+  font-weight:normal;
+  font-size:30px;
+  margin:18px 0;
+}
+.intro-text p{
+  color:#7a6856;
+  line-height:2;
+  font-size:14px;
+  font-style:italic;
 }
 
-header h1 {
-  margin: 0;
-  font-size: clamp(34px, 5vw, 58px);
-  font-weight: normal;
-  letter-spacing: 2px;
+/* VERTICAL AUTHOR STRIP */
+.author-rail{
+  position:absolute;
+  top:320px;
+  left:16px;
+  width:105px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:19px;
+  z-index:3;
+}
+.author-card{
+  position:relative;
+  width:72px;
+  height:96px;
+  padding:0;
+  border:none;
+  background:transparent;
+  transition:transform .25s ease;
+}
+.author-card:nth-child(odd){transform:rotate(-3deg)}
+.author-card:nth-child(even){transform:rotate(3deg)}
+.author-card:hover{
+  transform:translateY(-4px) rotate(0deg) scale(1.05);
+  z-index:5;
+}
+.author-card img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  background:#d8c7ad;
+  border:5px solid #b49a76;
+  outline:1px solid #6f5840;
+  box-shadow:3px 4px 8px rgba(0,0,0,.2);
+  filter:sepia(.12);
+}
+.author-card:nth-child(3n) img{border-color:#87745d}
+.author-card:nth-child(4n) img{border:7px double #a38b6d}
+
+/* ENVELOPE */
+.letter-section{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:25px 0 5px;
+  position:relative;
+}
+.letter-label{
+  font-size:10px;
+  letter-spacing:4px;
+  color:var(--muted);
+  margin-bottom:15px;
+}
+.envelope-button{
+  border:none;
+  background:transparent;
+  padding:0;
+  width:112px;
+  height:76px;
+  position:relative;
+  transition:transform .25s ease;
+}
+.envelope-button:hover{transform:translateY(-3px)}
+.envelope{
+  position:absolute;
+  inset:0;
+  background:#d4b995;
+  border:1px solid #9f805c;
+  box-shadow:0 4px 10px rgba(60,40,20,.16);
+  overflow:hidden;
+}
+.envelope::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  border-left:55px solid transparent;
+  border-right:55px solid transparent;
+  border-top:43px solid #c6a882;
+  z-index:2;
+}
+.envelope::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  border-left:55px solid transparent;
+  border-right:55px solid transparent;
+  border-bottom:40px solid #c3a27b;
+}
+.envelope-seal{
+  position:absolute;
+  top:28px;
+  left:50%;
+  transform:translateX(-50%);
+  width:17px;
+  height:17px;
+  border-radius:50%;
+  background:#8a6249;
+  z-index:3;
+  color:#e7d2b5;
+  font-size:10px;
+  line-height:17px;
+  text-align:center;
+}
+.envelope-seal::after{content:"✦"}
+
+/* ENVELOPE LETTER MODAL */
+.letter-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(27,20,15,.72);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.letter-modal.open{display:flex}
+.letter-content{
+  width:min(600px,95%);
+  max-height:90vh;
+  overflow:auto;
+  position:relative;
+  background:#eee1ca;
+  padding:45px 35px;
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+  border:1px solid #b49a76;
+  text-align:center;
+  animation:appear .45s ease;
+}
+.letter-content h3{font-weight:normal;font-size:28px}
+.letter-content p{line-height:1.9;color:#67543e}
+.close-button{
+  position:absolute;
+  top:12px;
+  right:15px;
+  border:none;
+  background:transparent;
+  color:#756047;
+  font-size:23px;
 }
 
-.subtitle {
-  font-size: 13px;
-  color: var(--muted);
-  font-style: italic;
-  margin-top: 12px;
-  letter-spacing: 1px;
+/* LOCKET BUTTON */
+.locket-container{
+  margin-top:15px;
+  display:flex;
+  justify-content:center;
+}
+.locket-button{
+  width:34px;
+  height:42px;
+  padding:0;
+  border:none;
+  background:transparent;
+  opacity:.86;
+  transition:transform .3s,opacity .3s;
+}
+.locket-button:hover{transform:scale(1.13);opacity:1}
+.locket-button img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(1px 2px 3px rgba(0,0,0,.3));
 }
 
-.ornament {
-  color: var(--gold);
-  margin-top: 20px;
-  font-size: 19px;
-  letter-spacing: 15px;
+/* LOCKET MODAL */
+.locket-overlay{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(23,17,13,.82);
+  padding:20px;
+}
+.locket-overlay.open{display:flex}
+.locket-stage{
+  width:min(750px,95vw);
+  max-height:90vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:locketZoom .9s cubic-bezier(.18,.72,.22,1) both;
+}
+.locket-open-image{
+  display:block;
+  width:100%;
+  max-height:85vh;
+  object-fit:contain;
+  filter:drop-shadow(0 20px 35px rgba(0,0,0,.42));
 }
 
-/* INTRO */
-
-.intro {
-  display: grid;
-  grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
-  gap: 45px;
-  align-items: center;
-  padding: 45px 25px 30px;
+/*
+  The portrait and note are positioned over the open-locket image.
+  These percentages are adjustable if their placement needs correction.
+*/
+.locket-interior{
+  position:absolute;
+  inset:15% 12%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4%;
+  align-items:center;
+  pointer-events:none;
 }
-
-.main-portrait {
-  width: min(100%, 350px);
-  aspect-ratio: 3 / 4;
-  margin: auto;
-  border: 1px solid var(--gold);
-  padding: 6px;
-  background: #e3d5c0;
-  box-shadow: 0 3px 10px rgba(44, 30, 18, .14);
-  position: relative;
+.locket-side{
+  height:100%;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-
-.main-portrait-inner {
-  height: 100%;
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 30px;
-  color: #927c61;
-  font-style: italic;
-  font-size: 13px;
-  background: #e5d8c5;
-}
-
-.intro-text {
-  text-align: center;
-  padding: 15px;
-}
-
-.intro-label {
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-
-.intro-text h2 {
-  font-weight: normal;
-  font-size: 30px;
-  margin: 18px 0;
-}
-
-.intro-text p {
-  color: #7a6856;
-  line-height: 2;
-  font-size: 14px;
-  font-style: italic;
-}
-
-/* AUTHORS */
-
-.author-area {
-  margin: 35px 0 15px;
-  padding: 28px 20px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.author-heading {
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 22px;
-}
-
-.author-rail {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
-}
-
-.author-card {
-  position: relative;
-  width: 82px;
-  height: 108px;
-  border: none;
-  background: transparent;
-  padding: 0;
-  transition: transform .25s ease;
-}
-
-.author-card:hover {
-  transform: translateY(-5px) rotate(-2deg);
-  z-index: 2;
-}
-
-.author-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: #d8c7ad;
-  border: 5px solid #b49a76;
-  outline: 1px solid #6f5840;
-  box-shadow: 3px 4px 8px rgba(0,0,0,.2);
-  filter: sepia(.12);
-}
-
-.author-card:nth-child(3n) img {
-  border-color: #87745d;
-}
-
-.author-card:nth-child(4n) img {
-  border: 7px double #a38b6d;
-}
-
-.author-card:nth-child(2n) {
-  transform: rotate(2deg);
-}
-
-.author-card:nth-child(2n):hover {
-  transform: translateY(-5px) rotate(0deg);
-}
-
-.author-card::after {
-  content: "✦";
-  position: absolute;
-  bottom: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--gold);
-  font-size: 10px;
-  opacity: .7;
-}
-
-/* LETTER */
-
-.letter-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px 0 10px;
-}
-
-.letter-label {
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-
-.envelope-button {
-  border: none;
-  background: transparent;
-  padding: 0;
-  position: relative;
-  width: 112px;
-  height: 76px;
-  transition: transform .25s ease;
-}
-
-.envelope-button:hover {
-  transform: translateY(-4px);
-}
-
-.envelope {
-  position: absolute;
-  inset: 0;
-  background: #d4b995;
-  border: 1px solid #9f805c;
-  box-shadow: 0 4px 10px rgba(60, 40, 20, .16);
-  overflow: hidden;
-}
-
-.envelope::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 0;
-  border-left: 55px solid transparent;
-  border-right: 55px solid transparent;
-  border-top: 43px solid #c6a882;
-  z-index: 2;
-}
-
-.envelope::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 0;
-  border-left: 55px solid transparent;
-  border-right: 55px solid transparent;
-  border-bottom: 40px solid #c3a27b;
-}
-
-.envelope-seal {
-  position: absolute;
-  top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-  background: #8a6249;
-  z-index: 3;
-  color: #e7d2b5;
-  font-size: 10px;
-  line-height: 17px;
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,.2);
-}
-
-.envelope-seal::after {
-  content: "✦";
-}
-
-/* LETTER MODAL */
-
-.letter-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: rgba(27, 20, 15, .72);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.letter-modal.open {
-  display: flex;
-}
-
-.letter-content {
-  width: min(600px, 95%);
-  max-height: 90vh;
-  overflow: auto;
-  position: relative;
-  background: #eee1ca;
-  padding: 45px 35px;
-  box-shadow: 0 12px 40px rgba(0,0,0,.35);
-  border: 1px solid #b49a76;
-  text-align: center;
-  animation: letterAppear .45s ease;
-}
-
-.letter-content h3 {
-  font-weight: normal;
-  font-size: 28px;
-}
-
-.letter-content p {
-  line-height: 1.9;
-  color: #67543e;
-}
-
-.close-button {
-  position: absolute;
-  top: 12px;
-  right: 15px;
-  border: none;
-  background: transparent;
-  color: #756047;
-  font-size: 23px;
-}
-
-@keyframes letterAppear {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* LOCKET */
-
-.locket-container {
-  margin-top: 22px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.locket-button {
-  width: 37px;
-  height: 45px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  opacity: .85;
-  transition: transform .3s ease, opacity .3s ease;
-  cursor: pointer;
-}
-
-.locket-button:hover {
-  transform: scale(1.12);
-  opacity: 1;
-}
-
-.locket-button img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(1px 2px 3px rgba(0,0,0,.25));
-}
-
-/* LOCKET OVERLAY */
-
-.locket-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(23, 17, 13, .78);
-  padding: 20px;
-  perspective: 1200px;
-}
-
-.locket-overlay.open {
-  display: flex;
-}
-
-.locket-stage {
-  position: relative;
-  width: min(750px, 96vw);
-  max-height: 92vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: locketZoom .9s cubic-bezier(.18,.72,.22,1) both;
-}
-
-.locket-open-image {
-  width: 100%;
-  max-height: 85vh;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 35px rgba(0,0,0,.42));
-}
-
-@keyframes locketZoom {
-  from { transform: scale(.2); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.locket-interior {
-  position: absolute;
-  width: 76%;
-  height: 70%;
-  top: 15%;
-  left: 12%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 4%;
-  pointer-events: none;
-}
-
-.locket-side {
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-.locket-girl {
-  width: 72%;
-  height: 72%;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #b69a70;
-  box-shadow:
-    inset 0 0 8px rgba(0,0,0,.4),
-    0 2px 8px rgba(0,0,0,.3);
-  filter: sepia(.18);
-  transform: scale(.85);
-  animation: portraitSettle 1.6s .7s ease forwards;
-}
-
-@keyframes portraitSettle {
-  to { transform: scale(1); }
+.locket-girl{
+  width:68%;
+  height:68%;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid #b69a70;
+  box-shadow:0 2px 8px rgba(0,0,0,.35);
+  filter:sepia(.18);
+  animation:portraitReveal 1.4s .7s ease both;
 }
 
 /* PAPER */
-
-.paper-wrapper {
-  position: absolute;
-  width: 80%;
-  height: 85%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 800px;
-  transform: scale(.3);
-  opacity: 0;
-  animation: paperUnfold 2.8s 1.4s cubic-bezier(.2,.7,.2,1) forwards;
+.paper-wrapper{
+  width:83%;
+  height:83%;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform-origin:center;
+  opacity:0;
+  animation:paperUnfold 3s 1.3s cubic-bezier(.2,.7,.2,1) forwards;
 }
-
-@keyframes paperUnfold {
-  0% {
-    transform: scale(.3) rotateX(80deg);
-    opacity: 0;
-  }
-  25% {
-    transform: scale(.5) rotateX(55deg);
-    opacity: 1;
-  }
-  55% {
-    transform: scale(.85) rotateX(15deg);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1) rotateX(0);
-    opacity: 1;
-  }
+.paper-image{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(2px 4px 7px rgba(0,0,0,.3));
 }
-
-.paper-image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(2px 4px 7px rgba(0,0,0,.3));
+.paper-text{
+  position:relative;
+  width:82%;
+  max-height:90%;
+  overflow:auto;
+  color:#33291f;
+  text-align:center;
+  padding:5%;
+  font-size:clamp(10px,1.4vw,16px);
+  line-height:1.7;
+  pointer-events:auto;
 }
-
-.paper-text {
-  position: relative;
-  width: 82%;
-  max-height: 90%;
-  overflow: auto;
-  color: #33291f;
-  text-align: center;
-  padding: 7% 5%;
-  font-size: clamp(10px, 1.4vw, 16px);
-  line-height: 1.7;
-  pointer-events: auto;
-  text-shadow: 0 0 1px rgba(255,255,255,.3);
+.paper-text .fragment{
+  letter-spacing:3px;
+  font-size:.7em;
+  text-transform:uppercase;
 }
-
-.paper-text .fragment {
-  letter-spacing: 3px;
-  font-size: .7em;
-  text-transform: uppercase;
+.paper-text .quote{font-style:italic;margin:14px 0}
+.paper-text .author{font-size:.85em}
+.paper-text .secret{
+  font-family:cursive;
+  font-style:italic;
+  margin-top:22px;
 }
-
-.paper-text .quote {
-  font-style: italic;
-  margin: 14px 0;
-}
-
-.paper-text .author {
-  font-size: .85em;
-}
-
-.paper-text .secret {
-  font-family: cursive;
-  font-style: italic;
-  margin-top: 22px;
-}
-
-.locket-close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  border: 1px solid rgba(240,225,205,.5);
-  color: #eee1ca;
-  background: rgba(30,20,15,.45);
-  border-radius: 50%;
-  width: 34px;
-  height: 34px;
-  font-size: 20px;
+.locket-close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  border:1px solid rgba(240,225,205,.5);
+  color:#eee1ca;
+  background:rgba(30,20,15,.45);
+  border-radius:50%;
+  width:34px;
+  height:34px;
+  font-size:20px;
+  z-index:2;
 }
 
 /* NAVIGATION */
-
-.navigation {
-  margin: 45px 0 20px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 18px 5px;
+.navigation{
+  margin:45px 0 20px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:18px 5px;
+}
+.navigation-label{
+  text-align:center;
+  font-size:10px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+.nav-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
+.nav-links a{
+  text-decoration:none;
+  color:var(--ink);
+  border:1px solid #c7b39a;
+  padding:9px 14px;
+  font-size:12px;
+  background:rgba(255,255,255,.12);
+  transition:background .25s,transform .25s;
+}
+.nav-links a:hover{
+  background:#e0cfb6;
+  transform:translateY(-2px);
 }
 
-.navigation-label {
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
+/* QUOTES */
+.quote-section{text-align:center;padding:30px 20px}
+.quote-label{
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing:4px;
+  color:var(--muted);
 }
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+.quote-text{
+  font-style:italic;
+  line-height:1.8;
+  font-size:18px;
+  margin:18px auto;
+  max-width:650px;
 }
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--ink);
-  border: 1px solid #c7b39a;
-  padding: 9px 14px;
-  font-size: 12px;
-  background: rgba(255,255,255,.12);
-  transition: background .25s ease, transform .25s ease;
-}
-
-.nav-links a:hover {
-  background: #e0cfb6;
-  transform: translateY(-2px);
-}
-
-/* QUOTE */
-
-.quote-section {
-  text-align: center;
-  padding: 30px 20px;
-}
-
-.quote-label {
-  text-transform: uppercase;
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: var(--muted);
-}
-
-.quote-text {
-  font-style: italic;
-  line-height: 1.8;
-  font-size: 18px;
-  margin: 18px auto;
-  max-width: 650px;
-}
-
-.quote-author {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.quote-change {
-  margin-top: 20px;
-  border: 1px solid var(--line);
-  background: transparent;
-  padding: 8px 16px;
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 1px;
+.quote-author{color:var(--muted);font-size:13px}
+.quote-change{
+  margin-top:20px;
+  border:1px solid var(--line);
+  background:transparent;
+  padding:8px 16px;
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:1px;
 }
 
 /* CLOCK */
-
-.clock {
-  position: fixed;
-  right: 25px;
-  bottom: 18px;
-  z-index: 10;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: #eee1ca;
-  border: 2px solid #a58a68;
-  box-shadow: 0 3px 12px rgba(0,0,0,.18);
-  color: #6d5840;
+.clock{
+  position:fixed;
+  right:25px;
+  bottom:18px;
+  z-index:15;
+  width:96px;
+  height:96px;
+  border-radius:50%;
+  background:#eee1ca;
+  border:2px solid #a58a68;
+  box-shadow:0 3px 12px rgba(0,0,0,.18);
+  color:#6d5840;
+}
+.clock-face{
+  position:absolute;
+  inset:6px;
+  border:1px solid #b9a184;
+  border-radius:50%;
+}
+.clock-number{
+  position:absolute;
+  font-size:9px;
+  transform:translate(-50%,-50%);
+}
+.clock-hand{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform-origin:bottom center;
+  border-radius:2px;
+}
+.hour-hand{width:2px;height:23px;background:#5e4935}
+.minute-hand{width:1.5px;height:31px;background:#80694d}
+.clock-center{
+  position:absolute;
+  width:5px;
+  height:5px;
+  background:#5e4935;
+  border-radius:50%;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
 }
 
-.clock-face {
-  position: absolute;
-  inset: 6px;
-  border: 1px solid #b9a184;
-  border-radius: 50%;
+/* AUTHOR POPUP */
+.author-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:150;
+  background:rgba(27,20,15,.72);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
-
-.clock-number {
-  position: absolute;
-  font-size: 9px;
-  transform: translate(-50%, -50%);
+.author-modal.open{display:flex}
+.author-content{
+  background:#eee1ca;
+  border:1px solid #b49a76;
+  padding:35px 30px;
+  width:min(420px,95%);
+  text-align:center;
+  position:relative;
+  animation:appear .35s ease;
 }
-
-.clock-hand {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform-origin: bottom center;
-  border-radius: 2px;
+.author-content h3{font-size:24px;font-weight:normal}
+.library-link{
+  display:inline-block;
+  text-decoration:none;
+  color:#302720;
+  border:1px solid #a58a68;
+  padding:10px 16px;
+  margin-top:12px;
+  font-size:13px;
+  transition:background .2s;
 }
-
-.hour-hand {
-  width: 2px;
-  height: 23px;
-  background: #5e4935;
-  transform: translate(-50%, -100%) rotate(0deg);
-}
-
-.minute-hand {
-  width: 1.5px;
-  height: 31px;
-  background: #80694d;
-  transform: translate(-50%, -100%) rotate(0deg);
-}
-
-.clock-center {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: #5e4935;
-  border-radius: 50%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* AUTHOR MODAL */
-
-.author-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 150;
-  background: rgba(27, 20, 15, .72);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.author-modal.open {
-  display: flex;
-}
-
-.author-content {
-  background: #eee1ca;
-  border: 1px solid #b49a76;
-  padding: 35px 30px;
-  width: min(420px, 95%);
-  text-align: center;
-  position: relative;
-  animation: letterAppear .35s ease;
-}
-
-.author-content h3 {
-  font-size: 24px;
-  font-weight: normal;
-}
-
-.library-link {
-  display: inline-block;
-  text-decoration: none;
-  color: #302720;
-  border: 1px solid #a58a68;
-  padding: 10px 16px;
-  margin-top: 12px;
-  font-size: 13px;
-  transition: background .2s ease;
-}
-
-.library-link:hover {
-  background: #d9c7ac;
-}
+.library-link:hover{background:#d9c7ac}
 
 /* FOOTER */
+footer{
+  border-top:1px solid var(--line);
+  padding-top:25px;
+  text-align:center;
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--muted);
+  margin-top:30px;
+}
 
-footer {
-  border-top: 1px solid var(--line);
-  padding-top: 25px;
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--muted);
-  margin-top: 30px;
+/* ANIMATIONS */
+@keyframes appear{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes locketZoom{
+  from{transform:scale(.2);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+@keyframes portraitReveal{
+  from{transform:scale(.85);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+@keyframes paperUnfold{
+  0%{transform:scale(.3) rotateX(80deg);opacity:0}
+  25%{transform:scale(.5) rotateX(55deg);opacity:1}
+  55%{transform:scale(.85) rotateX(15deg);opacity:1}
+  100%{transform:scale(1) rotateX(0);opacity:1}
 }
 
 /* MOBILE */
-
-@media (max-width: 750px) {
-  .page {
-    padding: 45px 18px 65px;
-    width: 96%;
+@media(max-width:750px){
+  .page{padding:45px 18px 65px;width:96%}
+  .lace{width:20px;background-size:20px auto;opacity:.45}
+  .intro{
+    grid-template-columns:1fr;
+    gap:25px;
+    padding:30px 5px;
   }
-
-  .lace {
-    width: 24px;
-    background-size: 24px auto;
-    opacity: .5;
+  .main-portrait{width:min(75%,300px)}
+  .intro-text{padding:0}
+  .author-rail{
+    position:static;
+    width:100%;
+    margin:10px auto 20px;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:flex-start;
+    overflow-x:auto;
+    gap:14px;
+    padding:8px 5px 15px;
   }
-
-  .intro {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    padding: 30px 5px;
+  .author-card{flex:0 0 68px;width:68px;height:90px}
+  .letter-content{padding:35px 20px}
+  .locket-stage{width:95vw}
+  .paper-text{font-size:10px;padding:4%}
+  .clock{
+    width:70px;
+    height:70px;
+    right:10px;
+    bottom:10px;
   }
-
-  .main-portrait {
-    width: min(75%, 300px);
-  }
-
-  .intro-text {
-    padding: 0;
-  }
-
-  .author-rail {
-    gap: 12px;
-  }
-
-  .author-card {
-    width: 68px;
-    height: 90px;
-  }
-
-  .letter-content {
-    padding: 35px 20px;
-  }
-
-  .locket-stage {
-    width: 95vw;
-  }
-
-  .paper-text {
-    font-size: 10px;
-    padding: 4%;
-  }
-
-  .clock {
-    width: 70px;
-    height: 70px;
-    right: 10px;
-    bottom: 10px;
-  }
-
-  .clock-face {
-    inset: 4px;
-  }
-
-  .hour-hand {
-    height: 17px;
-  }
-
-  .minute-hand {
-    height: 23px;
-  }
-
-  .clock-number {
-    font-size: 7px;
-  }
-
-  .nav-links a {
-    padding: 8px 10px;
-    font-size: 11px;
-  }
+  .clock-face{inset:4px}
+  .hour-hand{height:17px}
+  .minute-hand{height:23px}
+  .clock-number{font-size:7px}
+  .nav-links a{padding:8px 10px;font-size:11px}
+  .locket-interior{inset:17% 10%;gap:2%}
+  .locket-girl{width:70%;height:70%}
 }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
   }
 }
 </style>
@@ -900,6 +662,68 @@ footer {
   <div class="ornament">❧ ✦ ❧</div>
 </header>
 
+<!-- AUTHOR PORTRAITS -->
+<div class="author-rail">
+
+  <button class="author-card" data-author="Donna Tartt" data-link="donna-tartt" aria-label="Donna Tartt">
+    <img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
+  </button>
+
+  <button class="author-card" data-author="Fyodor Dostoevsky" data-link="dostoevsky" aria-label="Fyodor Dostoevsky">
+    <img src="assets/images/1795768867389.jpg" alt="Fyodor Dostoevsky">
+  </button>
+
+  <button class="author-card" data-author="Friedrich Nietzsche" data-link="nietzsche" aria-label="Friedrich Nietzsche">
+    <img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
+  </button>
+
+  <button class="author-card" data-author="Franz Kafka" data-link="kafka" aria-label="Franz Kafka">
+    <img src="assets/images/kafka.jpg" alt="Franz Kafka">
+  </button>
+
+  <button class="author-card" data-author="Albert Camus" data-link="camus" aria-label="Albert Camus">
+    <img src="assets/images/camus.jpg" alt="Albert Camus">
+  </button>
+
+  <button class="author-card" data-author="Clarice Lispector" data-link="clarice" aria-label="Clarice Lispector">
+    <img src="assets/images/clarice.jpg" alt="Clarice Lispector">
+  </button>
+
+  <button class="author-card" data-author="Ocean Vuong" data-link="ocean-vuong" aria-label="Ocean Vuong">
+    <img src="assets/images/ocean.jpg" alt="Ocean Vuong">
+  </button>
+
+  <button class="author-card" data-author="Hanya Yanagihara" data-link="hanya-yanagihara" aria-label="Hanya Yanagihara">
+    <img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
+  </button>
+
+  <button class="author-card" data-author="Susan Sontag" data-link="sontag" aria-label="Susan Sontag">
+    <img src="assets/images/sontag.jpg" alt="Susan Sontag">
+  </button>
+
+  <button class="author-card" data-author="Hermann Hesse" data-link="hesse" aria-label="Hermann Hesse">
+    <img src="assets/images/hesse.jpg" alt="Hermann Hesse">
+  </button>
+
+  <button class="author-card" data-author="Toni Morrison" data-link="toni-morrison" aria-label="Toni Morrison">
+    <img src="assets/images/morrison.jpg" alt="Toni Morrison">
+  </button>
+
+  <button class="author-card" data-author="Oscar Wilde" data-link="wilde" aria-label="Oscar Wilde">
+    <img src="assets/images/wilde.jpg" alt="Oscar Wilde">
+  </button>
+
+  <button class="author-card" data-author="Simone de Beauvoir" data-link="simone-de-beauvoir" aria-label="Simone de Beauvoir">
+    <img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
+  </button>
+
+  <button class="author-card" data-author="Sylvia Plath" data-link="sylvia-plath" aria-label="Sylvia Plath">
+    <img src="assets/images/silvia.jpg" alt="Sylvia Plath">
+  </button>
+
+</div>
+
+<!-- INTRO -->
 <section class="intro">
 
   <div class="main-portrait">
@@ -930,85 +754,16 @@ footer {
 
 </section>
 
-<!-- AUTHOR PORTRAITS -->
-
-<section class="author-area">
-  <div class="author-heading">A few familiar faces</div>
-
-  <div class="author-rail">
-
-    <button class="author-card" data-author="Donna Tartt" data-link="donna-tartt">
-      <img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
-    </button>
-
-    <button class="author-card" data-author="Fyodor Dostoevsky" data-link="dostoevsky">
-      <img src="assets/images/1795768867389.jpg" alt="Fyodor Dostoevsky">
-    </button>
-
-    <button class="author-card" data-author="Friedrich Nietzsche" data-link="nietzsche">
-      <img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
-    </button>
-
-    <button class="author-card" data-author="Franz Kafka" data-link="kafka">
-      <img src="assets/images/kafka.jpg" alt="Franz Kafka">
-    </button>
-
-    <button class="author-card" data-author="Albert Camus" data-link="camus">
-      <img src="assets/images/camus.jpg" alt="Albert Camus">
-    </button>
-
-    <button class="author-card" data-author="Clarice Lispector" data-link="clarice">
-      <img src="assets/images/clarice.jpg" alt="Clarice Lispector">
-    </button>
-
-    <button class="author-card" data-author="Ocean Vuong" data-link="ocean-vuong">
-      <img src="assets/images/ocean.jpg" alt="Ocean Vuong">
-    </button>
-
-    <button class="author-card" data-author="Hanya Yanagihara" data-link="hanya-yanagihara">
-      <img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
-    </button>
-
-    <button class="author-card" data-author="Susan Sontag" data-link="sontag">
-      <img src="assets/images/sontag.jpg" alt="Susan Sontag">
-    </button>
-
-    <button class="author-card" data-author="Hermann Hesse" data-link="hesse">
-      <img src="assets/images/hesse.jpg" alt="Hermann Hesse">
-    </button>
-
-    <button class="author-card" data-author="Toni Morrison" data-link="toni-morrison">
-      <img src="assets/images/morrison.jpg" alt="Toni Morrison">
-    </button>
-
-    <button class="author-card" data-author="Oscar Wilde" data-link="wilde">
-      <img src="assets/images/wilde.jpg" alt="Oscar Wilde">
-    </button>
-
-    <button class="author-card" data-author="Simone de Beauvoir" data-link="simone-de-beauvoir">
-      <img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
-    </button>
-
-    <button class="author-card" data-author="Sylvia Plath" data-link="sylvia-plath">
-      <img src="assets/images/silvia.jpg" alt="Sylvia Plath">
-    </button>
-
-  </div>
-</section>
-
-<!-- LETTER AND LOCKET -->
-
+<!-- ENVELOPE AND LOCKET -->
 <section class="letter-section">
 
   <div class="letter-label">A little note</div>
 
-  <button class="envelope-button" id="letterButton" aria-label="Open the letter">
+  <button class="envelope-button" id="letterButton" aria-label="Open the envelope">
     <div class="envelope">
       <div class="envelope-seal"></div>
     </div>
   </button>
-
-  <!-- THE LOCKET IS A SEPARATE OBJECT BELOW THE ENVELOPE -->
 
   <div class="locket-container">
     <button class="locket-button" id="locketButton" aria-label="Open the hidden locket">
@@ -1019,7 +774,6 @@ footer {
 </section>
 
 <!-- NAVIGATION -->
-
 <section class="navigation">
   <div class="navigation-label">Explore the archive</div>
 
@@ -1027,8 +781,8 @@ footer {
     <a href="about.html">About</a>
     <a href="diary.html">Diary</a>
     <a href="literature.html">Literature</a>
-    <a href="music.html.">Music</a>
-    <a href="visual-arts.html.">Visual Arts</a>
+    <a href="music.html">Music</a>
+    <a href="visual-arts.html">Visual Arts</a>
     <a href="photography.html">Photography</a>
     <a href="cinema.html">Cinema</a>
     <a href="writing.html">Writing</a>
@@ -1040,7 +794,6 @@ footer {
 </section>
 
 <!-- QUOTE CHANGER -->
-
 <section class="quote-section">
   <div class="quote-label">A thought to keep</div>
 
@@ -1053,17 +806,13 @@ footer {
   <button class="quote-change" id="quoteButton">Another thought</button>
 </section>
 
-<footer>
-  A PRIVATE COLLECTION OF THINGS
-</footer>
+<footer>A PRIVATE COLLECTION OF THINGS</footer>
 
 </div>
 
 <!-- CLOCK -->
-
-<div class="clock" id="clock" aria-label="Analog clock">
+<div class="clock" aria-label="Analog clock">
   <div class="clock-face">
-
     <span class="clock-number" style="left:50%;top:10%">XII</span>
     <span class="clock-number" style="left:75%;top:17%">I</span>
     <span class="clock-number" style="left:88%;top:31%">II</span>
@@ -1076,36 +825,25 @@ footer {
     <span class="clock-number" style="left:8%;top:50%">IX</span>
     <span class="clock-number" style="left:15%;top:31%">X</span>
     <span class="clock-number" style="left:28%;top:17%">XI</span>
-
     <div class="clock-hand hour-hand" id="hourHand"></div>
     <div class="clock-hand minute-hand" id="minuteHand"></div>
     <div class="clock-center"></div>
   </div>
 </div>
 
-<!-- LETTER POPUP -->
-
+<!-- ENVELOPE MODAL -->
 <div class="letter-modal" id="letterModal">
   <div class="letter-content">
     <button class="close-button" id="letterClose" aria-label="Close">&times;</button>
     <div class="header-small">A small correspondence</div>
     <h3>Dear visitor,</h3>
-
-    <p>
-      Welcome to this little corner of the world.
-      I hope you find something interesting here.
-    </p>
-
-    <p>
-      Take your time, and feel free to wander.
-    </p>
-
+    <p>Welcome to this little corner of the world. I hope you find something interesting here.</p>
+    <p>Take your time, and feel free to wander.</p>
     <div class="ornament">❧</div>
   </div>
 </div>
 
-<!-- AUTHOR POPUP -->
-
+<!-- AUTHOR MODAL -->
 <div class="author-modal" id="authorModal">
   <div class="author-content">
     <button class="close-button" id="authorClose" aria-label="Close">&times;</button>
@@ -1115,44 +853,37 @@ footer {
   </div>
 </div>
 
-<!-- LOCKET POPUP -->
-
+<!-- LOCKET MODAL -->
 <div class="locket-overlay" id="locketOverlay">
   <button class="locket-close" id="locketClose" aria-label="Close locket">&times;</button>
 
   <div class="locket-stage">
 
-    <img
-      class="locket-open-image"
-      src="assets/images/locket-open.png"
-      alt="Opened antique locket">
+    <img class="locket-open-image"
+         src="assets/images/locket-open.png"
+         alt="Opened antique locket">
 
     <div class="locket-interior">
 
       <div class="locket-side">
-        <img
-          class="locket-girl"
-          src="assets/images/locket-girl.jpg"
-          alt="Portrait of an unknown girl">
+        <img class="locket-girl"
+             src="assets/images/locket-girl.jpg"
+             alt="Portrait of an unknown girl">
       </div>
 
       <div class="locket-side">
         <div class="paper-wrapper">
 
-          <img
-            class="paper-image"
-            src="assets/images/locket-paper.png"
-            alt="Folded parchment">
+          <img class="paper-image"
+               src="assets/images/locket-paper.png"
+               alt="Folded parchment">
 
           <div class="paper-text">
             <div class="fragment">A Fragment · No. 001</div>
-
             <div class="quote">
               “One must still have chaos in oneself to be able to give birth to a dancing star.”
             </div>
-
             <div class="author">— Friedrich Nietzsche</div>
-
             <div class="secret">
               You were not the first to open this.
               But perhaps you will be the last to understand it.
@@ -1167,81 +898,63 @@ footer {
 </div>
 
 <script>
+/* ENVELOPE */
+const letterButton=document.getElementById("letterButton");
+const letterModal=document.getElementById("letterModal");
+const letterClose=document.getElementById("letterClose");
 
-/* LETTER */
-
-const letterButton = document.getElementById("letterButton");
-const letterModal = document.getElementById("letterModal");
-const letterClose = document.getElementById("letterClose");
-
-letterButton.addEventListener("click", () => {
+letterButton.addEventListener("click",()=>{
   letterModal.classList.add("open");
 });
-
-letterClose.addEventListener("click", () => {
+letterClose.addEventListener("click",()=>{
   letterModal.classList.remove("open");
 });
-
-letterModal.addEventListener("click", (event) => {
-  if (event.target === letterModal) {
-    letterModal.classList.remove("open");
-  }
+letterModal.addEventListener("click",event=>{
+  if(event.target===letterModal) letterModal.classList.remove("open");
 });
 
 /* AUTHORS */
+const authorCards=document.querySelectorAll(".author-card");
+const authorModal=document.getElementById("authorModal");
+const authorClose=document.getElementById("authorClose");
+const modalAuthor=document.getElementById("modalAuthor");
+const libraryLink=document.getElementById("libraryLink");
 
-const authorCards = document.querySelectorAll(".author-card");
-const authorModal = document.getElementById("authorModal");
-const authorClose = document.getElementById("authorClose");
-const modalAuthor = document.getElementById("modalAuthor");
-const libraryLink = document.getElementById("libraryLink");
-
-authorCards.forEach(card => {
-  card.addEventListener("click", () => {
-    modalAuthor.textContent = card.dataset.author;
-    libraryLink.href = "literature.html#" + card.dataset.link;
+authorCards.forEach(card=>{
+  card.addEventListener("click",()=>{
+    modalAuthor.textContent=card.dataset.author;
+    libraryLink.href="literature.html#"+card.dataset.link;
     authorModal.classList.add("open");
   });
 });
-
-authorClose.addEventListener("click", () => {
+authorClose.addEventListener("click",()=>{
   authorModal.classList.remove("open");
 });
-
-authorModal.addEventListener("click", (event) => {
-  if (event.target === authorModal) {
-    authorModal.classList.remove("open");
-  }
+authorModal.addEventListener("click",event=>{
+  if(event.target===authorModal) authorModal.classList.remove("open");
 });
 
 /* LOCKET */
+const locketButton=document.getElementById("locketButton");
+const locketOverlay=document.getElementById("locketOverlay");
+const locketClose=document.getElementById("locketClose");
 
-const locketButton = document.getElementById("locketButton");
-const locketOverlay = document.getElementById("locketOverlay");
-const locketClose = document.getElementById("locketClose");
-
-locketButton.addEventListener("click", () => {
+locketButton.addEventListener("click",()=>{
   locketOverlay.classList.add("open");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow="hidden";
 });
-
-function closeLocket() {
+function closeLocket(){
   locketOverlay.classList.remove("open");
-  document.body.style.overflow = "";
+  document.body.style.overflow="";
 }
-
-locketClose.addEventListener("click", closeLocket);
-
-locketOverlay.addEventListener("click", (event) => {
-  if (event.target === locketOverlay) {
-    closeLocket();
-  }
+locketClose.addEventListener("click",closeLocket);
+locketOverlay.addEventListener("click",event=>{
+  if(event.target===locketOverlay) closeLocket();
 });
 
 /* ESCAPE */
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"){
     letterModal.classList.remove("open");
     authorModal.classList.remove("open");
     closeLocket();
@@ -1249,70 +962,56 @@ document.addEventListener("keydown", (event) => {
 });
 
 /* QUOTES */
-
-const quotes = [
+const quotes=[
   {
-    text: "“There is nothing either good or bad, but thinking makes it so.”",
-    author: "— William Shakespeare"
+    text:"“There is nothing either good or bad, but thinking makes it so.”",
+    author:"— William Shakespeare"
   },
   {
-    text: "“One must still have chaos in oneself to be able to give birth to a dancing star.”",
-    author: "— Friedrich Nietzsche"
+    text:"“One must still have chaos in oneself to be able to give birth to a dancing star.”",
+    author:"— Friedrich Nietzsche"
   },
   {
-    text: "“I am no bird; and no net ensnares me.”",
-    author: "— Charlotte Brontë"
+    text:"“I am no bird; and no net ensnares me.”",
+    author:"— Charlotte Brontë"
   },
   {
-    text: "“The mystery of life isn't a problem to solve, but a reality to experience.”",
-    author: "— Frank Herbert"
+    text:"“The mystery of life isn't a problem to solve, but a reality to experience.”",
+    author:"— Frank Herbert"
   },
   {
-    text: "“We are all in the gutter, but some of us are looking at the stars.”",
-    author: "— Oscar Wilde"
+    text:"“We are all in the gutter, but some of us are looking at the stars.”",
+    author:"— Oscar Wilde"
   },
   {
-    text: "“The only way out is through.”",
-    author: "— Robert Frost"
-  },
-  {
-    text: "“Nothing is ever really lost to us as long as we remember it.”",
-    author: "— L. M. Montgomery"
+    text:"“The only way out is through.”",
+    author:"— Robert Frost"
   }
 ];
-
-let quoteIndex = 0;
-
-const quoteText = document.getElementById("quoteText");
-const quoteAuthor = document.getElementById("quoteAuthor");
-const quoteButton = document.getElementById("quoteButton");
-
-quoteButton.addEventListener("click", () => {
-  quoteIndex = (quoteIndex + 1) % quotes.length;
-  quoteText.textContent = quotes[quoteIndex].text;
-  quoteAuthor.textContent = quotes[quoteIndex].author;
+let quoteIndex=0;
+const quoteText=document.getElementById("quoteText");
+const quoteAuthor=document.getElementById("quoteAuthor");
+document.getElementById("quoteButton").addEventListener("click",()=>{
+  quoteIndex=(quoteIndex+1)%quotes.length;
+  quoteText.textContent=quotes[quoteIndex].text;
+  quoteAuthor.textContent=quotes[quoteIndex].author;
 });
 
 /* CLOCK */
+function updateClock(){
+  const now=new Date();
+  const hours=now.getHours()%12;
+  const minutes=now.getMinutes();
+  const hourAngle=hours*30+minutes*.5;
+  const minuteAngle=minutes*6;
 
-function updateClock() {
-  const now = new Date();
-  const hours = now.getHours() % 12;
-  const minutes = now.getMinutes();
-
-  const hourAngle = (hours * 30) + (minutes * .5);
-  const minuteAngle = minutes * 6;
-
-  document.getElementById("hourHand").style.transform =
-    `translate(-50%, -100%) rotate(${hourAngle}deg)`;
-
-  document.getElementById("minuteHand").style.transform =
-    `translate(-50%, -100%) rotate(${minuteAngle}deg)`;
+  document.getElementById("hourHand").style.transform=
+    `translate(-50%,-100%) rotate(${hourAngle}deg)`;
+  document.getElementById("minuteHand").style.transform=
+    `translate(-50%,-100%) rotate(${minuteAngle}deg)`;
 }
-
 updateClock();
-setInterval(updateClock, 60000);
-
+setInterval(updateClock,60000);
 </script>
 
 </body>
