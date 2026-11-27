@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing | Umida Xolmirzayeva</title>
+
+<style>
+:root {
+  --paper: #eee5d5;
+  --light: #f6efe4;
+  --ink: #29231e;
+  --muted: #756658;
+  --line: #c9b9a3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #d4c5af;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 0.78;
+  z-index: -1;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+.page {
+  width: min(1000px, 90%);
+  margin: 45px auto;
+  background: var(--paper);
+  border: 1px solid #b9a68e;
+  padding: 45px 55px;
+  box-shadow: 0 10px 35px rgba(50, 35, 20, 0.18);
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 25px;
+  margin-bottom: 35px;
+}
+
+.small-title {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: 43px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin: 10px 0;
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.introduction {
+  max-width: 680px;
+  text-align: center;
+  margin: 0 auto 40px;
+  font-style: italic;
+}
+
+.ornament {
+  color: #88745e;
+  text-align: center;
+  margin: 30px 0;
+  letter-spacing: 6px;
+}
+
+.section-title {
+  font-size: 25px;
+  font-weight: normal;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  margin: 45px 0 25px;
+  letter-spacing: 1px;
+}
+
+/* FRAGMENTS */
+
+.fragments {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.paper-fragment {
+  background: #e5d8c6;
+  padding: 28px;
+  border: 1px solid #c7b49c;
+  box-shadow: 3px 5px 12px rgba(50, 35, 20, 0.08);
+}
+
+.paper-fragment:nth-child(2) {
+  transform: rotate(1deg);
+  background: #f2e8d9;
+}
+
+.paper-fragment:nth-child(3) {
+  transform: rotate(-1deg);
+}
+
+.paper-fragment:nth-child(4) {
+  background: #dfd0bc;
+}
+
+.fragment-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.fragment-text {
+  font-size: 17px;
+  font-style: italic;
+}
+
+.fragment-footer {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* LONGER WRITING */
+
+.writing-entry {
+  border-bottom: 1px solid var(--line);
+  padding: 25px 0;
+}
+
+.writing-entry:last-child {
+  border-bottom: none;
+}
+
+.entry-title {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.entry-date {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.entry-content {
+  font-size: 16px;
+}
+
+.entry-content p {
+  margin-bottom: 18px;
+}
+
+/* QUOTES */
+
+.quote-card {
+  background: #e4d7c5;
+  border: 1px solid var(--line);
+  padding: 35px;
+  text-align: center;
+  margin: 35px 0;
+}
+
+.quote-card blockquote {
+  font-size: 21px;
+  font-style: italic;
+  margin: 0;
+}
+
+.quote-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+/* RETURN LINK */
+
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 5px;
+  transition: opacity 0.3s;
+}
+
+.back-link:hover {
+  opacity: 0.6;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+@media (max-width: 750px) {
+  .page {
+    padding: 30px 22px;
+    margin: 20px auto;
+  }
+
+  body::before,
+  body::after {
+    width: 35px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .fragments {
+    grid-template-columns: 1fr;
+  }
+
+  .paper-fragment:nth-child(2),
+  .paper-fragment:nth-child(3) {
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header>
+  <div class="small-title">Fragments, words, and things left on paper</div>
+  <h1>Writing</h1>
+  <div class="subtitle">A collection of thoughts, sentences, and unfinished things.</div>
+</header>
+
+<div class="introduction">
+  Some things are written to be read, some to be remembered,
+  and some simply because they needed somewhere to exist.
+</div>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section>
+  <h2 class="section-title">Fragments</h2>
+
+  <div class="fragments">
+
+    <article class="paper-fragment">
+      <div class="fragment-label">Fragment No. 01</div>
+      <div class="fragment-text">
+        A fragment of your own writing will eventually go here.
+        A thought, a memory, or a paragraph you wish to preserve.
+      </div>
+      <div class="fragment-footer">Undated</div>
+    </article>
+
+    <article class="paper-fragment">
+      <div class="fragment-label">Fragment No. 02</div>
+      <div class="fragment-text">
+        This space is reserved for something you once wrote
+        and perhaps forgot about.
+      </div>
+      <div class="fragment-footer">Undated</div>
+    </article>
+
+    <article class="paper-fragment">
+      <div class="fragment-label">Fragment No. 03</div>
+      <div class="fragment-text">
+        An unfinished sentence, an observation, a passing thought
+        that somehow stayed.
+      </div>
+      <div class="fragment-footer">Undated</div>
+    </article>
+
+    <article class="paper-fragment">
+      <div class="fragment-label">Fragment No. 04</div>
+      <div class="fragment-text">
+        There is room here for things that do not quite fit
+        anywhere else.
+      </div>
+      <div class="fragment-footer">Undated</div>
+    </article>
+
+  </div>
+</section>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section>
+  <h2 class="section-title">Collected Sentences</h2>
+
+  <div class="quote-card">
+    <blockquote>
+      A sentence, passage, or quotation you wish to keep.
+    </blockquote>
+    <div class="quote-source">Author · Source</div>
+  </div>
+
+  <div class="quote-card">
+    <blockquote>
+      Another piece of writing worth returning to.
+    </blockquote>
+    <div class="quote-source">Author · Source</div>
+  </div>
+
+</section>
+
+<div class="ornament">✧ · · · ✧</div>
+
+<section>
+  <h2 class="section-title">Longer Pieces</h2>
+
+  <article class="writing-entry">
+    <div class="entry-title">Untitled</div>
+    <div class="entry-date">Undated</div>
+
+    <div class="entry-content">
+      <p>
+        This section will hold longer pieces of writing,
+        personal essays, reflections, journal-like entries,
+        or anything you decide to write.
+      </p>
+
+      <p>
+        The page does not need to be complete.
+        It can grow gradually, with each piece added
+        whenever you feel like preserving it.
+      </p>
+    </div>
+  </article>
+
+</section>
+
+<a class="back-link" href="index.html">← Return to the homepage</a>
+
+<footer>
+  <div>AN ARCHIVE OF MY OWN</div>
+  <div style="margin-top:8px;">✧</div>
+</footer>
+
+</div>
+
+</body>
+</html>
