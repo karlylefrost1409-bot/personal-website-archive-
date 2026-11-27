@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography | Umida Xolmirzayeva</title>
+
+<style>
+:root {
+  --paper: #eee5d5;
+  --ink: #302720;
+  --muted: #76685a;
+  --line: #b6a48d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 22px;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #e9decd, #cfc0a8);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 115px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 115px auto;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before { left: 0; }
+body::after { right: 0; }
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: auto;
+  padding: 55px 65px;
+  background: var(--paper);
+  border: 1px solid #b9a58b;
+  box-shadow: 0 10px 40px rgba(45,30,20,0.18);
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(130,105,78,0.25);
+  pointer-events: none;
+}
+
+header {
+  text-align: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 35px;
+}
+
+.subtitle {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: clamp(32px,5vw,48px);
+  font-weight: normal;
+  margin: 18px 0;
+}
+
+.ornament {
+  color: #806b55;
+  font-size: 22px;
+  letter-spacing: 8px;
+}
+
+.intro {
+  max-width: 650px;
+  text-align: center;
+  margin: 0 auto 45px;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+/* ALBUM */
+
+.album {
+  padding: 30px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.12);
+}
+
+.album-heading {
+  text-align: center;
+  font-size: 23px;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+/* PHOTOS */
+
+.photo-grid {
+  columns: 3;
+  column-gap: 25px;
+}
+
+.photo-card {
+  break-inside: avoid;
+  margin-bottom: 25px;
+  padding: 12px;
+  background: #f5ecdf;
+  border: 1px solid #c6b39a;
+  box-shadow: 3px 5px 12px rgba(50,35,25,0.12);
+  transition: transform 0.3s;
+}
+
+.photo-card:hover {
+  transform: translateY(-3px);
+}
+
+.photo-placeholder {
+  min-height: 230px;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(145deg,#c5b39a,#8e7960);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: #f1e7d8;
+}
+
+.photo-placeholder span {
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.photo-caption {
+  text-align: center;
+  padding: 12px 5px 5px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* NOTE */
+
+.note {
+  margin-top: 40px;
+  padding: 25px;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+.note p {
+  font-style: italic;
+  line-height: 1.9;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  margin-top: 55px;
+  border-top: 1px solid var(--line);
+  padding-top: 25px;
+}
+
+footer a {
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+footer a:hover {
+  opacity: 0.6;
+}
+
+footer p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 25px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .photo-grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 750px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  body::before,
+  body::after {
+    width: 50px;
+    background-size: 50px auto;
+    opacity: 0.45;
+  }
+
+  .page {
+    padding: 35px 25px;
+  }
+
+  .album {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .photo-grid {
+    columns: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+<header>
+  <div class="subtitle">Things seen and preserved</div>
+  <h1>Photography</h1>
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+</header>
+
+<section class="intro">
+  <p>
+    Photographs of places, people, small details,
+    passing moments, and things that caught my attention.
+    An album that will continue to grow.
+  </p>
+</section>
+
+<section class="album">
+
+  <h2 class="album-heading">The photo album</h2>
+
+  <div class="photo-grid">
+
+    <article class="photo-card">
+      <div class="photo-placeholder">
+        <span>Photograph<br>to be added</span>
+      </div>
+      <div class="photo-caption">Untitled</div>
+    </article>
+
+    <article class="photo-card">
+      <div class="photo-placeholder">
+        <span>Photograph<br>to be added</span>
+      </div>
+      <div class="photo-caption">Untitled</div>
+    </article>
+
+    <article class="photo-card">
+      <div class="photo-placeholder">
+        <span>Photograph<br>to be added</span>
+      </div>
+      <div class="photo-caption">Untitled</div>
+    </article>
+
+    <article class="photo-card">
+      <div class="photo-placeholder">
+        <span>Photograph<br>to be added</span>
+      </div>
+      <div class="photo-caption">Untitled</div>
+    </article>
+
+    <article class="photo-card">
+      <div class="photo-placeholder">
+        <span>Photograph<br>to be added</span>
+      </div>
+      <div class="photo-caption">Untitled</div>
+    </article>
+
+    <article class="photo-card">
+      <div class="photo-placeholder">
+        <span>Photograph<br>to be added</span>
+      </div>
+      <div class="photo-caption">Untitled</div>
+    </article>
+
+    <article class="photo-card">
+      <div class="photo-placeholder">
+        <span>Photograph<br>to be added</span>
+      </div>
+      <div class="photo-caption">Untitled</div>
+    </article>
+
+    <article class="photo-card">
+      <div class="photo-placeholder">
+        <span>Photograph<br>to be added</span>
+      </div>
+      <div class="photo-caption">Untitled</div>
+    </article>
+
+    <article class="photo-card">
+      <div class="photo-placeholder">
+        <span>Photograph<br>to be added</span>
+      </div>
+      <div class="photo-caption">Untitled</div>
+    </article>
+
+  </div>
+
+</section>
+
+<section class="note">
+
+  <div class="ornament">❧</div>
+
+  <p>
+    Some things are worth keeping, even when
+    there is nothing particularly remarkable about them.
+  </p>
+
+</section>
+
+<footer>
+
+  <div class="ornament">❧</div>
+
+  <a href="index.html">← RETURN TO THE HOMEPAGE</a>
+
+  <p>A record of what I happened to see.</p>
+
+</footer>
+
+</main>
+
+</body>
+</html>
