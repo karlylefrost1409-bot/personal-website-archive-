@@ -1,635 +1,620 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home</title>
+<title>Umida Xolmirzayeva | Personal Archive</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display&display=swap');
-
 :root {
-  --paper: #eee6d8;
-  --ink: #29221e;
-  --muted: #756759;
-  --lace: url('assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png');
+  --paper: #eee5d5;
+  --ink: #302720;
+  --muted: #76685a;
+  --line: #b6a48d;
+  --accent: #806b55;
+  --dark: #45372d;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(ellipse at center, #f5eee2 0%, #e9dfcf 100%);
+  background:
+    radial-gradient(ellipse at center, #e9decd 0%, #d9cbb6 65%, #cfc0a8 100%);
   color: var(--ink);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: Georgia, "Times New Roman", serif;
   overflow-x: hidden;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .14;
-  background-image: radial-gradient(#77644f 0.5px, transparent 0.5px);
-  background-size: 4px 4px;
-  z-index: 0;
-}
-
+/* Lace borders */
 .lace {
   position: fixed;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background-image: var(--lace);
+  left: 0; right: 0; height: 55px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
   background-repeat: repeat-x;
-  background-size: auto 100%;
-  z-index: 20;
-  pointer-events: none;
+  background-size: auto 55px;
+  opacity: 0.75;
+  pointer-events: none; z-index: 10;
 }
-
 .lace.top { top: 0; }
 .lace.bottom { bottom: 0; transform: rotate(180deg); }
 
+/* Main page container */
 .page {
   position: relative;
-  min-height: 100vh;
-  padding: 100px 6% 100px;
-  z-index: 1;
+  max-width: 1280px;
+  margin: auto;
+  padding: 65px 45px 55px;
+  background: rgba(238,229,213,0.94);
+  border-left: 1px solid rgba(130,105,78,0.3);
+  border-right: 1px solid rgba(130,105,78,0.3);
+  box-shadow: 0 0 45px rgba(45,30,20,0.12);
+}
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(130,105,78,0.25);
+  pointer-events: none;
 }
 
-h1 {
+/* Header */
+header {
   text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(35px, 5vw, 58px);
-  font-weight: 400;
-  letter-spacing: 5px;
-  margin: 0 0 12px;
+  padding: 20px 0 30px;
+  border-bottom: 1px solid var(--line);
 }
-
-.subtitle {
-  text-align: center;
-  font-style: italic;
+.header-small {
   color: var(--muted);
-  font-size: 19px;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+header h1 {
+  font-size: clamp(35px, 5vw, 57px);
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin: 17px 0 10px;
+}
+.header-subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  font-style: italic;
   letter-spacing: 1px;
 }
-
 .ornament {
-  text-align: center;
-  margin: 25px 0;
-  color: #79664f;
+  color: var(--accent);
+  font-size: 21px;
   letter-spacing: 8px;
-  font-size: 19px;
+  margin-top: 15px;
 }
 
-.intro {
-  max-width: 1120px;
-  margin: 65px auto 45px;
-  display: grid;
-  grid-template-columns: 200px 320px minmax(250px, 1fr);
-  gap: 55px;
-  align-items: center;
-  position: relative;
-}
-
-/* AUTHOR GALLERY */
-
+/* Author portraits on left */
 .author-wall {
-  position: relative;
-  width: 200px;
-  height: 920px;
-  margin: 0 auto;
-}
-
-.mini-frame {
   position: absolute;
-  display: block;
-  width: 55px;
-  height: 72px;
+  top: 260px;
+  left: 28px;
+  width: 190px;
+  height: 920px;
+  z-index: 3;
+}
+.author-card {
+  position: absolute;
   padding: 5px;
   cursor: pointer;
-  background: #e5d6b9;
-  box-shadow: 0 3px 7px rgba(35,23,15,.25), 0 0 2px rgba(35,23,15,.5);
-  transition: transform .25s ease, box-shadow .25s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  background: transparent;
   border: none;
-  outline: none;
 }
-
-.mini-frame img {
+.author-card img {
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
-  object-position: center;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: #c8b69e;
+  display: block;
+  pointer-events: none;
 }
-
-.mini-frame:hover,
-.mini-frame:focus-visible {
-  transform: scale(1.06) rotate(0deg) !important;
-  z-index: 15;
-  box-shadow: 0 6px 15px rgba(35,23,15,.3);
+.author-card:hover {
+  z-index: 5;
+  filter: brightness(1.07);
 }
-
-.mini-frame:focus-visible {
-  outline: 2px solid #77644f;
+.author-card:focus-visible {
+  outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
 
-/* DISTINCT FRAME STYLES */
-
+/* Frame styles */
 .rococo {
-  border: 4px double #967447;
-  outline: 2px solid #c4a779;
-  outline-offset: 2px;
-  border-radius: 48% 48% 44% 44%;
-  background: linear-gradient(135deg, #d6bd90, #8c693e, #d9c39d);
-  box-shadow: inset 0 0 4px #f3dfba;
+  width: 79px; height: 101px;
+  border: 5px double #8b6947;
+  border-radius: 45% 45% 42% 42%;
+  background: linear-gradient(135deg, #d5b88c, #76583d);
+  box-shadow:
+    0 0 0 3px #c5a477,
+    0 0 0 5px #806344,
+    3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .walnut {
-  border: 5px solid #5d3827;
-  background: #81563b;
-  box-shadow: inset 0 0 0 2px #b38a60, inset 0 0 0 4px #42291d;
+  width: 75px; height: 96px;
+  border: 7px ridge #76533a;
+  background: linear-gradient(135deg, #a27b55, #493426);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .baroque {
-  border: 5px ridge #292522;
-  background: #39332e;
-  box-shadow: inset 0 0 0 2px #84705b;
+  /* Fixed class name */
+  width: 77px; height: 101px;
+  border: 6px ridge #302822;
+  background: linear-gradient(135deg, #85715d, #29231e);
+  box-shadow:
+    0 0 0 2px #9a805e,
+    3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .gothic {
-  border: 5px solid #49372d;
-  background: #75533e;
-  clip-path: polygon(0 16%, 50% 0, 100% 16%, 100% 100%, 0 100%);
+  width: 72px; height: 101px;
+  border: 5px double #554638;
+  border-radius: 48% 48% 3px 3px;
+  background: linear-gradient(135deg, #9a866e, #43372c);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .louis {
-  border: 4px double #c0a779;
-  outline: 2px solid #786044;
-  outline-offset: 2px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #dbc8a4, #96764c);
+  width: 77px; height: 98px;
+  border: 6px ridge #b39a75;
+  border-radius: 45%;
+  background: linear-gradient(135deg, #d3bd96, #756044);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .floral {
-  border: 6px ridge #8b6a4a;
-  background: #c1a782;
-  box-shadow: inset 0 0 0 2px #e1c8a1;
+  width: 73px; height: 96px;
+  border: 6px ridge #9b8060;
+  border-radius: 20px 20px 12px 12px;
+  background: linear-gradient(135deg, #d1b99b, #78614a);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .silver {
-  border: 5px ridge #a6a19a;
-  background: linear-gradient(135deg, #dedbd4, #99958c, #c6c0b5);
+  width: 73px; height: 95px;
+  border: 6px ridge #8e8b80;
+  border-radius: 44%;
+  background: linear-gradient(135deg, #c5bfb0, #69665f);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .gilded {
-  border: 4px solid #ae854c;
-  outline: 3px double #d6b67d;
-  outline-offset: 1px;
-  background: #c8a76e;
-  box-shadow: inset 0 0 0 2px #7b592e;
+  width: 68px; height: 88px;
+  border: 5px double #b18c4e;
+  border-radius: 45%;
+  background: linear-gradient(135deg, #e0c48c, #82633b);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .ivory {
-  border: 5px ridge #c7bba5;
-  background: linear-gradient(135deg, #f0e6d5, #c5b49b);
+  width: 75px; height: 98px;
+  border: 6px ridge #c4b59b;
+  background: linear-gradient(135deg, #e4d9c5, #92836c);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .mahogany {
-  border: 5px solid #512c20;
-  background: linear-gradient(135deg, #774734, #4d2b20);
-  box-shadow: inset 0 0 0 2px #ad7a54;
+  width: 71px; height: 94px;
+  border: 7px ridge #674532;
+  background: linear-gradient(135deg, #a27a55, #4a3022);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .blackgold {
-  border: 5px double #b3945e;
-  background: #28231f;
-  box-shadow: inset 0 0 0 2px #716047;
+  width: 77px; height: 101px;
+  border: 6px double #b18d55;
+  background: linear-gradient(135deg, #4c4034, #171411);
+  box-shadow: 0 0 0 2px #756047, 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .roccrect {
-  border: 5px ridge #aa8555;
-  background: #b89a6a;
-  box-shadow: inset 0 0 0 2px #e0c69b;
+  width: 73px; height: 96px;
+  border: 6px ridge #9c805b;
+  background: linear-gradient(135deg, #c7aa7e, #70543b);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .darkwood {
-  border: 5px solid #35251e;
-  border-radius: 48%;
-  background: #694735;
-  box-shadow: inset 0 0 0 2px #98704f;
+  width: 70px; height: 92px;
+  border: 7px ridge #4b3527;
+  border-radius: 45%;
+  background: linear-gradient(135deg, #8b674b, #30241c);
+  box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .ornateblack {
-  border: 5px ridge #272321;
-  background: linear-gradient(135deg, #37312d, #181615);
-  box-shadow: inset 0 0 0 2px #71645a;
+  width: 76px; height: 100px;
+  border: 6px double #29231e;
+  border-radius: 45% 45% 5px 5px;
+  background: linear-gradient(135deg, #77604a, #211b16);
+  box-shadow: 0 0 0 2px #8e7558, 3px 5px 9px rgba(30,20,10,0.25);
 }
 
-/* FIVE-ZONE ARRANGEMENT */
+/* Position each frame */
+.f1  { top: 5px;   left: 45px;  transform: rotate(-3deg); }
+.f2  { top: 90px;  left: 0px;   transform: rotate(2deg); }
+.f3  { top: 180px; left: 83px;  transform: rotate(-2deg); }
+.f4  { top: 270px; left: 18px;  transform: rotate(3deg); }
+.f5  { top: 355px; left: 95px;  transform: rotate(-2deg); }
+.f6  { top: 445px; left: 23px;  transform: rotate(1deg); }
+.f7  { top: 535px; left: 85px;  transform: rotate(3deg); }
+.f8  { top: 625px; left: 3px;   transform: rotate(-2deg); }
+.f9  { top: 710px; left: 91px;  transform: rotate(2deg); }
+.f10 { top: 795px; left: 22px;  transform: rotate(-3deg); }
+.f11 { top: 875px; left: 100px; transform: rotate(2deg); }
+.f12 { top: 1000px; left: 8px;  transform: rotate(-2deg); }
+.f13 { top: 1090px; left: 87px; transform: rotate(3deg); }
+.f14 { top: 1180px; left: 23px; transform: rotate(-2deg); }
 
-/* Zone 1: upper */
-
-.f1 {
-  top: 12px;
-  left: 18px;
-  width: 62px;
-  height: 82px;
-  transform: rotate(-3deg);
+/* Main intro section */
+.hero {
+  position: relative; z-index: 2;
+  max-width: 950px;
+  margin: 55px 25px 45px 215px;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(280px, 1.15fr);
+  align-items: center;
+  gap: 55px;
 }
-
-.f2 {
-  top: 95px;
-  left: 105px;
-  width: 47px;
-  height: 63px;
-  transform: rotate(2deg);
-}
-
-.f3 {
-  top: 165px;
-  left: 52px;
-  width: 53px;
-  height: 70px;
-}
-
-/* Zone 2: upper-middle */
-
-.f4 {
-  top: 230px;
-  left: 132px;
-  width: 52px;
-  height: 70px;
-  transform: rotate(3deg);
-}
-
-.f5 {
-  top: 275px;
-  left: 22px;
-  width: 58px;
-  height: 78px;
-}
-
-.f6 {
-  top: 345px;
-  left: 100px;
-  width: 46px;
-  height: 61px;
-  transform: rotate(-2deg);
-}
-
-/* Zone 3: middle */
-
-.f7 {
-  top: 420px;
-  left: 35px;
-  width: 50px;
-  height: 67px;
-  transform: rotate(2deg);
-}
-
-.f8 {
-  top: 460px;
-  left: 125px;
-  width: 60px;
-  height: 80px;
-  transform: rotate(-3deg);
-}
-
-/* Zone 4: lower-middle */
-
-.f9 {
-  top: 540px;
-  left: 45px;
-  width: 55px;
-  height: 74px;
-}
-
-.f10 {
-  top: 565px;
-  left: 140px;
-  width: 46px;
-  height: 62px;
-  transform: rotate(2deg);
-}
-
-/* Zone 5: lower */
-
-.f11 {
-  top: 635px;
-  left: 8px;
-  width: 60px;
-  height: 80px;
-  transform: rotate(-2deg);
-}
-
-.f12 {
-  top: 700px;
-  left: 100px;
-  width: 52px;
-  height: 70px;
-}
-
-.f13 {
-  top: 775px;
-  left: 35px;
-  width: 46px;
-  height: 62px;
-  transform: rotate(3deg);
-}
-
-.f14 {
-  top: 830px;
-  left: 130px;
-  width: 58px;
-  height: 77px;
-}
-
-/* PORTRAIT */
-
-.portrait {
-  min-height: 420px;
-  width: 320px;
-  border: 1px solid #a18a6b;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.2), rgba(0,0,0,.03)),
-    #d8c9b3;
+.main-portrait {
+  padding: 12px;
+  border: 1px solid #a38b6e;
+  outline: 4px double #b7a184;
+  outline-offset: 5px;
+  background: #e4d8c5;
+  box-shadow: 5px 8px 18px rgba(40,25,15,0.16);
+  min-height: 330px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 30px;
-  box-shadow: 0 8px 20px rgba(44,31,21,.12);
 }
-
 .portrait-placeholder {
-  color: #756759;
+  color: #8c7861;
   font-style: italic;
-  font-size: 19px;
+  font-size: 14px;
+  line-height: 1.9;
+  padding: 20px;
 }
-
-/* WELCOME */
-
+.portrait-placeholder span {
+  display: block;
+  font-size: 38px;
+  margin-bottom: 12px;
+  color: #9b8266;
+}
 .welcome {
-  max-width: 440px;
-  margin: auto;
   text-align: center;
 }
-
+.welcome .small-title {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 .welcome h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  letter-spacing: 2px;
-  font-size: 31px;
+  font-size: 34px;
+  font-weight: normal;
+  margin: 18px 0;
 }
-
+.welcome .welcome-ornament {
+  color: var(--accent);
+  font-size: 23px;
+  letter-spacing: 8px;
+  margin: 18px 0;
+}
 .welcome p {
-  font-size: 21px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--muted);
+  font-style: italic;
 }
 
-.small-ornament {
-  color: #86704f;
-  margin: 22px 0;
-  font-size: 22px;
-}
-
-/* LETTER */
-
-.envelope-area {
+/* Envelope / letter section */
+.letter-section {
+  position: relative; z-index: 2;
+  max-width: 760px;
+  margin: 55px auto;
   text-align: center;
-  margin: 45px auto;
 }
-
 .envelope {
-  display: inline-block;
+  width: 90px; height: 62px;
+  margin: 0 auto 18px;
+  position: relative;
   cursor: pointer;
-  background: transparent;
-  border: 1px solid #8b7354;
-  color: #433529;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
-  padding: 12px 30px;
-  transition: .3s;
+  border: 1px solid #92795e;
+  background: #d6c2a4;
+  box-shadow: 2px 4px 8px rgba(40,25,15,0.12);
+  transition: transform 0.3s;
 }
-
 .envelope:hover {
-  background: rgba(125,97,67,.1);
+  transform: translateY(-3px);
 }
-
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 0;
+  width: 0; height: 0;
+  border-left: 44px solid transparent;
+  border-right: 44px solid transparent;
+  border-top: 34px solid #b89e7c;
+}
+.envelope::after {
+  content: "✦";
+  position: absolute;
+  top: 22px; left: 37px;
+  color: #604c39;
+  font-size: 16px;
+}
 .letter {
-  max-width: 600px;
-  margin: 20px auto;
   display: none;
-  padding: 30px;
-  background: rgba(226,213,192,.65);
-  border: 1px solid #a38b6a;
-  font-size: 20px;
-  line-height: 1.6;
+  max-width: 600px;
+  margin: 20px auto 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.15);
+  color: var(--muted);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.9;
 }
-
 .letter.open {
   display: block;
+  animation: appear 0.4s ease;
 }
 
-/* QUOTES */
-
+/* Quote box */
 .quote-box {
-  max-width: 700px;
-  margin: 50px auto;
+  position: relative; z-index: 2;
+  max-width: 760px;
+  margin: 60px auto;
+  padding: 30px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   text-align: center;
-  padding: 25px;
 }
-
-.quote {
-  font-size: 23px;
-  line-height: 1.6;
-  font-style: italic;
+.quote-box .quote-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--muted);
+  text-transform: uppercase;
 }
-
-.quote-author {
-  margin-top: 15px;
-  color: #786754;
+#quote {
+  min-height: 65px;
+  margin: 20px 0 12px;
   font-size: 17px;
+  line-height: 1.9;
+  font-style: italic;
+  color: var(--dark);
 }
-
-.quote-button {
+#quote-author {
+  font-size: 13px;
+  color: var(--muted);
+}
+.quote-box button {
   margin-top: 22px;
-  padding: 8px 22px;
-  border: 1px solid #8b7354;
+  padding: 9px 18px;
+  border: 1px solid var(--line);
   background: transparent;
-  color: #433529;
-  font-family: inherit;
-  font-size: 18px;
+  color: var(--ink);
   cursor: pointer;
 }
+.quote-box button:hover {
+  background: #dfd0ba;
+}
 
-/* HIDDEN DETAIL */
-
-.hidden-detail {
+/* Hidden detail */
+.secret-section {
+  position: relative; z-index: 2;
   text-align: center;
-  margin: 45px 0;
+  margin: 55px auto;
+  max-width: 650px;
 }
-
-.hidden-detail button {
-  background: transparent;
-  border: none;
-  color: #8a7864;
+.secret-button {
+  border: 0;
+  background: none;
+  color: var(--muted);
   font-family: inherit;
-  cursor: pointer;
-  font-size: 17px;
-}
-
-.secret {
-  display: none;
-  margin: 15px auto;
-  max-width: 500px;
   font-style: italic;
-  font-size: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #b6a48d;
+  text-underline-offset: 5px;
 }
-
-.secret.show {
+.secret-content {
+  display: none;
+  margin-top: 20px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.8;
+}
+.secret-content.visible {
   display: block;
+  animation: appear 0.4s ease;
 }
 
-/* NAVIGATION */
-
+/* Navigation grid */
 .navigation {
-  max-width: 950px;
-  margin: 65px auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px 25px;
-}
-
-.navigation a {
-  text-decoration: none;
-  color: #44352a;
-  font-size: 20px;
-  border-bottom: 1px solid transparent;
-  transition: .3s;
-}
-
-.navigation a:hover {
-  border-bottom: 1px solid #8b7354;
-  color: #826342;
-}
-
-.divider {
+  position: relative; z-index: 2;
+  margin: 75px auto 45px;
+  max-width: 850px;
   text-align: center;
-  letter-spacing: 8px;
-  color: #85704f;
-  margin: 45px auto;
+}
+.navigation h2 {
+  font-size: 25px;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.nav-grid a {
+  display: block;
+  padding: 15px 10px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 13px;
+  letter-spacing: 1px;
+  background: rgba(255,255,255,0.12);
+  transition: background 0.3s, transform 0.3s;
+}
+.nav-grid a:hover {
+  background: #dfd0ba;
+  transform: translateY(-2px);
 }
 
-/* CLOCK */
+/* Footer */
+footer {
+  position: relative; z-index: 2;
+  text-align: center;
+  margin-top: 70px;
+  padding-top: 25px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+footer .ornament {
+  margin-bottom: 15px;
+}
 
+/* Analog clock */
 .clock {
   position: fixed;
-  right: 22px;
-  bottom: 22px;
-  width: 105px;
-  height: 105px;
+  right: 25px; bottom: 25px;
+  width: 112px; height: 112px;
+  border: 3px double #8d765d;
   border-radius: 50%;
-  border: 2px solid #6d5945;
-  background: rgba(238,230,216,.94);
-  box-shadow:
-    0 4px 12px rgba(40,28,20,.15),
-    inset 0 0 0 4px #d3c1a5,
-    inset 0 0 0 5px #6d5945;
-  z-index: 30;
+  background: #eee5d5;
+  box-shadow: 0 3px 12px rgba(40,25,15,0.18);
+  z-index: 20;
 }
-
-.clock .num {
+.clock::before {
+  content: "";
   position: absolute;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 12px;
-  color: #403327;
-  transform: translate(-50%, -50%);
+  inset: 5px;
+  border: 1px solid #b6a48d;
+  border-radius: 50%;
 }
-
 .clock-center {
   position: absolute;
-  width: 7px;
-  height: 7px;
-  background: #403327;
+  width: 7px; height: 7px;
+  background: #4b3828;
   border-radius: 50%;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 5;
+  z-index: 4;
 }
-
+.clock-number {
+  position: absolute;
+  font-size: 11px;
+  color: #5b4938;
+  transform: translate(-50%, -50%);
+}
+.n12 { top: 13px;  left: 50%; }
+.n1  { top: 21px;  left: 73%; }
+.n2  { top: 37px;  left: 86%; }
+.n3  { top: 50%;   left: 91%; }
+.n4  { top: 73%;   left: 84%; }
+.n5  { top: 87%;   left: 69%; }
+.n6  { top: 91%;   left: 50%; }
+.n7  { top: 87%;   left: 30%; }
+.n8  { top: 73%;   left: 16%; }
+.n9  { top: 50%;   left: 9%; }
+.n10 { top: 29%;   left: 17%; }
+.n11 { top: 16%;   left: 32%; }
 .hand {
   position: absolute;
-  left: 50%;
-  bottom: 50%;
+  bottom: 50%; left: 50%;
   transform-origin: bottom center;
   border-radius: 5px;
 }
+.hour-hand   { width: 3px;  height: 27px; background: #49392c; }
+.minute-hand { width: 2px;  height: 36px; background: #70563e; }
+.second-hand { width: 1px;  height: 40px; background: #9b5540; }
 
-.hour-hand {
-  width: 3px;
-  height: 23px;
-  background: #44352a;
-}
-
-.minute-hand {
-  width: 2px;
-  height: 32px;
-  background: #44352a;
-}
-
-.second-hand {
-  width: 1px;
-  height: 35px;
-  background: #8b493a;
-}
-
-/* AUTHOR POPUP */
-
-.popup-overlay {
+/* Author pop-up modal */
+.modal {
   position: fixed;
   inset: 0;
-  z-index: 100;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(35,27,22,.35);
-  backdrop-filter: blur(2px);
+  background: rgba(35,26,19,0.62);
+  backdrop-filter: blur(3px);
+  z-index: 100;
 }
-
-.popup-overlay.visible {
+.modal.open {
   display: flex;
+  animation: appear 0.25s ease;
 }
-
-.author-popup {
-  width: min(380px, 92vw);
+.modal-card {
   position: relative;
+  width: min(420px, 100%);
+  padding: 45px 35px 38px;
   text-align: center;
-  padding: 38px 30px 32px;
-  background:
-    radial-gradient(ellipse at center, #f5eddf, #e5d6bd);
-  border: 1px solid #9b8060;
-  box-shadow:
-    0 12px 40px rgba(30,20,15,.25),
-    inset 0 0 0 5px rgba(155,128,96,.12),
-    inset 0 0 0 6px #c8b18e;
-  animation: popupAppear .22s ease;
+  background: #eee5d5;
+  border: 1px solid #a99173;
+  outline: 4px double #b7a184;
+  outline-offset: 5px;
+  box-shadow: 0 12px 45px rgba(0,0,0,0.3);
+}
+.modal-card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(130,105,78,0.25);
+  pointer-events: none;
+}
+.modal-close {
+  position: absolute;
+  top: 13px; right: 17px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 2;
+}
+.modal-small {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.modal-card h2 {
+  font-weight: normal;
+  font-size: 28px;
+  margin: 20px 0 10px;
+}
+.modal-ornament {
+  color: var(--accent);
+  font-size: 22px;
+  letter-spacing: 7px;
+  margin: 17px 0 24px;
+}
+.library-link {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1px solid #a38b6e;
+  color: var(--ink);
+  background: #dfd0ba;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: background 0.3s;
+}
+.library-link:hover {
+  background: #d1bda1;
 }
 
-@keyframes popupAppear {
+/* Animations */
+@keyframes appear {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(7px);
   }
   to {
     opacity: 1;
@@ -637,111 +622,103 @@ h1 {
   }
 }
 
-.popup-close {
-  position: absolute;
-  right: 12px;
-  top: 10px;
-  border: none;
-  background: transparent;
-  font-family: inherit;
-  font-size: 23px;
-  color: #6d5945;
-  cursor: pointer;
-}
-
-.popup-ornament {
-  color: #88704e;
-  letter-spacing: 5px;
-  margin: 8px 0 15px;
-}
-
-.popup-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 27px;
-  font-weight: 400;
-  color: #433529;
-  margin: 0;
-}
-
-.popup-description {
-  font-style: italic;
-  font-size: 18px;
-  color: #756759;
-  margin: 10px 0 25px;
-}
-
-.library-button {
-  display: inline-block;
-  text-decoration: none;
-  color: #433529;
-  border: 1px solid #8b7354;
-  background: rgba(125,97,67,.08);
-  padding: 11px 25px;
-  font-size: 19px;
-  transition: background .25s;
-}
-
-.library-button:hover {
-  background: rgba(125,97,67,.18);
-}
-
-/* RESPONSIVE */
-
+/* Responsive adjustments */
 @media (max-width: 1050px) {
-  .intro {
-    grid-template-columns: 170px 280px minmax(220px,1fr);
+  .author-wall {
+    left: 10px;
+    transform: scale(0.85);
+    transform-origin: top left;
+  }
+  .hero {
+    margin-left: 185px;
     gap: 30px;
   }
-
-  .portrait {
-    width: 280px;
-  }
-
-  .author-wall {
-    transform: scale(.9);
-    transform-origin: top center;
+  .page {
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 
-@media (max-width: 800px) {
-  .intro {
+@media (max-width: 760px) {
+  .page {
+    width: 100%;
+    padding: 45px 22px;
+  }
+  .author-wall {
+    position: relative;
+    top: auto; left: auto;
+    transform: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px;
+    margin: 25px auto 45px;
+    padding: 15px 10px;
+  }
+  .author-card {
+    position: relative; top: auto; left: auto;
+    transform: none;
+    flex: 0 0 auto;
+  }
+  .hero {
+    margin: 35px auto;
+    max-width: 520px;
     grid-template-columns: 1fr;
     gap: 35px;
-    margin-top: 45px;
   }
-
-  .author-wall {
-    width: 200px;
-    height: 920px;
-    margin: 0 auto;
-    transform: scale(.85);
-    transform-origin: top center;
+  .main-portrait {
+    max-width: 290px;
+    margin: auto;
+    min-height: 310px;
   }
-
-  .portrait {
-    width: min(320px,90%);
-    margin: 0 auto;
+  .welcome h2 {
+    font-size: 29px;
   }
-
-  .welcome {
-    padding: 0 15px;
+  .nav-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .page {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-
   .clock {
-    width: 85px;
-    height: 85px;
-    right: 12px;
-    bottom: 12px;
+    width: 85px; height: 85px;
+    right: 12px; bottom: 12px;
+    transform: scale(0.85);
+    transform-origin: bottom right;
   }
+}
 
-  .hour-hand { height: 19px; }
-  .minute-hand { height: 25px; }
-  .second-hand { height: 29px; }
+@media (max-width: 450px) {
+  header h1 {
+    font-size: 34px;
+  }
+  .header-small {
+    letter-spacing: 3px;
+  }
+  .nav-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .nav-grid a {
+    font-size: 11px;
+    padding: 13px 6px;
+  }
+  .quote-box {
+    padding: 22px 12px;
+  }
+  .letter {
+    padding: 20px;
+  }
+  .clock {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 </style>
 </head>
@@ -753,381 +730,363 @@ h1 {
 
 <main class="page">
 
-<h1>Your Name</h1>
+  <header>
+    <div class="header-small">A personal collection of interests</div>
+    <h1>Umida Xolmirzayeva</h1>
+    <div class="header-subtitle">Literature · Art · Photography · Thought</div>
+    <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+  </header>
 
-<div class="subtitle">A little archive of things I love</div>
+  <!-- 14 AUTHOR PORTRAITS -->
+  <section class="author-wall" aria-label="Favourite authors">
 
-<div class="ornament">❦ ───────── ❦ ───────── ❦</div>
+    <button class="author-card rococo f1"
+      data-author="Donna Tartt"
+      data-link="donna-tartt"
+      aria-label="Donna Tartt">
+      <img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
+    </button>
 
-<section class="intro">
+    <button class="author-card walnut f2"
+      data-author="Fyodor Dostoevsky"
+      data-link="dostoevsky"
+      aria-label="Fyodor Dostoevsky">
+      <img src="assets/images/1795768877389.jpg" alt="Fyodor Dostoevsky">
+    </button>
 
-<!-- AUTHOR PORTRAITS -->
+    <button class="author-card baroque f3"
+      data-author="Friedrich Nietzsche"
+      data-link="nietzsche"
+      aria-label="Friedrich Nietzsche">
+      <img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
+    </button>
 
-<div class="author-wall">
+    <button class="author-card gothic f4"
+      data-author="Franz Kafka"
+      data-link="kafka"
+      aria-label="Franz Kafka">
+      <img src="assets/images/kafka.jpg" alt="Franz Kafka">
+    </button>
 
-<div class="mini-frame rococo f1" tabindex="0" role="button" data-author="Donna Tartt" aria-label="Donna Tartt">
-<img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
-</div>
+    <button class="author-card louis f5"
+      data-author="Albert Camus"
+      data-link="camus"
+      aria-label="Albert Camus">
+      <img src="assets/images/camus.jpg" alt="Albert Camus">
+    </button>
 
-<div class="mini-frame walnut f2" tabindex="0" role="button" data-author="Fyodor Dostoevsky" aria-label="Fyodor Dostoevsky">
-<img src="assets/images/1795768877389.jpg" alt="Fyodor Dostoevsky">
-</div>
+    <button class="author-card floral f6"
+      data-author="Clarice Lispector"
+      data-link="clarice"
+      aria-label="Clarice Lispector">
+      <img src="assets/images/clarice.jpg" alt="Clarice Lispector">
+    </button>
 
-<div class="mini-frame baroque f3" tabindex="0" role="button" data-author="Friedrich Nietzsche" aria-label="Friedrich Nietzsche">
-<img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
-</div>
+    <button class="author-card silver f7"
+      data-author="Ocean Vuong"
+      data-link="ocean-vuong"
+      aria-label="Ocean Vuong">
+      <img src="assets/images/ocean.jpg" alt="Ocean Vuong">
+    </button>
 
-<div class="mini-frame gothic f4" tabindex="0" role="button" data-author="Franz Kafka" aria-label="Franz Kafka">
-<img src="assets/images/kafka.jpg" alt="Franz Kafka">
-</div>
+    <button class="author-card gilded f8"
+      data-author="Hanya Yanagihara"
+      data-link="hanya-yanagihara"
+      aria-label="Hanya Yanagihara">
+      <img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
+    </button>
 
-<div class="mini-frame louis f5" tabindex="0" role="button" data-author="Albert Camus" aria-label="Albert Camus">
-<img src="assets/images/camus.jpg" alt="Albert Camus">
-</div>
+    <button class="author-card ivory f9"
+      data-author="Susan Sontag"
+      data-link="sontag"
+      aria-label="Susan Sontag">
+      <img src="assets/images/sontag.jpg" alt="Susan Sontag">
+    </button>
 
-<div class="mini-frame floral f6" tabindex="0" role="button" data-author="Clarice Lispector" aria-label="Clarice Lispector">
-<img src="assets/images/clarice.jpg" alt="Clarice Lispector">
-</div>
+    <button class="author-card mahogany f10"
+      data-author="Hermann Hesse"
+      data-link="hesse"
+      aria-label="Hermann Hesse">
+      <img src="assets/images/hesse.jpg" alt="Hermann Hesse">
+    </button>
 
-<div class="mini-frame silver f7" tabindex="0" role="button" data-author="Ocean Vuong" aria-label="Ocean Vuong">
-<img src="assets/images/ocean.jpg" alt="Ocean Vuong">
-</div>
+    <button class="author-card blackgold f11"
+      data-author="Toni Morrison"
+      data-link="toni-morrison"
+      aria-label="Toni Morrison">
+      <img src="assets/images/morrison.jpg" alt="Toni Morrison">
+    </button>
 
-<div class="mini-frame gilded f8" tabindex="0" role="button" data-author="Hanya Yanagihara" aria-label="Hanya Yanagihara">
-<img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
-</div>
+    <button class="author-card roccrect f12"
+      data-author="Oscar Wilde"
+      data-link="wilde"
+      aria-label="Oscar Wilde">
+      <img src="assets/images/wilde.jpg" alt="Oscar Wilde">
+    </button>
 
-<div class="mini-frame ivory f9" tabindex="0" role="button" data-author="Susan Sontag" aria-label="Susan Sontag">
-<img src="assets/images/sontag.jpg" alt="Susan Sontag">
-</div>
+    <button class="author-card darkwood f13"
+      data-author="Simone de Beauvoir"
+      data-link="simone-de-beauvoir"
+      aria-label="Simone de Beauvoir">
+      <img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
+    </button>
 
-<div class="mini-frame mahogany f10" tabindex="0" role="button" data-author="Hermann Hesse" aria-label="Hermann Hesse">
-<img src="assets/images/hesse.jpg" alt="Hermann Hesse">
-</div>
+    <button class="author-card ornateblack f14"
+      data-author="Sylvia Plath"
+      data-link="sylvia-plath"
+      aria-label="Sylvia Plath">
+      <img src="assets/images/silvia.jpg" alt="Sylvia Plath">
+    </button>
 
-<div class="mini-frame blackgold f11" tabindex="0" role="button" data-author="Toni Morrison" aria-label="Toni Morrison">
-<img src="assets/images/morrison.jpg" alt="Toni Morrison">
-</div>
+  </section>
 
-<div class="mini-frame roccrect f12" tabindex="0" role="button" data-author="Oscar Wilde" aria-label="Oscar Wilde">
-<img src="assets/images/wilde.jpg" alt="Oscar Wilde">
-</div>
+  <!-- MAIN INTRO -->
+  <section class="hero">
+    <div class="main-portrait">
+      <div class="portrait-placeholder">
+        <span>❧</span>
+        A portrait will be placed here.
+        <br>
+        A little space reserved for its owner.
+        <br><br>✦
+      </div>
+    </div>
+    <div class="welcome">
+      <div class="small-title">Welcome to my archive</div>
+      <h2>A World of My Own</h2>
+      <div class="welcome-ornament">❧ ✦ ❧</div>
+      <p>
+        A collection of things I find beautiful, interesting,
+        meaningful, or simply worth keeping. Books and ideas,
+        photographs and paintings, music and fragments of life.
+      </p>
+      <p>
+        Not everything here needs a particular order. Some things
+        are kept because they matter; others, because I want to
+        remember them later.
+      </p>
+    </div>
+  </section>
 
-<div class="mini-frame darkwood f13" tabindex="0" role="button" data-author="Simone de Beauvoir" aria-label="Simone de Beauvoir">
-<img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
-</div>
+  <div class="divider">❦ ───── ✦ ───── ❦</div>
 
-<div class="mini-frame ornateblack f14" tabindex="0" role="button" data-author="Sylvia Plath" aria-label="Sylvia Plath">
-<img src="assets/images/silvia.jpg" alt="Sylvia Plath">
-</div>
+  <!-- LETTER SECTION -->
+  <section class="letter-section">
+    <div class="ornament">❧</div>
+    <div class="envelope" id="envelope"
+         role="button" tabindex="0"
+         aria-label="Open the letter"></div>
+    <div class="header-small">A little note</div>
+    <div class="letter" id="letter">
+      <p>
+        This is a small corner of the internet that belongs
+        to my interests, thoughts, and discoveries. A place
+        to collect what I read, see, hear, and remember.
+      </p>
+      <p>
+        It may always remain a work in progress. That is
+        part of its purpose.
+      </p>
+      <div class="ornament">✦</div>
+    </div>
+  </section>
 
-</div>
+  <div class="divider">❦ ───── ✦ ───── ❦</div>
 
-<!-- YOUR PORTRAIT -->
+  <!-- QUOTE SECTION -->
+  <section class="quote-box">
+    <div class="quote-label">A thought to keep</div>
+    <div class="ornament">❧</div>
+    <p id="quote">
+      “We are all in the gutter, but some of us are looking at the stars.”
+    </p>
+    <div id="quote-author">Oscar Wilde</div>
+    <button type="button" id="new-quote">Turn another page</button>
+  </section>
 
-<div class="portrait">
-<div class="portrait-placeholder">
-Your portrait will be placed here
-</div>
-</div>
+  <div class="divider">❦ ───── ✦ ───── ❦</div>
 
-<!-- WELCOME -->
+  <!-- HIDDEN DETAIL -->
+  <section class="secret-section">
+    <button class="secret-button" id="secret-button" type="button">
+      There is something hidden here...
+    </button>
+    <div class="secret-content" id="secret-content">
+      Perhaps the best parts of a collection are the things
+      that cannot be properly categorised.
+      <div class="ornament">❧</div>
+    </div>
+  </section>
 
-<div class="welcome">
+  <div class="divider">❦ ───── ✦ ───── ❦</div>
 
-<h2>Welcome</h2>
+  <!-- NAVIGATION -->
+  <section class="navigation">
+    <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+    <h2>Explore the Archive</h2>
+    <div class="nav-grid">
+      <a href="about.html">About</a>
+      <a href="diary.html">Diary</a>
+      <a href="literature.html">Literature</a>
+      <a href="music.html">Music</a>
+      <a href="visual-arts.html">Visual Arts</a>
+      <a href="photography.html">Photography</a>
+      <a href="cinema.html">Cinema</a>
+      <a href="writing.html">Writing</a>
+      <a href="languages.html">Languages</a>
+      <a href="psychology-philosophy.html">Psychology & Philosophy</a>
+      <a href="history-culture.html">History & Culture</a>
+      <a href="curiosities.html">Curiosities</a>
+    </div>
+  </section>
 
-<div class="small-ornament">❧</div>
-
-<p>
-This is a small collection of the things that occupy my mind,
-the things I read, listen to, observe, learn and keep.
-</p>
-
-<p>
-A quiet corner for literature, art, music, photography,
-cinema, thoughts and little curiosities.
-</p>
-
-<div class="small-ornament">✧</div>
-
-</div>
-
-</section>
-
-<div class="divider">❦ ───── ✦ ───── ❦</div>
-
-<!-- ENVELOPE -->
-
-<section class="envelope-area">
-
-<button class="envelope" id="envelopeButton">
-✉ Open the letter
-</button>
-
-<div class="letter" id="letter">
-
-<p>Dear visitor,</p>
-
-<p>
-You have found a little corner of the internet that belongs
-to the things I find beautiful, strange, interesting and worth
-remembering.
-</p>
-
-<p>Feel free to wander.</p>
-
-</div>
-
-</section>
-
-<!-- QUOTES -->
-
-<section class="quote-box">
-
-<div class="quote" id="quote">
-"I have always imagined that Paradise will be a kind of library."
-</div>
-
-<div class="quote-author" id="quoteAuthor">
-Jorge Luis Borges
-</div>
-
-<button class="quote-button" id="quoteButton">
-Another quotation
-</button>
-
-</section>
-
-<div class="divider">❦ ───── ✦ ───── ❦</div>
-
-<!-- HIDDEN DETAIL -->
-
-<section class="hidden-detail">
-
-<button id="secretButton">
-Something hidden ✧
-</button>
-
-<div class="secret" id="secret">
-There is no particular reason for everything to be here.
-Sometimes liking something is reason enough.
-</div>
-
-</section>
-
-<!-- NAVIGATION -->
-
-<nav class="navigation">
-
-<a href="about.html">About</a>
-<a href="diary.html">Diary</a>
-<a href="literature.html">Literature</a>
-<a href="music.html">Music</a>
-<a href="visual-arts.html">Visual Arts</a>
-<a href="photography.html">Photography</a>
-<a href="cinema.html">Cinema</a>
-<a href="writing.html">Writing</a>
-<a href="languages.html">Languages</a>
-<a href="psychology-philosophy.html">Psychology & Philosophy</a>
-<a href="history-culture.html">History & Culture</a>
-<a href="curiosities.html">Curiosities</a>
-
-</nav>
-
-<div class="divider">❦ ───── ✦ ───── ❦</div>
+  <footer>
+    <div class="ornament">❧</div>
+    <p>A personal archive, still in the making.</p>
+    <p>Umida Xolmirzayeva</p>
+  </footer>
 
 </main>
 
-<!-- CLOCK -->
-
-<div class="clock" id="clock">
-
-<div class="clock-center"></div>
-<div class="hand hour-hand" id="hourHand"></div>
-<div class="hand minute-hand" id="minuteHand"></div>
-<div class="hand second-hand" id="secondHand"></div>
-
+<!-- ANALOG CLOCK -->
+<div class="clock" aria-label="Analog clock">
+  <span class="clock-number n12">XII</span>
+  <span class="clock-number n1">I</span>
+  <span class="clock-number n2">II</span>
+  <span class="clock-number n3">III</span>
+  <span class="clock-number n4">IV</span>
+  <span class="clock-number n5">V</span>
+  <span class="clock-number n6">VI</span>
+  <span class="clock-number n7">VII</span>
+  <span class="clock-number n8">VIII</span>
+  <span class="clock-number n9">IX</span>
+  <span class="clock-number n10">X</span>
+  <span class="clock-number n11">XI</span>
+  <div class="hand hour-hand"   id="hour-hand"></div>
+  <div class="hand minute-hand" id="minute-hand"></div>
+  <div class="hand second-hand" id="second-hand"></div>
+  <div class="clock-center"></div>
 </div>
 
-<!-- AUTHOR POPUP: HIDDEN UNTIL CLICK -->
-
-<div class="popup-overlay" id="popupOverlay">
-
-<div class="author-popup" role="dialog" aria-modal="true" aria-labelledby="popupName">
-
-<button class="popup-close" id="popupClose" aria-label="Close popup">
-×
-</button>
-
-<div class="popup-ornament">❦ ─ ✧ ─ ❦</div>
-
-<h2 class="popup-name" id="popupName"></h2>
-
-<div class="popup-description">
-A little literary doorway
-</div>
-
-<div class="popup-ornament">❦</div>
-
-<a class="library-button" href="literature.html">
-Go to Library →
-</a>
-
-</div>
-
+<!-- AUTHOR POP-UP -->
+<div class="modal" id="author-modal" role="dialog" aria-modal="true" aria-labelledby="modal-author">
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close" type="button" aria-label="Close popup">×</button>
+    <div class="modal-small">From the author's gallery</div>
+    <h2 id="modal-author">Author's Name</h2>
+    <div class="modal-ornament">❧ ✦ ❧</div>
+    <a href="literature.html" class="library-link" id="library-link">
+      Go to Library →
+    </a>
+  </div>
 </div>
 
 <script>
+// Handle author portrait pop-up (open with author name)
+const authorCards = document.querySelectorAll(".author-card");
+const modal = document.getElementById("author-modal");
+const modalAuthor = document.getElementById("modal-author");
+const modalClose = document.getElementById("modal-close");
+const libraryLink = document.getElementById("library-link");
 
-/* AUTHOR POPUP */
-
-const authorFrames = document.querySelectorAll('.mini-frame');
-const popupOverlay = document.getElementById('popupOverlay');
-const popupName = document.getElementById('popupName');
-const popupClose = document.getElementById('popupClose');
-
-function openAuthorPopup(author) {
-  popupName.textContent = author;
-  popupOverlay.classList.add('visible');
-  popupClose.focus();
+function openAuthorPopup(card) {
+  const author = card.dataset.author;
+  const dest = card.dataset.link;
+  modalAuthor.textContent = author;
+  libraryLink.href = "literature.html#" + dest;
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+  modalClose.focus();
 }
-
 function closeAuthorPopup() {
-  popupOverlay.classList.remove('visible');
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
 }
 
-authorFrames.forEach(frame => {
-  frame.addEventListener('click', () => {
-    openAuthorPopup(frame.dataset.author);
-  });
-
-  frame.addEventListener('keydown', event => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      openAuthorPopup(frame.dataset.author);
-    }
-  });
+authorCards.forEach(card => {
+  card.addEventListener("click", () => openAuthorPopup(card));
 });
 
-popupClose.addEventListener('click', closeAuthorPopup);
-
-popupOverlay.addEventListener('click', event => {
-  if (event.target === popupOverlay) {
+modalClose.addEventListener("click", closeAuthorPopup);
+modal.addEventListener("click", e => { if (e.target === modal) closeAuthorPopup(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && modal.classList.contains("open")) {
     closeAuthorPopup();
   }
 });
 
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    closeAuthorPopup();
+// Envelope toggle
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+function toggleLetter() {
+  letter.classList.toggle("open");
+}
+envelope.addEventListener("click", toggleLetter);
+envelope.addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    toggleLetter();
   }
 });
 
-/* ENVELOPE */
-
-document.getElementById('envelopeButton').addEventListener('click', function() {
-  document.getElementById('letter').classList.toggle('open');
-});
-
-/* HIDDEN DETAIL */
-
-document.getElementById('secretButton').addEventListener('click', function() {
-  document.getElementById('secret').classList.toggle('show');
-});
-
-/* QUOTES */
-
+// Quote changer
 const quotes = [
-  {
-    text: "I have always imagined that Paradise will be a kind of library.",
-    author: "Jorge Luis Borges"
-  },
   {
     text: "We are all in the gutter, but some of us are looking at the stars.",
     author: "Oscar Wilde"
   },
   {
-    text: "The mystery of life isn't a problem to solve, but a reality to experience.",
-    author: "Frank Herbert"
+    text: "It is only with the heart that one can see rightly; what is essential is invisible to the eye.",
+    author: "Antoine de Saint-Exupéry"
   },
   {
-    text: "Nothing is more difficult than to understand what is not understood.",
+    text: "The mystery of human existence lies not in just staying alive, but in finding something to live for.",
+    author: "Fyodor Dostoevsky"
+  },
+  {
+    text: "And, when you want something, all the universe conspires in helping you to achieve it.",
+    author: "Paulo Coelho"
+  },
+  {
+    text: "One must still have chaos in oneself to be able to give birth to a dancing star.",
     author: "Friedrich Nietzsche"
+  },
+  {
+    text: "Nothing is ever really lost to us as long as we remember it.",
+    author: "L. M. Montgomery"
   },
   {
     text: "I am rooted, but I flow.",
     author: "Virginia Woolf"
-  },
-  {
-    text: "The world was made to be seen, and everything in it is a gift.",
-    author: "A thought to keep"
-  },
-  {
-    text: "There is no exquisite beauty without some strangeness in the proportion.",
-    author: "Edgar Allan Poe"
   }
 ];
-
-let quoteIndex = 0;
-
-document.getElementById('quoteButton').addEventListener('click', function() {
-  quoteIndex = (quoteIndex + 1) % quotes.length;
-
-  document.getElementById('quote').textContent = quotes[quoteIndex].text;
-  document.getElementById('quoteAuthor').textContent = quotes[quoteIndex].author;
+let currentQuote = 0;
+document.getElementById("new-quote").addEventListener("click", () => {
+  currentQuote = (currentQuote + 1) % quotes.length;
+  document.getElementById("quote").textContent = "“" + quotes[currentQuote].text + "”";
+  document.getElementById("quote-author").textContent = quotes[currentQuote].author;
 });
 
-/* CLOCK */
+// Hidden detail toggle
+document.getElementById("secret-button").addEventListener("click", () => {
+  document.getElementById("secret-content").classList.toggle("visible");
+});
 
-const clock = document.getElementById('clock');
-
-const roman = [
-  "XII", "I", "II", "III", "IV", "V",
-  "VI", "VII", "VIII", "IX", "X", "XI"
-];
-
-for (let i = 0; i < 12; i++) {
-  const number = document.createElement('div');
-  number.className = 'num';
-  number.textContent = roman[i];
-
-  const angle = (i * 30) - 90;
-  const radius = 39;
-
-  const x = 50 + radius * Math.cos(angle * Math.PI / 180);
-  const y = 50 + radius * Math.sin(angle * Math.PI / 180);
-
-  number.style.left = x + '%';
-  number.style.top = y + '%';
-
-  clock.appendChild(number);
-}
-
+// Analog clock
 function updateClock() {
   const now = new Date();
-
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes();
   const hours = now.getHours() % 12;
-
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+  const hourAngle   = (hours + minutes/60) * 30;
+  const minuteAngle = (minutes + seconds/60) * 6;
   const secondAngle = seconds * 6;
-  const minuteAngle = minutes * 6 + seconds * 0.1;
-  const hourAngle = hours * 30 + minutes * 0.5;
-
-  document.getElementById('secondHand').style.transform =
-    `translateX(-50%) rotate(${secondAngle}deg)`;
-
-  document.getElementById('minuteHand').style.transform =
-    `translateX(-50%) rotate(${minuteAngle}deg)`;
-
-  document.getElementById('hourHand').style.transform =
-    `translateX(-50%) rotate(${hourAngle}deg)`;
+  document.getElementById("hour-hand").style.transform   = "translateX(-50%) rotate(" + hourAngle   + "deg)";
+  document.getElementById("minute-hand").style.transform = "translateX(-50%) rotate(" + minuteAngle + "deg)";
+  document.getElementById("second-hand").style.transform = "translateX(-50%) rotate(" + secondAngle + "deg)";
 }
-
 updateClock();
 setInterval(updateClock, 1000);
-
 </script>
 
 </body>
