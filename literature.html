@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,6 @@
 <style>
 :root {
   --paper: #eee5d5;
-  --paper-dark: #dfd0ba;
   --ink: #302720;
   --muted: #76685a;
   --line: #b6a48d;
@@ -17,54 +15,37 @@
   --dark: #45372d;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   min-height: 100vh;
-  color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
   background:
     radial-gradient(ellipse at center, #e9decd 0%, #d9cbb6 65%, #cfc0a8 100%);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
   overflow-x: hidden;
 }
 
-/* LACE */
-
+/* Lace borders */
 .lace {
   position: fixed;
-  left: 0;
-  right: 0;
-  height: 55px;
+  left: 0; right: 0; height: 55px;
   background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
   background-repeat: repeat-x;
   background-size: auto 55px;
   opacity: 0.75;
-  pointer-events: none;
-  z-index: 10;
+  pointer-events: none; z-index: 10;
 }
+.lace.top { top: 0; }
+.lace.bottom { bottom: 0; transform: rotate(180deg); }
 
-.lace.top {
-  top: 0;
-}
-
-.lace.bottom {
-  bottom: 0;
-  transform: rotate(180deg);
-}
-
-/* MAIN PAGE */
-
+/* Main page container */
 .page {
   position: relative;
-  width: min(1380px, 96%);
-  min-height: 100vh;
+  max-width: 1280px;
   margin: auto;
   padding: 65px 45px 55px;
   background: rgba(238,229,213,0.94);
@@ -72,7 +53,6 @@ body {
   border-right: 1px solid rgba(130,105,78,0.3);
   box-shadow: 0 0 45px rgba(45,30,20,0.12);
 }
-
 .page::before {
   content: "";
   position: absolute;
@@ -81,37 +61,30 @@ body {
   pointer-events: none;
 }
 
-/* HEADER */
-
+/* Header */
 header {
-  position: relative;
-  z-index: 2;
   text-align: center;
   padding: 20px 0 30px;
   border-bottom: 1px solid var(--line);
 }
-
 .header-small {
   color: var(--muted);
   font-size: 11px;
   letter-spacing: 5px;
   text-transform: uppercase;
 }
-
 header h1 {
   font-size: clamp(35px, 5vw, 57px);
   font-weight: normal;
   letter-spacing: 2px;
   margin: 17px 0 10px;
 }
-
 .header-subtitle {
   color: var(--muted);
   font-size: 14px;
   font-style: italic;
   letter-spacing: 1px;
 }
-
 .ornament {
   color: var(--accent);
   font-size: 21px;
@@ -119,8 +92,7 @@ header h1 {
   margin-top: 15px;
 }
 
-/* AUTHOR WALL */
-
+/* Author portraits on left */
 .author-wall {
   position: absolute;
   top: 260px;
@@ -129,44 +101,35 @@ header h1 {
   height: 920px;
   z-index: 3;
 }
-
-/* Each portrait is positioned individually */
-
 .author-card {
   position: absolute;
-  display: block;
   padding: 5px;
-  border: 0;
-  background: transparent;
   cursor: pointer;
   transition: transform 0.3s ease, filter 0.3s ease;
-  -webkit-tap-highlight-color: transparent;
+  background: transparent;
+  border: none;
 }
-
 .author-card img {
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.4);
   background: #c8b69e;
+  display: block;
   pointer-events: none;
 }
-
 .author-card:hover {
   z-index: 5;
   filter: brightness(1.07);
 }
-
 .author-card:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
 
-/* FRAME DESIGNS */
-
+/* Frame styles */
 .rococo {
-  width: 79px;
-  height: 101px;
+  width: 79px; height: 101px;
   border: 5px double #8b6947;
   border-radius: 45% 45% 42% 42%;
   background: linear-gradient(135deg, #d5b88c, #76583d);
@@ -175,142 +138,114 @@ header h1 {
     0 0 0 5px #806344,
     3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .walnut {
-  width: 75px;
-  height: 96px;
+  width: 75px; height: 96px;
   border: 7px ridge #76533a;
   background: linear-gradient(135deg, #a27b55, #493426);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
-.barокe {
-  width: 77px;
-  height: 101px;
+.baroque {
+  /* Fixed class name */
+  width: 77px; height: 101px;
   border: 6px ridge #302822;
   background: linear-gradient(135deg, #85715d, #29231e);
   box-shadow:
     0 0 0 2px #9a805e,
     3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .gothic {
-  width: 72px;
-  height: 101px;
+  width: 72px; height: 101px;
   border: 5px double #554638;
   border-radius: 48% 48% 3px 3px;
   background: linear-gradient(135deg, #9a866e, #43372c);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .louis {
-  width: 77px;
-  height: 98px;
+  width: 77px; height: 98px;
   border: 6px ridge #b39a75;
   border-radius: 45%;
   background: linear-gradient(135deg, #d3bd96, #756044);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .floral {
-  width: 73px;
-  height: 96px;
+  width: 73px; height: 96px;
   border: 6px ridge #9b8060;
   border-radius: 20px 20px 12px 12px;
   background: linear-gradient(135deg, #d1b99b, #78614a);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .silver {
-  width: 73px;
-  height: 95px;
+  width: 73px; height: 95px;
   border: 6px ridge #8e8b80;
   border-radius: 44%;
   background: linear-gradient(135deg, #c5bfb0, #69665f);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .gilded {
-  width: 68px;
-  height: 88px;
+  width: 68px; height: 88px;
   border: 5px double #b18c4e;
   border-radius: 45%;
   background: linear-gradient(135deg, #e0c48c, #82633b);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .ivory {
-  width: 75px;
-  height: 98px;
+  width: 75px; height: 98px;
   border: 6px ridge #c4b59b;
   background: linear-gradient(135deg, #e4d9c5, #92836c);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .mahogany {
-  width: 71px;
-  height: 94px;
+  width: 71px; height: 94px;
   border: 7px ridge #674532;
   background: linear-gradient(135deg, #a27a55, #4a3022);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .blackgold {
-  width: 77px;
-  height: 101px;
+  width: 77px; height: 101px;
   border: 6px double #b18d55;
   background: linear-gradient(135deg, #4c4034, #171411);
   box-shadow: 0 0 0 2px #756047, 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .roccrect {
-  width: 73px;
-  height: 96px;
+  width: 73px; height: 96px;
   border: 6px ridge #9c805b;
   background: linear-gradient(135deg, #c7aa7e, #70543b);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .darkwood {
-  width: 70px;
-  height: 92px;
+  width: 70px; height: 92px;
   border: 7px ridge #4b3527;
   border-radius: 45%;
   background: linear-gradient(135deg, #8b674b, #30241c);
   box-shadow: 3px 5px 9px rgba(30,20,10,0.25);
 }
-
 .ornateblack {
-  width: 76px;
-  height: 100px;
+  width: 76px; height: 100px;
   border: 6px double #29231e;
   border-radius: 45% 45% 5px 5px;
   background: linear-gradient(135deg, #77604a, #211b16);
   box-shadow: 0 0 0 2px #8e7558, 3px 5px 9px rgba(30,20,10,0.25);
 }
 
-/* SCATTERED POSITIONS */
-
-.f1  { top: 5px;   left: 45px; transform: rotate(-3deg); }
-.f2  { top: 90px;  left: 0px;  transform: rotate(2deg); }
-.f3  { top: 180px; left: 83px; transform: rotate(-2deg); }
-.f4  { top: 270px; left: 18px; transform: rotate(3deg); }
-.f5  { top: 355px; left: 95px; transform: rotate(-2deg); }
-.f6  { top: 445px; left: 23px; transform: rotate(1deg); }
-.f7  { top: 535px; left: 85px; transform: rotate(3deg); }
-.f8  { top: 625px; left: 3px;  transform: rotate(-2deg); }
-.f9  { top: 710px; left: 91px; transform: rotate(2deg); }
-.f10 { top: 795px; left: 22px; transform: rotate(-3deg); }
+/* Position each frame */
+.f1  { top: 5px;   left: 45px;  transform: rotate(-3deg); }
+.f2  { top: 90px;  left: 0px;   transform: rotate(2deg); }
+.f3  { top: 180px; left: 83px;  transform: rotate(-2deg); }
+.f4  { top: 270px; left: 18px;  transform: rotate(3deg); }
+.f5  { top: 355px; left: 95px;  transform: rotate(-2deg); }
+.f6  { top: 445px; left: 23px;  transform: rotate(1deg); }
+.f7  { top: 535px; left: 85px;  transform: rotate(3deg); }
+.f8  { top: 625px; left: 3px;   transform: rotate(-2deg); }
+.f9  { top: 710px; left: 91px;  transform: rotate(2deg); }
+.f10 { top: 795px; left: 22px;  transform: rotate(-3deg); }
 .f11 { top: 875px; left: 100px; transform: rotate(2deg); }
-.f12 { top: 1000px; left: 8px; transform: rotate(-2deg); }
+.f12 { top: 1000px; left: 8px;  transform: rotate(-2deg); }
 .f13 { top: 1090px; left: 87px; transform: rotate(3deg); }
 .f14 { top: 1180px; left: 23px; transform: rotate(-2deg); }
 
-/* HERO AREA */
-
+/* Main intro section */
 .hero {
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2;
   max-width: 950px;
   margin: 55px 25px 45px 215px;
   display: grid;
@@ -318,7 +253,6 @@ header h1 {
   align-items: center;
   gap: 55px;
 }
-
 .main-portrait {
   padding: 12px;
   border: 1px solid #a38b6e;
@@ -332,7 +266,6 @@ header h1 {
   justify-content: center;
   text-align: center;
 }
-
 .portrait-placeholder {
   color: #8c7861;
   font-style: italic;
@@ -340,38 +273,32 @@ header h1 {
   line-height: 1.9;
   padding: 20px;
 }
-
 .portrait-placeholder span {
   display: block;
   font-size: 38px;
   margin-bottom: 12px;
   color: #9b8266;
 }
-
 .welcome {
   text-align: center;
 }
-
 .welcome .small-title {
   font-size: 11px;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--muted);
 }
-
 .welcome h2 {
   font-size: 34px;
   font-weight: normal;
   margin: 18px 0;
 }
-
 .welcome .welcome-ornament {
   color: var(--accent);
   font-size: 23px;
   letter-spacing: 8px;
   margin: 18px 0;
 }
-
 .welcome p {
   font-size: 15px;
   line-height: 2;
@@ -379,19 +306,15 @@ header h1 {
   font-style: italic;
 }
 
-/* ENVELOPE */
-
+/* Envelope / letter section */
 .letter-section {
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2;
   max-width: 760px;
   margin: 55px auto;
   text-align: center;
 }
-
 .envelope {
-  width: 90px;
-  height: 62px;
+  width: 90px; height: 62px;
   margin: 0 auto 18px;
   position: relative;
   cursor: pointer;
@@ -400,32 +323,25 @@ header h1 {
   box-shadow: 2px 4px 8px rgba(40,25,15,0.12);
   transition: transform 0.3s;
 }
-
 .envelope:hover {
   transform: translateY(-3px);
 }
-
 .envelope::before {
   content: "";
   position: absolute;
-  top: -1px;
-  left: 0;
-  width: 0;
-  height: 0;
+  top: -1px; left: 0;
+  width: 0; height: 0;
   border-left: 44px solid transparent;
   border-right: 44px solid transparent;
   border-top: 34px solid #b89e7c;
 }
-
 .envelope::after {
   content: "✦";
   position: absolute;
-  top: 22px;
-  left: 37px;
+  top: 22px; left: 37px;
   color: #604c39;
   font-size: 16px;
 }
-
 .letter {
   display: none;
   max-width: 600px;
@@ -438,17 +354,14 @@ header h1 {
   font-size: 15px;
   line-height: 1.9;
 }
-
 .letter.open {
   display: block;
   animation: appear 0.4s ease;
 }
 
-/* QUOTE */
-
+/* Quote box */
 .quote-box {
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2;
   max-width: 760px;
   margin: 60px auto;
   padding: 30px;
@@ -456,14 +369,12 @@ header h1 {
   border-bottom: 1px solid var(--line);
   text-align: center;
 }
-
 .quote-box .quote-label {
   font-size: 11px;
   letter-spacing: 4px;
   color: var(--muted);
   text-transform: uppercase;
 }
-
 #quote {
   min-height: 65px;
   margin: 20px 0 12px;
@@ -472,36 +383,29 @@ header h1 {
   font-style: italic;
   color: var(--dark);
 }
-
 #quote-author {
   font-size: 13px;
   color: var(--muted);
 }
-
 .quote-box button {
   margin-top: 22px;
   padding: 9px 18px;
   border: 1px solid var(--line);
   background: transparent;
   color: var(--ink);
-  font-family: inherit;
   cursor: pointer;
 }
-
 .quote-box button:hover {
   background: #dfd0ba;
 }
 
-/* SECRET DETAIL */
-
+/* Hidden detail */
 .secret-section {
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2;
   text-align: center;
   margin: 55px auto;
   max-width: 650px;
 }
-
 .secret-button {
   border: 0;
   background: none;
@@ -514,7 +418,6 @@ header h1 {
   text-decoration-color: #b6a48d;
   text-underline-offset: 5px;
 }
-
 .secret-content {
   display: none;
   margin-top: 20px;
@@ -522,34 +425,28 @@ header h1 {
   font-style: italic;
   line-height: 1.8;
 }
-
 .secret-content.visible {
   display: block;
   animation: appear 0.4s ease;
 }
 
-/* NAVIGATION */
-
+/* Navigation grid */
 .navigation {
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2;
   margin: 75px auto 45px;
   max-width: 850px;
   text-align: center;
 }
-
 .navigation h2 {
   font-size: 25px;
   font-weight: normal;
   margin-bottom: 30px;
 }
-
 .nav-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
-
 .nav-grid a {
   display: block;
   padding: 15px 10px;
@@ -561,17 +458,14 @@ header h1 {
   background: rgba(255,255,255,0.12);
   transition: background 0.3s, transform 0.3s;
 }
-
 .nav-grid a:hover {
   background: #dfd0ba;
   transform: translateY(-2px);
 }
 
-/* FOOTER */
-
+/* Footer */
 footer {
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2;
   text-align: center;
   margin-top: 70px;
   padding-top: 25px;
@@ -580,26 +474,21 @@ footer {
   font-size: 12px;
   letter-spacing: 1px;
 }
-
 footer .ornament {
   margin-bottom: 15px;
 }
 
-/* ANALOG CLOCK */
-
+/* Analog clock */
 .clock {
   position: fixed;
-  right: 25px;
-  bottom: 25px;
-  width: 112px;
-  height: 112px;
+  right: 25px; bottom: 25px;
+  width: 112px; height: 112px;
   border: 3px double #8d765d;
   border-radius: 50%;
   background: #eee5d5;
   box-shadow: 0 3px 12px rgba(40,25,15,0.18);
   z-index: 20;
 }
-
 .clock::before {
   content: "";
   position: absolute;
@@ -607,84 +496,59 @@ footer .ornament {
   border: 1px solid #b6a48d;
   border-radius: 50%;
 }
-
+.clock-center {
+  position: absolute;
+  width: 7px; height: 7px;
+  background: #4b3828;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
 .clock-number {
   position: absolute;
   font-size: 11px;
   color: #5b4938;
   transform: translate(-50%, -50%);
 }
-
-.n12 { top: 13px; left: 50%; }
-.n1  { top: 21px; left: 73%; }
-.n2  { top: 37px; left: 86%; }
-.n3  { top: 50%; left: 91%; }
-.n4  { top: 73%; left: 84%; }
-.n5  { top: 87%; left: 69%; }
-.n6  { top: 91%; left: 50%; }
-.n7  { top: 87%; left: 30%; }
-.n8  { top: 73%; left: 16%; }
-.n9  { top: 50%; left: 9%; }
-.n10 { top: 29%; left: 17%; }
-.n11 { top: 16%; left: 32%; }
-
-.clock-center {
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  background: #4b3828;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-}
-
+.n12 { top: 13px;  left: 50%; }
+.n1  { top: 21px;  left: 73%; }
+.n2  { top: 37px;  left: 86%; }
+.n3  { top: 50%;   left: 91%; }
+.n4  { top: 73%;   left: 84%; }
+.n5  { top: 87%;   left: 69%; }
+.n6  { top: 91%;   left: 50%; }
+.n7  { top: 87%;   left: 30%; }
+.n8  { top: 73%;   left: 16%; }
+.n9  { top: 50%;   left: 9%; }
+.n10 { top: 29%;   left: 17%; }
+.n11 { top: 16%;   left: 32%; }
 .hand {
   position: absolute;
-  bottom: 50%;
-  left: 50%;
+  bottom: 50%; left: 50%;
   transform-origin: bottom center;
   border-radius: 5px;
 }
+.hour-hand   { width: 3px;  height: 27px; background: #49392c; }
+.minute-hand { width: 2px;  height: 36px; background: #70563e; }
+.second-hand { width: 1px;  height: 40px; background: #9b5540; }
 
-.hour-hand {
-  width: 3px;
-  height: 27px;
-  background: #49392c;
-}
-
-.minute-hand {
-  width: 2px;
-  height: 36px;
-  background: #70563e;
-}
-
-.second-hand {
-  width: 1px;
-  height: 40px;
-  background: #9b5540;
-}
-
-/* AUTHOR POPUP */
-
+/* Author pop-up modal */
 .modal {
   position: fixed;
   inset: 0;
-  z-index: 100;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 20px;
   background: rgba(35,26,19,0.62);
   backdrop-filter: blur(3px);
+  z-index: 100;
 }
-
 .modal.open {
   display: flex;
   animation: appear 0.25s ease;
 }
-
 .modal-card {
   position: relative;
   width: min(420px, 100%);
@@ -696,7 +560,6 @@ footer .ornament {
   outline-offset: 5px;
   box-shadow: 0 12px 45px rgba(0,0,0,0.3);
 }
-
 .modal-card::before {
   content: "";
   position: absolute;
@@ -704,11 +567,9 @@ footer .ornament {
   border: 1px solid rgba(130,105,78,0.25);
   pointer-events: none;
 }
-
 .modal-close {
   position: absolute;
-  top: 13px;
-  right: 17px;
+  top: 13px; right: 17px;
   border: 0;
   background: transparent;
   color: var(--muted);
@@ -716,31 +577,25 @@ footer .ornament {
   cursor: pointer;
   z-index: 2;
 }
-
 .modal-small {
   font-size: 10px;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--muted);
 }
-
 .modal-card h2 {
   font-weight: normal;
   font-size: 28px;
   margin: 20px 0 10px;
 }
-
 .modal-ornament {
   color: var(--accent);
   font-size: 22px;
   letter-spacing: 7px;
   margin: 17px 0 24px;
 }
-
 .library-link {
   display: inline-block;
-  position: relative;
-  z-index: 2;
   padding: 12px 22px;
   border: 1px solid #a38b6e;
   color: var(--ink);
@@ -751,13 +606,11 @@ footer .ornament {
   letter-spacing: 1px;
   transition: background 0.3s;
 }
-
 .library-link:hover {
   background: #d1bda1;
 }
 
-/* ANIMATIONS */
-
+/* Animations */
 @keyframes appear {
   from {
     opacity: 0;
@@ -769,20 +622,17 @@ footer .ornament {
   }
 }
 
-/* RESPONSIVE */
-
+/* Responsive adjustments */
 @media (max-width: 1050px) {
   .author-wall {
     left: 10px;
     transform: scale(0.85);
     transform-origin: top left;
   }
-
   .hero {
     margin-left: 185px;
     gap: 30px;
   }
-
   .page {
     padding-left: 30px;
     padding-right: 30px;
@@ -794,58 +644,43 @@ footer .ornament {
     width: 100%;
     padding: 45px 22px;
   }
-
   .author-wall {
     position: relative;
-    top: auto;
-    left: auto;
+    top: auto; left: auto;
     transform: none;
     width: 100%;
-    height: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
     gap: 22px;
     margin: 25px auto 45px;
     padding: 15px 10px;
   }
-
   .author-card {
-    position: relative;
-    top: auto;
-    left: auto;
+    position: relative; top: auto; left: auto;
     transform: none;
     flex: 0 0 auto;
   }
-
   .hero {
     margin: 35px auto;
     max-width: 520px;
     grid-template-columns: 1fr;
     gap: 35px;
   }
-
   .main-portrait {
     max-width: 290px;
-    width: 100%;
     margin: auto;
     min-height: 310px;
   }
-
   .welcome h2 {
     font-size: 29px;
   }
-
   .nav-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
   .clock {
-    width: 85px;
-    height: 85px;
-    right: 12px;
-    bottom: 12px;
+    width: 85px; height: 85px;
+    right: 12px; bottom: 12px;
     transform: scale(0.85);
     transform-origin: bottom right;
   }
@@ -855,29 +690,23 @@ footer .ornament {
   header h1 {
     font-size: 34px;
   }
-
   .header-small {
     letter-spacing: 3px;
   }
-
   .nav-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
-
   .nav-grid a {
     font-size: 11px;
     padding: 13px 6px;
   }
-
   .quote-box {
     padding: 22px 12px;
   }
-
   .letter {
     padding: 20px;
   }
-
   .clock {
     opacity: 0.9;
   }
@@ -887,7 +716,6 @@ footer .ornament {
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
     animation: none !important;
     transition: none !important;
   }
@@ -902,284 +730,226 @@ footer .ornament {
 
 <main class="page">
 
-<header>
-  <div class="header-small">A personal collection of interests</div>
+  <header>
+    <div class="header-small">A personal collection of interests</div>
+    <h1>Umida Xolmirzayeva</h1>
+    <div class="header-subtitle">Literature · Art · Photography · Thought</div>
+    <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+  </header>
 
-  <h1>Umida Xolmirzayeva</h1>
+  <!-- 14 AUTHOR PORTRAITS -->
+  <section class="author-wall" aria-label="Favourite authors">
 
-  <div class="header-subtitle">
-    Literature · Art · Photography · Thought
-  </div>
+    <button class="author-card rococo f1"
+      data-author="Donna Tartt"
+      data-link="donna-tartt"
+      aria-label="Donna Tartt">
+      <img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
+    </button>
 
-  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
-</header>
+    <button class="author-card walnut f2"
+      data-author="Fyodor Dostoevsky"
+      data-link="dostoevsky"
+      aria-label="Fyodor Dostoevsky">
+      <img src="assets/images/1795768877389.jpg" alt="Fyodor Dostoevsky">
+    </button>
 
+    <button class="author-card baroque f3"
+      data-author="Friedrich Nietzsche"
+      data-link="nietzsche"
+      aria-label="Friedrich Nietzsche">
+      <img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
+    </button>
 
-<!-- AUTHOR PORTRAITS -->
+    <button class="author-card gothic f4"
+      data-author="Franz Kafka"
+      data-link="kafka"
+      aria-label="Franz Kafka">
+      <img src="assets/images/kafka.jpg" alt="Franz Kafka">
+    </button>
 
-<section class="author-wall" aria-label="Favourite authors">
+    <button class="author-card louis f5"
+      data-author="Albert Camus"
+      data-link="camus"
+      aria-label="Albert Camus">
+      <img src="assets/images/camus.jpg" alt="Albert Camus">
+    </button>
 
-  <button class="author-card rococo f1"
-    data-author="Donna Tartt"
-    data-link="donna-tartt"
-    aria-label="Open Donna Tartt's library entry">
-    <img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
-  </button>
+    <button class="author-card floral f6"
+      data-author="Clarice Lispector"
+      data-link="clarice"
+      aria-label="Clarice Lispector">
+      <img src="assets/images/clarice.jpg" alt="Clarice Lispector">
+    </button>
 
-  <button class="author-card walnut f2"
-    data-author="Fyodor Dostoevsky"
-    data-link="dostoevsky"
-    aria-label="Open Fyodor Dostoevsky's library entry">
-    <img src="assets/images/1795768877389.jpg" alt="Fyodor Dostoevsky">
-  </button>
+    <button class="author-card silver f7"
+      data-author="Ocean Vuong"
+      data-link="ocean-vuong"
+      aria-label="Ocean Vuong">
+      <img src="assets/images/ocean.jpg" alt="Ocean Vuong">
+    </button>
 
-  <button class="author-card barокe f3"
-    data-author="Friedrich Nietzsche"
-    data-link="nietzsche"
-    aria-label="Open Friedrich Nietzsche's library entry">
-    <img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
-  </button>
+    <button class="author-card gilded f8"
+      data-author="Hanya Yanagihara"
+      data-link="hanya-yanagihara"
+      aria-label="Hanya Yanagihara">
+      <img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
+    </button>
 
-  <button class="author-card gothic f4"
-    data-author="Franz Kafka"
-    data-link="kafka"
-    aria-label="Open Franz Kafka's library entry">
-    <img src="assets/images/kafka.jpg" alt="Franz Kafka">
-  </button>
+    <button class="author-card ivory f9"
+      data-author="Susan Sontag"
+      data-link="sontag"
+      aria-label="Susan Sontag">
+      <img src="assets/images/sontag.jpg" alt="Susan Sontag">
+    </button>
 
-  <button class="author-card louis f5"
-    data-author="Albert Camus"
-    data-link="camus"
-    aria-label="Open Albert Camus's library entry">
-    <img src="assets/images/camus.jpg" alt="Albert Camus">
-  </button>
+    <button class="author-card mahogany f10"
+      data-author="Hermann Hesse"
+      data-link="hesse"
+      aria-label="Hermann Hesse">
+      <img src="assets/images/hesse.jpg" alt="Hermann Hesse">
+    </button>
 
-  <button class="author-card floral f6"
-    data-author="Clarice Lispector"
-    data-link="clarice"
-    aria-label="Open Clarice Lispector's library entry">
-    <img src="assets/images/clarice.jpg" alt="Clarice Lispector">
-  </button>
+    <button class="author-card blackgold f11"
+      data-author="Toni Morrison"
+      data-link="toni-morrison"
+      aria-label="Toni Morrison">
+      <img src="assets/images/morrison.jpg" alt="Toni Morrison">
+    </button>
 
-  <button class="author-card silver f7"
-    data-author="Ocean Vuong"
-    data-link="ocean-vuong"
-    aria-label="Open Ocean Vuong's library entry">
-    <img src="assets/images/ocean.jpg" alt="Ocean Vuong">
-  </button>
+    <button class="author-card roccrect f12"
+      data-author="Oscar Wilde"
+      data-link="wilde"
+      aria-label="Oscar Wilde">
+      <img src="assets/images/wilde.jpg" alt="Oscar Wilde">
+    </button>
 
-  <button class="author-card gilded f8"
-    data-author="Hanya Yanagihara"
-    data-link="hanya-yanagihara"
-    aria-label="Open Hanya Yanagihara's library entry">
-    <img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
-  </button>
+    <button class="author-card darkwood f13"
+      data-author="Simone de Beauvoir"
+      data-link="simone-de-beauvoir"
+      aria-label="Simone de Beauvoir">
+      <img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
+    </button>
 
-  <button class="author-card ivory f9"
-    data-author="Susan Sontag"
-    data-link="sontag"
-    aria-label="Open Susan Sontag's library entry">
-    <img src="assets/images/sontag.jpg" alt="Susan Sontag">
-  </button>
+    <button class="author-card ornateblack f14"
+      data-author="Sylvia Plath"
+      data-link="sylvia-plath"
+      aria-label="Sylvia Plath">
+      <img src="assets/images/silvia.jpg" alt="Sylvia Plath">
+    </button>
 
-  <button class="author-card mahogany f10"
-    data-author="Hermann Hesse"
-    data-link="hesse"
-    aria-label="Open Hermann Hesse's library entry">
-    <img src="assets/images/hesse.jpg" alt="Hermann Hesse">
-  </button>
+  </section>
 
-  <button class="author-card blackgold f11"
-    data-author="Toni Morrison"
-    data-link="toni-morrison"
-    aria-label="Open Toni Morrison's library entry">
-    <img src="assets/images/morrison.jpg" alt="Toni Morrison">
-  </button>
-
-  <button class="author-card roccrect f12"
-    data-author="Oscar Wilde"
-    data-link="wilde"
-    aria-label="Open Oscar Wilde's library entry">
-    <img src="assets/images/wilde.jpg" alt="Oscar Wilde">
-  </button>
-
-  <button class="author-card darkwood f13"
-    data-author="Simone de Beauvoir"
-    data-link="simone-de-beauvoir"
-    aria-label="Open Simone de Beauvoir's library entry">
-    <img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
-  </button>
-
-  <button class="author-card ornateblack f14"
-    data-author="Sylvia Plath"
-    data-link="sylvia-plath"
-    aria-label="Open Sylvia Plath's library entry">
-    <img src="assets/images/silvia.jpg" alt="Sylvia Plath">
-  </button>
-
-</section>
-
-
-<!-- MAIN INTRODUCTION -->
-
-<section class="hero">
-
-  <div class="main-portrait">
-    <div class="portrait-placeholder">
-      <span>❧</span>
-      A portrait will be placed here.
-      <br>
-      A little space reserved for its owner.
-      <br>
-      <br>
-      ✦
+  <!-- MAIN INTRO -->
+  <section class="hero">
+    <div class="main-portrait">
+      <div class="portrait-placeholder">
+        <span>❧</span>
+        A portrait will be placed here.
+        <br>
+        A little space reserved for its owner.
+        <br><br>✦
+      </div>
     </div>
-  </div>
+    <div class="welcome">
+      <div class="small-title">Welcome to my archive</div>
+      <h2>A World of My Own</h2>
+      <div class="welcome-ornament">❧ ✦ ❧</div>
+      <p>
+        A collection of things I find beautiful, interesting,
+        meaningful, or simply worth keeping. Books and ideas,
+        photographs and paintings, music and fragments of life.
+      </p>
+      <p>
+        Not everything here needs a particular order. Some things
+        are kept because they matter; others, because I want to
+        remember them later.
+      </p>
+    </div>
+  </section>
 
-  <div class="welcome">
+  <div class="divider">❦ ───── ✦ ───── ❦</div>
 
-    <div class="small-title">Welcome to my archive</div>
-
-    <h2>A World of My Own</h2>
-
-    <div class="welcome-ornament">❧ ✦ ❧</div>
-
-    <p>
-      A collection of things I find beautiful, interesting,
-      meaningful, or simply worth keeping.
-      Books and ideas, photographs and paintings,
-      music and fragments of everyday life.
-    </p>
-
-    <p>
-      Not everything here needs a particular order.
-      Some things are kept because they matter;
-      others, because I would like to remember them.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ENVELOPE -->
-
-<section class="letter-section">
-
-  <div class="ornament">❧</div>
-
-  <div class="envelope" id="envelope"
-       role="button" tabindex="0"
-       aria-label="Open the letter"></div>
-
-  <div class="header-small">A little note</div>
-
-  <div class="letter" id="letter">
-    <p>
-      This is a small corner of the internet that belongs
-      to my interests, thoughts, and discoveries.
-      It is a place to collect what I read, see, hear,
-      learn, and remember.
-    </p>
-
-    <p>
-      Perhaps it will always remain unfinished.
-      That is part of its purpose.
-    </p>
-
-    <div class="ornament">✦</div>
-  </div>
-
-</section>
-
-
-<!-- QUOTE CHANGER -->
-
-<section class="quote-box">
-
-  <div class="quote-label">A thought to keep</div>
-
-  <div class="ornament">❧</div>
-
-  <p id="quote">
-    “We are all in the gutter, but some of us are looking at the stars.”
-  </p>
-
-  <div id="quote-author">Oscar Wilde</div>
-
-  <button type="button" id="new-quote">
-    Turn another page
-  </button>
-
-</section>
-
-
-<!-- HIDDEN DETAIL -->
-
-<section class="secret-section">
-
-  <button class="secret-button" id="secret-button" type="button">
-    There is something hidden here...
-  </button>
-
-  <div class="secret-content" id="secret-content">
-    Perhaps the best parts of a collection are the things
-    that cannot be properly categorised.
+  <!-- LETTER SECTION -->
+  <section class="letter-section">
     <div class="ornament">❧</div>
-  </div>
+    <div class="envelope" id="envelope"
+         role="button" tabindex="0"
+         aria-label="Open the letter"></div>
+    <div class="header-small">A little note</div>
+    <div class="letter" id="letter">
+      <p>
+        This is a small corner of the internet that belongs
+        to my interests, thoughts, and discoveries. A place
+        to collect what I read, see, hear, and remember.
+      </p>
+      <p>
+        It may always remain a work in progress. That is
+        part of its purpose.
+      </p>
+      <div class="ornament">✦</div>
+    </div>
+  </section>
 
-</section>
+  <div class="divider">❦ ───── ✦ ───── ❦</div>
 
+  <!-- QUOTE SECTION -->
+  <section class="quote-box">
+    <div class="quote-label">A thought to keep</div>
+    <div class="ornament">❧</div>
+    <p id="quote">
+      “We are all in the gutter, but some of us are looking at the stars.”
+    </p>
+    <div id="quote-author">Oscar Wilde</div>
+    <button type="button" id="new-quote">Turn another page</button>
+  </section>
 
-<!-- NAVIGATION -->
+  <div class="divider">❦ ───── ✦ ───── ❦</div>
 
-<section class="navigation">
+  <!-- HIDDEN DETAIL -->
+  <section class="secret-section">
+    <button class="secret-button" id="secret-button" type="button">
+      There is something hidden here...
+    </button>
+    <div class="secret-content" id="secret-content">
+      Perhaps the best parts of a collection are the things
+      that cannot be properly categorised.
+      <div class="ornament">❧</div>
+    </div>
+  </section>
 
-  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+  <div class="divider">❦ ───── ✦ ───── ❦</div>
 
-  <h2>Explore the Archive</h2>
+  <!-- NAVIGATION -->
+  <section class="navigation">
+    <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+    <h2>Explore the Archive</h2>
+    <div class="nav-grid">
+      <a href="about.html">About</a>
+      <a href="diary.html">Diary</a>
+      <a href="literature.html">Literature</a>
+      <a href="music.html">Music</a>
+      <a href="visual-arts.html">Visual Arts</a>
+      <a href="photography.html">Photography</a>
+      <a href="cinema.html">Cinema</a>
+      <a href="writing.html">Writing</a>
+      <a href="languages.html">Languages</a>
+      <a href="psychology-philosophy.html">Psychology & Philosophy</a>
+      <a href="history-culture.html">History & Culture</a>
+      <a href="curiosities.html">Curiosities</a>
+    </div>
+  </section>
 
-  <div class="nav-grid">
-
-    <a href="about.html">About</a>
-    <a href="diary.html">Diary</a>
-    <a href="literature.html">Literature</a>
-    <a href="music.html">Music</a>
-    <a href="visual-arts.html">Visual Arts</a>
-    <a href="photography.html">Photography</a>
-    <a href="cinema.html">Cinema</a>
-    <a href="writing.html">Writing</a>
-    <a href="languages.html">Languages</a>
-    <a href="psychology-philosophy.html">Psychology & Philosophy</a>
-    <a href="history-culture.html">History & Culture</a>
-    <a href="curiosities.html">Curiosities</a>
-
-  </div>
-
-</section>
-
-
-<footer>
-
-  <div class="ornament">❧</div>
-
-  <p>
-    A personal archive, still in the making.
-  </p>
-
-  <p>
-    Umida Xolmirzayeva
-  </p>
-
-</footer>
+  <footer>
+    <div class="ornament">❧</div>
+    <p>A personal archive, still in the making.</p>
+    <p>Umida Xolmirzayeva</p>
+  </footer>
 
 </main>
 
-
 <!-- ANALOG CLOCK -->
-
 <div class="clock" aria-label="Analog clock">
-
   <span class="clock-number n12">XII</span>
   <span class="clock-number n1">I</span>
   <span class="clock-number n2">II</span>
@@ -1192,48 +962,27 @@ footer .ornament {
   <span class="clock-number n9">IX</span>
   <span class="clock-number n10">X</span>
   <span class="clock-number n11">XI</span>
-
-  <div class="hand hour-hand" id="hour-hand"></div>
+  <div class="hand hour-hand"   id="hour-hand"></div>
   <div class="hand minute-hand" id="minute-hand"></div>
   <div class="hand second-hand" id="second-hand"></div>
   <div class="clock-center"></div>
-
 </div>
 
-
-<!-- AUTHOR POPUP -->
-
-<div class="modal" id="author-modal"
-     role="dialog" aria-modal="true"
-     aria-labelledby="modal-author">
-
+<!-- AUTHOR POP-UP -->
+<div class="modal" id="author-modal" role="dialog" aria-modal="true" aria-labelledby="modal-author">
   <div class="modal-card">
-
-    <button class="modal-close" id="modal-close"
-            type="button" aria-label="Close popup">
-      ×
-    </button>
-
+    <button class="modal-close" id="modal-close" type="button" aria-label="Close popup">×</button>
     <div class="modal-small">From the author's gallery</div>
-
-    <h2 id="modal-author">Author's name</h2>
-
+    <h2 id="modal-author">Author's Name</h2>
     <div class="modal-ornament">❧ ✦ ❧</div>
-
-    <a href="literature.html" class="library-link"
-       id="library-link">
+    <a href="literature.html" class="library-link" id="library-link">
       Go to Library →
     </a>
-
   </div>
-
 </div>
 
-
 <script>
-
-/* AUTHOR POPUP */
-
+// Handle author portrait pop-up (open with author name)
 const authorCards = document.querySelectorAll(".author-card");
 const modal = document.getElementById("author-modal");
 const modalAuthor = document.getElementById("modal-author");
@@ -1242,64 +991,45 @@ const libraryLink = document.getElementById("library-link");
 
 function openAuthorPopup(card) {
   const author = card.dataset.author;
-  const destination = card.dataset.link;
-
+  const dest = card.dataset.link;
   modalAuthor.textContent = author;
-  libraryLink.href = "literature.html#" + destination;
-
+  libraryLink.href = "literature.html#" + dest;
   modal.classList.add("open");
   document.body.style.overflow = "hidden";
-
   modalClose.focus();
 }
-
 function closeAuthorPopup() {
   modal.classList.remove("open");
   document.body.style.overflow = "";
 }
 
 authorCards.forEach(card => {
-  card.addEventListener("click", () => {
-    openAuthorPopup(card);
-  });
+  card.addEventListener("click", () => openAuthorPopup(card));
 });
 
 modalClose.addEventListener("click", closeAuthorPopup);
-
-modal.addEventListener("click", event => {
-  if (event.target === modal) {
+modal.addEventListener("click", e => { if (e.target === modal) closeAuthorPopup(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && modal.classList.contains("open")) {
     closeAuthorPopup();
   }
 });
 
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && modal.classList.contains("open")) {
-    closeAuthorPopup();
-  }
-});
-
-
-/* ENVELOPE */
-
+// Envelope toggle
 const envelope = document.getElementById("envelope");
 const letter = document.getElementById("letter");
-
 function toggleLetter() {
   letter.classList.toggle("open");
 }
-
 envelope.addEventListener("click", toggleLetter);
-
-envelope.addEventListener("keydown", event => {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
+envelope.addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
     toggleLetter();
   }
 });
 
-
-/* QUOTES */
-
+// Quote changer
 const quotes = [
   {
     text: "We are all in the gutter, but some of us are looking at the stars.",
@@ -1330,53 +1060,33 @@ const quotes = [
     author: "Virginia Woolf"
   }
 ];
-
 let currentQuote = 0;
-
 document.getElementById("new-quote").addEventListener("click", () => {
   currentQuote = (currentQuote + 1) % quotes.length;
-
-  document.getElementById("quote").textContent =
-    "“" + quotes[currentQuote].text + "”";
-
-  document.getElementById("quote-author").textContent =
-    quotes[currentQuote].author;
+  document.getElementById("quote").textContent = "“" + quotes[currentQuote].text + "”";
+  document.getElementById("quote-author").textContent = quotes[currentQuote].author;
 });
 
-
-/* HIDDEN DETAIL */
-
+// Hidden detail toggle
 document.getElementById("secret-button").addEventListener("click", () => {
   document.getElementById("secret-content").classList.toggle("visible");
 });
 
-
-/* ANALOG CLOCK */
-
+// Analog clock
 function updateClock() {
   const now = new Date();
-
   const hours = now.getHours() % 12;
   const minutes = now.getMinutes();
   const seconds = now.getSeconds();
-
-  const hourAngle = (hours + minutes / 60) * 30;
-  const minuteAngle = (minutes + seconds / 60) * 6;
+  const hourAngle   = (hours + minutes/60) * 30;
+  const minuteAngle = (minutes + seconds/60) * 6;
   const secondAngle = seconds * 6;
-
-  document.getElementById("hour-hand").style.transform =
-    "translateX(-50%) rotate(" + hourAngle + "deg)";
-
-  document.getElementById("minute-hand").style.transform =
-    "translateX(-50%) rotate(" + minuteAngle + "deg)";
-
-  document.getElementById("second-hand").style.transform =
-    "translateX(-50%) rotate(" + secondAngle + "deg)";
+  document.getElementById("hour-hand").style.transform   = "translateX(-50%) rotate(" + hourAngle   + "deg)";
+  document.getElementById("minute-hand").style.transform = "translateX(-50%) rotate(" + minuteAngle + "deg)";
+  document.getElementById("second-hand").style.transform = "translateX(-50%) rotate(" + secondAngle + "deg)";
 }
-
 updateClock();
 setInterval(updateClock, 1000);
-
 </script>
 
 </body>
