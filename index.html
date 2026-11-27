@@ -23,8 +23,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse at center, #f5eee2 0%, #e9dfcf 100%);
+  background: radial-gradient(ellipse at center, #f5eee2 0%, #e9dfcf 100%);
   color: var(--ink);
   font-family: 'Cormorant Garamond', serif;
   overflow-x: hidden;
@@ -36,8 +35,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   opacity: .14;
-  background-image:
-    radial-gradient(#77644f 0.5px, transparent 0.5px);
+  background-image: radial-gradient(#77644f 0.5px, transparent 0.5px);
   background-size: 4px 4px;
   z-index: 0;
 }
@@ -54,14 +52,8 @@ body::before {
   pointer-events: none;
 }
 
-.lace.top {
-  top: 0;
-}
-
-.lace.bottom {
-  bottom: 0;
-  transform: rotate(180deg);
-}
+.lace.top { top: 0; }
+.lace.bottom { bottom: 0; transform: rotate(180deg); }
 
 .page {
   position: relative;
@@ -110,22 +102,22 @@ h1 {
 .author-wall {
   position: relative;
   width: 200px;
-  height: 650px;
+  height: 920px;
   margin: 0 auto;
 }
 
-/* Every frame is positioned independently */
-
 .mini-frame {
   position: absolute;
+  display: block;
   width: 55px;
   height: 72px;
   padding: 5px;
+  cursor: pointer;
   background: #e5d6b9;
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    0 0 2px rgba(35, 23, 15, .5);
-  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow: 0 3px 7px rgba(35,23,15,.25), 0 0 2px rgba(35,23,15,.5);
+  transition: transform .25s ease, box-shadow .25s ease;
+  border: none;
+  outline: none;
 }
 
 .mini-frame img {
@@ -136,13 +128,19 @@ h1 {
   object-position: center;
 }
 
-.mini-frame:hover {
-  transform: scale(1.12) rotate(0deg) !important;
+.mini-frame:hover,
+.mini-frame:focus-visible {
+  transform: scale(1.06) rotate(0deg) !important;
   z-index: 15;
-  box-shadow: 0 8px 20px rgba(35, 23, 15, .3);
+  box-shadow: 0 6px 15px rgba(35,23,15,.3);
 }
 
-/* Individual frame styles */
+.mini-frame:focus-visible {
+  outline: 2px solid #77644f;
+  outline-offset: 5px;
+}
+
+/* DISTINCT FRAME STYLES */
 
 .rococo {
   border: 4px double #967447;
@@ -150,34 +148,25 @@ h1 {
   outline-offset: 2px;
   border-radius: 48% 48% 44% 44%;
   background: linear-gradient(135deg, #d6bd90, #8c693e, #d9c39d);
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 4px #f3dfba;
+  box-shadow: inset 0 0 4px #f3dfba;
 }
 
 .walnut {
   border: 5px solid #5d3827;
   background: #81563b;
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 0 2px #b38a60,
-    inset 0 0 0 4px #42291d;
+  box-shadow: inset 0 0 0 2px #b38a60, inset 0 0 0 4px #42291d;
 }
 
 .baroque {
   border: 5px ridge #292522;
   background: #39332e;
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 0 2px #84705b;
+  box-shadow: inset 0 0 0 2px #84705b;
 }
 
 .gothic {
   border: 5px solid #49372d;
-  border-radius: 45% 45% 3px 3px;
   background: #75533e;
   clip-path: polygon(0 16%, 50% 0, 100% 16%, 100% 100%, 0 100%);
-  box-shadow: 0 3px 7px rgba(35, 23, 15, .25);
 }
 
 .louis {
@@ -191,15 +180,12 @@ h1 {
 .floral {
   border: 6px ridge #8b6a4a;
   background: #c1a782;
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 0 2px #e1c8a1;
+  box-shadow: inset 0 0 0 2px #e1c8a1;
 }
 
 .silver {
   border: 5px ridge #a6a19a;
   background: linear-gradient(135deg, #dedbd4, #99958c, #c6c0b5);
-  box-shadow: 0 3px 7px rgba(35, 23, 15, .25);
 }
 
 .gilded {
@@ -207,61 +193,49 @@ h1 {
   outline: 3px double #d6b67d;
   outline-offset: 1px;
   background: #c8a76e;
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 0 2px #7b592e;
+  box-shadow: inset 0 0 0 2px #7b592e;
 }
 
 .ivory {
   border: 5px ridge #c7bba5;
   background: linear-gradient(135deg, #f0e6d5, #c5b49b);
-  box-shadow: 0 3px 7px rgba(35, 23, 15, .25);
 }
 
 .mahogany {
   border: 5px solid #512c20;
   background: linear-gradient(135deg, #774734, #4d2b20);
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 0 2px #ad7a54;
+  box-shadow: inset 0 0 0 2px #ad7a54;
 }
 
 .blackgold {
   border: 5px double #b3945e;
   background: #28231f;
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 0 2px #716047;
+  box-shadow: inset 0 0 0 2px #716047;
 }
 
 .roccrect {
   border: 5px ridge #aa8555;
   background: #b89a6a;
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 0 2px #e0c69b;
+  box-shadow: inset 0 0 0 2px #e0c69b;
 }
 
 .darkwood {
   border: 5px solid #35251e;
   border-radius: 48%;
   background: #694735;
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 0 2px #98704f;
+  box-shadow: inset 0 0 0 2px #98704f;
 }
 
 .ornateblack {
   border: 5px ridge #272321;
   background: linear-gradient(135deg, #37312d, #181615);
-  box-shadow:
-    0 3px 7px rgba(35, 23, 15, .25),
-    inset 0 0 0 2px #71645a;
+  box-shadow: inset 0 0 0 2px #71645a;
 }
 
-/* FIVE-ZONE GALLERY PLACEMENT */
+/* FIVE-ZONE ARRANGEMENT */
 
 /* Zone 1: upper */
+
 .f1 {
   top: 12px;
   left: 18px;
@@ -286,6 +260,7 @@ h1 {
 }
 
 /* Zone 2: upper-middle */
+
 .f4 {
   top: 230px;
   left: 132px;
@@ -309,7 +284,8 @@ h1 {
   transform: rotate(-2deg);
 }
 
-/* Zone 3: central gap and mid-section */
+/* Zone 3: middle */
+
 .f7 {
   top: 420px;
   left: 35px;
@@ -327,6 +303,7 @@ h1 {
 }
 
 /* Zone 4: lower-middle */
+
 .f9 {
   top: 540px;
   left: 45px;
@@ -342,7 +319,8 @@ h1 {
   transform: rotate(2deg);
 }
 
-/* Zone 5: lower gallery */
+/* Zone 5: lower */
+
 .f11 {
   top: 635px;
   left: 8px;
@@ -373,7 +351,7 @@ h1 {
   height: 77px;
 }
 
-/* PERSONAL PORTRAIT */
+/* PORTRAIT */
 
 .portrait {
   min-height: 420px;
@@ -387,7 +365,7 @@ h1 {
   justify-content: center;
   text-align: center;
   padding: 30px;
-  box-shadow: 0 8px 20px rgba(44, 31, 21, .12);
+  box-shadow: 0 8px 20px rgba(44,31,21,.12);
 }
 
 .portrait-placeholder {
@@ -396,7 +374,7 @@ h1 {
   font-size: 19px;
 }
 
-/* WELCOME TEXT */
+/* WELCOME */
 
 .welcome {
   max-width: 440px;
@@ -422,7 +400,7 @@ h1 {
   font-size: 22px;
 }
 
-/* ENVELOPE */
+/* LETTER */
 
 .envelope-area {
   text-align: center;
@@ -442,7 +420,7 @@ h1 {
 }
 
 .envelope:hover {
-  background: rgba(125, 97, 67, .1);
+  background: rgba(125,97,67,.1);
 }
 
 .letter {
@@ -450,7 +428,7 @@ h1 {
   margin: 20px auto;
   display: none;
   padding: 30px;
-  background: rgba(226, 213, 192, .65);
+  background: rgba(226,213,192,.65);
   border: 1px solid #a38b6a;
   font-size: 20px;
   line-height: 1.6;
@@ -460,7 +438,7 @@ h1 {
   display: block;
 }
 
-/* QUOTE */
+/* QUOTES */
 
 .quote-box {
   max-width: 700px;
@@ -561,9 +539,9 @@ h1 {
   height: 105px;
   border-radius: 50%;
   border: 2px solid #6d5945;
-  background: rgba(238, 230, 216, .94);
+  background: rgba(238,230,216,.94);
   box-shadow:
-    0 4px 12px rgba(40, 28, 20, .15),
+    0 4px 12px rgba(40,28,20,.15),
     inset 0 0 0 4px #d3c1a5,
     inset 0 0 0 5px #6d5945;
   z-index: 30;
@@ -615,11 +593,103 @@ h1 {
   background: #8b493a;
 }
 
+/* AUTHOR POPUP */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(35,27,22,.35);
+  backdrop-filter: blur(2px);
+}
+
+.popup-overlay.visible {
+  display: flex;
+}
+
+.author-popup {
+  width: min(380px, 92vw);
+  position: relative;
+  text-align: center;
+  padding: 38px 30px 32px;
+  background:
+    radial-gradient(ellipse at center, #f5eddf, #e5d6bd);
+  border: 1px solid #9b8060;
+  box-shadow:
+    0 12px 40px rgba(30,20,15,.25),
+    inset 0 0 0 5px rgba(155,128,96,.12),
+    inset 0 0 0 6px #c8b18e;
+  animation: popupAppear .22s ease;
+}
+
+@keyframes popupAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popup-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 23px;
+  color: #6d5945;
+  cursor: pointer;
+}
+
+.popup-ornament {
+  color: #88704e;
+  letter-spacing: 5px;
+  margin: 8px 0 15px;
+}
+
+.popup-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: 400;
+  color: #433529;
+  margin: 0;
+}
+
+.popup-description {
+  font-style: italic;
+  font-size: 18px;
+  color: #756759;
+  margin: 10px 0 25px;
+}
+
+.library-button {
+  display: inline-block;
+  text-decoration: none;
+  color: #433529;
+  border: 1px solid #8b7354;
+  background: rgba(125,97,67,.08);
+  padding: 11px 25px;
+  font-size: 19px;
+  transition: background .25s;
+}
+
+.library-button:hover {
+  background: rgba(125,97,67,.18);
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 1050px) {
   .intro {
-    grid-template-columns: 170px 280px minmax(220px, 1fr);
+    grid-template-columns: 170px 280px minmax(220px,1fr);
     gap: 30px;
   }
 
@@ -649,7 +719,7 @@ h1 {
   }
 
   .portrait {
-    width: min(320px, 90%);
+    width: min(320px,90%);
     margin: 0 auto;
   }
 
@@ -669,17 +739,9 @@ h1 {
     bottom: 12px;
   }
 
-  .hour-hand {
-    height: 19px;
-  }
-
-  .minute-hand {
-    height: 25px;
-  }
-
-  .second-hand {
-    height: 29px;
-  }
+  .hour-hand { height: 19px; }
+  .minute-hand { height: 25px; }
+  .second-hand { height: 29px; }
 }
 </style>
 </head>
@@ -700,67 +762,69 @@ h1 {
 <section class="intro">
 
 <!-- AUTHOR PORTRAITS -->
+
 <div class="author-wall">
 
-<div class="mini-frame rococo f1">
+<div class="mini-frame rococo f1" tabindex="0" role="button" data-author="Donna Tartt" aria-label="Donna Tartt">
 <img src="assets/images/1795768870490.jpg" alt="Donna Tartt">
 </div>
 
-<div class="mini-frame walnut f2">
+<div class="mini-frame walnut f2" tabindex="0" role="button" data-author="Fyodor Dostoevsky" aria-label="Fyodor Dostoevsky">
 <img src="assets/images/1795768877389.jpg" alt="Fyodor Dostoevsky">
 </div>
 
-<div class="mini-frame baroque f3">
+<div class="mini-frame baroque f3" tabindex="0" role="button" data-author="Friedrich Nietzsche" aria-label="Friedrich Nietzsche">
 <img src="assets/images/1795768863633.jpg" alt="Friedrich Nietzsche">
 </div>
 
-<div class="mini-frame gothic f4">
+<div class="mini-frame gothic f4" tabindex="0" role="button" data-author="Franz Kafka" aria-label="Franz Kafka">
 <img src="assets/images/kafka.jpg" alt="Franz Kafka">
 </div>
 
-<div class="mini-frame louis f5">
+<div class="mini-frame louis f5" tabindex="0" role="button" data-author="Albert Camus" aria-label="Albert Camus">
 <img src="assets/images/camus.jpg" alt="Albert Camus">
 </div>
 
-<div class="mini-frame floral f6">
+<div class="mini-frame floral f6" tabindex="0" role="button" data-author="Clarice Lispector" aria-label="Clarice Lispector">
 <img src="assets/images/clarice.jpg" alt="Clarice Lispector">
 </div>
 
-<div class="mini-frame silver f7">
+<div class="mini-frame silver f7" tabindex="0" role="button" data-author="Ocean Vuong" aria-label="Ocean Vuong">
 <img src="assets/images/ocean.jpg" alt="Ocean Vuong">
 </div>
 
-<div class="mini-frame gilded f8">
+<div class="mini-frame gilded f8" tabindex="0" role="button" data-author="Hanya Yanagihara" aria-label="Hanya Yanagihara">
 <img src="assets/images/hanya.jpg" alt="Hanya Yanagihara">
 </div>
 
-<div class="mini-frame ivory f9">
+<div class="mini-frame ivory f9" tabindex="0" role="button" data-author="Susan Sontag" aria-label="Susan Sontag">
 <img src="assets/images/sontag.jpg" alt="Susan Sontag">
 </div>
 
-<div class="mini-frame mahogany f10">
+<div class="mini-frame mahogany f10" tabindex="0" role="button" data-author="Hermann Hesse" aria-label="Hermann Hesse">
 <img src="assets/images/hesse.jpg" alt="Hermann Hesse">
 </div>
 
-<div class="mini-frame blackgold f11">
+<div class="mini-frame blackgold f11" tabindex="0" role="button" data-author="Toni Morrison" aria-label="Toni Morrison">
 <img src="assets/images/morrison.jpg" alt="Toni Morrison">
 </div>
 
-<div class="mini-frame roccrect f12">
+<div class="mini-frame roccrect f12" tabindex="0" role="button" data-author="Oscar Wilde" aria-label="Oscar Wilde">
 <img src="assets/images/wilde.jpg" alt="Oscar Wilde">
 </div>
 
-<div class="mini-frame darkwood f13">
+<div class="mini-frame darkwood f13" tabindex="0" role="button" data-author="Simone de Beauvoir" aria-label="Simone de Beauvoir">
 <img src="assets/images/simone.jpg" alt="Simone de Beauvoir">
 </div>
 
-<div class="mini-frame ornateblack f14">
+<div class="mini-frame ornateblack f14" tabindex="0" role="button" data-author="Sylvia Plath" aria-label="Sylvia Plath">
 <img src="assets/images/silvia.jpg" alt="Sylvia Plath">
 </div>
 
 </div>
 
 <!-- YOUR PORTRAIT -->
+
 <div class="portrait">
 <div class="portrait-placeholder">
 Your portrait will be placed here
@@ -768,6 +832,7 @@ Your portrait will be placed here
 </div>
 
 <!-- WELCOME -->
+
 <div class="welcome">
 
 <h2>Welcome</h2>
@@ -793,6 +858,7 @@ cinema, thoughts and little curiosities.
 <div class="divider">❦ ───── ✦ ───── ❦</div>
 
 <!-- ENVELOPE -->
+
 <section class="envelope-area">
 
 <button class="envelope" id="envelopeButton">
@@ -801,9 +867,7 @@ cinema, thoughts and little curiosities.
 
 <div class="letter" id="letter">
 
-<p>
-Dear visitor,
-</p>
+<p>Dear visitor,</p>
 
 <p>
 You have found a little corner of the internet that belongs
@@ -811,15 +875,14 @@ to the things I find beautiful, strange, interesting and worth
 remembering.
 </p>
 
-<p>
-Feel free to wander.
-</p>
+<p>Feel free to wander.</p>
 
 </div>
 
 </section>
 
 <!-- QUOTES -->
+
 <section class="quote-box">
 
 <div class="quote" id="quote">
@@ -839,6 +902,7 @@ Another quotation
 <div class="divider">❦ ───── ✦ ───── ❦</div>
 
 <!-- HIDDEN DETAIL -->
+
 <section class="hidden-detail">
 
 <button id="secretButton">
@@ -853,6 +917,7 @@ Sometimes liking something is reason enough.
 </section>
 
 <!-- NAVIGATION -->
+
 <nav class="navigation">
 
 <a href="about.html">About</a>
@@ -875,6 +940,7 @@ Sometimes liking something is reason enough.
 </main>
 
 <!-- CLOCK -->
+
 <div class="clock" id="clock">
 
 <div class="clock-center"></div>
@@ -884,7 +950,79 @@ Sometimes liking something is reason enough.
 
 </div>
 
+<!-- AUTHOR POPUP: HIDDEN UNTIL CLICK -->
+
+<div class="popup-overlay" id="popupOverlay">
+
+<div class="author-popup" role="dialog" aria-modal="true" aria-labelledby="popupName">
+
+<button class="popup-close" id="popupClose" aria-label="Close popup">
+×
+</button>
+
+<div class="popup-ornament">❦ ─ ✧ ─ ❦</div>
+
+<h2 class="popup-name" id="popupName"></h2>
+
+<div class="popup-description">
+A little literary doorway
+</div>
+
+<div class="popup-ornament">❦</div>
+
+<a class="library-button" href="literature.html">
+Go to Library →
+</a>
+
+</div>
+
+</div>
+
 <script>
+
+/* AUTHOR POPUP */
+
+const authorFrames = document.querySelectorAll('.mini-frame');
+const popupOverlay = document.getElementById('popupOverlay');
+const popupName = document.getElementById('popupName');
+const popupClose = document.getElementById('popupClose');
+
+function openAuthorPopup(author) {
+  popupName.textContent = author;
+  popupOverlay.classList.add('visible');
+  popupClose.focus();
+}
+
+function closeAuthorPopup() {
+  popupOverlay.classList.remove('visible');
+}
+
+authorFrames.forEach(frame => {
+  frame.addEventListener('click', () => {
+    openAuthorPopup(frame.dataset.author);
+  });
+
+  frame.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openAuthorPopup(frame.dataset.author);
+    }
+  });
+});
+
+popupClose.addEventListener('click', closeAuthorPopup);
+
+popupOverlay.addEventListener('click', event => {
+  if (event.target === popupOverlay) {
+    closeAuthorPopup();
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeAuthorPopup();
+  }
+});
 
 /* ENVELOPE */
 
@@ -940,7 +1078,7 @@ document.getElementById('quoteButton').addEventListener('click', function() {
   document.getElementById('quoteAuthor').textContent = quotes[quoteIndex].author;
 });
 
-/* ANALOG CLOCK */
+/* CLOCK */
 
 const clock = document.getElementById('clock');
 
