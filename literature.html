@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Literature | Umida Xolmirzayeva</title>
+
+<style>
+:root {
+  --paper: #eee5d5;
+  --ink: #302720;
+  --muted: #76685a;
+  --line: #b6a48d;
+  --dark: #45372d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 22px;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #e9decd, #cfc0a8);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 115px;
+  background-image: url("assets/decorations/file_00000000ddbc81f4883ea3e871791a72.png");
+  background-repeat: repeat-y;
+  background-size: 115px auto;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before { left: 0; }
+body::after { right: 0; }
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: auto;
+  padding: 55px 65px;
+  background: var(--paper);
+  border: 1px solid #b9a58b;
+  box-shadow: 0 10px 40px rgba(45,30,20,0.18);
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(130,105,78,0.25);
+  pointer-events: none;
+}
+
+/* HEADER */
+
+header {
+  text-align: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 35px;
+}
+
+.subtitle {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: clamp(32px,5vw,48px);
+  font-weight: normal;
+  margin: 18px 0;
+}
+
+.ornament {
+  color: #806b55;
+  font-size: 22px;
+  letter-spacing: 8px;
+}
+
+.intro {
+  max-width: 650px;
+  text-align: center;
+  margin: 0 auto 45px;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+/* SHELF */
+
+.shelf-heading {
+  text-align: center;
+  font-size: 23px;
+  font-weight: normal;
+  margin: 35px 0;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.filters button {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filters button:hover,
+.filters button.active {
+  background: #d8c7b0;
+}
+
+/* BOOK CARDS */
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.12);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(50,35,25,0.08);
+}
+
+.cover {
+  width: 145px;
+  min-height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 18px;
+  background:
+    linear-gradient(145deg, #c5b39a, #8e7960);
+  border: 1px solid #8e7960;
+  box-shadow: 3px 5px 10px rgba(50,35,25,0.16);
+  color: #f1e7d8;
+}
+
+.cover span {
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-info h3 {
+  font-size: 21px;
+  font-weight: normal;
+  margin: 5px 0 10px;
+}
+
+.author {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.genre {
+  display: inline-block;
+  width: fit-content;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 5px;
+  margin: 12px 0;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.impression {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 10px;
+}
+
+.rating {
+  margin-top: auto;
+  padding-top: 18px;
+  letter-spacing: 3px;
+  color: #806b55;
+}
+
+/* QUOTE */
+
+.quote-section {
+  margin-top: 55px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  text-align: center;
+  background: rgba(255,255,255,0.12);
+}
+
+.quote-section h2 {
+  font-weight: normal;
+  font-size: 22px;
+}
+
+.quote-section p {
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  margin-top: 55px;
+  border-top: 1px solid var(--line);
+  padding-top: 25px;
+}
+
+footer a {
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+footer a:hover {
+  opacity: 0.6;
+}
+
+footer p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 25px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .books {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 750px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  body::before,
+  body::after {
+    width: 50px;
+    background-size: 50px auto;
+    opacity: 0.45;
+  }
+
+  .page {
+    padding: 35px 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  .book {
+    grid-template-columns: 115px 1fr;
+    gap: 15px;
+    padding: 14px;
+  }
+
+  .cover {
+    width: 115px;
+    min-height: 175px;
+  }
+
+  .cover span {
+    font-size: 14px;
+  }
+
+  .book-info h3 {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+<header>
+  <div class="subtitle">A catalogue of books</div>
+  <h1>Literature</h1>
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+</header>
+
+<section class="intro">
+  <p>
+    A growing collection of books I've read, authors I return
+    to, impressions I keep, and sentences worth preserving.
+    Arranged imperfectly, as most personal libraries are.
+  </p>
+</section>
+
+<h2 class="shelf-heading">The shelves</h2>
+
+<nav class="filters" aria-label="Filter books by genre">
+
+  <button class="active" onclick="filterBooks('all',this)">
+    All
+  </button>
+
+  <button onclick="filterBooks('fiction',this)">
+    Fiction
+  </button>
+
+  <button onclick="filterBooks('classics',this)">
+    Classics
+  </button>
+
+  <button onclick="filterBooks('philosophy',this)">
+    Philosophy
+  </button>
+
+  <button onclick="filterBooks('other',this)">
+    Other
+  </button>
+
+</nav>
+
+<section class="books" id="books">
+
+  <article class="book" data-genre="fiction">
+
+    <div class="cover">
+      <span>Your next book</span>
+    </div>
+
+    <div class="book-info">
+
+      <h3>Book title</h3>
+
+      <div class="author">Author's name</div>
+
+      <div class="genre">FICTION</div>
+
+      <p class="impression">
+        A space for your personal impression,
+        thoughts, or a few words about the book.
+      </p>
+
+      <div class="rating">☆ ☆ ☆ ☆ ☆</div>
+
+    </div>
+
+  </article>
+
+  <article class="book" data-genre="classics">
+
+    <div class="cover">
+      <span>Your next book</span>
+    </div>
+
+    <div class="book-info">
+
+      <h3>Book title</h3>
+
+      <div class="author">Author's name</div>
+
+      <div class="genre">CLASSICS</div>
+
+      <p class="impression">
+        What you thought of the book,
+        what stayed with you, or what you disliked.
+      </p>
+
+      <div class="rating">☆ ☆ ☆ ☆ ☆</div>
+
+    </div>
+
+  </article>
+
+  <article class="book" data-genre="philosophy">
+
+    <div class="cover">
+      <span>Your next book</span>
+    </div>
+
+    <div class="book-info">
+
+      <h3>Book title</h3>
+
+      <div class="author">Author's name</div>
+
+      <div class="genre">PHILOSOPHY</div>
+
+      <p class="impression">
+        Notes, reflections, and ideas
+        worth revisiting.
+      </p>
+
+      <div class="rating">☆ ☆ ☆ ☆ ☆</div>
+
+    </div>
+
+  </article>
+
+  <article class="book" data-genre="other">
+
+    <div class="cover">
+      <span>Your next book</span>
+    </div>
+
+    <div class="book-info">
+
+      <h3>Book title</h3>
+
+      <div class="author">Author's name</div>
+
+      <div class="genre">OTHER</div>
+
+      <p class="impression">
+        A short personal note to accompany
+        this book in your collection.
+      </p>
+
+      <div class="rating">☆ ☆ ☆ ☆ ☆</div>
+
+    </div>
+
+  </article>
+
+</section>
+
+<section class="quote-section">
+
+  <div class="ornament">❧</div>
+
+  <h2>Favourite passages</h2>
+
+  <p>
+    A separate space for sentences,
+    passages, and quotations collected from books.
+  </p>
+
+  <p>
+    This collection will grow with the library.
+  </p>
+
+  <div class="ornament">✦</div>
+
+</section>
+
+<footer>
+
+  <div class="ornament">❧</div>
+
+  <a href="index.html">← RETURN TO THE HOMEPAGE</a>
+
+  <p>A library of things that remain.</p>
+
+</footer>
+
+</main>
+
+<script>
+function filterBooks(genre, button) {
+  const books = document.querySelectorAll(".book");
+
+  books.forEach(book => {
+    if (genre === "all" || book.dataset.genre === genre) {
+      book.style.display = "grid";
+    } else {
+      book.style.display = "none";
+    }
+  });
+
+  document.querySelectorAll(".filters button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+}
+</script>
+
+</body>
+</html>
